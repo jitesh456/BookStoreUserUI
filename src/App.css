@@ -2,6 +2,21 @@
   text-align: center;
 }
 
+.book_box{
+  border:1px solid goldenrod;
+  height: 30vmin;
+  width: 30vmin;
+  display:flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.admin-form{
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -35,4 +50,11 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.admin-form{
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+
 }
