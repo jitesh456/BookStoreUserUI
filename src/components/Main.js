@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../css/BookCard.css';
 import '../css/Main.css';
+import '../css/Pagination.css';
 import image0 from '../assets/images/image0.jpg';
 import image1 from '../assets/images/image1.jpg';
 import image2 from '../assets/images/image2.jpg';
@@ -11,14 +12,16 @@ import image6 from '../assets/images/image6.jpg';
 import image7 from '../assets/images/image7.jpg';
 import BookCard from "./BookCard";
 import booklogo from '../booklogo.png';
-
-//import service from 'C:\Users\user\online_bookstore\src\service\Service.js';
+import ReactPaginate from 'react-paginate';
 
 
 class Main extends Component {
     constructor(props) {
         super(props);
         this.state = {
+			offset: 0,
+			perPage: 8,
+			currentPage: 0,
             booklist: [
                 { id: 0, src: image0, Auther: 'foo', price: 150 ,
                 Discription:"It is known from archaeological evidence that a highly sophisticated urbanized culture—the Indus civilization—dominated the northwestern part of the subcontinent from about 2600 to 2000 BCE."},
@@ -34,21 +37,44 @@ class Main extends Component {
                 { id: 10, src: image3, Auther: 'foo', price: 150 ,Discription:"It is known from archaeological evidence that a highly sophisticated urbanized culture—the Indus civilization—dominated the northwestern part of the subcontinent from about 2600 to 2000 BCE."},
                 { id: 11, src: image4, Auther: 'foo', price: 150,Discription:"It is known from archaeological evidence that a highly sophisticated urbanized culture—the Indus civilization—dominated the northwestern part of the subcontinent from about 2600 to 2000 BCE." },
 
-            ]
+            ],
         }
+		this.handlePageClick=this.handlePageClick.bind(this);
     }
 
-    // componentDidMount(){
-    //     Service.getBookData().then((responce)=>{
-    //         console.log(responce);
-    //         this.setState({
-    //             booklist : responce.data
-    //         })  
-    //     }).catch((error)=>{
-    //     console.log(error)
-    //     }) 
-    // }   
+    receivedData() {
+			  const data = this.state.booklist;
+              const slice = data.slice(this.state.offset, this.state.offset + this.state.perPage)
+              const postData = slice.map( book =>{
+                                return <BookCard
+                                 price = {book.src}
+                                 bookDetails = {book}
+                                 />;
+                            })
 
+              this.setState({
+                  pageCount: Math.ceil(data.length / this.state.perPage),
+                 
+                  postData
+              })
+          
+  }
+	
+	handlePageClick=(e)=>{
+			const selectedPage = e.selected;
+			const offset = selectedPage * this.state.perPage;
+
+			  this.setState({
+				  currentPage: selectedPage,
+				  offset: offset
+			  }, () => {
+				  this.receivedData()
+			  });
+	}
+
+     componentDidMount(){
+         this.receivedData(); 
+     }
 
     render() {
 
@@ -64,18 +90,26 @@ class Main extends Component {
                 </header>
                 <main style={{ marginTop: '4rem' }}>
                     <div className="container">
-
-                        <div className="row">
-                            {
-                                this.state.booklist.map(book => {
-                                    return <BookCard
-
-                                        price={book.src}
-                                        bookDetails={book}
-                                    />;
-                                })
-                            }
-                        </div>
+						<div>
+							<div className="row">
+								{	this.state.postData }
+						   </div>
+							<div className="pagination">
+								<ReactPaginate
+									previousLabel={"prev"}
+									nextLabel={"next"}
+									breakLabel={"..."}
+									breakClassName={"break-me"}
+									pageCount={this.state.pageCount}
+									marginPagesDisplayed={2}
+									pageRangeDisplayed={5}
+									onPageChange={this.handlePageClick}
+									containerClassName={"pagination"}
+									subContainerClassName={"pages pagination"}
+									activeClassName={"active"}
+								/>
+							</div>
+						</div>
                     </div>
                 </main>
                 <footer className='app_footer'>
