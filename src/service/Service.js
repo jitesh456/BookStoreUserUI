@@ -3,12 +3,12 @@ import axios from 'axios';
 
 
 
-const BASIC_API_URL = 'http://localhost:8080'
+const BASIC_API_URL = 'http://localhost:8090'
 class DataService {
 
 
   getBookData = () => {
-    return axios.get(`${BASIC_API_URL}/data`);
+    return axios.get(`${BASIC_API_URL}/admin/books`);
   }
 
 

@@ -24,11 +24,11 @@ export default class BookCard extends Component {
                     <CardContent className="cardData">
                         <div>
                             <div id= "container">
-                                <img  src={this.props.bookDetails.src} className="image" />
+                                <img  src={this.props.bookDetails.bookcover} className="image" />
                             </div>
                             <div className="book_Detail">
-                                <span>Book Name:Harry Potter</span>
-                                <span>Auther:{this.props.bookDetails.Auther}</span>
+                                <span>Book Name:{this.props.bookDetails.name}</span>
+                                <span>Author:{this.props.bookDetails.authorname}</span>
                                 <span>Price:{this.props.bookDetails.price}</span>
                             </div>
                         </div>
