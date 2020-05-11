@@ -2,31 +2,18 @@
     margin:0;
 	padding:0
 }
-.container{
-    /* margin : 5px,5px,5px,5px; */
-	border:1px solid blue;
-    border:none;
-	display:flex;
-	justify-content: center;
+
+.cardofbook{
+    justify-content: space-around;
    
 }
-/* 
-.cardofbook{
-    border:1px solid red;    
-    border:none;
-    display: flex;
-    flex-direction: row;
-   justify-content: space-between;
-   align-self: auto;
-
-} */
-
-
+.baseCard{
+    width: 220px;
+    height: 290px;
+    justify-content:space-around;
+}
 .cardData{
-   
-    background-color: rgba(109, 32, 55,0.1);
-    width: 210px;
-    height: 270px;
+    background-color:rgba(241, 234, 236, 0.966);
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -34,48 +21,71 @@
     align-items: center;
     
 }
-.image{
-    width:100px;
+
+.firstPart{
+    width:220px;
+    height:160px;
+    margin-top: -30px;
+    margin-left: -50px;
+    margin-right: -15px;
+    background-color: rgba(117, 45, 67, 0.1);
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    justify-content: space-around;
+    align-items: center;
+}
+.secondPart{
+    
+    width:220px;
     height:130px;
-    margin-left: 25px;
-    margin-top: -4px;
+    margin-left: -50px;
+    margin-right: -15px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
 }
 
+.buttonArea{
+    
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: -10px;
+}
+.image{
+    width:110px;
+    height:120px;
+    margin-top: 20px;
+    margin-left: -5px;
+}
 
 .book_Detail{
-    border:1px solid maroon;
     border:none;
     display:flex;
+    width:220px;
+    height:70px;
+    margin-right: 3px;
+    margin-left: 3px;
+    margin-top: 10px;
     flex-direction: column;
     justify-content: start;
     align-items: flex-start;
 }
 
 .button{
+
     display: flex;
     justify-content: flex-end;
-    margin-bottom:1%;
-}
-.row{
-    margin-top: 7%;
-    margin-bottom: 7%;
-    border:1px solid black;
-    border:none;
-	width: 1100px;
-	height:700px;
-    display: flex;
-   flex-wrap: wrap;
-   justify-content: space-between;
-
+    height: 30px;
+    margin-top: 10px;
+   
 }
 
-.pagination{
-	border:1px solid green;
-	border:none;
-	width:1100px;
-	display:flex;
-	justify-content:center;
-}
 
 
 @media screen and (max-width: 600px) {
@@ -83,35 +93,3 @@
       width:30%;
     }
   }
-
-
-@media screen and (max-width: 360px) {
-    .row {
-        margin-top: 7%;
-		margin-bottom: 7%;
-		width:60%;
-		margin-left: 20%;
-		margin-right: 20%;
-    }
-}
-
- 
-@media screen and (max-width: 414px) and (min-width: 411px) {
-    .row {margin-top: 7%;
-        margin-bottom: 7%;
-      width:60%;
-      margin-left: 25%;
-    margin-right: 15%;
-    }
-  }
-
-@media screen and (max-width: 375px) and (max-height: 667px) {
-    .row {
-      width:60%;
-      margin-top: 2%;
-    margin-bottom: 40px;
-      margin-left: 22%;
-    margin-right: 17%;
-    
-    }
-}

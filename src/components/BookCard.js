@@ -18,27 +18,30 @@ export default class BookCard extends Component {
 
     render() {
         return (
-            <div className="cardofbook" style={{ marginTop: '20px' }}>
+            <div className="cardofbook" style={{ marginTop: '25px' }}>
 
                 <Card className="baseCard" >
                     <CardContent className="cardData">
-                        <div>
-                            <div id= "container">
-                                <img  src={this.props.bookDetails.bookcover} className="image" />
-                            </div>
-                            <div className="book_Detail">
-                                <span>Book Name:{this.props.bookDetails.name}</span>
-                                <span>Author:{this.props.bookDetails.authorname}</span>
-                                <span>Price:{this.props.bookDetails.price}</span>
-                            </div>
+                        <div className="firstPart">
+
+                            <img src={this.props.bookDetails.bookcover} className="image" />
                         </div>
-                      
-                        <CardActions>
-                            <Button type="submit" variant="contained" size="50%" style={{ backgroundColor: 'Maroon', color: "white" }} >
-                                Add to Cart
-                            </Button>
-                        </CardActions>
-                       
+                        <div ClassName="secondPart">
+                            <div className="book_Detail">
+                                <div style={{ fontSize: 17 },{fontWeight: 600}}>{this.props.bookDetails.name}</div>
+                                <div style={{ fontSize: 12 }}> By,{this.props.bookDetails.auther}</div>
+                                <div style={{ fontSize: 13 }} classNme="price">Price:{this.props.bookDetails.price}</div>
+                            </div>
+                            <CardActions>
+                                <div className="buttonArea">
+                                    <Button type="submit" variant="contained" size="45%" style={{ backgroundColor: 'Maroon', color: "white" }} >
+                                        Add to Cart
+                                 </Button>
+                                </div>
+                            </CardActions>
+
+                        </div>
+
                     </CardContent>
                 </Card>
             </div>
