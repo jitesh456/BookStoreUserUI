@@ -8,7 +8,7 @@ class DataService {
 
 
   getBookData = () => {
-    return axios.get(`${BASIC_API_URL}/admin/books`);
+    return axios.get(`${BASIC_API_URL}/books`);
   }
 
 

@@ -63,7 +63,7 @@ export default class BookCard extends Component {
                                     </React.Fragment>
                                 }
                             >
-                                <span style={{ fontWeight: "bold" }}>...</span>
+                                <span style={{ fontWeight: "bold" }}>ⓘ</span>
                             </HtmlTooltip>
                         </div>
                         <div style={{ width: "100%" }}>
@@ -72,6 +72,7 @@ export default class BookCard extends Component {
                             </div>
                             <div className="book_Detail" style={{ paddingLeft: "10px", width: "100%", paddingTop: "5px" }}>
                                 <span style={{ fontSize: "14px", fontWeight: "bold", display:"flex", width:"auto", height:"30px", justifyContent:"center" }}>{this.props.bookDetails.name}</span>
+                                <span style={{height:"10px"}}></span>
                                 <div>
                                 <span style={{color:"Grey", fontSize: "12px", display:"flex", width:"auto", height:"20px" }}>{this.props.bookDetails.authorname}</span>
                                 <span style={{ fontSize: "12px", fontWeight: "bold" }}>Rs:{this.props.bookDetails.price}</span>
