@@ -13,7 +13,11 @@ const HtmlTooltip = withStyles(theme => ({
     tooltip: {
         backgroundColor: "#f5f5f9",
         color: "rgba(0, 0, 0, 0.97)",
-        maxWidth: 220,
+        maxWidth: 300,
+        height:350,
+        position:"relative",
+        marginTop:-22,
+        Left:405,
         fontSize: theme.typography.pxToRem(12),
         color: "grey",
         border: "1px solid #dadde9"
@@ -51,7 +55,7 @@ export default class BookCard extends Component {
     }
     render() {
         return (
-            <div className="cardofbook" style={{ marginTop: '20px' }}>
+            <div className="cardofbook" >
                 <Card style={{ height: "300px", width: "200px", padding: "0px", backgroundColor: "Snow" }}>
                     <NestedCardContent>
                         <div style={{ height: "20px", display: "flex", backgroundColor: "lightGrey", justifyContent: "flex-end", margin: "0px", paddingRight: "8px" }}>

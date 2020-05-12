@@ -16,7 +16,8 @@ class Main extends Component {
             currentPage: 0,
             booklist: [],
             price: '',
-            bookDetails: ''
+            bookDetails: '',
+            count:'',
         }
 
         this.handlePageClick = this.handlePageClick.bind(this);
@@ -37,6 +38,7 @@ class Main extends Component {
 
     receivedData() {
         const data = this.state.booklist;
+        this.setState({count:data.length});
         const slice = data.slice(this.state.offset, this.state.offset + this.state.perPage)
         const postData = slice.map(book => {
             return <BookCard
@@ -72,13 +74,21 @@ class Main extends Component {
                     <div className="admin_header">
                         <img src={booklogo} alt="asd" width="55px" height="55px" /><span className="admin">Online Book Store</span>
                     </div>
-                    <div className="admin_header">  </div>
-                    <div className="admin_header">  </div>
-
                 </header>
-                <main style={{ marginTop: '4rem' }}>
-                    <div className="container">
-                        <div>
+                
+                <main>
+                    <div>
+                        <div className="container">
+                        <div style={{display:"flex",justifyContent:"center"}}>
+                             <div  style={{ marginTop:"5px", width:"83%",height:"60px" ,display:"flex"}} >
+                             <div  style={{height:"60px" ,display:"flex",width:"50%"}} >
+                             <h2>Books<span style={{fontSize:"14px",color:"grey"}}>({this.state.count} items)</span></h2>
+                            </div> 
+                            <div  style={{height:"0px" ,display:"flex",width:"50%"}} >
+                            </div> 
+                            </div> 
+                            
+                         </div>
                             <div className="row">
                                 {this.state.postData}
                             </div>
