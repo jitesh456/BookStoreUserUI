@@ -34,7 +34,21 @@ export default class BookCard extends Component {
             data: []
         }
     }
-   
+    displayImage() {
+
+        if (this.props.bookDetails.quantity === 0) {
+            return (
+                <figure>
+                    <img src={this.props.bookDetails.bookcover} className="image" alt="" />
+                    <figcaption>OUT OF STOCK</figcaption>
+                </figure>
+            );
+        } else {
+            return (
+                <img src={this.props.bookDetails.bookcover} className="image" alt="" />
+            );
+        }
+    }
     render() {
         return (
             <div className="cardofbook" style={{ marginTop: '20px' }}>
@@ -54,20 +68,19 @@ export default class BookCard extends Component {
                         </div>
                         <div style={{ width: "100%" }}>
                             <div id="container" style={{ backgroundColor: "lightGrey", height: "140px", display: "flex", justifyContent: "center" }}>
-                                 <img src={this.props.bookDetails.bookcover} className="image" alt="" />
-          
+                               { this.displayImage()}
                             </div>
                             <div className="book_Detail" style={{ paddingLeft: "10px", width: "100%", paddingTop: "5px" }}>
                                 <span style={{ fontSize: "14px", fontWeight: "bold", display:"flex", width:"auto", height:"30px", justifyContent:"center" }}>{this.props.bookDetails.name}</span>
                                 <div>
-                                <span style={{color:"Grey", fontSize: "12px", display:"flex", width:"auto", height:"15px" }}>{this.props.bookDetails.authorname}</span>
+                                <span style={{color:"Grey", fontSize: "12px", display:"flex", width:"auto", height:"20px" }}>{this.props.bookDetails.authorname}</span>
                                 <span style={{ fontSize: "12px", fontWeight: "bold" }}>Rs:{this.props.bookDetails.price}</span>
                                 </div>
                             </div>
                         </div>
                         <div style={{ width: "100%", display: "flex", justifyContent: "center", marginBottom:"40px" }}>
                             <CardActions>
-                                <Button type="submit" variant="contained" size="50%" style={{ backgroundColor: 'Maroon', color: "white" }} >
+                                <Button type="submit" variant="contained"  disabled={ !this.props.bookDetails.quantity} size="50%" style={{ backgroundColor:'Maroon', color: "white" }} >
                                     Add to Cart
                             </Button>
                             </CardActions>

@@ -70,14 +70,55 @@
 }
 
 .button{
-
+/* 
     display: flex;
     justify-content: flex-end;
     height: 30px;
     margin-top: 10px;
-   
+    background-color: 'Maroon';
+      color: "white" ; */
+     /* style={{ backgroundColor: disabled ? 'Gray':'Maroon', color: "white" }} */
 }
 
+
+
+button {
+   background-color:maroon;
+    color: #ffffff;
+    padding: 5px 10px;
+  }
+  
+  button:hover {
+    
+    background-color: #00aacc;
+    color: #ffffff;
+    padding: 5px 10px;
+  }
+  
+.button:disabled{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
+
+figure {
+    position: relative
+  }
+  figcaption {
+    display:flex;
+    position: absolute;
+    width: 140px;
+    line-height: 30px;
+    padding:3px;
+    left: 0;
+    top: 0;
+    margin-top: 40px;
+    margin-left: -19px;
+    justify-content: center;
+    background-color: white;
+    font-weight:bold;
+    box-shadow: rgba(41, 38, 39, 0.212);
+  }
 
 
 @media screen and (max-width: 600px) {
