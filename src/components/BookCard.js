@@ -44,7 +44,7 @@ export default class BookCard extends Component {
                              title={
                                     <React.Fragment>
                                         <Typography color="black"><b>Book Details</b></Typography>
-                                        <em>{this.props.bookDetails.Discription}</em>         
+                                        <em>{this.props.bookDetails.bookdetails}</em>         
                                     </React.Fragment>
                                     }
                                 >
@@ -53,11 +53,11 @@ export default class BookCard extends Component {
                         </div>
                         <div style={{ width:"100%"}}>
                             <div id= "container" style={{ backgroundColor:"lightGrey",height:"140px",display:"flex", justifyContent:"center"}}>
-                                <img  src={this.props.bookDetails.src} className="image" alt=""/>
+                                <img  src={this.props.bookDetails.bookcover} className="image" alt=""/>
                             </div>
                             <div className="book_Detail" style={{ paddingLeft:"10px",width:"100%",paddingTop:"5px"}}>
-                                <span style={{ fontSize:"14px"}}>Harry Potter The Philishoper Stone</span>
-                                <span style={{ fontSize:"12px"}}>{this.props.bookDetails.Auther}</span>
+                                <span style={{ fontSize:"14px"}}>{this.props.bookDetails.name}</span>
+                                <span style={{ fontSize:"12px"}}>{this.props.bookDetails.authorname}</span>
                                 <span style={{ fontSize:"12px", fontWeight:"bold"}}>Rs:{this.props.bookDetails.price}</span>
                             </div>
                         </div>
@@ -70,41 +70,6 @@ export default class BookCard extends Component {
                             </div>
                     </NestedCardContent>
                     </Card>
-{/* 
-                 <Card  style={{ border:"2px solid red",padding:"0px"}} >
-                    <NestedCardContent>
-                    <CardContent className="cardData" style={{ border:"2px solid red"}}>
-                        <div style={{ width:"100%",height:"20px",display:"flex" ,justifyContent:"flex-end",border:"2px solid black",margin:"0px"}}>
-                        <HtmlTooltip
-                             title={
-                                    <React.Fragment>
-                                        <Typography color="black"><b>Book Details</b></Typography>
-                                        <em>{this.props.bookDetails.Discription}</em>         
-                                    </React.Fragment>
-                                    }
-                                >
-                            <Button style={{ width:"2px", backgroundColor:"lightgrey" }}>...</Button>
-                        </HtmlTooltip>
-                        </div>
-                        <div style={{ width:"100%",border:"2px solid blue"}}>
-                            <div id= "container" style={{ marginTop:"20px",height:"100px",border:"2px solid green"}}>
-                                <img  src={this.props.bookDetails.src} className="image" alt=""/>
-                            </div>
-                            <div className="book_Detail" style={{ border:"2px solid purple"}}>
-                                <span>Book Name:Harry Potter</span>
-                                <span>Auther:{this.props.bookDetails.Auther}</span>
-                                <span>Price:{this.props.bookDetails.price}</span>
-                            </div>
-                        </div>
-                      
-                        <CardActions>
-                            <Button type="submit" variant="contained" size="50%" style={{ backgroundColor: 'Maroon', color: "white" }} >
-                                Add to Cart
-                            </Button>
-                        </CardActions>
-                    </CardContent>
-                    </NestedCardContent>
-                </Card> */}
             </div> 
         )
     }
