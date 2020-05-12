@@ -11,24 +11,24 @@ class Main extends Component {
     constructor(props) {
         super(props);
         this.state = {
-			offset: 0,
-			perPage: 8,
-			currentPage: 0,
-            booklist:[],
-            price:'',
-            bookDetails:''
+            offset: 0,
+            perPage: 8,
+            currentPage: 0,
+            booklist: [],
+            price: '',
+            bookDetails: ''
+        }
+
+        this.handlePageClick = this.handlePageClick.bind(this);
     }
 
-        this.handlePageClick=this.handlePageClick.bind(this);
-    } 
-
-    componentDidMount(){   
+    componentDidMount() {
         Service.getBookData().then((response)=>{
             console.log(response);
             this.setState({
                 booklist:response.data.body
             })  
-            this.receivedData();
+        this.receivedData();
             console.log(this.state.booklist)
         }).catch((error)=>{
         console.log(error)
@@ -36,33 +36,33 @@ class Main extends Component {
     }
 
     receivedData() {
-			  const data = this.state.booklist;
-              const slice = data.slice(this.state.offset, this.state.offset + this.state.perPage)
-              const postData = slice.map( book =>{
-                                return <BookCard
-                                 price = {book.price}
-                                 bookDetails = {book}
-                                 />;
-                            })
-                            console.log(this.data)
-              this.setState({
-                  pageCount: Math.ceil(data.length / this.state.perPage),
-                  postData
-              })
-          
-  }
-	
-	handlePageClick=(e)=>{
-			const selectedPage = e.selected;
-			const offset = selectedPage * this.state.perPage;
+        const data = this.state.booklist;
+        const slice = data.slice(this.state.offset, this.state.offset + this.state.perPage)
+        const postData = slice.map(book => {
+            return <BookCard
+                price={book.price}
+                bookDetails={book}
+            />;
+        })
+        console.log(this.data)
+        this.setState({
+            pageCount: Math.ceil(data.length / this.state.perPage),
+            postData
+        })
 
-			  this.setState({
-				  currentPage: selectedPage,
-				  offset: offset
-			  }, () => {
-				  this.receivedData()
-			  });
-	}
+    }
+
+    handlePageClick = (e) => {
+        const selectedPage = e.selected;
+        const offset = selectedPage * this.state.perPage;
+
+        this.setState({
+            currentPage: selectedPage,
+            offset: offset
+        }, () => {
+            this.receivedData()
+        });
+    }
 
     render() {
 
@@ -78,26 +78,26 @@ class Main extends Component {
                 </header>
                 <main style={{ marginTop: '4rem' }}>
                     <div className="container">
-						<div>
-							<div className="row">
-								{	this.state.postData }
-						   </div>
-							<div className="pagination">
-								<ReactPaginate
-									previousLabel={"prev"}
-									nextLabel={"next"}
-									breakLabel={"..."}
-									breakClassName={"break-me"}
-									pageCount={this.state.pageCount}
-									marginPagesDisplayed={2}
-									pageRangeDisplayed={5}
-									onPageChange={this.handlePageClick}
-									containerClassName={"pagination"}
-									subContainerClassName={"pages pagination"}
-									activeClassName={"active"}
-								/>
-							</div>
-						</div>
+                        <div>
+                            <div className="row">
+                                {this.state.postData}
+                            </div>
+                            <div className="pagination">
+                                <ReactPaginate
+                                    previousLabel={"prev"}
+                                    nextLabel={"next"}
+                                    breakLabel={"..."}
+                                    breakClassName={"break-me"}
+                                    pageCount={this.state.pageCount}
+                                    marginPagesDisplayed={2}
+                                    pageRangeDisplayed={5}
+                                    onPageChange={this.handlePageClick}
+                                    containerClassName={"pagination"}
+                                    subContainerClassName={"pages pagination"}
+                                    activeClassName={"active"}
+                                />
+                            </div>
+                        </div>
                     </div>
                 </main>
                 <footer className='app_footer'>
