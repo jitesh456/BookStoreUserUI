@@ -12,7 +12,7 @@ class Main extends Component {
         super(props);
         this.state = {
             offset: 0,
-            perPage: 8,
+            perPage: 10,
             currentPage: 0,
             booklist: [],
             price: '',

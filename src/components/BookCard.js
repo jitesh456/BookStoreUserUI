@@ -16,8 +16,8 @@ const HtmlTooltip = withStyles(theme => ({
         maxWidth: 300,
         height:350,
         position:"relative",
-        marginTop:-22,
-        Left:405,
+        float:"right",
+        
         fontSize: theme.typography.pxToRem(12),
         color: "grey",
         border: "1px solid #dadde9"
@@ -45,11 +45,25 @@ export default class BookCard extends Component {
                 <figure>
                     <img src={this.props.bookDetails.bookcover} className="image" alt="" />
                     <figcaption>OUT OF STOCK</figcaption>
+                    
+
                 </figure>
             );
         } else {
             return (
                 <img src={this.props.bookDetails.bookcover} className="image" alt="" />
+            );
+        }
+    }
+    displayButton() {
+
+        if (this.props.bookDetails.quantity === 0) {
+            return (
+                <Button type="submit" variant="contained"  disabled={ !this.props.bookDetails.quantity} size="50%" style={{ width:"90%", backgroundColor:'silver', color: "black" }} >ADD TO CART</Button>
+            );
+        } else {
+            return (
+                <Button type="submit" variant="contained"  disabled={ !this.props.bookDetails.quantity} size="50%" style={{ width:"90%", backgroundColor:'maroon', color: "white" }} >ADD TO CART</Button>
             );
         }
     }
@@ -84,10 +98,8 @@ export default class BookCard extends Component {
                             </div>
                         </div>
                         <div style={{ width: "100%", display: "flex", justifyContent: "center", marginBottom:"40px" }}>
-                            <CardActions>
-                                <Button type="submit" variant="contained"  disabled={ !this.props.bookDetails.quantity} size="50%" style={{ backgroundColor:'Maroon', color: "white" }} >
-                                    Add to Cart
-                            </Button>
+                            <CardActions style={{ width: "100%"}}>
+                               {this.displayButton()}
                             </CardActions>
                         </div>
                     </NestedCardContent>
