@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import '../css/BookCard.css';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import { withStyles } from "@material-ui/core/styles";
 import Tooltip from "@material-ui/core/Tooltip";
@@ -45,8 +44,6 @@ export default class BookCard extends Component {
                 <figure>
                     <img src={this.props.bookDetails.bookcover} className="image" alt="" />
                     <figcaption>OUT OF STOCK</figcaption>
-                    
-
                 </figure>
             );
         } else {
@@ -77,7 +74,7 @@ export default class BookCard extends Component {
                                 title={
                                     <React.Fragment>
                                         <Typography color="black"><b>Book Details</b></Typography>
-                                        <em>{this.props.bookDetails.bookdetails}</em>
+                                        <em>{this.props.bookDetails.bookDetails}</em>
                                     </React.Fragment>
                                 }
                             >
@@ -107,5 +104,4 @@ export default class BookCard extends Component {
             </div>
         )
     }
-
 }
