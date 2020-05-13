@@ -12,9 +12,10 @@ const HtmlTooltip = withStyles(theme => ({
     tooltip: {
         backgroundColor: "#f5f5f9",
         color: "rgba(0, 0, 0, 0.97)",
-        maxWidth: 300,
-        height:350,
-        position:"relative",
+        width: 250,
+        height:300,
+        marginTop:-20,
+        position:"absolute",
         float:"right",
         
         fontSize: theme.typography.pxToRem(12),
@@ -67,14 +68,14 @@ export default class BookCard extends Component {
     render() {
         return (
             <div className="cardofbook" >
-                <Card style={{ height: "300px", width: "200px", padding: "0px", backgroundColor: "Snow" }}>
+                <Card className="card">
                     <NestedCardContent>
-                        <div style={{ height: "20px", display: "flex", backgroundColor: "lightGrey", justifyContent: "flex-end", margin: "0px", paddingRight: "8px" }}>
+                        <div className="tooltip_content">
                             <HtmlTooltip
                                 title={
                                     <React.Fragment>
                                         <Typography color="black"><b>Book Details</b></Typography>
-                                        <em>{this.props.bookDetails.bookdetails}</em>
+                                        <em>{this.props.bookDetails.bookDetails}</em>
                                     </React.Fragment>
                                 }
                             >
@@ -82,20 +83,17 @@ export default class BookCard extends Component {
                             </HtmlTooltip>
                         </div>
                         <div style={{ width: "100%" }}>
-                            <div id="container" style={{ backgroundColor: "lightGrey", height: "140px", display: "flex", justifyContent: "center" }}>
+                            <div id="container" class="book_image">
                                { this.displayImage()}
                             </div>
-                            <div className="book_Detail" style={{ paddingLeft: "10px", width: "100%", paddingTop: "5px" }}>
-                                <span style={{ fontSize: "14px", fontWeight: "bold", display:"flex", width:"auto", height:"30px", justifyContent:"center" }}>{this.props.bookDetails.name}</span>
-                                <span style={{height:"10px"}}></span>
-                                <div>
-                                <span style={{color:"Grey", fontSize: "12px", display:"flex", width:"auto", height:"20px" }}>{this.props.bookDetails.authorname}</span>
-                                <span style={{ fontSize: "12px", fontWeight: "bold" }}>Rs:{this.props.bookDetails.price}</span>
+                            <div className="book_detail">
+                                <span className="book_name">{this.props.bookDetails.name}</span>
+                                <span className="book_author">{this.props.bookDetails.authername}</span>
+                                <span className="book_price">Rs:{this.props.bookDetails.price}</span>
                                 </div>
                             </div>
-                        </div>
-                        <div style={{ width: "100%", display: "flex", justifyContent: "center", marginBottom:"40px" }}>
-                            <CardActions style={{ width: "100%"}}>
+                        <div style={{ marginBottom:"40px" }}>
+                            <CardActions className="card_action">
                                {this.displayButton()}
                             </CardActions>
                         </div>

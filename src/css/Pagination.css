@@ -4,7 +4,7 @@
 }
 
 .pagination {
-    margin: 15px auto;
+    margin: 0px auto;
     display: flex;
     list-style: none;
     outline: none;

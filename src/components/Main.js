@@ -11,6 +11,7 @@ import Select from '@material-ui/core/Select';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 
+
 class Main extends Component {
     constructor(props) {
         super(props);
@@ -125,73 +126,71 @@ class Main extends Component {
 
     render() {
         return (
-            <div className="main" style={{border:"1px solid purple"}}>
+            <div className="main">
                 <header className="app_header">
                     <div className="admin_header">
                         <img src={booklogo} alt="asd" width="40px" height="40px" />
                         <span className="admin">Online</span>
                         <span className="admin">Book</span>
                         <span className="admin">Store</span>
-                        <input type="text" style={{background:"white",color:"maroon",marginLeft:"100px",width:"500px",height:"30px",marginLeft:"225px"}} placeholder="Search Here..." onChange={this.handleTextChange}/>
+                        <input type="text" className="search" placeholder="Search Here..." onChange={this.handleTextChange}/>
                     </div>
                 </header>
                 
                 <main> 
                     <div>
                         <div>
-                        <div style={{display:"flex",justifyContent:"center"}}>
-                             <div  style={{marginTop:"5px", width:"86.5%",height:"60px" ,display:"flex"}} >
-                             <div  style={{height:"60px" ,display:"flex",width:"50%"}} >
-                             <h2>Books <span style={{fontSize:"14px",color:"grey"}}>({this.state.count} items)</span></h2></div>
+                        <div className="book_cont">
+                             <div className="book"  >
+                             <div  className="book_count" >
+                                <h2>Books <span style={{fontSize:"14px",color:"grey"}}> ({this.state.count} items)</span></h2>
+                             </div>
                             
-                            <div className="div_content">
-                                <FormControl variant="outlined"  >
-                                <InputLabel id="demo-simple-select-outlined-label" ></InputLabel>
-                                <Select
-                                    labelId="demo-simple-select-outlined-label"
-                                    onChange={this.handleChange}
-                                    id="demo-simple-select-outlined"
-                                    name="sorting"
-                                    placeholder="Sort By"
-                                    className="card_content category"
-                                >
-                                <MenuItem value=""><em>None</em></MenuItem>
-                                <MenuItem value="authorname">Authorname</MenuItem>
-                                <MenuItem value="price">Price:Low to High</MenuItem>
-                                <MenuItem value="category">Category</MenuItem>
-                                </Select>
-                                </FormControl>
-                            </div>
-                             
-                            <div  style={{height:"0px" ,display:"flex",width:"50%"}} >
-                            </div> 
+                                    <div className="book_sort">
+                                        <FormControl variant="outlined"  >
+                                        <InputLabel id="demo-simple-select-outlined-label" ></InputLabel>
+                                        <Select
+                                            labelId="demo-simple-select-outlined-label"
+                                            onChange={this.handleChange}
+                                            id="demo-simple-select-outlined"
+                                            name="sorting"
+                                            placeholder="Sort By"
+                                            className="card_content category"
+                                        >
+                                        <MenuItem value=""><em>None</em></MenuItem>
+                                        <MenuItem value="authorname">Authorname</MenuItem>
+                                        <MenuItem value="price">Price:Low to High</MenuItem>
+                                        <MenuItem value="category">Category</MenuItem>
+                                        </Select>
+                                        </FormControl>
+                                    </div>
                             </div> 
                          </div>
-                            <div className="row">
-                                {this.state.postData}
-                            </div>
+                         <div className="row">
+                            {this.state.postData}
+                        </div>
                         </div>
                     </div>
                 </main>
-                <div className="pagination">
-                    <ReactPaginate
-                        previousLabel={"prev"}
-                        nextLabel={"next"}
-                        breakLabel={"..."}
-                        breakClassName={"break-me"}
-                        pageCount={this.state.pageCount}
-                        marginPagesDisplayed={2}
-                        pageRangeDisplayed={5}
-                        onPageChange={this.handlePageClick}
-                        containerClassName={"pagination"}
-                        subContainerClassName={"pages pagination"}
-                        activeClassName={"active"}
-                    />
-                    </div>
                 <footer className='app_footer'>
-                    <div className='admin_footer'>
+                <div className="pagination">
+                <ReactPaginate
+                    previousLabel={"prev"}
+                    nextLabel={"next"}
+                    breakLabel={"..."}
+                    breakClassName={"break-me"}
+                    pageCount={this.state.pageCount}
+                    marginPagesDisplayed={2}
+                    pageRangeDisplayed={5}
+                    onPageChange={this.handlePageClick}
+                    containerClassName={"pagination"}
+                    subContainerClassName={"pages pagination"}
+                    activeClassName={"active"}                                    
+                />
+                </div>            
+                <div className='admin_footer'>
                         <p> © Online Book Store.All Rights Reserved.</p>
-                    </div>
+                </div>
                 </footer>
             </div>
         );

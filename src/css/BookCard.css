@@ -108,6 +108,60 @@ figcaption {
   box-shadow: rgba(41, 38, 39, 0.212);
 }
 
+.card{
+  height: 300px; 
+  width: 200px;
+  background-color:snow;
+}
+
+.tooltip_content{
+  height: 20px; 
+  display: flex; 
+  background-color: lightGrey; 
+  justify-content: flex-end; 
+  padding-right: 10px;
+}
+
+.book_image{
+  background-color: lightGrey; 
+  height: 140px; 
+  display: flex; 
+  justify-content: center;
+}
+
+.book_detail{
+  padding-left: 10px; 
+  width: 100%; 
+  padding-top: 5px;
+}
+
+.book_name{
+  font-size: 14px; 
+  font-weight: bold; 
+  display:flex; 
+  width:auto; 
+  height:30px; 
+  justify-content:center;
+}
+
+.book_author{
+  color:Grey;
+   font-size: 12px; 
+   display:flex; 
+   width:auto; 
+   height:20px;
+}
+
+.book_price{
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.card_action{
+  display: flex; 
+  justify-content: center;
+  width: 90%
+}
 
 @media screen and (max-width: 600px) {
   .row {
