@@ -4,13 +4,15 @@
 }
 
 .cardofbook{
-  padding:21px;
+  padding:20px;
 }
+
 .baseCard{
   width: 220px;
   height: 290px;
   justify-content:space-around;
 }
+
 .cardData{
   background-color:rgba(241, 234, 236, 0.966);
   display: flex;
@@ -66,17 +68,6 @@
   justify-content: start;
   align-items: flex-start;
 }
-
-/*.button{
-
-  display: flex;
-  justify-content: flex-end;
-  height: 30px;
-  margin-top: 10px;
-  background-color: 'Maroon';
-    color: "white" ; 
-  style={{ backgroundColor: disabled ? 'Gray':'Maroon', color: "white" }}
-}*/
 
 
 button {

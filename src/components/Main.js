@@ -79,7 +79,7 @@ class Main extends Component {
         const slice = data.slice(this.state.offset, this.state.offset + this.state.perPage)
         const postData = slice.map( book =>{
                           return <BookCard
-                           price = {book.src}
+                           price = {book.price}
                            bookDetails = {book}
                            />;
                       })
@@ -99,8 +99,11 @@ class Main extends Component {
             <div className="main" style={{border:"1px solid purple"}}>
                 <header className="app_header">
                     <div className="admin_header">
-                        <img src={booklogo} alt="asd" width="55px" height="55px" /><span className="admin">Online Book Store</span>
-                        <TextField style={{height:"50px",color:"maroon",marginLeft:"100px",width:"600px"}} placeholder="Search Here..." onChange={this.handleTextChange}/>
+                        <img src={booklogo} alt="asd" width="40px" height="40px" />
+                        <span className="admin">Online</span>
+                        <span className="admin">Book</span>
+                        <span className="admin">Store</span>
+                        <input type="text" style={{background:"white",color:"maroon",marginLeft:"100px",width:"500px",height:"30px",marginLeft:"225px"}} placeholder="Search Here..." onChange={this.handleTextChange}/>
                     </div>
                 </header>
                 
