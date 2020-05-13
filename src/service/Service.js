@@ -8,7 +8,11 @@ class DataService {
 
 
   getBookData = () => {
-    return axios.get(`${BASIC_API_URL}/books`);
+    return axios.get(`${BASIC_API_URL}/api/v1/books`);
+  }
+
+  getSortedBook=(sortingValue)=>{
+    return axios.get(`${BASIC_API_URL}/api/v2/books`,{params:{field:sortingValue}});
   }
 
 

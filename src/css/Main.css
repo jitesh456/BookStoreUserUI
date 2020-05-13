@@ -61,6 +61,22 @@
 
 }
 
+.div_content{
+	display:flex;
+  flex-direction:column;
+  margin-left: 800px;
+  margin-top: 10px;
+	align-items:flex-end;
+    border:1px solid green;
+    border: none;
+}
+
+.card_content{
+  display: flex;
+  width:200px;
+  height: 40px;
+}
+
 
 @media screen and (max-width: 360px) {
   .row {

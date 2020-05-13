@@ -74,7 +74,7 @@ export default class BookCard extends Component {
                                 title={
                                     <React.Fragment>
                                         <Typography color="black"><b>Book Details</b></Typography>
-                                        <em>{this.props.bookDetails.bookDetails}</em>
+                                        <em>{this.props.bookDetails.bookdetails}</em>
                                     </React.Fragment>
                                 }
                             >

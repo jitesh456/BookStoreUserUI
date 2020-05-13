@@ -5,8 +5,11 @@ import '../css/Pagination.css';
 import BookCard from "./BookCard";
 import booklogo from '../booklogo.png';
 import ReactPaginate from 'react-paginate';
-import TextField from '@material-ui/core/TextField';
 import Service from '../service/Service';
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
+import FormControl from '@material-ui/core/FormControl';
+import InputLabel from '@material-ui/core/InputLabel';
 
 class Main extends Component {
     constructor(props) {
@@ -20,9 +23,12 @@ class Main extends Component {
             price: '',
             bookDetails: '',
             count:'',
+            sorting:'',
         }
         this.handleTextChange=this.handleTextChange.bind(this)
         this.handlePageClick = this.handlePageClick.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+
     }
 
     componentDidMount() {
@@ -36,7 +42,20 @@ class Main extends Component {
         }).catch((error)=>{
         console.log(error)
         })
-        this.receivedData(); 
+    }
+
+    sortedData(input){
+        const sortingValue=input
+        Service.getSortedBook(sortingValue).then((response)=>{
+            console.log(response);
+            this.setState({
+                booklist:response.data.body
+            })
+            this.receivedData();
+            console.log(this.state.booklist)
+        }).catch((error)=>{
+        console.log(error)
+        })
     }
 
     receivedData() {
@@ -69,6 +88,12 @@ class Main extends Component {
         });
     }
 
+    handleChange(field, event) {
+        this.setState({ [event.target.name]: event.target.value })
+        console.log(this.state.sorting)
+        this.sortedData()
+        }
+
     filterData=(input)=>{
         console.log(input);
         const data = this.state.booklist
@@ -94,6 +119,10 @@ class Main extends Component {
         this.filterData(e.target.value);
     }
 
+    handleChange(event) {
+        this.sortedData(event.target.value)
+        }
+
     render() {
         return (
             <div className="main" style={{border:"1px solid purple"}}>
@@ -113,8 +142,27 @@ class Main extends Component {
                         <div style={{display:"flex",justifyContent:"center"}}>
                              <div  style={{marginTop:"5px", width:"86.5%",height:"60px" ,display:"flex"}} >
                              <div  style={{height:"60px" ,display:"flex",width:"50%"}} >
-                             <h2>Books <span style={{fontSize:"14px",color:"grey"}}>({this.state.count} items)</span></h2>
-                            </div> 
+                             <h2>Books <span style={{fontSize:"14px",color:"grey"}}>({this.state.count} items)</span></h2></div>
+                            
+                            <div className="div_content">
+                                <FormControl variant="outlined"  >
+                                <InputLabel id="demo-simple-select-outlined-label" ></InputLabel>
+                                <Select
+                                    labelId="demo-simple-select-outlined-label"
+                                    onChange={this.handleChange}
+                                    id="demo-simple-select-outlined"
+                                    name="sorting"
+                                    placeholder="Sort By"
+                                    className="card_content category"
+                                >
+                                <MenuItem value=""><em>None</em></MenuItem>
+                                <MenuItem value="authorname">Authorname</MenuItem>
+                                <MenuItem value="price">Price:Low to High</MenuItem>
+                                <MenuItem value="category">Category</MenuItem>
+                                </Select>
+                                </FormControl>
+                            </div>
+                             
                             <div  style={{height:"0px" ,display:"flex",width:"50%"}} >
                             </div> 
                             </div> 
