@@ -43,13 +43,13 @@ export default class BookCard extends Component {
         if (this.props.bookDetails.quantity === 0) {
             return (
                 <figure>
-                    <img src={this.props.bookDetails.bookcover} className="image" alt="" />
+                    <img src={this.props.bookDetails.src} className="image" alt="" />
                     <figcaption>OUT OF STOCK</figcaption>
                 </figure>
             );
         } else {
             return (
-                <img src={this.props.bookDetails.bookcover} className="image" alt="" />
+                <img src={this.props.bookDetails.src} className="image" alt="" />
             );
         }
     }
@@ -75,20 +75,20 @@ export default class BookCard extends Component {
                                 title={
                                     <React.Fragment>
                                         <Typography color="black"><b>Book Details</b></Typography>
-                                        <em>{this.props.bookDetails.bookDetails}</em>
+                                        <em>{this.props.bookDetails.Discription}</em>
                                     </React.Fragment>
                                 }
                             >
-                                <span style={{ fontWeight: "bold" }}>ⓘ</span>
+                            <span style={{ fontWeight: "bold" }}>ⓘ</span>
                             </HtmlTooltip>
                         </div>
-                        <div style={{ width: "100%" }}>
+                        <div style={{width: "100%" }}>
                             <div id="container" class="book_image">
                                { this.displayImage()}
                             </div>
                             <div className="book_detail">
-                                <span className="book_name">{this.props.bookDetails.name}</span>
-                                <span className="book_author">{this.props.bookDetails.authername}</span>
+                                <span className="book_name">{this.props.bookDetails.id}</span>
+                                <span className="book_author">{this.props.bookDetails.Auther}</span>
                                 <span className="book_price">Rs:{this.props.bookDetails.price}</span>
                                 </div>
                             </div>

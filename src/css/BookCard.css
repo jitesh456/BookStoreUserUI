@@ -61,11 +61,11 @@
 }
 
 .book_Detail{
-  border:none;
+  border:1px solid green;
   display:flex;
   height:80px;
   flex-direction: column;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: flex-start;
 }
 
@@ -141,7 +141,8 @@ figcaption {
   display:flex; 
   width:auto; 
   height:30px; 
-  justify-content:center;
+  margin-left: 6px;
+  justify-content:flex-start;
 }
 
 .book_author{
@@ -150,11 +151,13 @@ figcaption {
    display:flex; 
    width:auto; 
    height:20px;
+   margin-left: 6px;
 }
 
 .book_price{
   font-size: 12px;
   font-weight: bold;
+  margin-left: 6px;
 }
 
 .card_action{
@@ -163,8 +166,8 @@ figcaption {
   width: 90%
 }
 
-@media screen and (max-width: 600px) {
-  .row {
-    width:30%;
+@media screen and (max-width: 1125px) {
+  .cardofbook {
+    padding:17px;
   }
 }
