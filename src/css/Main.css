@@ -162,10 +162,78 @@
 
 @media screen and (max-width: 1366px) {
   .row{
-    height:720px;
+    height:780px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .admin_header {
+    margin-left: 40px;
+    font-size:16px;
+  }
+
+  .search{
+    margin-left: 50px;
+    width: 250px;
+  }
+
+  .row{
+    width:65%;
+  }
+
+  .book{
+    width:61%;
+  }
+
+
+  .book_count{
+    font-size: 13px;
+  }
+
+  .book_sort{
+    height:-50px;
+    margin-right: 0px;
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 1024px) and (max-height: 1024px) {
+  .row{
+    height:530px;
   }
 
 }
 
+@media screen and (max-width: 376px) {
+  .admin_header {
+    margin-left: 20px;
+    font-size:10px;
+  }
+
+  .search{
+    margin-left: 50px;
+    width: 20px;
+    height: 20px;
+  }
+
+  .row{
+    width:65%;
+  }
+
+  .book{
+    width:61%;
+  }
+
+
+  .book_count{
+    font-size: 13px;
+  }
+
+  .book_sort{
+    height:-50px;
+    margin-right: 0px;
+    justify-content: center;
+  }
+}
 
 
