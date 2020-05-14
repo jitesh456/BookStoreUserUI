@@ -177,7 +177,7 @@ export default class Main extends Component {
                         <div className="book_cont">
                             <div className="book">
                                 <div  className="book_count" >
-                                    <h2>Books <span style={{fontSize:"14px",color:"grey"}}> ({this.state.count} items)</span></h2>
+                                    <h2>Books <span className="count"> ({this.state.count} items)</span></h2>
                                 </div>
                                 <div className="book_sort">
                                         <FormControl variant="outlined"  >

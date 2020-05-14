@@ -171,3 +171,16 @@ figcaption {
     padding:17px;
   }
 }
+
+
+@media screen and (max-height: 376px) {
+  .cardofbook{
+    padding: 25px;
+  }
+
+  .card{
+    height: 200px; 
+    width: 150px;
+    background-color:snow;
+  }
+}
