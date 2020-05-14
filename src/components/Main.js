@@ -10,16 +10,6 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
-import image0 from '../assets/images/image0.jpg';
-import image1 from '../assets/images/image1.jpg';
-import image2 from '../assets/images/image2.jpg';
-import image3 from '../assets/images/image3.jpg';
-import image4 from '../assets/images/image4.jpg';
-import image5 from '../assets/images/image5.jpg';
-import image6 from '../assets/images/image6.jpg';
-import image7 from '../assets/images/image7.jpg';
-
-
 
 export default class Main extends Component {
     constructor(props) {
@@ -29,33 +19,7 @@ export default class Main extends Component {
             perPage: 10,
             currentPage: 0,
             search:'',
-            booklist: [ 
-                { id: 0, src: image0, Auther: 'foo', price: 150 ,Discription:"It is known from archaeological evidence that a highly sophisticated urbanized culture—the Indus civilization—dominated the northwestern part of the subcontinent from about 2600 to 2000 BCE."},
-                { id: 1, src: image1, Auther: 'foo', price: 150 ,Discription:"It is known from archaeological evidence that a highly sophisticated urbanized culture—the Indus civilization—dominated the northwestern part of the subcontinent from about 2600 to 2000 BCE."},
-                { id: 2, src: image2, Auther: 'foo', price: 150 ,Discription:"It is known from archaeological evidence that a highly sophisticated urbanized culture—the Indus civilization—dominated the northwestern part of the subcontinent from about 2600 to 2000 BCE."},
-                { id: 3, src: image3, Auther: 'foo', price: 150 ,Discription:"It is known from archaeological evidence that a highly sophisticated urbanized culture—the Indus civilization—dominated the northwestern part of the subcontinent from about 2600 to 2000 BCE."},
-                { id: 4, src: image4, Auther: 'foo', price: 150 ,Discription:"It is known from archaeological evidence that a highly sophisticated urbanized culture—the Indus civilization—dominated the northwestern part of the subcontinent from about 2600 to 2000 BCE."},
-                { id: 5, src: image5, Auther: 'foo', price: 150 ,Discription:"It is known from archaeological evidence that a highly sophisticated urbanized culture—the Indus civilization—dominated the northwestern part of the subcontinent from about 2600 to 2000 BCE."},
-                { id: 6, src: image6, Auther: 'foj', price: 150, Discription:"It is known from archaeological evidence that a highly sophisticated urbanized culture—the Indus civilization—dominated the northwestern part of the subcontinent from about 2600 to 2000 BCE."},
-                { id: 7, src: image7, Auther: 'fog', price: 150 ,Discription:"It is known from archaeological evidence that a highly sophisticated urbanized culture—the Indus civilization—dominated the northwestern part of the subcontinent from about 2600 to 2000 BCE."},
-                { id: 8, src: image1, Auther: 'fog', price: 150 ,Discription:"It is known from archaeological evidence that a highly sophisticated urbanized culture—the Indus civilization—dominated the northwestern part of the subcontinent from about 2600 to 2000 BCE."},
-                { id: 9, src: image2, Auther: 'foo', price: 150 ,Discription:"It is known from archaeological evidence that a highly sophisticated urbanized culture—the Indus civilization—dominated the northwestern part of the subcontinent from about 2600 to 2000 BCE."},
-                { id: 10, src: image3, Auther: 'foo', price: 150 ,Discription:"It is known from archaeological evidence that a highly sophisticated urbanized culture—the Indus civilization—dominated the northwestern part of the subcontinent from about 2600 to 2000 BCE."},
-                { id: 11, src: image4, Auther: 'fog', price: 150,Discription:"It is known from archaeological evidence that a highly sophisticated urbanized culture—the Indus civilization—dominated the northwestern part of the subcontinent from about 2600 to 2000 BCE." },
-                { id: 12, src: image0, Auther: 'foo', price: 150 ,Discription:"It is known from archaeological evidence that a highly sophisticated urbanized culture—the Indus civilization—dominated the northwestern part of the subcontinent from about 2600 to 2000 BCE."},
-                { id: 13, src: image1, Auther: 'goo', price: 150 ,Discription:"It is known from archaeological evidence that a highly sophisticated urbanized culture—the Indus civilization—dominated the northwestern part of the subcontinent from about 2600 to 2000 BCE."},
-                { id: 14, src: image2, Auther: 'foo', price: 150 ,Discription:"It is known from archaeological evidence that a highly sophisticated urbanized culture—the Indus civilization—dominated the northwestern part of the subcontinent from about 2600 to 2000 BCE."},
-                { id: 15, src: image3, Auther: 'goo', price: 150 ,Discription:"It is known from archaeological evidence that a highly sophisticated urbanized culture—the Indus civilization—dominated the northwestern part of the subcontinent from about 2600 to 2000 BCE."},
-                { id: 16, src: image4, Auther: 'foo', price: 150 ,Discription:"It is known from archaeological evidence that a highly sophisticated urbanized culture—the Indus civilization—dominated the northwestern part of the subcontinent from about 2600 to 2000 BCE."},
-                { id: 17, src: image5, Auther: 'goo', price: 150 ,Discription:"It is known from archaeological evidence that a highly sophisticated urbanized culture—the Indus civilization—dominated the northwestern part of the subcontinent from about 2600 to 2000 BCE."},
-                { id: 18, src: image6, Auther: 'foj', price: 150, Discription:"It is known from archaeological evidence that a highly sophisticated urbanized culture—the Indus civilization—dominated the northwestern part of the subcontinent from about 2600 to 2000 BCE."},
-                { id: 19, src: image7, Auther: 'fog', price: 150 ,Discription:"It is known from archaeological evidence that a highly sophisticated urbanized culture—the Indus civilization—dominated the northwestern part of the subcontinent from about 2600 to 2000 BCE."},
-                { id: 20, src: image1, Auther: 'fog', price: 150 ,Discription:"It is known from archaeological evidence that a highly sophisticated urbanized culture—the Indus civilization—dominated the northwestern part of the subcontinent from about 2600 to 2000 BCE."},
-                { id: 21, src: image2, Auther: 'foo', price: 150 ,Discription:"It is known from archaeological evidence that a highly sophisticated urbanized culture—the Indus civilization—dominated the northwestern part of the subcontinent from about 2600 to 2000 BCE."},
-                { id: 22, src: image3, Auther: 'foo', price: 150 ,Discription:"It is known from archaeological evidence that a highly sophisticated urbanized culture—the Indus civilization—dominated the northwestern part of the subcontinent from about 2600 to 2000 BCE."},
-                { id: 23, src: image4, Auther: 'fog', price: 150,Discription:"It is known from archaeological evidence that a highly sophisticated urbanized culture—the Indus civilization—dominated the northwestern part of the subcontinent from about 2600 to 2000 BCE." }
-
-            ],
+            booklist: [   ],
             price: '',
             bookDetails: '',
             count:0,
@@ -68,17 +32,16 @@ export default class Main extends Component {
     }
 
     componentDidMount() {
-        // Service.getBookData().then((response)=>{
-        //     console.log(response);
-        //     this.setState({
-        //         booklist:response.data.body
-        //     })  
-        // this.receivedData();
-        //     console.log(this.state.booklist)
-        // }).catch((error)=>{
-        // console.log(error)
-        // })
+        Service.getBookData().then((response)=>{
+            console.log(response);
+            this.setState({
+                booklist:response.data.body
+            })  
         this.receivedData();
+            console.log(this.state.booklist)
+        }).catch((error)=>{
+        console.log(error)
+        })
     }
 
     sortedData(input){
@@ -131,10 +94,10 @@ export default class Main extends Component {
         this.sortedData()
         }
 
-    filterData=(input)=>{
-        console.log(input);
+    filterData=()=>{
+        console.log(this.state.input);
         const data = this.state.booklist
-                .filter(x=>x.Auther.toLowerCase().indexOf(input.trim().toLowerCase())!==-1);
+                .filter(x=>x.authorname.toLowerCase().indexOf(this.state.input.trim().toLowerCase())!==-1);
         this.setState({count:data.length});
         console.log(data);
         const slice = data.slice(this.state.offset, this.state.offset + this.state.perPage)
@@ -152,7 +115,8 @@ export default class Main extends Component {
       }
 
     handleTextChange=(e)=>{
-        this.filterData(e.target.value);
+        this.state.input=e.target.value;
+        this.filterData();
     }
 
     handleChange(event) {

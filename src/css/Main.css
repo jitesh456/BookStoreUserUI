@@ -262,7 +262,7 @@
   }
 }
 
-@media screen and (max-height: 376px) {
+@media screen and (max-width:640) and (max-height: 376px) {
   .admin_header {
     margin-left: 20px;
     font-size:13px;
