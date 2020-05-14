@@ -75,7 +75,7 @@ export default class BookCard extends Component {
                                 title={
                                     <React.Fragment>
                                         <Typography color="black"><b>Book Details</b></Typography>
-                                        <em>{this.props.bookDetails.bookDetails}</em>
+                                        <em>{this.props.bookDetails.bookdetails}</em>
                                     </React.Fragment>
                                 }
                             >
@@ -90,7 +90,7 @@ export default class BookCard extends Component {
                                 <span className="book_name">{this.props.bookDetails.name}</span>
                             </div>    
                             <div className="book_detail">
-                                <span className="book_author">{this.props.bookDetails.authername}</span>
+                                <span className="book_author">{this.props.bookDetails.authorname}</span>
                                 <span className="book_price">Rs:{this.props.bookDetails.price}</span>
                             </div>
                         </div>
