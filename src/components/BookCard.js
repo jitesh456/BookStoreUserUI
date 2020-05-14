@@ -88,7 +88,8 @@ export default class BookCard extends Component {
                             </div>                         
                             <div className="book_detail">
                                 <span className="book_name">{this.props.bookDetails.name}</span>
-                            </div>    
+                            </div>
+                            <div className="space-between"></div>    
                             <div className="book_detail">
                                 <span className="book_author">{this.props.bookDetails.authorname}</span>
                                 <span className="book_price">Rs:{this.props.bookDetails.price}</span>

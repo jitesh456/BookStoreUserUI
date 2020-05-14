@@ -132,7 +132,7 @@ export default class Main extends Component {
                         <span className="admin">Online</span>
                         <span className="admin">Book</span>
                         <span className="admin">Store</span>
-                        <input type="text" className="search" placeholder="Search ..." onChange={this.handleTextChange}/>
+                        <input type="text" className="search" placeholder="  Search ..." onChange={this.handleTextChange}/>
                     </div>
                 </header>
                 
