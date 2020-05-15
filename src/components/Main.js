@@ -19,7 +19,7 @@ export default class Main extends Component {
             perPage: 10,
             currentPage: 0,
             search:'',
-            booklist: [   ],
+            booklist: [ ],
             price: '',
             bookDetails: '',
             count:0,
