@@ -148,7 +148,7 @@ export default class Main extends Component {
                                             id="demo-simple-select-outlined"
                                             name="sorting"
                                             placeholder="Sort By"
-                                            className="card_content category"
+                                            className="card_content"
                                         >
                                         <MenuItem value=""><em>None</em></MenuItem>
                                         <MenuItem value="authorname">Authorname(A-Z)</MenuItem>
@@ -159,11 +159,11 @@ export default class Main extends Component {
                                 </div>
                             </div> 
                         </div>
-                        {/* <div style={{display:"flex",justifyContent:"center"}}>
+                        <div style={{display:"flex",justifyContent:"center"}}>
                             <div className="row">
                                     {this.state.postData}
                             </div>
-                        </div> */}
+                        </div>
                     </div>
                 <footer className='app_footer'>
                 <div className="pagination">
