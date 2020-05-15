@@ -76,18 +76,21 @@
 .book_count{
   /* margin-right: 10px; */
   height:auto;
-  padding-left: 10%;
+  padding-left: 12.3%;
   display:flex;
+  width: 100%;
   align-items:center;
 }
 
 .book_sort{
   height:60px;
   display:flex;
-  width:20%;
-  margin-right: 10%;
+  width:30%;
+  margin-right: 15%;
+  padding-left: 20%;
   justify-content: flex-start;
   align-items:center;
+  /* border:1px solid; */
 }
 
 .search{
@@ -122,7 +125,7 @@
 
 .card_content{
   display: flex;
-  width:10%;
+  width:160px;
   height: 40px;
 }
 
