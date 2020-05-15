@@ -16,7 +16,7 @@ export default class Main extends Component {
         super(props);
         this.state = {
             offset: 0,
-            perPage: 10,
+            perPage: 8,
             currentPage: 0,
             search:'',
             booklist: [ ],
@@ -125,19 +125,15 @@ export default class Main extends Component {
 
     render() {
         return (
-            <div className="main">
+            <div >
                 <header className="app_header">
                     <div className="admin_header">
                         <img src={booklogo} alt="asd" className="bk_image" />
-                        <span className="admin">Online</span>
-                        <span className="admin">Book</span>
-                        <span className="admin">Store</span>
+                        <span className="admin">OnlineBookStore</span>    
                         <input type="text" className="search" placeholder="  Search ..." onChange={this.handleTextChange}/>
                     </div>
-                </header>
-                
-                <main> 
-                    <div>
+                </header>              
+                    <div className="main">
                         <div className="book_cont">
                             <div className="book">
                                 <div  className="book_count" >
@@ -155,21 +151,20 @@ export default class Main extends Component {
                                             className="card_content category"
                                         >
                                         <MenuItem value=""><em>None</em></MenuItem>
-                                        <MenuItem value="authorname">Authorname</MenuItem>
+                                        <MenuItem value="authorname">Authorname(A-Z)</MenuItem>
                                         <MenuItem value="price">Price:Low to High</MenuItem>
-                                        <MenuItem value="category">Category</MenuItem>
+                                        <MenuItem value="category">Category(A-Z)</MenuItem>
                                         </Select>
                                     </FormControl>
                                 </div>
                             </div> 
                         </div>
-                        <div style={{display:"flex",justifyContent:"center"}}>
+                        {/* <div style={{display:"flex",justifyContent:"center"}}>
                             <div className="row">
                                     {this.state.postData}
                             </div>
-                        </div>
+                        </div> */}
                     </div>
-                </main>
                 <footer className='app_footer'>
                 <div className="pagination">
                 <ReactPaginate
@@ -190,7 +185,8 @@ export default class Main extends Component {
                         <p> © Online Book Store.All Rights Reserved.</p>
                 </div>
                 </footer>
-            </div>
+         </div>
+            
         );
     }
 }

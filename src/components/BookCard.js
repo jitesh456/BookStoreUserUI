@@ -8,21 +8,20 @@ import Tooltip from "@material-ui/core/Tooltip";
 import Typography from "@material-ui/core/Typography";
 import MuiCardContent from "@material-ui/core/CardContent";
 
-const HtmlTooltip = withStyles(theme => ({
+
+const HtmlTooltip = withStyles((theme) => ({
     tooltip: {
-        backgroundColor: "#f5f5f9",
-        color: "rgba(0, 0, 0, 0.97)",
-        width: 250,
-        height:300,
-        marginTop:-20,
-        position:"absolute",
-        float:"right",
-        
-        fontSize: theme.typography.pxToRem(12),
-        color: "grey",
-        border: "1px solid #dadde9"
-    }
-}))(Tooltip);
+      backgroundColor: '#f5f5f9',
+      color: 'rgba(0, 0, 0, 0.87)',
+      maxWidth: 240,
+      marginLeft:53,
+      fontSize: theme.typography.pxToRem(12),
+      border: '1px solid #dadde9',
+      marginTop:-20
+
+    },
+  }))(Tooltip);
+
 const NestedCardContent = withStyles(theme => ({
     root: {
         padding: 0
@@ -67,24 +66,27 @@ export default class BookCard extends Component {
     }
     render() {
         return (
-            <div className="cardofbook" >
+            <div className="cardofbook"  >
                 <Card className="card">
                     <NestedCardContent>
                         <div className="tooltip_content">
+                            
+                            
+                        </div>
+                        <div style={{ width: "100%" }}>
+                            <div id="container" class="book_image">
                             <HtmlTooltip
                                 title={
                                     <React.Fragment>
                                         <Typography color="black"><b>Book Details</b></Typography>
-                                        <em>{this.props.bookDetails.bookdetails}</em>
+                                        <p style={{color:"grey"}}>{this.props.bookDetails.bookdetails}</p>
                                     </React.Fragment>
                                 }
+                                placement="right-start"
                             >
-                                <span style={{ fontWeight: "bold" }}>ⓘ</span>
-                            </HtmlTooltip>
-                        </div>
-                        <div style={{ width: "100%" }}>
-                            <div id="container" class="book_image">
+ 
                                 { this.displayImage()}
+                                </HtmlTooltip>
                             </div>                         
                             <div className="book_detail">
                                 <span className="book_name">{this.props.bookDetails.name}</span>
