@@ -10,13 +10,14 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
+import { colors } from '@material-ui/core';
 
 export default class Main extends Component {
     constructor(props) {
         super(props);
         this.state = {
             offset: 0,
-            perPage: 8,
+            perPage: 5,
             currentPage: 0,
             search:'',
             booklist: [ ],
@@ -24,6 +25,7 @@ export default class Main extends Component {
             bookDetails: '',
             count:0,
             sorting:'',
+            input:'',
         }
         this.handleTextChange=this.handleTextChange.bind(this)
         this.handlePageClick = this.handlePageClick.bind(this);
@@ -45,7 +47,8 @@ export default class Main extends Component {
     }
 
     sortedData(input){
-        const sortingValue=input
+        const sortingValue=input;
+        console.log("Sorted Data");
         Service.getSortedBook(sortingValue).then((response)=>{
             console.log(response);
             this.setState({
@@ -59,7 +62,17 @@ export default class Main extends Component {
     }
 
     receivedData() {
-        const data = this.state.booklist;
+        
+       var data = this.state.booklist;
+        // if(this.state.input.length>0)
+        // {
+             
+        //      data = this.state.booklist.
+        //     filter(x=>x.authorname.toLowerCase().indexOf(this.state.input.trim().toLowerCase())!==-1);
+        // }
+        
+       
+        console.log("Recived Data");
         this.setState({count:data.length});
         const slice = data.slice(this.state.offset, this.state.offset + this.state.perPage)
         const postData = slice.map(book => {
@@ -83,9 +96,10 @@ export default class Main extends Component {
         this.setState({
             currentPage: selectedPage,
             offset: offset
-        }, () => {
-            this.receivedData()
-        });
+        },()=>{
+            this.state.input.length>0?this.filterData():this.receivedData();
+        } );
+        
     }
 
     handleChange(field, event) {
@@ -96,6 +110,7 @@ export default class Main extends Component {
 
     filterData=()=>{
         console.log(this.state.input);
+        console.log("filter Data");
         const data = this.state.booklist
                 .filter(x=>x.authorname.toLowerCase().indexOf(this.state.input.trim().toLowerCase())!==-1);
         this.setState({count:data.length});
@@ -117,6 +132,7 @@ export default class Main extends Component {
     handleTextChange=(e)=>{
         this.state.input=e.target.value;
         this.filterData();
+        e.preventDefault();
     }
 
     handleChange(event) {
