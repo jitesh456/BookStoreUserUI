@@ -11,13 +11,16 @@ import Select from '@material-ui/core/Select';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import { colors } from '@material-ui/core';
+import SearchIcon from '@material-ui/icons/Search';
+import InputBase from '@material-ui/core/InputBase';
+
 
 export default class Main extends Component {
     constructor(props) {
         super(props);
         this.state = {
             offset: 0,
-            perPage: 5,
+            perPage: 10,
             currentPage: 0,
             search:'',
             booklist: [ ],
@@ -54,7 +57,7 @@ export default class Main extends Component {
             this.setState({
                 booklist:response.data.body
             })
-            this.receivedData();
+            this.state.input.length>0?this.filterData():this.receivedData();
             console.log(this.state.booklist)
         }).catch((error)=>{
         console.log(error)
@@ -64,15 +67,7 @@ export default class Main extends Component {
     receivedData() {
         
        var data = this.state.booklist;
-        // if(this.state.input.length>0)
-        // {
-             
-        //      data = this.state.booklist.
-        //     filter(x=>x.authorname.toLowerCase().indexOf(this.state.input.trim().toLowerCase())!==-1);
-        // }
         
-       
-        console.log("Recived Data");
         this.setState({count:data.length});
         const slice = data.slice(this.state.offset, this.state.offset + this.state.perPage)
         const postData = slice.map(book => {
@@ -110,9 +105,9 @@ export default class Main extends Component {
 
     filterData=()=>{
         console.log(this.state.input);
-        console.log("filter Data");
         const data = this.state.booklist
-                .filter(x=>x.authorname.toLowerCase().indexOf(this.state.input.trim().toLowerCase())!==-1);
+                .filter(x=>x.authorname.toLowerCase().indexOf(this.state.input.trim().toLowerCase())!==-1 ||
+                x.name.toLowerCase().indexOf(this.state.input.trim().toLowerCase())!==-1);
         this.setState({count:data.length});
         console.log(data);
         const slice = data.slice(this.state.offset, this.state.offset + this.state.perPage)
@@ -145,9 +140,9 @@ export default class Main extends Component {
                 <header className="app_header">
                     <div className="admin_header">
                         <img src={booklogo} alt="asd" className="bk_image" />
-                        <span className="admin">OnlineBookStore</span>    
+                        <span className="admin">OnlineBookStore</span>  
+                    </div >
                         <input type="text" className="search" placeholder="  Search ..." onChange={this.handleTextChange}/>
-                    </div>
                 </header>              
                     <div className="main">
                         <div className="book_cont">

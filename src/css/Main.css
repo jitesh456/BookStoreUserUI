@@ -1,3 +1,4 @@
+
 .app_header {
   border:1px solid greenyellow;
   border:none;
@@ -13,7 +14,7 @@
   border:1px solid green;
   border:none;
   display:flex;
-  width:100%;
+  width:20%;
   padding-left: 2%;
   justify-content: flex-start;
   align-items: center;
@@ -34,7 +35,10 @@
   flex-direction: column;
   justify-content: space-between;
   color: white;
+  
 }
+
+
 
 .admin_footer{
   border:1px solid green;
@@ -43,6 +47,7 @@
   display:flex;
   justify-content: space-evenly;
   align-items: center;
+  
 }
 
 .row{
@@ -57,7 +62,8 @@
   padding: 5px;
   justify-content: flex-start;
   padding-top: -0px;
-
+  width:max-content;
+  height: max-content;
 }
 
 .row::-webkit-scrollbar{
@@ -86,19 +92,16 @@
   height:60px;
   display:flex;
   width:30%;
-  margin-right: 15%;
-  padding-left: 20%;
+  margin-right: 2%;
   justify-content: flex-start;
   align-items:center;
   /* border:1px solid; */
 }
 
-.search{
-  background:white;
-  color:maroon;
-  margin-left:10%;
-  width:30%;
-  height:50%;
+.search{  
+    width: 40%;
+    margin-top: 0.7%;
+    height: 50%;
 }
 
 .book_cont{
@@ -138,41 +141,33 @@
   padding-top: 1%;
 }
 
-/* 
+
 @media screen and (max-width: 1024px) {
-  .admin_header {
-    margin-left: 50px;
-  }
+ 
+  .search {
+    width: 40%;
+    margin-top: 0.9%;
+    margin-left: 4%;
+    height: 50%;
+}
 
-  .search{
-    margin-left: 50px;
-    width: 450px;
-  }
+.book{
+  width:85%;
+}
+.row{
+  width:70%;
+  margin-right: 8%;
+}
+.book_sort{
+  margin-right: 12%;
+}
 
-  .row{
-    width:70%;
-    height:700px;
-  }
-
-  .book{
-    width:67%;
-  }
-
-  .book_sort{
-    justify-content: flex-end;
-  }
-} */
-/* 
-@media screen and (max-width: 1366px) {
-  .row{
-    height:580px;
-  }
 }
 
 @media screen and (max-width: 768px) {
-  .admin_header {
-    margin-left: 40px;
-    font-size:16px;
+  .admin {
+    margin-left: 4px;
+    font-size:18px;
   }
 
   .search{
@@ -181,74 +176,58 @@
   }
 
   .row{
-    width:65%;
+    width:70%;
   }
 
   .book{
-    width:61%;
-  }
-
-
-  .book_count{
-    font-size: 13px;
-  }
-
-  .book_sort{
-    height:-50px;
-    margin-right: 0px;
-    justify-content: center;
-  }
-}
-
-@media screen and (max-width: 1024px) and (max-height: 1024px) {
-  .row{
-    height:530px;
-  }
-
-}
-
-@media screen and (max-width: 376px) {
-  .admin_header {
-    margin-left: 20px;
-    font-size:10px;
-  }
-
-  .bk_image{
-    width: 15px;
-    height: 15px;
-  }
-
-  .search{
-    margin-left: 50px;
-    width: 20px;
-    height: 20px;
-  }
-
-  .row{
-    margin-top: 20px;
-    width:65%;
-    height: 420px;
-  }
-
-  .book{
-    width:61%;
-  }
-
-  .book_count{
-    font-size: 10px;
-  }
-
-  .count{
-    font-size: 8px;
+    width:68%;
   }
 
 
   .book_cont{
-    width:400px;
+    margin-left: 9%;
+    width: 86%;
+  }
+
+  .book_sort{
+    width:72%;
+    margin-right: 0px;
+    justify-content: center;
+  }
+  .book_count{
+    width:281px;
+    padding-left: 0%;
+  }
+}
+@media screen and (max-width: 496px) {
+ 
+  .search{
+    margin-top: 10px;
+    width: 200px;
+    height: 20px;
+    margin-left: 0px;
+  }
+
+    .admin {
+    
+    font-size:0px;
+  }
+
+  .row{
+    margin-top: 3%;
+    width:70%;
+    margin-right:2%;
+  }
+  .book_count{
+    width: 265px;
+    padding-left: 0%;
+    font-size: 12px;
+    padding-top: 10px;
   }
 
   .book{
     display: flex;
+    width: 58%;
     flex-direction: column;
     justify-content: center;
   }
@@ -261,53 +240,4 @@
 }
 
 
-
-  .bk_image{
-    width: 20px;
-    height: 20px;
-  }
-
-  .search{
-    margin-left: 50px;
-    width: 20px;
-    height: 20px;
-  }
-
-  .row{
-    margin-top: 20px;
-    width:68%;
-    height: 100px;
-  }
-
-  .book{
-    width:61%;
-  }
-
-  .book_cont{
-    width:620px;
-  }
-
-  .book_count{
-    font-size: 12px;
-  }
-
-  .count{
-    font-size: 10px;
-  }
-
-  .book{
-    display: flex;
-    justify-content: center;
-  }
-
-  .book_sort{
-    height:-50px;
-    margin-right: 0px;
-    justify-content: flex-start;
-  } */
-
-  @media screen and (max-width:400) {
-    .book_cont{
-      flex-direction: column;
-    }
-    }
+ 
