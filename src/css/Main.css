@@ -80,7 +80,6 @@
 }
 
 .book_count{
-  /* margin-right: 10px; */
   height:auto;
   padding-left: 12.3%;
   display:flex;
@@ -95,13 +94,26 @@
   margin-right: 2%;
   justify-content: flex-start;
   align-items:center;
-  /* border:1px solid; */
 }
 
-.search{  
-    width: 40%;
-    margin-top: 0.7%;
-    height: 50%;
+.search{
+  position: relative;
+  left: 20px;
+  display: flex;
+  width: 40%;
+  margin-top: 0.7%;
+  height: 70%;
+  border-radius: 5px;
+  background-color: white;;
+ 
+}
+
+.searchIcon{
+ padding: 5px 15px;
+ height: 5px;
+ margin-top: 0.3%;
+ color: black;
+ opacity: 20%;
 }
 
 .book_cont{

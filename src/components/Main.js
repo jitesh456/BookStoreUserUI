@@ -20,7 +20,7 @@ export default class Main extends Component {
         super(props);
         this.state = {
             offset: 0,
-            perPage: 10,
+            perPage: 8,
             currentPage: 0,
             search:'',
             booklist: [ ],
@@ -142,7 +142,15 @@ export default class Main extends Component {
                         <img src={booklogo} alt="asd" className="bk_image" />
                         <span className="admin">OnlineBookStore</span>  
                     </div >
-                        <input type="text" className="search" placeholder="  Search ..." onChange={this.handleTextChange}/>
+                    <div className="search">
+                    <div className="searchIcon">
+                    <SearchIcon/>
+                    </div>
+                    <InputBase
+                        placeholder=" Search"
+                        onChange={this.handleTextChange}
+                    />
+                  </div>
                 </header>              
                     <div className="main">
                         <div className="book_cont">
