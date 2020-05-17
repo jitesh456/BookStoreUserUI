@@ -132,7 +132,7 @@ export default class Customer extends Component {
                 <div style={{height:"10px"}}></div>
                 <div style={{display:"flex",justifyContent:"flex-end",paddingBottom:"2%",marginRight:"5%"}}>
                     <div>
-                        <Button style={{background:"blue",color:"white"}} variant="filled"
+                        <Button style={{background:"maroon",color:"white"}} variant="filled"
                         onClick={this.props.onClick}>Place Order</Button>
                     </div>
                 </div>

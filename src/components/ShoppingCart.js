@@ -5,7 +5,7 @@ import Button from '@material-ui/core/Button';
 import booklogo from '../booklogo.png';
 import Customer from './Customer';
 import OrderSummary from './OrderSummary';
-import Paper from '@material-ui/core/Paper';
+import Card from '@material-ui/core/Card';
 import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
 
@@ -48,50 +48,54 @@ export default class ShoppingCart extends React.Component{
                         onChange={this.handleTextChange}
                     />
                   </div>
-                </header>
-                <div className="cart">
-            <Paper elevation={30} className="shoppingcart_details">
-                <div className="shoppingcart_image">
-                    <img src={image0} alt="" className="shopped_image"/>
-                </div>
-                <div className="add_ons">
+            </header>
 
-                </div>
-                <div className="shopped_details">
-                    <p>BookName</p>
-                    <p>AuthorName</p>
-                    <p>Price</p>
-                </div>
-                <div className="customer_button">
-                    <Button color="primary" variant="contained" 
-                    onClick={this.handleCustomer}>continue</Button>
-                </div>
-            </Paper>
-            <div style={{height:"1%"}}></div>
+            <div className="cart_content">
+            <div className="cart">
+                <Card className="shoppingcart_details">
+                    <div className="shoppingcart_image">
+                        <img src={image0} alt="" className="shopped_image"/>
+                    </div>
+                    <div className="shopped_details">
+                        <span className="shopped_book_name">Hello 123</span>
+                        <div style={{height:"5%"}}></div>
+                        <span className="shopped_book_author">B.S God</span>
+                        <div style={{height:"5%"}}></div>
+                        <span className="shopped_book_price">RS. 150000</span>
+                    </div>
+                    <div className="customer_button">
+                        <Button style={{background:"maroon",color:"white"}} variant="contained" 
+                        onClick={this.handleCustomer}>continue</Button>
+                    </div>
+                </Card>
+                <div style={{height:"1%"}}></div>
             
-            <div style={{width:"100%",height:"auto"}}>
-                <Paper elevation={20} className="customer_detail">
-                    <div className="customer_header">
-                        <h3>Customer Details</h3>
-                    </div>
-                    <div className="customer_info">
-                        <div className="customer_info_detail">
-                            <Customer show={this.state.customer} onClick={this.handleCustomerSummary}/>
+                <div style={{width:"100%",height:"auto"}}>
+                    <Card className="customer_detail">
+                        <div className="customer_header">
+                            <p>Customer Details</p>
                         </div>
-                    </div>
-                </Paper>
-            </div>
-            <div style={{width:"100%",height:"auto"}}>
-                <Paper elevation={20} className="customer_detail">
-                    <div className="customer_header">
-                        <h3>Order Summary</h3>
-                    </div>
-                    <div className="customer_info">
-                        <div className="customer_info_detail">
-                            <OrderSummary show={this.state.customersummary}/>
+                        <div className="customer_info">
+                            <div className="customer_info_detail">
+                                <Customer show={this.state.customer} onClick={this.handleCustomerSummary}/>
+                            </div>
                         </div>
-                    </div>
-                </Paper>
+                    </Card>
+                </div>
+                <div style={{height:"1%"}}></div>
+
+                <div style={{width:"100%",height:"auto"}}>
+                    <Card className="customer_detail">
+                        <div className="customer_header">
+                            <p>Order Summary</p>
+                        </div>
+                        <div className="customer_info">
+                            <div className="customer_info_detail">
+                                <OrderSummary show={this.state.customersummary}/>
+                            </div>
+                        </div>
+                    </Card>
+                </div>
             </div>
             </div>
             <footer className='app_footer'>
