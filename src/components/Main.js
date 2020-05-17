@@ -11,6 +11,8 @@ import Select from '@material-ui/core/Select';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import { colors } from '@material-ui/core';
+
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
 
@@ -145,12 +147,17 @@ export default class Main extends Component {
                     <div className="search">
                     <div className="searchIcon">
                     <SearchIcon/>
+                    
                     </div>
                     <InputBase
                         placeholder=" Search"
                         onChange={this.handleTextChange}
                     />
+                    
                   </div>
+                  <div style={{marginLeft:"25%",marginTop:"1%"}}>
+                    <a style={{color:"white"}} link href="/cart"><ShoppingCartIcon/></a>
+                    </div>
                 </header>              
                     <div className="main">
                         <div className="book_cont">
