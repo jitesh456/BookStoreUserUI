@@ -1,0 +1,273 @@
+.sucess_image{
+    width:50%;
+    height:70%;
+}
+
+.div_success_image{
+    height:70%;
+}
+
+.main_body{
+    border:1px solid black;
+    display:flex;
+    width: 100%;
+    flex-direction:column ;
+    justify-content: center;
+    align-items: center;
+}
+
+.header{
+    border:1px solid green;
+    background-color:orange;
+    height:5%;
+    width: 100%;
+    color:maroon;
+}
+
+.div_body{
+    border:1px solid red;
+    background-color:white;
+    height:90%;
+    width: 100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color:maroon;
+}
+
+.shopping_cart{
+    height:100%;
+    width:100%;
+    display:flex;
+    flex-direction: column;
+    justify-content:flex-start;
+    align-items: center;
+}
+
+
+.shoppingcart_details{
+    height:30%;
+    width:100%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+}
+
+.shoppingcart_image{
+    border: 1px solid black;
+    border: none;
+    width:25%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.shopped_image{
+    width:70%;
+    height:80%;
+}
+
+.add_ons{
+    width:15%;
+}
+
+.shopped_details{
+    border:1px solid black;
+    border: none;
+    width:38%;
+}
+
+.customer_button{
+    border:1px solid black;
+    border: none;
+    width:22%;
+    margin-bottom: 2%;
+    display:flex;
+    justify-content: center;
+    align-items:flex-end;
+}
+
+.customer_detail{
+    width:100%;
+    height:auto;
+    background-color: white;
+}
+
+.customer_header{
+    margin: 1%;
+    height:10%;
+    font-weight: bold;
+}
+
+.cart{
+    border: 1px solid;
+    margin-top: 2%;
+    width: 60%;
+    height: 850px;
+    align-items: center;
+}
+
+.customer_info{
+    background-color: white;
+}
+
+.customer_info_detail{
+    background-color:white;
+    height:98%;margin:1%;
+}
+
+.info{
+    /* background-color: springgreen; */
+    height: initial;
+}
+
+@media screen and (max-width:1024px) and (max-height:1360px){
+    .shoppingcart_details{
+        margin-top: 10%;
+        height:15%;
+    }
+
+    .sucess_image{
+        width:50%;
+        height:30%;
+    }
+    
+    .div_success_image{
+        height:10%;
+    }
+}
+
+@media screen and (max-width:1366px) and (max-height:1024px){
+    .shoppingcart_details{
+        margin-top: 0%;
+        height:25%;
+    }
+}
+
+
+@media screen and (max-width:768px) and (max-height:1024px){
+    .shoppingcart_details{
+        margin-top: 7%;
+        height:20%;
+    }
+
+    .sucess_image{
+        width:50%;
+        height:80%;
+    }
+    
+    .div_success_image{
+        height:30%;
+    }
+    
+}
+
+@media screen and (max-width:411px){
+    .shoppingcart_details{
+        margin-top: 7%;
+        width:80%;;
+        height:20%;
+    }
+
+    .shoppingcart_image{
+        width:20%;
+    }
+
+    .customer_detail{
+        width:80%
+    }
+}
+
+@media screen and (max-width:731px) and (max-height:411px){
+    .shopping_cart{
+        overflow-y: scroll;
+    }
+    
+    .shoppingcart_details{
+        margin-top: 1%;
+        width:80%;
+    }
+
+    .shoppingcart_image{
+        width:20%;
+    }
+
+    .shopped_details{
+        font-size: 50%;
+    }
+
+    .customer_detail{
+        width:80%
+    }
+}
+
+@media screen and (max-width:414px) and (max-height:736px){
+
+    .shoppingcart_details{
+        width:80%;
+    }
+
+    .shoppingcart_image{
+        width:25%;
+    }
+
+    .customer_button{
+        width:27%;
+    }
+
+    .customer_detail{
+        width:80%;
+    }
+
+}
+
+@media screen and (max-width:360px) and (max-height:640px){
+    .shoppingcart_details{
+        margin-top: 7%;
+        width:70%;;
+        height:20%;
+    }
+
+    .shoppingcart_image{
+        width:20%;
+    }
+
+    .shopped_details{
+        font-size: 80%;
+    }
+
+    .customer_button{
+        width:32%;
+    }
+
+
+    .customer_detail{
+        width:70%
+    }
+}
+
+@media screen and (max-width:640px) and (max-height:360px){
+    .shoppingcart_details{
+        margin-top: 7%;
+        width:70%;;
+        height:20%;
+    }
+
+    .shoppingcart_image{
+        width:20%;
+    }
+
+    .shopped_details{
+        font-size: 80%;
+    }
+
+    .customer_button{
+        width:32%;
+    }
+
+
+    .customer_detail{
+        width:70%
+    }
+}

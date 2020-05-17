@@ -30,8 +30,9 @@
 .app_footer{
   border:1px solid greenyellow;
   border: none;
-  height: 100px;
+  width: 100%;
   display:flex;
+  padding-top: 3%;
   flex-direction: column;
   justify-content: space-between;
   color: white;
@@ -150,6 +151,7 @@
 
 .pagination{
   padding-top: 1%;
+  padding-bottom: 1%;
 }
 
 

@@ -1,13 +1,13 @@
 import React from 'react';
 import './App.css';
 import {BrowserRouter,Route,Switch} from 'react-router-dom';
-import Router from './components/Router'
+import Routers from './components/Routers'
 
 
 function App() {
   return (
     <BrowserRouter>
-        <Router/>
+        <Routers/>
     </BrowserRouter>
 
   );
