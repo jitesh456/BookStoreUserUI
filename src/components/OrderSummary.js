@@ -20,7 +20,7 @@ export default class OrderSummary extends React.Component{
                 <div style={{color:"red"}}><p>Email</p></div>
                 <div style={{color:"red"}}><p>Name</p></div>
                 <div style={{color:"red"}}><p>OrderId</p></div>
-                <div style={{height:"auto",display:"flex",justifyContent:"center",paddingBottom:"2%"}}>
+                <div style={{height:"auto",display:"flex",justifyContent:"flex-end",paddingBottom:"2%",paddingRight:"3.5%"}}>
                 <Button style={{background:"maroon",color:"white"}} variant="contained" 
                     onClick={this.handleConfirmation}>Confirm</Button>
                 </div>

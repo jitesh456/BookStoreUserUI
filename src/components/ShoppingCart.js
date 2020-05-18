@@ -86,7 +86,7 @@ export default class ShoppingCart extends React.Component{
             <div className="cart">
                 <Card className="shoppingcart_details">
                     <div className="shoppingcart_image">
-                        <div style={{display:"flex",justifyContent:"flex-start",fontWeight:"bold",height:"20%"}}>
+                        <div style={{width:"100%",display:"flex",justifyContent:"flex-start",fontWeight:"bold",height:"20%"}}>
                             <p>My Cart (  )</p>
                         </div>
                         <div style={{height:"80%"}}>
@@ -102,19 +102,19 @@ export default class ShoppingCart extends React.Component{
                             <span className="shopped_book_price">RS. 150000</span>
                         </div>
                         <div className="shopped_item_quantity">               
-                            {decrease}
+                            {decrease}&nbsp;&nbsp;
                             <div style={{textAlign:"center",border:"1px solid silver",width:"10%",height:"25%"}}>
-                            <label for="test" >{this.state.itemquantity}</label>
-                            </div>
+                                <label for="test" >{this.state.itemquantity}</label>
+                            </div>&nbsp;&nbsp;
                             {increase}                          
                         </div>
                     </div>
                     <div className="customer_button">
                         <Button style={{background:"maroon",color:"white"}} variant="contained" 
-                        onClick={this.handleCustomer}>continue</Button>
+                        onClick={this.handleCustomer}>Place Order</Button>
                     </div>
                 </Card>
-                <div style={{height:"1%"}}></div>
+                <div style={{height:"2%"}}></div>
             
                 <div style={{width:"100%",height:"auto"}}>
                     <Card className="customer_detail">
@@ -128,7 +128,7 @@ export default class ShoppingCart extends React.Component{
                         </div>
                     </Card>
                 </div>
-                <div style={{height:"1%"}}></div>
+                <div style={{height:"2%"}}></div>
 
                 <div style={{width:"100%",height:"auto"}}>
                     <Card className="customer_detail">

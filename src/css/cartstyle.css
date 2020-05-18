@@ -65,8 +65,8 @@
 }
 
 .shopped_image{
-    width:70%;
-    height:80%;
+    width:50%;
+    height:70%;
 }
 
 .add_ons{
@@ -126,6 +126,7 @@
 
 .customer_header{
     margin: 1%;
+    margin-left: 2.5%;
     height:10%;
     font-weight: bold;
 }
@@ -138,7 +139,7 @@
 .cart{
     border: 1px solid white;
     margin-top: 2%;
-    width: 70%;
+    width: 77%;
     height: 850px;
     align-items: center;
 }
