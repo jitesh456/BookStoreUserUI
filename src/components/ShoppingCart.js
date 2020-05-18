@@ -41,6 +41,7 @@ export default class ShoppingCart extends React.Component{
 
     handleEditCustomer=(e)=>{
         this.setState({
+            customersummary:false,
             editbutton:'none',
             disableform:false,
             ordersummary:'block'
@@ -90,11 +91,12 @@ export default class ShoppingCart extends React.Component{
                         <span className="admin">BB Store</span>  
                     </div >
                     <div className="search">
-                    <div className="searchIcon">
+                    <div className="searchIcon" >
                     <SearchIcon/>
                     </div>
                     <InputBase
                         placeholder=" Search"
+                        disabled="true"
                         onChange={this.handleTextChange}
                     />
                   </div>
@@ -113,7 +115,7 @@ export default class ShoppingCart extends React.Component{
                     </div>
                     <div className="shopped_details">
                         <div style={{height:"60%",display:"flex",flexDirection:"column",justifyContent:"flex-end"}}>
-                        <span className="shopped_book_name">Hello 123</span>
+                        <span className="shopped_book_name">Harry Potter</span>
                             <div style={{height:"5%"}}></div>
                             <span className="shopped_book_author">B.S God</span>
                             <div style={{height:"5%"}}></div>

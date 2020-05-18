@@ -6,6 +6,13 @@ import TextField from '@material-ui/core/TextField';
 import Paper from "@material-ui/core/Paper";
 import Button from '@material-ui/core/Button';
 import "../css/cartstyle.css";
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormControl from '@material-ui/core/FormControl';
+import FormLabel from '@material-ui/core/FormLabel';
+
+
 
 export default class Customer extends Component {
     constructor(props) {
@@ -315,7 +322,32 @@ export default class Customer extends Component {
                     </div>
                 </div>
                 <div style={{height:"55px"}}></div>
+                
                 <div style={{display:"flex",justifyContent:"flex-end",paddingBottom:"2%",marginRight:"5%"}}>
+                    <div style={{width:"87%"}}>
+                    <FormControl component="fieldset">
+                        <FormLabel component="legend">Type</FormLabel>
+                        <RadioGroup row aria-label="position" name="position" defaultValue="home">
+                            <FormControlLabel value="home"
+                            control={<Radio color="primary" />}
+                            label="Home"
+                            labelPlacement="end"
+                            />
+                            <FormControlLabel
+                            value="work"
+                            control={<Radio color="primary" />}
+                            label="Work"
+                            labelPlacement="end"
+                            />
+                            <FormControlLabel
+                            value="other"
+                            control={<Radio color="primary" />}
+                            label="Other"
+                            labelPlacement="end"
+                            />
+                        </RadioGroup>
+                    </FormControl>
+                    </div>
                     <div>
                         <Button style={{display:this.props.ordersummary,background:"maroon",color:"white"}} variant="filled"
                         onClick={()=>{this.props.onClick();}}>Continue</Button>
