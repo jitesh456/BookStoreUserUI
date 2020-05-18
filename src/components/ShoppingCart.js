@@ -18,8 +18,11 @@ export default class ShoppingCart extends React.Component{
         this.state={
             itemquantity:0,
             customer:false,
-            customersummary:false
+            customersummary:false,
+            placebutton:'block',
+            editbutton:'none',
         }
+
         this.handleCustomer=this.handleCustomer.bind(this);
         this.handleCustomerSummary=this.handleCustomerSummary.bind(this);
         this.handlePlus=this.handlePlus.bind(this);
@@ -29,12 +32,15 @@ export default class ShoppingCart extends React.Component{
     handleCustomer=(e)=>{
         this.setState({
             customer:true,
+            disablevalue:true,
+            placebutton:'none'
         })
     }
 
     handleCustomerSummary=(e)=>{
         this.setState({
             customersummary:true,
+            editbutton:'block'
         })
     }
 
@@ -69,7 +75,7 @@ export default class ShoppingCart extends React.Component{
             <header className="app_header">
                     <div className="admin_header">
                         <img src={booklogo} alt="asd" className="bk_image" />
-                        <span className="admin">OnlineBookStore</span>  
+                        <span className="admin">BB Store</span>  
                     </div >
                     <div className="search">
                     <div className="searchIcon">
@@ -89,8 +95,8 @@ export default class ShoppingCart extends React.Component{
                         <div style={{width:"100%",display:"flex",justifyContent:"flex-start",fontWeight:"bold",height:"20%"}}>
                             <p>My Cart (  )</p>
                         </div>
-                        <div style={{height:"80%"}}>
-                            <img src={image0} alt="" className="shopped_image"/>
+                        <div style={{width:"100%",height:"80%",paddingTop:"10%"}}>
+                            <img src='https://i.ibb.co/ZS5dTnb/Harry-Potter.jpg' alt="" className="shopped_image"/>
                         </div>
                     </div>
                     <div className="shopped_details">
@@ -102,15 +108,15 @@ export default class ShoppingCart extends React.Component{
                             <span className="shopped_book_price">RS. 150000</span>
                         </div>
                         <div className="shopped_item_quantity">               
-                            {decrease}&nbsp;&nbsp;
+                            {decrease}&nbsp;
                             <div style={{textAlign:"center",border:"1px solid silver",width:"10%",height:"25%"}}>
                                 <label for="test" >{this.state.itemquantity}</label>
-                            </div>&nbsp;&nbsp;
+                            </div>&nbsp;
                             {increase}                          
                         </div>
                     </div>
                     <div className="customer_button">
-                        <Button style={{background:"maroon",color:"white"}} variant="contained" 
+                        <Button style={{display:this.state.placebutton,background:"maroon",color:"white"}} variant="contained" 
                         onClick={this.handleCustomer}>Place Order</Button>
                     </div>
                 </Card>
@@ -119,7 +125,9 @@ export default class ShoppingCart extends React.Component{
                 <div style={{width:"100%",height:"auto"}}>
                     <Card className="customer_detail">
                         <div className="customer_header">
-                            <p>Customer Details</p>
+                            <div style={{width:"87%"}}>Customer Details</div>
+                            <div><Button style={{margin:"5%",display:this.state.editbutton,background:"maroon",color:"white"}} variant="contained" 
+                        onClick={this.handleCustomer}>Edit</Button></div>
                         </div>
                         <div className="customer_info">
                             <div className="customer_info_detail">
@@ -133,7 +141,7 @@ export default class ShoppingCart extends React.Component{
                 <div style={{width:"100%",height:"auto"}}>
                     <Card className="customer_detail">
                         <div className="customer_header">
-                            <p>Order Summary</p>
+                            <span>Order Summary</span>
                         </div>
                         <div className="customer_info">
                             <div className="customer_info_detail">

@@ -24,7 +24,17 @@ export default class Customer extends Component {
             emailId: "",
             emailError: "",
             cityError: "",
+            disableForm: false,
+            ordersummarybutton:'block'
         }
+
+    }
+
+    handleForm(){
+        this.setState({
+            disableForm:!this.state.disableForm,
+            ordersummarybutton:'none'
+        })
     }
 
     valid() {
@@ -100,6 +110,7 @@ export default class Customer extends Component {
                         this.setState({name: event.target.value}, () => this.valid());
                         }}
                         name="name"
+                        disabled={this.state.disableForm}
                         />
                         <p
                             style={{
@@ -125,6 +136,7 @@ export default class Customer extends Component {
                         onChange={event => {                                    
                             this.setState({phoneNumber: event.target.value}, () => this.valid());
                         }}
+                        disabled={this.state.disableForm}
                     />
                     <p
                                 style={{
@@ -139,7 +151,7 @@ export default class Customer extends Component {
                                 </p>
                     </div>
                 </div>
-                <div style={{height:"50px"}}></div>
+                <div style={{height:"10px"}}></div>
                 <div style={{display:"flex"}}>
                     <div style={{width:"40%"}}>
                     <TextField
@@ -152,6 +164,7 @@ export default class Customer extends Component {
                         onChange={event => {
                         this.setState({pincode: event.target.value}, () => this.valid());
                         }}
+                        disabled={this.state.disableForm}
                     />
                     <p
                                     style={{
@@ -177,6 +190,7 @@ export default class Customer extends Component {
                         onChange={event => {                                    
                             this.setState({locality: event.target.value}, () => this.valid());
                         }}
+                        disabled={this.state.disableForm}
                     />
                     <p
                                     style={{
@@ -230,6 +244,7 @@ export default class Customer extends Component {
                         onChange={event => {                                    
                             this.setState({country: event.target.value}, () => this.valid());
                         }}
+                        disabled={this.state.disableForm}
                     />
                     <p
                                     style={{
@@ -258,6 +273,7 @@ export default class Customer extends Component {
                         onChange={event => {
                         this.setState({address: event.target.value}, () => this.valid());
                         }}
+                        disabled={this.state.disableForm}
                         />
                         <p
                                     style={{
@@ -283,6 +299,7 @@ export default class Customer extends Component {
                         onChange={event => {
                         this.setState({emailId: event.target.value}, () => this.valid());
                         }}
+                        disabled={this.state.disableForm}
                         />
                         <p
                                     style={{
@@ -300,8 +317,8 @@ export default class Customer extends Component {
                 <div style={{height:"55px"}}></div>
                 <div style={{display:"flex",justifyContent:"flex-end",paddingBottom:"2%",marginRight:"5%"}}>
                     <div>
-                        <Button style={{background:"maroon",color:"white"}} variant="filled"
-                        onClick={this.props.onClick}>Continue</Button>
+                        <Button style={{display:this.state.ordersummarybutton,background:"maroon",color:"white"}} variant="filled"
+                        onClick={()=>{this.handleForm();this.props.onClick();}}>Continue</Button>
                     </div>
                 </div>
                 </div>
