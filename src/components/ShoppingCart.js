@@ -21,9 +21,12 @@ export default class ShoppingCart extends React.Component{
             customersummary:false,
             placebutton:'block',
             editbutton:'none',
+            disableform:false,
+            ordersummary:'block'
         }
 
         this.handleCustomer=this.handleCustomer.bind(this);
+        this.handleEditCustomer=this.handleEditCustomer.bind(this);
         this.handleCustomerSummary=this.handleCustomerSummary.bind(this);
         this.handlePlus=this.handlePlus.bind(this);
         this.handleMinus=this.handleMinus.bind(this);
@@ -32,15 +35,24 @@ export default class ShoppingCart extends React.Component{
     handleCustomer=(e)=>{
         this.setState({
             customer:true,
-            disablevalue:true,
             placebutton:'none'
+        })
+    }
+
+    handleEditCustomer=(e)=>{
+        this.setState({
+            editbutton:'none',
+            disableform:false,
+            ordersummary:'block'
         })
     }
 
     handleCustomerSummary=(e)=>{
         this.setState({
             customersummary:true,
-            editbutton:'block'
+            editbutton:'block',
+            disableform:true,
+            ordersummary:'none'
         })
     }
 
@@ -127,11 +139,14 @@ export default class ShoppingCart extends React.Component{
                         <div className="customer_header">
                             <div style={{width:"87%"}}>Customer Details</div>
                             <div><Button style={{margin:"5%",display:this.state.editbutton,background:"maroon",color:"white"}} variant="contained" 
-                        onClick={this.handleCustomer}>Edit</Button></div>
+                        onClick={this.handleEditCustomer}>Edit</Button></div>
                         </div>
                         <div className="customer_info">
                             <div className="customer_info_detail">
-                                <Customer show={this.state.customer} onClick={this.handleCustomerSummary}/>
+                                <Customer show={this.state.customer} 
+                                ordersummary={this.state.ordersummary}
+                                disableform={this.state.disableform}
+                                onClick={this.handleCustomerSummary}/>
                             </div>
                         </div>
                     </Card>
