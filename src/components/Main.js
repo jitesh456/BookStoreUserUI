@@ -31,6 +31,8 @@ export default class Main extends Component {
             count:0,
             sorting:'',
             input:'',
+            cartItem:[],
+            counter:0
         }
         this.handleTextChange=this.handleTextChange.bind(this)
         this.handlePageClick = this.handlePageClick.bind(this);
@@ -76,6 +78,7 @@ export default class Main extends Component {
             return <BookCard
                 price={book.price}
                 bookDetails={book}
+                addFunction={this.handleAddCart.bind(this)}
             />;
         })
         console.log(this.data)
@@ -97,6 +100,11 @@ export default class Main extends Component {
             this.state.input.length>0?this.filterData():this.receivedData();
         } );
         
+    }
+    handleAddCart(object)
+    {
+        this.state.cartItem.push(object); 
+        this.setState({counter:this.state.cartItem.length})  
     }
 
     handleChange(field, event) {
@@ -137,6 +145,7 @@ export default class Main extends Component {
         }
 
     render() {
+        const count=this.state.cartIteam.length;
         return (
             <div >
                 <header className="app_header">
@@ -157,6 +166,8 @@ export default class Main extends Component {
                   </div>
                   <div style={{marginLeft:"25%",marginTop:"1%"}}>
                     <a style={{color:"white"}} link href="/cart"><ShoppingCartIcon/></a>
+                    
+                    {this.state.counter}
                     </div>
                 </header>              
                     <div className="main">
@@ -175,8 +186,9 @@ export default class Main extends Component {
                                             name="sorting"
                                             placeholder="Sort By"
                                             className="card_content"
+                                            defaultValue="None"
                                         >
-                                        <MenuItem value=""><em>None</em></MenuItem>
+                                        <MenuItem value="None"><em>None</em></MenuItem>
                                         <MenuItem value="authorname">Authorname(A-Z)</MenuItem>
                                         <MenuItem value="price">Price:Low to High</MenuItem>
                                         <MenuItem value="category">Category(A-Z)</MenuItem>

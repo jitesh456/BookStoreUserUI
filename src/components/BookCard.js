@@ -7,7 +7,7 @@ import { withStyles } from "@material-ui/core/styles";
 import Tooltip from "@material-ui/core/Tooltip";
 import Typography from "@material-ui/core/Typography";
 import MuiCardContent from "@material-ui/core/CardContent";
-import history from './history';
+
 
 
 const HtmlTooltip = withStyles((theme) => ({
@@ -35,8 +35,10 @@ export default class BookCard extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: []
+            data: [],
+            cartIteam:[]
         }
+        
     }
     displayImage() {
 
@@ -61,10 +63,13 @@ export default class BookCard extends Component {
             );
         } else {
             return (
-                <Button type="submit" variant="contained" onClick={()=>history.push('/cart')} disabled={ !this.props.bookDetails.quantity} size="50%" style={{ width:"90%", backgroundColor:'maroon', color: "white" }} >ADD TO CART</Button>
+                <Button type="submit" variant="contained" onClick={()=>{
+                    this.props.addFunction(this.props.bookDetails)
+                }} disabled={ !this.props.bookDetails.quantity} size="50%" style={{ width:"90%", backgroundColor:'maroon', color: "white" }} >ADD TO CART</Button>
             );
         }
     }
+   
     render() {
         return (
             <div className="cardofbook"  >
