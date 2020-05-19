@@ -142,7 +142,7 @@ export default class Main extends Component {
                 <header className="app_header">
                     <div className="admin_header">
                         <img src={booklogo} alt="asd" className="bk_image" />
-                        <span className="admin">OnlineBookStore</span>  
+                        <span className="admin">BB Store</span>  
                     </div >
                     <div className="search">
                     <div className="searchIcon">

@@ -35,6 +35,8 @@ export default class Customer extends Component {
             ordersummarybutton:'block'
         }
 
+        this.handleChange=this.handleChange.bind(this);
+
     }
 
     handleForm(){
@@ -44,60 +46,86 @@ export default class Customer extends Component {
         })
     }
 
-    valid() {
-        if (!this.state.name.match("[A-Z]{1}[a-zA-Z]")) {
-            this.setState({nameError: "Invalid Name"});
-            this.setState({name: " "});
-            setTimeout(() => {
-                this.setState({nameError: " "});
-            }, 3000);
+    validate = (type) => {
 
-            return false;
-        } else if (!this.state.phoneNumber.match("[7-9]{1}[0-9]{9}")) {
-            this.setState({phoneNumberError: "Invalid Phone Number"});
-            setTimeout(() => {
-                this.setState({phoneNumberError: " "});
-            }, 3000);
-            return false;
-        } else if (
-            !this.state.pincode.match("^[0-9]{6}$|^[0-9]{3}\\s{1}[0-9]{3}$")
-        ) {
-            this.setState({pincodeError: "Invalid Pincode"});
-            setTimeout(() => {
-                this.setState({pincodeError: " "});
-            }, 3000);
-            return false;
-        } else if (!this.state.city.match("[A-Z][a-z]{2,}")) {
-            this.setState({cityError: "Invalid City Name"});
-            setTimeout(() => {
-                this.setState({cityError: " "});
-            }, 3000);
-            return false;
-        } else if (!this.state.emailId.match("^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,5})$")) {
-            this.setState({emailError: "Invalid City Name"});
-            setTimeout(() => {
-                this.setState({emailError: " "});
-            }, 3000);
-            return false;
+
+        var phonePattern=/[7-9]{1}[0-9]{9}$/;
+        var namePAttern = /[A-Z]{1}[a-zA-Z]{2,}$/;
+        var pincodePattern=/^[0-9]{6}$|^[0-9]{3}\\s{1}[0-9]{3}$/;
+        var cityPattern=/[A-Z][a-z]{2,}$/;
+        var emailPattern=/^[a-zA-Z]{3,}([-|+|.|_]?[a-zA-Z0-9]+)?[@]{1}[A-Za-z0-9]+[.]{1}[a-zA-Z]{2,4}([.]{1}[a-zA-Z]+)?$/;
+
+        let nameError = '';
+        let phoneNumberError = '';
+        let pincodeError = '';
+        let cityError = '';
+        let emailError = '';
+        switch (type) {
+    
+          case 'name':
+            if (!namePAttern.test(this.state.name)) {
+              nameError = "Please Enter proper Name";
+            }
+            break;
+          case 'pincode':
+            if (!pincodePattern.test(this.state.pincode)) {
+              pincodeError = "Please enter proper pincode";
+            }
+            break;
+          case 'phoneNumber':
+            if (!phonePattern.test(this.state.phoneNumber)) {
+              phoneNumberError = "Invalid Phone Number";
+            }
+            break;
+          case 'city':
+            if (!cityPattern.test(this.state.city)) {
+              cityError = "Enter Proper City Name";
+            }
+            break;
+          case 'emailId':
+            if (!emailPattern.test(this.state.emailId)) {
+              emailError = "Please Enter Proper Email"
+            }
+            break;
+          default:
+            break;
+        }
+    
+    
+        if (nameError || phoneNumberError || pincodeError || cityError || emailError) {
+          this.setState({
+            nameError: nameError,
+            phoneNumberError: phoneNumberError,
+            pincodeError: pincodeError,
+            cityError: cityError,
+            emailError: emailError,
+          })
+          return false;
         }
         return true;
-    }
+    
+      }
     
     handleChange(field,event) {
         this.setState({ [event.target.name]: event.target.value }
           , () => this.validate(field));
     
-        // this.setState({
-        //   isbnError: '',
-        //   authorNameError: '',
-        //   quantityError: '',
-        //   priceError: '', fileError: '',
-        //   bookDescrptionError: ''
-        // });
+        this.setState({
+          nameError: '',
+          phoneNumberError: '',
+          pincodeError: '',
+          cityError: '', emailError: ''
+        });
       }
     
     
     componentDidMount() {
+        this.setState({
+            nameError: '',
+            phoneNumberError: '',
+            pincodeError: '',
+            cityError: '', emailError: ''
+          });
     }
 
     render() {
@@ -112,11 +140,9 @@ export default class Customer extends Component {
                         id="outlined-start-adornment"
                         variant="outlined"
                         className="info"          
-                        style={{width:"100%"}}                      
-                        onChange={event => {
-                        this.setState({name: event.target.value}, () => this.valid());
-                        }}
-                        name="name"
+                        style={{width:"100%"}}
+                        name="name"                      
+                        onChange={this.handleChange.bind(this, 'name')}
                         disabled={this.props.disableform}
                         />
                         <p
@@ -140,9 +166,7 @@ export default class Customer extends Component {
                         className="info"
                         name="phoneNumber"
                         style={{width:"100%"}}
-                        onChange={event => {                                    
-                            this.setState({phoneNumber: event.target.value}, () => this.valid());
-                        }}
+                        onChange={this.handleChange.bind(this, 'phoneNumber')}
                         disabled={this.props.disableform}
                     />
                     <p
@@ -168,9 +192,7 @@ export default class Customer extends Component {
                         className="info"
                         name="pincode"  
                         style={{width:"100%"}}                              
-                        onChange={event => {
-                        this.setState({pincode: event.target.value}, () => this.valid());
-                        }}
+                        onChange={this.handleChange.bind(this, 'pincode')}
                         disabled={this.props.disableform}
                     />
                     <p
@@ -194,9 +216,7 @@ export default class Customer extends Component {
                         className="info"
                         name="locality"
                         style={{width:"100%"}}
-                        onChange={event => {                                    
-                            this.setState({locality: event.target.value}, () => this.valid());
-                        }}
+                        onChange={this.handleChange.bind(this, 'locality')}
                         disabled={this.props.disableform}
                     />
                     <p
@@ -208,7 +228,6 @@ export default class Customer extends Component {
                                         paddingLeft: "3em"
                                     }}
                                 >
-                                    {this.state.nameError}
                                 </p>
                     </div>
                 </div>
@@ -222,9 +241,7 @@ export default class Customer extends Component {
                         className="info" 
                         name="city"
                         style={{width:"100%"}}                               
-                        onChange={event => {
-                        this.setState({city: event.target.value}, () => this.valid());
-                        }}
+                        onChange={this.handleChange.bind(this, 'city')}
                                 disabled={this.props.disableform}
                         />
                         <p
@@ -248,9 +265,7 @@ export default class Customer extends Component {
                         className="info"
                         name="country"
                         style={{width:"100%"}}
-                        onChange={event => {                                    
-                            this.setState({country: event.target.value}, () => this.valid());
-                        }}
+                        onChange={this.handleChange.bind(this, 'country')}
                         disabled={this.props.disableform}
                     />
                     <p
@@ -262,7 +277,6 @@ export default class Customer extends Component {
                                         paddingLeft: "3em"
                                     }}
                                 >
-                                    {this.state.nameError}
                                 </p>
                     </div>
                 </div>
@@ -277,9 +291,7 @@ export default class Customer extends Component {
                         className="info" 
                         name="address"
                         style={{width:"100%"}}
-                        onChange={event => {
-                        this.setState({address: event.target.value}, () => this.valid());
-                        }}
+                        onChange={this.handleChange.bind(this, 'address')}
                         disabled={this.props.disableform}
                         />
                         <p
@@ -291,7 +303,6 @@ export default class Customer extends Component {
                                         paddingLeft: "3em"
                                     }}
                                 >
-                                    {this.state.nameError}
                                 </p>
                     </div>
                     <div style={{width:"20px"}}></div>
@@ -303,9 +314,7 @@ export default class Customer extends Component {
                         style={{width:"100%",borderColor:"maroon"}}
                         className="info"
                         name="emailId" 
-                        onChange={event => {
-                        this.setState({emailId: event.target.value}, () => this.valid());
-                        }}
+                        onChange={this.handleChange.bind(this, 'emailId')}
                         disabled={this.props.disableform}
                         />
                         <p
