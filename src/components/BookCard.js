@@ -36,7 +36,8 @@ export default class BookCard extends Component {
         super(props);
         this.state = {
             data: [],
-            cartIteam:[]
+            cartIteam:[],
+            count:0
         }
         
     }
@@ -61,10 +62,23 @@ export default class BookCard extends Component {
             return (
                 <Button type="submit" variant="contained"  disabled={ !this.props.bookDetails.quantity} size="50%" style={{ width:"90%", backgroundColor:'silver', color: "black" }} >ADD TO CART</Button>
             );
-        } else {
+        }if(this.state.count===1){
+            return(
+                    <Button type="submit" name="addButton" variant="contained" onClick={()=>{
+                    this.props.addFunction(this.props.bookDetails)
+                    this.setState({
+                        count:1
+                    })
+                }} disabled={ !this.props.bookDetails.quantity} size="50%" style={{ width:"90%", backgroundColor:'blue', color: "white" }} >ADDED TO CART</Button>
+            );
+        }
+         else {
             return (
                 <Button type="submit" variant="contained" onClick={()=>{
                     this.props.addFunction(this.props.bookDetails)
+                    this.setState({
+                        count:1
+                    })
                 }} disabled={ !this.props.bookDetails.quantity} size="50%" style={{ width:"90%", backgroundColor:'maroon', color: "white" }} >ADD TO CART</Button>
             );
         }
