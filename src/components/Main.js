@@ -10,8 +10,6 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
-import { colors } from '@material-ui/core';
-
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
@@ -145,7 +143,6 @@ export default class Main extends Component {
         }
 
     render() {
-        const count=this.state.cartIteam.length;
         return (
             <div >
                 <header className="app_header">
@@ -165,8 +162,9 @@ export default class Main extends Component {
                     
                   </div>
                   <div style={{marginLeft:"25%",marginTop:"1%"}}>
-                    <a style={{color:"white"}} link href="/cart"><ShoppingCartIcon/></a>
-                    
+                    <a style={{color:"white"}} link href="/cart">
+                        <ShoppingCartIcon shoppingitem={this.state.cartItem}/>
+                    </a>
                     {this.state.counter}
                     </div>
                 </header>              

@@ -48,9 +48,8 @@ export default class Customer extends Component {
 
     validate = (type) => {
 
-
         var phonePattern=/[7-9]{1}[0-9]{9}$/;
-        var namePAttern = /[A-Z]{1}[a-zA-Z]{2,}$/;
+        var namePattern = /[A-Z]{1}[a-zA-Z]{2,}$/;
         var pincodePattern=/^[0-9]{6}$|^[0-9]{3}\\s{1}[0-9]{3}$/;
         var cityPattern=/[A-Z][a-z]{2,}$/;
         var emailPattern=/^[a-zA-Z]{3,}([-|+|.|_]?[a-zA-Z0-9]+)?[@]{1}[A-Za-z0-9]+[.]{1}[a-zA-Z]{2,4}([.]{1}[a-zA-Z]+)?$/;
@@ -63,8 +62,12 @@ export default class Customer extends Component {
         switch (type) {
     
           case 'name':
-            if (!namePAttern.test(this.state.name)) {
-              nameError = "Please Enter proper Name";
+            if (!namePattern.test(this.state.name) && this.state.name.length>1) {
+              nameError =nameError.concat(" Please Enter Valid Name");
+            }
+            if(this.state.name.length===1 && this.state.name===" ")
+            {
+                nameError =nameError.concat(" Name should not start with space");
             }
             break;
           case 'pincode':
@@ -134,14 +137,13 @@ export default class Customer extends Component {
         im=<div style={{height:"20%",width:"100%",paddingLeft:"2%"}}>
                 <div>
                 <div style={{display:"flex"}}>
-                    <div style={{width:"40%",height:"0px"}}>
+                    <div style={{width:"40%"}}>
                     <TextField
                         label="Name"
                         id="outlined-start-adornment"
                         variant="outlined"
                         className="info"          
                         style={{width:"100%"}}
-                        color="secondary"
                         name="name"                      
                         onChange={this.handleChange.bind(this, 'name')}
                         disabled={this.props.disableform}
@@ -151,21 +153,20 @@ export default class Customer extends Component {
                                 color: "red",
                                 fontSize: "12px",
                                 marginTop: "1%",
-                                // marginBottom: "-3em",
-                                paddingLeft: "3em"
+                                marginBottom: "-3em",
+                                // paddingLeft: "3em"
                             }}
                         >
                             {this.state.nameError}
                         </p>
                     </div>
-                    <div style={{width:"35px"}}></div>
-                    <div style={{width:"40%",height:"80px"}}>
+                    <div style={{width:"20px"}}></div>
+                    <div style={{width:"40%"}}>
                     <TextField
                         label="Phone Number"
                         id="outlined-start-adornment"
                         variant="outlined"
                         className="info"
-                        color="secondary"
                         name="phoneNumber"
                         style={{width:"100%"}}
                         onChange={this.handleChange.bind(this, 'phoneNumber')}
@@ -186,13 +187,12 @@ export default class Customer extends Component {
                 </div>
                 <div style={{height:"10px"}}></div>
                 <div style={{display:"flex"}}>
-                    <div style={{width:"40%",height:"40px"}}>
+                    <div style={{width:"40%"}}>
                     <TextField
                         label="Pincode"
                         id="outlined-start-adornment"
                         variant="outlined"
                         className="info"
-                        color="secondary"
                         name="pincode"  
                         style={{width:"100%"}}                              
                         onChange={this.handleChange.bind(this, 'pincode')}
@@ -210,14 +210,13 @@ export default class Customer extends Component {
                                     {this.state.pincodeError}
                                 </p>
                     </div>
-                    <div style={{width:"35px"}}></div>
-                    <div style={{width:"40%",height:"40px"}}>
+                    <div style={{width:"20px"}}></div>
+                    <div style={{width:"40%"}}>
                     <TextField
                         label="Locality"
                         id="outlined-start-adornment"
                         variant="outlined"
                         className="info"
-                        color="secondary"
                         name="locality"
                         style={{width:"100%"}}
                         onChange={this.handleChange.bind(this, 'locality')}
@@ -237,12 +236,11 @@ export default class Customer extends Component {
                 </div>
                 <div style={{height:"55px"}}></div>
                 <div style={{display:"flex"}}>
-                    <div style={{width:"40%",height:"40px"}}>
+                    <div style={{width:"40%"}}>
                     <TextField
                         label="City"
                         id="outlined-start-adornment"
                         variant="outlined"
-                        color="secondary"
                         className="info" 
                         name="city"
                         style={{width:"100%"}}                               
@@ -261,14 +259,13 @@ export default class Customer extends Component {
                                     {this.state.cityError}
                                 </p>
                     </div>
-                    <div style={{width:"35px"}}></div>
+                    <div style={{width:"20px"}}></div>
                     <div style={{width:"40%"}}>
                     <TextField
                         label="Country"
                         id="outlined-start-adornment"
                         variant="outlined"
                         className="info"
-                        color="secondary"
                         name="country"
                         style={{width:"100%"}}
                         onChange={this.handleChange.bind(this, 'country')}
@@ -295,7 +292,6 @@ export default class Customer extends Component {
                         variant="outlined"
                         style={{borderColor:"maroon"}}
                         className="info" 
-                        color="secondary"
                         name="address"
                         style={{width:"100%"}}
                         onChange={this.handleChange.bind(this, 'address')}
@@ -312,13 +308,12 @@ export default class Customer extends Component {
                                 >
                                 </p>
                     </div>
-                    <div style={{width:"35px"}}></div>
-                    <div style={{width:"40%",height:"80px"}}>
+                    <div style={{width:"20px"}}></div>
+                    <div style={{width:"40%"}}>
                     <TextField
                         label="Email"
                         id="outlined-start-adornment"
                         variant="outlined"
-                        color="secondary"
                         style={{width:"100%",borderColor:"maroon"}}
                         className="info"
                         name="emailId" 
@@ -326,7 +321,7 @@ export default class Customer extends Component {
                         disabled={this.props.disableform}
                         />
                         <p
-                                    style={{
+                            style={{
                                         color: "red",
                                         fontSize: "12px",
                                         marginTop: "1%",
@@ -338,27 +333,27 @@ export default class Customer extends Component {
                                 </p>
                     </div>
                 </div>
-                <div style={{height:"30px"}}></div>
+                <div style={{height:"55px"}}></div>
                 
-                <div style={{width:"800px",display:"flex",justifyContent:"flex-end",paddingBottom:"2%",marginRight:"5%"}}>
-                    <div style={{width:"800px"}}>
+                <div style={{display:"flex",justifyContent:"flex-end",paddingBottom:"2%",marginRight:"5%"}}>
+                    <div style={{width:"87%"}}>
                     <FormControl component="fieldset">
-                        <FormLabel  color="secondary" component="legend">Type</FormLabel>
-                        <RadioGroup   row aria-label="position" name="position" defaultValue="home">
+                        <FormLabel component="legend">Type</FormLabel>
+                        <RadioGroup row aria-label="position" name="position" defaultValue="home">
                             <FormControlLabel value="home"
-                            control={<Radio color="secondary" />}
+                            control={<Radio color="primary" />}
                             label="Home"
                             labelPlacement="end"
                             />
                             <FormControlLabel
                             value="work"
-                            control={<Radio color="secondary" />}
+                            control={<Radio color="primary" />}
                             label="Work"
                             labelPlacement="end"
                             />
                             <FormControlLabel
                             value="other"
-                            control={<Radio color="secondary" />}
+                            control={<Radio color="primary" />}
                             label="Other"
                             labelPlacement="end"
                             />

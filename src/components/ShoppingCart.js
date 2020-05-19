@@ -9,8 +9,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
 import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
-
-import { createMuiTheme } from '@material-ui/core/styles';
+ import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 import { purple } from '@material-ui/core/colors';
 
@@ -90,18 +89,40 @@ export default class ShoppingCart extends React.Component{
     }
 
     render(){
-        let increase=[]
-        let decrease=[]
-        if (this.state.itemquantity==0){
-            increase=<AddCircleOutlineIcon onClick={this.handlePlus} style={{color:"maroon"}}/>
-            decrease=<RemoveCircleOutlineIcon disabled={true} />
-        }else{
-            increase=<AddCircleOutlineIcon onClick={this.handlePlus} style={{color:"maroon"}}/>
-            decrease=<RemoveCircleOutlineIcon onClick={this.handleMinus} style={{color:"maroon"}}/>
-        }
-        if(this.state.itemquantity>4){
-            increase=<AddCircleOutlineIcon disabled={true}/>
-        }
+            let increase=[]
+            let decrease=[]
+            if (this.state.itemquantity===0){
+                increase=<AddCircleOutlineIcon onClick={this.handlePlus} style={{color:"maroon"}}/>
+                decrease=<RemoveCircleOutlineIcon disabled={true} />
+            }else{
+                increase=<AddCircleOutlineIcon onClick={this.handlePlus} style={{color:"maroon"}}/>
+                decrease=<RemoveCircleOutlineIcon onClick={this.handleMinus} style={{color:"maroon"}}/>
+            }
+            if(this.state.itemquantity>4){
+                increase=<AddCircleOutlineIcon disabled={true}/>
+            }
+            var cart=this.props.shoppingitem;
+        let book=cart.map(item=>{
+            return (
+            <div className="shopped_details">
+                <div style={{height:"60%",display:"flex",flexDirection:"column",justifyContent:"flex-end"}}>
+                    <span className="shopped_book_name">{item.name}</span>
+                    <div style={{height:"5%"}}></div>
+                    <span className="shopped_book_author">{item.authername}</span>
+                    <div style={{height:"5%"}}></div>
+                    <span className="shopped_book_price">RS. {item.price}</span>
+                </div>
+                <div className="shopped_item_quantity">              
+                    <RemoveCircleOutlineIcon onClick={this.handleMinus} style={{color:"maroon"}}/>&nbsp;
+                    <div style={{textAlign:"center",border:"1px solid silver",width:"10%",height:"25%"}}>
+                        <label for="test" >{item.quantity}</label>
+                    </div>&nbsp;
+                    <AddCircleOutlineIcon onClick={this.handlePlus} style={{color:"maroon"}}/>                          
+                </div>
+            </div>
+            );
+        });
+
         const   im=<div className="shopping_cart">
             <header className="app_header">
                     <div className="admin_header">
@@ -131,22 +152,7 @@ export default class ShoppingCart extends React.Component{
                             <img src='https://i.ibb.co/ZS5dTnb/Harry-Potter.jpg' alt="" className="shopped_image"/>
                         </div>
                     </div>
-                    <div className="shopped_details">
-                        <div style={{height:"60%",display:"flex",flexDirection:"column",justifyContent:"flex-end"}}>
-                        <span className="shopped_book_name">Harry Potter</span>
-                            <div style={{height:"5%"}}></div>
-                            <span className="shopped_book_author">B.S God</span>
-                            <div style={{height:"5%"}}></div>
-                            <span className="shopped_book_price">RS. 150000</span>
-                        </div>
-                        <div className="shopped_item_quantity">               
-                            {decrease}&nbsp;
-                            <div style={{textAlign:"center",border:"1px solid silver",width:"10%",height:"25%"}}>
-                                <label for="test" >{this.state.itemquantity}</label>
-                            </div>&nbsp;
-                            {increase}                          
-                        </div>
-                    </div>
+                    {book}
                     <div className="customer_button">
                         <Button style={{display:this.state.placebutton,background:"maroon",color:"white"}} variant="contained" 
                         onClick={this.handleCustomer}>Place Order</Button>
