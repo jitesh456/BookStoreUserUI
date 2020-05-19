@@ -43,6 +43,7 @@
     flex-direction: column;
     justify-content:flex-start;
     align-items: center;
+    
 }
 
 
@@ -52,6 +53,7 @@
     background-color: white;
     display: flex;
     justify-content: center;
+    
 }
 
 .shoppingcart_image{
@@ -139,6 +141,13 @@
     width: 77%;
     height: 850px;
     align-items: center;
+    overflow-y: scroll;
+
+}
+
+.cart::-webkit-scrollbar{
+    display: none;
+    width: 0px;
 }
 
 .customer_info{

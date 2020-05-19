@@ -1,6 +1,5 @@
 import React from 'react';
-import image0 from '../booklogo.png';
-import '../css/Main.css';
+
 import Button from '@material-ui/core/Button';
 import booklogo from '../booklogo.png';
 import Customer from './Customer';
@@ -11,6 +10,25 @@ import InputBase from '@material-ui/core/InputBase';
 import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 
+import { createMuiTheme } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
+import { purple } from '@material-ui/core/colors';
+
+
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      // Purple and green play nicely together.
+      main: purple[500],
+    },
+    secondary: {
+      // This is green.A700 as hex.
+      main: '#B0002A',
+    
+    },
+  },
+});
 
 export default class ShoppingCart extends React.Component{
     constructor(props){
@@ -103,7 +121,7 @@ export default class ShoppingCart extends React.Component{
             </header>
 
             <div className="cart_content">
-            <div className="cart">
+            <div className="cart" >
                 <Card className="shoppingcart_details">
                     <div className="shoppingcart_image">
                         <div style={{width:"100%",display:"flex",justifyContent:"flex-start",fontWeight:"bold",height:"20%"}}>
@@ -137,9 +155,11 @@ export default class ShoppingCart extends React.Component{
                 <div style={{height:"2%"}}></div>
             
                 <div style={{width:"100%",height:"auto"}}>
-                    <Card className="customer_detail">
+                <ThemeProvider theme={theme} >
+
+                    <Card color="secondary" className="customer_detail">
                         <div className="customer_header">
-                            <div style={{width:"87%"}}>Customer Details</div>
+                            <div style={{width:"87%",height:"50px"}}>Customer Details</div>
                             <div><Button style={{margin:"5%",display:this.state.editbutton,background:"maroon",color:"white"}} variant="contained" 
                         onClick={this.handleEditCustomer}>Edit</Button></div>
                         </div>
@@ -152,6 +172,7 @@ export default class ShoppingCart extends React.Component{
                             </div>
                         </div>
                     </Card>
+                    </ThemeProvider>
                 </div>
                 <div style={{height:"2%"}}></div>
 
