@@ -1,5 +1,4 @@
 import React from 'react';
-
 import Button from '@material-ui/core/Button';
 import booklogo from '../booklogo.png';
 import Customer from './Customer';
@@ -118,14 +117,14 @@ export default class ShoppingCart extends React.Component{
             console.log(this.state.cartIteam);
         let book=JSON.parse(localStorage.getItem("bookData")).map(item=>{
             return (
-            <div style={{height:"300px",paddingBottom:"20px"}}>
+            <div style={{height:"fit-content",paddingBottom:"40px"}}>
                 <div style={{display:"flex",flexDirection:"row",height:"100px",paddingBottom:"20px"}}>
                     <div className="shoppingcart_image">
                         <div style={{width:"100%",height:"80%",paddingTop:"10%"}}>
                             <img src={item.bookcover} alt="" className="shopped_image"/>
                         </div>
                     </div>
-                    <div style={{display:"flex",flexDirection:"column",paddingTop:"20px",justifyContent:"flex-start",height:"200px"}}>
+                    <div style={{display:"flex",flexDirection:"column",paddingTop:"40px",justifyContent:"flex-start",height:"200px"}}>
 
                         <span className="shopped_book_name">{item.name}</span>
                         <div style={{height:"5%"}}></div>
@@ -167,16 +166,14 @@ export default class ShoppingCart extends React.Component{
 
             <div className="cart_content">
             <div className="cart" >
-                <Card className="shoppingcart_details" style={{overflowY:"scroll", height:"500px"}}>
-                    
-                    <p><b>My Cart ( {JSON.parse(localStorage.getItem("bookData")).length} )</b></p>
-                        {/* <div style={{width:"100%",display:"flex",justifyContent:"flex-start",fontWeight:"bold",height:"20%"}}>
-                            
-                        </div> */}
+                <p><b>My Cart ( {JSON.parse(localStorage.getItem("bookData")).length} )</b></p>
+                <Card className="shoppingcart_details" style={{height:"500px"}}>
+                    <div style={{height:"fit-content",overflowY:"scroll"}}>
                         {book}
                     <div className="customer_button">
                         <Button style={{display:this.state.placebutton,background:"maroon",color:"white"}} variant="contained" 
                         onClick={this.handleCustomer}>Place Order</Button>
+                    </div>
                     </div>
                 </Card>
                 <div style={{height:"2%"}}></div>

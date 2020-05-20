@@ -104,11 +104,11 @@
 .customer_button{
     border:1px solid black;
     border: none;
-    width:22%;
     margin-bottom: 2%;
+    margin-right: 2%;
     display:flex;
     padding-left: 400px;
-    justify-content: center;
+    justify-content: flex-end;
     align-items:flex-end;
 }
 
@@ -136,6 +136,7 @@
 .cart_content{
     width:80%;
     background-color: white;
+    padding-left: 3.5%;
 }
 
 .cart{
