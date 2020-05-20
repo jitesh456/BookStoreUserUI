@@ -315,6 +315,35 @@ export default class Customer extends Component {
                 </div>
                 <div style={{height:"55px"}}></div>
                 <div style={{display:"flex"}}>
+                <div style={{width:"84.7%",height:"60px"}}>
+                    <TextField
+                        label="Address"
+                        id="outlined-start-adornment"
+                        variant="outlined"
+                        style={{borderColor:"maroon"}}
+                        className="info" 
+                        multiline
+                        rows={2}
+                        color="secondary"
+                        name="address"
+                        style={{width:"100%"}}
+                        onChange={this.handleChange.bind(this, 'address')}
+                        disabled={this.props.disableform}
+                        />
+                        <p
+                                    style={{
+                                        color: "red",
+                                        fontSize: "12px",
+                                        marginTop: "1%",
+                                        marginBottom: "-3em",
+                                        paddingLeft: "3em"
+                                    }}
+                                >
+                                </p>
+                    </div>
+                </div>
+                <div style={{height:"55px"}}></div>
+                <div style={{display:"flex"}}>
                     <div style={{width:"40%",height:"40px"}}>
                     <TextField
                         label="City"
@@ -366,32 +395,7 @@ export default class Customer extends Component {
                 </div>
                 <div style={{height:"55px"}}></div>
                 <div style={{display:"flex"}}>
-                    <div style={{width:"40%"}}>
-                    <TextField
-                        label="Address"
-                        id="outlined-start-adornment"
-                        variant="outlined"
-                        style={{borderColor:"maroon"}}
-                        className="info" 
-                        color="secondary"
-                        name="address"
-                        style={{width:"100%"}}
-                        onChange={this.handleChange.bind(this, 'address')}
-                        disabled={this.props.disableform}
-                        />
-                        <p
-                                    style={{
-                                        color: "red",
-                                        fontSize: "12px",
-                                        marginTop: "1%",
-                                        marginBottom: "-3em",
-                                        paddingLeft: "3em"
-                                    }}
-                                >
-                                </p>
-                    </div>
-                    <div style={{width:"35px"}}></div>
-                    <div style={{width:"40%",height:"80px"}}>
+                    <div style={{width:"84.7%",height:"80px"}}>
                     <TextField
                         label="Email"
                         id="outlined-start-adornment"
