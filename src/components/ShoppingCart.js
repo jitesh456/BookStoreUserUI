@@ -33,13 +33,14 @@ export default class ShoppingCart extends React.Component{
     constructor(props){
         super(props);
         this.state={
-            itemquantity:0,
+            itemquantity:1,
             customer:false,
             customersummary:false,
             placebutton:'block',
             editbutton:'none',
             disableform:false,
-            ordersummary:'block'
+            ordersummary:'block',
+            
         }
 
         this.handleCustomer=this.handleCustomer.bind(this);
@@ -63,6 +64,19 @@ export default class ShoppingCart extends React.Component{
             disableform:false,
             ordersummary:'block'
         })
+    }
+
+    componentDidMount()
+    {
+        if(localStorage.getItem("count")!==null)
+        {
+        this.setState({
+            counter:parseInt(localStorage.getItem("count")),
+            cartItem:JSON.parse(localStorage.getItem("bookData"))
+        });
+        console.log(localStorage.getItem("BookData"));
+        console.log(JSON.parse(localStorage.getItem("bookData")))
+        }
     }
 
     handleCustomerSummary=(e)=>{
@@ -101,24 +115,34 @@ export default class ShoppingCart extends React.Component{
             if(this.state.itemquantity>4){
                 increase=<AddCircleOutlineIcon disabled={true}/>
             }
-            var cart=this.props.shoppingitem;
-        let book=cart.map(item=>{
+            console.log(this.state.cartIteam);
+        let book=JSON.parse(localStorage.getItem("bookData")).map(item=>{
             return (
-            <div className="shopped_details">
-                <div style={{height:"60%",display:"flex",flexDirection:"column",justifyContent:"flex-end"}}>
-                    <span className="shopped_book_name">{item.name}</span>
-                    <div style={{height:"5%"}}></div>
-                    <span className="shopped_book_author">{item.authername}</span>
-                    <div style={{height:"5%"}}></div>
-                    <span className="shopped_book_price">RS. {item.price}</span>
+            <div style={{height:"300px",paddingBottom:"20px"}}>
+                <div style={{display:"flex",flexDirection:"row",height:"100px",paddingBottom:"20px"}}>
+                    <div className="shoppingcart_image">
+                        <div style={{width:"100%",height:"80%",paddingTop:"10%"}}>
+                            <img src={item.bookcover} alt="" className="shopped_image"/>
+                        </div>
+                    </div>
+                    <div style={{display:"flex",flexDirection:"column",paddingTop:"20px",justifyContent:"flex-start",height:"200px"}}>
+
+                        <span className="shopped_book_name">{item.name}</span>
+                        <div style={{height:"5%"}}></div>
+                        <span className="shopped_book_author">{item.authorname}</span>
+                        <div style={{height:"5%"}}></div>
+                        <span className="shopped_book_price">RS. {item.price}</span>
+                        <div className="shopped_item_quantity">              
+                        <RemoveCircleOutlineIcon onClick={this.handleMinus} style={{color:"maroon"}}/>&nbsp;
+                        <div style={{textAlign:"center",border:"1px solid silver",width:"28%",height:"25%"}}>
+                            <label for="test" >{this.state.itemquantity}</label>
+                        </div>&nbsp;
+                        <AddCircleOutlineIcon onClick={this.handlePlus} style={{color:"maroon"}}/>                          
+                        </div>
+                    </div>
+                   
                 </div>
-                <div className="shopped_item_quantity">              
-                    <RemoveCircleOutlineIcon onClick={this.handleMinus} style={{color:"maroon"}}/>&nbsp;
-                    <div style={{textAlign:"center",border:"1px solid silver",width:"10%",height:"25%"}}>
-                        <label for="test" >{item.quantity}</label>
-                    </div>&nbsp;
-                    <AddCircleOutlineIcon onClick={this.handlePlus} style={{color:"maroon"}}/>                          
-                </div>
+                
             </div>
             );
         });
@@ -143,16 +167,13 @@ export default class ShoppingCart extends React.Component{
 
             <div className="cart_content">
             <div className="cart" >
-                <Card className="shoppingcart_details">
-                    <div className="shoppingcart_image">
-                        <div style={{width:"100%",display:"flex",justifyContent:"flex-start",fontWeight:"bold",height:"20%"}}>
-                            <p>My Cart (  )</p>
-                        </div>
-                        <div style={{width:"100%",height:"80%",paddingTop:"10%"}}>
-                            <img src='https://i.ibb.co/ZS5dTnb/Harry-Potter.jpg' alt="" className="shopped_image"/>
-                        </div>
-                    </div>
-                    {book}
+                <Card className="shoppingcart_details" style={{overflowY:"scroll", height:"500px"}}>
+                    
+                    <p><b>My Cart ( {JSON.parse(localStorage.getItem("bookData")).length} )</b></p>
+                        {/* <div style={{width:"100%",display:"flex",justifyContent:"flex-start",fontWeight:"bold",height:"20%"}}>
+                            
+                        </div> */}
+                        {book}
                     <div className="customer_button">
                         <Button style={{display:this.state.placebutton,background:"maroon",color:"white"}} variant="contained" 
                         onClick={this.handleCustomer}>Place Order</Button>

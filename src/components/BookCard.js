@@ -36,7 +36,7 @@ export default class BookCard extends Component {
         super(props);
         this.state = {
             data: [],
-            cartIteam:[],
+            bookName:[],
             count:0
         }
         
@@ -56,16 +56,30 @@ export default class BookCard extends Component {
             );
         }
     }
+    componentDidMount()
+    {
+        if(localStorage.getItem("counter")!==null)
+        {
+        this.setState({
+            bookName:JSON.parse(localStorage.getItem("bookName")),
+            
+        });
+        console.log(localStorage.getItem("BookData"));
+        
+        }
+    }
     displayButton() {
+        
 
         if (this.props.bookDetails.quantity === 0) {
             return (
                 <Button type="submit" variant="contained"  disabled={ !this.props.bookDetails.quantity} size="50%" style={{ width:"90%", backgroundColor:'silver', color: "black" }} >ADD TO CART</Button>
             );
-        }if(this.state.count===1){
+        }
+        
+        if(this.state.count===1){
             return(
                     <Button type="submit" name="addButton" variant="contained" onClick={()=>{
-                    this.props.addFunction(this.props.bookDetails)
                     this.setState({
                         count:1
                     })
@@ -77,11 +91,14 @@ export default class BookCard extends Component {
                 <Button type="submit" variant="contained" onClick={()=>{
                     this.props.addFunction(this.props.bookDetails)
                     this.setState({
-                        count:1
+                        count:1,
+                        bookName:[...this.props.bookDetails.name]
                     })
+                    localStorage.setItem("bookName",JSON.stringify(this.state.bookName))
                 }} disabled={ !this.props.bookDetails.quantity} size="50%" style={{ width:"90%", backgroundColor:'maroon', color: "white" }} >ADD TO CART</Button>
             );
         }
+
     }
    
     render() {
@@ -89,9 +106,7 @@ export default class BookCard extends Component {
             <div className="cardofbook"  >
                 <Card className="card">
                     <NestedCardContent>
-                        <div className="tooltip_content">
-                            
-                            
+                        <div className="tooltip_content">        
                         </div>
                         <div style={{ width: "100%" }}>
                             <div id="container" class="book_image">

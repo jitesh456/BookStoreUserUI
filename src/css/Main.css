@@ -15,7 +15,7 @@
   border:none;
   display:flex;
   width:20%;
-  padding-left: 10%;
+  padding-left: 12%;
   justify-content: flex-start;
   align-items: center;
 }
@@ -140,7 +140,7 @@
 
 .card_content{
   display: flex;
-  width:160px;
+  width:178px;
   height: 40px;
 }
 

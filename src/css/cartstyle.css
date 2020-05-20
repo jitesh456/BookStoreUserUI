@@ -52,7 +52,9 @@
     width:100%;
     background-color: white;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    overflow-y: scroll;
     
 }
 
@@ -67,8 +69,8 @@
 }
 
 .shopped_image{
-    width:60%;
-    height:75%;
+    width:100px;
+    height:150px;
 }
 
 .add_ons{
@@ -105,6 +107,7 @@
     width:22%;
     margin-bottom: 2%;
     display:flex;
+    padding-left: 400px;
     justify-content: center;
     align-items:flex-end;
 }

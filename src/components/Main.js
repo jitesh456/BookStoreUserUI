@@ -49,6 +49,15 @@ export default class Main extends Component {
         }).catch((error)=>{
         console.log(error)
         })
+        if(localStorage.getItem("count")!==null)
+        {
+        this.setState({
+            counter:parseInt(localStorage.getItem("count")),
+            cartItem:JSON.parse(localStorage.getItem("bookData"))
+        });
+        
+        }
+       
     }
 
     sortedData(input){
@@ -103,6 +112,9 @@ export default class Main extends Component {
     {
         this.state.cartItem.push(object); 
         this.setState({counter:this.state.cartItem.length})  
+        localStorage.setItem("count",JSON.stringify(this.state.counter+1));
+        localStorage.setItem("bookData",JSON.stringify(this.state.cartItem));
+        console.log(this.state.cartItem);
     }
 
     handleChange(field, event) {
@@ -161,7 +173,7 @@ export default class Main extends Component {
                     />
                     
                   </div>
-                  <div style={{marginLeft:"25%",marginTop:"1%"}}>
+                  <div style={{marginLeft:"15%",marginTop:"1%"}}>
                     <a style={{color:"white"}} link href="/cart">
                         <ShoppingCartIcon shoppingitem={this.state.cartItem}/>
                     </a>
