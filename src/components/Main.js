@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react';
 import '../css/BookCard.css';
 import '../css/Main.css';
@@ -24,6 +25,7 @@ export default class Main extends Component {
             currentPage: 0,
             search:'',
             booklist: [ ],
+            bookName:[],
             price: '',
             bookDetails: '',
             count:0,
@@ -53,7 +55,8 @@ export default class Main extends Component {
         {
         this.setState({
             counter:parseInt(localStorage.getItem("count")),
-            cartItem:JSON.parse(localStorage.getItem("bookData"))
+            cartItem:JSON.parse(localStorage.getItem("bookData")),
+            bookName:JSON.parse(localStorage.getItem("bookName"))
         });
         
         }
@@ -110,9 +113,19 @@ export default class Main extends Component {
     }
     handleAddCart(object)
     {
-        this.state.cartItem.push(object); 
+        const book={
+            "name":object.name,
+            "authorname":object.authorname,
+            "price":object.price,
+            "bookcover":object.bookcover,
+            "maxquantity":object.quantity,
+            "quantity":1
+        }
+        this.state.cartItem.push(book); 
+        this.state.bookName.push(object.name);
         this.setState({counter:this.state.cartItem.length})  
         localStorage.setItem("count",JSON.stringify(this.state.counter+1));
+        localStorage.setItem("bookName",JSON.stringify(this.state.bookName));
         localStorage.setItem("bookData",JSON.stringify(this.state.cartItem));
         console.log(this.state.cartItem);
     }
@@ -174,6 +187,7 @@ export default class Main extends Component {
                     
                   </div>
                   <div style={{marginLeft:"15%",marginTop:"1%"}}>
+                  
                     <a style={{color:"white"}} link href="/cart">
                         <ShoppingCartIcon shoppingitem={this.state.cartItem}/>
                     </a>
@@ -238,5 +252,3 @@ export default class Main extends Component {
         );
     }
 }
-
-

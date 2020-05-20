@@ -31,18 +31,17 @@ const NestedCardContent = withStyles(theme => ({
 }))(MuiCardContent);
 
 export default class BookCard extends Component {
-
+    
     constructor(props) {
         super(props);
         this.state = {
             data: [],
-            bookName:[],
             count:0
         }
         
     }
+    
     displayImage() {
-
         if (this.props.bookDetails.quantity === 0) {
             return (
                 <figure>
@@ -56,30 +55,17 @@ export default class BookCard extends Component {
             );
         }
     }
-    componentDidMount()
-    {
-        if(localStorage.getItem("counter")!==null)
-        {
-        this.setState({
-            bookName:JSON.parse(localStorage.getItem("bookName")),
-            
-        });
-        console.log(localStorage.getItem("BookData"));
-        
-        }
-    }
-    displayButton() {
-        
 
+    displayButton() {
         if (this.props.bookDetails.quantity === 0) {
             return (
-                <Button type="submit" variant="contained"  disabled={ !this.props.bookDetails.quantity} size="50%" style={{ width:"90%", backgroundColor:'silver', color: "black" }} >ADD TO CART</Button>
+                <Button  type="submit" variant="contained"  disabled={ !this.props.bookDetails.quantity} size="50%" style={{ width:"90%", backgroundColor:'silver', color: "black" }} >ADD TO CART</Button>
             );
         }
-        
-        if(this.state.count===1){
+        const bookName=JSON.parse(localStorage.getItem("bookName"));
+        if( bookName!==null && bookName.includes(this.props.bookDetails.name)){
             return(
-                    <Button type="submit" name="addButton" variant="contained" onClick={()=>{
+                    <Button  type="submit" name="addButton" variant="contained" onClick={()=>{
                     this.setState({
                         count:1
                     })
@@ -88,13 +74,12 @@ export default class BookCard extends Component {
         }
          else {
             return (
-                <Button type="submit" variant="contained" onClick={()=>{
+                <Button  
+                name= "button" type="submit" variant="contained" onClick={(event)=>{
                     this.props.addFunction(this.props.bookDetails)
                     this.setState({
                         count:1,
-                        bookName:[...this.props.bookDetails.name]
-                    })
-                    localStorage.setItem("bookName",JSON.stringify(this.state.bookName))
+                    })   
                 }} disabled={ !this.props.bookDetails.quantity} size="50%" style={{ width:"90%", backgroundColor:'maroon', color: "white" }} >ADD TO CART</Button>
             );
         }
@@ -102,9 +87,10 @@ export default class BookCard extends Component {
     }
    
     render() {
+        
         return (
-            <div className="cardofbook"  >
-                <Card className="card">
+            <div className="cardofbook" name="cardData"  >
+                <Card className="card"  >
                     <NestedCardContent>
                         <div className="tooltip_content">        
                         </div>
@@ -119,7 +105,6 @@ export default class BookCard extends Component {
                                 }
                                 placement="right-start"
                             >
- 
                                 { this.displayImage()}
                                 </HtmlTooltip>
                             </div>                         

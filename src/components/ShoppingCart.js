@@ -39,7 +39,7 @@ export default class ShoppingCart extends React.Component{
             editbutton:'none',
             disableform:false,
             ordersummary:'block',
-            
+            cartItem:[]       
         }
 
         this.handleCustomer=this.handleCustomer.bind(this);
@@ -47,6 +47,7 @@ export default class ShoppingCart extends React.Component{
         this.handleCustomerSummary=this.handleCustomerSummary.bind(this);
         this.handlePlus=this.handlePlus.bind(this);
         this.handleMinus=this.handleMinus.bind(this);
+        this.handleRemove=this.handleRemove.bind(this);
     }
 
     handleCustomer=(e)=>{
@@ -54,6 +55,12 @@ export default class ShoppingCart extends React.Component{
             customer:true,
             placebutton:'none'
         })
+    }
+    handleRemove=(e)=>{
+        // this.state.cartItem = this.state.cartItem.filter(function(item) {
+        //     return item !== e;
+        // })
+        // console.log(this.state.cartItem);
     }
 
     handleEditCustomer=(e)=>{
@@ -70,11 +77,10 @@ export default class ShoppingCart extends React.Component{
         if(localStorage.getItem("count")!==null)
         {
         this.setState({
-            counter:parseInt(localStorage.getItem("count")),
             cartItem:JSON.parse(localStorage.getItem("bookData"))
         });
-        console.log(localStorage.getItem("BookData"));
-        console.log(JSON.parse(localStorage.getItem("bookData")))
+        
+        console.log(this.state.cartItem);
         }
     }
 
@@ -89,7 +95,7 @@ export default class ShoppingCart extends React.Component{
 
     handlePlus=(e)=>{
         this.setState({
-            itemquantity:this.state.itemquantity+1
+            itemquantity:e.value+1
         })
         console.log(this.state.itemquantity);
     }
@@ -114,8 +120,8 @@ export default class ShoppingCart extends React.Component{
             if(this.state.itemquantity>4){
                 increase=<AddCircleOutlineIcon disabled={true}/>
             }
-            console.log(this.state.cartIteam);
-        let book=JSON.parse(localStorage.getItem("bookData")).map(item=>{
+            
+        let book=this.state.cartItem.map(item=>{
             return (
             <div style={{height:"fit-content",paddingBottom:"40px"}}>
                 <div style={{display:"flex",flexDirection:"row",height:"100px",paddingBottom:"20px"}}>
@@ -131,13 +137,22 @@ export default class ShoppingCart extends React.Component{
                         <span className="shopped_book_author">{item.authorname}</span>
                         <div style={{height:"5%"}}></div>
                         <span className="shopped_book_price">RS. {item.price}</span>
-                        <div className="shopped_item_quantity">              
+                        <div className="shopped_item_quantity">   
+
+                        <div style={{display:"flex",width:"100px"}}>           
                         <RemoveCircleOutlineIcon onClick={this.handleMinus} style={{color:"maroon"}}/>&nbsp;
                         <div style={{textAlign:"center",border:"1px solid silver",width:"28%",height:"25%"}}>
-                            <label for="test" >{this.state.itemquantity}</label>
+                            <label for="test" >{item.quantity}</label>
                         </div>&nbsp;
-                        <AddCircleOutlineIcon onClick={this.handlePlus} style={{color:"maroon"}}/>                          
+                        <AddCircleOutlineIcon onClick={this.handlePlus} style={{color:"maroon"}}/> 
                         </div>
+                        <div>
+                        </div>
+                        <div>
+                        </div>
+                         <Button style={{background:"maroon",color:"white"}} onClick={this.handleRemove(item)}>Remove</Button>                        
+                        </div>
+                        
                     </div>
                    
                 </div>
@@ -167,7 +182,7 @@ export default class ShoppingCart extends React.Component{
             <div className="cart_content">
             <div className="cart" >
                 <p><b>My Cart ( {JSON.parse(localStorage.getItem("bookData")).length} )</b></p>
-                <Card className="shoppingcart_details" style={{height:"500px"}}>
+                <Card className="shoppingcart_details" style={{height:"342px"}}>
                     <div style={{height:"fit-content",overflowY:"scroll"}}>
                         {book}
                     <div className="customer_button">
