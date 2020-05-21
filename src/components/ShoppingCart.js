@@ -147,7 +147,7 @@ export default class ShoppingCart extends React.Component{
                         </div>
                         <div>
                         </div>
-                         <Button style={{background:"maroon",color:"white"}} onClick={this.handleRemove(item)}>Remove</Button>                        
+                            <Button style={{padding:"8px",background:"maroon",color:"white"}} onClick={this.handleRemove(item)}>Remove</Button>                        
                         </div>
                         
                     </div>
@@ -179,12 +179,12 @@ export default class ShoppingCart extends React.Component{
 
             <div className="cart_content">
             <div className="cart" >
-                <p><b>My Cart( {this.state.cartItem.length } )</b></p>
+                <p style={{fontSize:"18px"}}><b>My Cart( {this.state.cartItem.length } )</b></p>
                 <Card className="shoppingcart_details" style={{height:"342px"}}>
-                    <div style={{height:"fit-content",overflowY:"scroll"}}>
+                    <div style={{height:"fit-content",overflowY:"scroll",}}>
                         {book}
                     <div className="customer_button">
-                        <Button style={{display:this.state.placebutton,background:"maroon",color:"white"}} variant="contained" 
+                        <Button style={{display:this.state.placebutton,padding:"8px",background:"maroon",color:"white"}} variant="contained" 
                         onClick={this.handleCustomer}>Place Order</Button>
                     </div>
                     </div>
@@ -196,9 +196,9 @@ export default class ShoppingCart extends React.Component{
 
                     <Card color="secondary" className="customer_detail">
                         <div className="customer_header">
-                            <div style={{width:"87%",height:"50px"}}>Customer Details</div>
-                            <div><Button style={{margin:"5%",display:this.state.editbutton,background:"maroon",color:"white"}} variant="contained" 
-                        onClick={this.handleEditCustomer}>Edit</Button></div>
+                            <div style={{fontSize:"20px",width:"87%",height:"50px"}}>Customer Details</div>
+                            <div><Button style={{margin:"5%",padding:"8px",display:this.state.editbutton,background:"maroon",color:"white"}} variant="contained" 
+                     onClick={this.handleEditCustomer}>Edit</Button></div>
                         </div>
                         <div className="customer_info">
                             <div className="customer_info_detail">
@@ -216,11 +216,13 @@ export default class ShoppingCart extends React.Component{
                 <div style={{width:"100%",height:"auto"}}>
                     <Card className="customer_detail">
                         <div className="customer_header">
-                            <span>Order Summary</span>
+                            <span style={{fontSize:"20px"}}>Order Summary</span>
                         </div>
                         <div className="customer_info">
                             <div className="customer_info_detail">
-                                <OrderSummary show={this.state.customersummary}/>
+                                <OrderSummary show={this.state.customersummary}
+                                cartItem={this.state.cartItem}
+                                />
                             </div>
                         </div>
                     </Card>

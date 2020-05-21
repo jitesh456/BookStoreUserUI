@@ -212,13 +212,13 @@ export default class Customer extends Component {
       if(this.state.name!=="" && this.state.phoneNumber!=="" && this.state.pincode!=="" && 
       this.state.locality!=="" && this.state.emailId!=="" && this.state.address!==null && this.state.city ){
         return(
-        <Button style={{display:this.props.ordersummary,background:"maroon",color:"white"}} variant="filled"
+        <Button style={{display:this.props.ordersummary,background:"maroon",color:"white",padding:"8px"}} variant="filled"
         onClick={()=>{ this.props.onClick();}}>Continue</Button>
         )
       }
         else{
           return(
-            <Button disable="true" style={{display:this.props.ordersummary,background:"silver",color:"white"}} variant="filled"
+            <Button disable="false" style={{display:this.props.ordersummary,background:"silver",color:"white",padding:"8px"}} variant="filled"
             >Continue</Button>
             )
         }
@@ -281,16 +281,16 @@ export default class Customer extends Component {
                         disabled={this.props.disableform}
                     />
                     <p
-                                style={{
-                                    color: "red",
-                                        fontSize: "12px",
-                                        marginTop: "1%",
-                                        marginBottom: "-3em",
-                                        
-                                    }}
-                                >
-                                    {this.state.phoneNumberError}
-                                </p>
+                       style={{
+                        color: "red",
+                            fontSize: "12px",
+                            marginTop: "1%",
+                            marginBottom: "-3em",
+                            
+                        }}
+                    >
+                        {this.state.phoneNumberError}
+                    </p>
                     </div>
                 </div>
                 <div style={{height:"10px"}}></div>
@@ -308,16 +308,16 @@ export default class Customer extends Component {
                         disabled={this.props.disableform}
                     />
                     <p
-                                    style={{
-                                        color: "red",
-                                        fontSize: "12px",
-                                        marginTop: "1%",
-                                        marginBottom: "-3em",
-                                        
-                                    }}
-                                >
-                                    {this.state.pincodeError}
-                                </p>
+                        style={{
+                            color: "red",
+                            fontSize: "12px",
+                            marginTop: "1%",
+                            marginBottom: "-3em",
+                            
+                        }}
+                    >
+                        {this.state.pincodeError}
+                    </p>
                     </div>
                     <div style={{width:"35px"}}></div>
                     <div style={{width:"40%",height:"40px"}}>
@@ -333,17 +333,17 @@ export default class Customer extends Component {
                         disabled={this.props.disableform}
                     />
                     <p
-                                    style={{
-                                        color: "red",
-                                        fontSize: "12px",
-                                        marginTop: "1%",
-                                        marginBottom: "-3em",
-                                        
-                                    }}
-                                >
-                                   {this.state.localityError}
-                                </p>
-                    </div>
+                        style={{
+                          color: "red",
+                          fontSize: "12px",
+                          marginTop: "1%",
+                          marginBottom: "-3em",
+                          
+                      }}
+                  >      
+                  {this.state.localityError}
+                  </p>
+                </div>
                 </div>
                 <div style={{height:"55px"}}></div>
                 <div style={{display:"flex"}}>
@@ -363,15 +363,15 @@ export default class Customer extends Component {
                         disabled={this.props.disableform}
                         />
                         <p
-                                    style={{
-                                        color: "red",
-                                        fontSize: "12px",
-                                        marginTop: "1%",
-                                        marginBottom: "-3em",
-                                        
-                                    }}
-                                >
-                                </p>
+                            style={{
+                              color: "red",
+                              fontSize: "12px",
+                              marginTop: "1%",
+                              marginBottom: "-3em",
+                              
+                          }}
+                      >
+                      </p>
                     </div>
                 </div>
                 <div style={{height:"55px"}}></div>
@@ -389,16 +389,16 @@ export default class Customer extends Component {
                                 disabled={this.props.disableform}
                         />
                         <p
-                                    style={{
-                                        color: "red",
-                                        fontSize: "12px",
-                                        marginTop: "1%",
-                                        marginBottom: "-3em",
-                                        
-                                    }}
-                                >
-                                    {this.state.cityError}
-                                </p>
+                            style={{
+                              color: "red",
+                              fontSize: "12px",
+                              marginTop: "1%",
+                              marginBottom: "-3em",
+                              
+                          }}
+                      >
+                          {this.state.cityError}
+                      </p>
                     </div>
                     <div style={{width:"35px"}}></div>
                     <div style={{width:"40%"}}>
@@ -414,16 +414,16 @@ export default class Customer extends Component {
                         disabled={this.props.disableform}
                     />
                     <p
-                                    style={{
-                                        color: "red",
-                                        fontSize: "12px",
-                                        marginTop: "1%",
-                                        marginBottom: "-3em",
-                                        
-                                    }}
-                                >
-                                   {this.state.countryError}
-                                </p>
+                        style={{
+                          color: "red",
+                          fontSize: "12px",
+                          marginTop: "1%",
+                          marginBottom: "-3em",
+                          
+                      }}
+                  >
+                     {this.state.countryError}
+                  </p>
                     </div>
                 </div>
                 <div style={{height:"55px"}}></div>
@@ -441,16 +441,16 @@ export default class Customer extends Component {
                         disabled={this.props.disableform}
                         />
                         <p
-                                    style={{
-                                        color: "red",
-                                        fontSize: "12px",
-                                        marginTop: "1%",
-                                        marginBottom: "-3em",
-                                        
-                                    }}
-                                >
-                                    {this.state.emailError}
-                                </p>
+                            style={{
+                              color: "red",
+                              fontSize: "12px",
+                              marginTop: "1%",
+                              marginBottom: "-3em",
+                              
+                          }}
+                      >
+                          {this.state.emailError}
+                      </p>
                     </div>
                 </div>
                 <div style={{height:"30px"}}></div>
@@ -481,7 +481,7 @@ export default class Customer extends Component {
                     </FormControl>
                     </div>
                     <div>
-                        {this.displayButton()}
+                       {this.displayButton()}
                     </div>
                 </div>
                 </div>

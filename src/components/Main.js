@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 import '../css/BookCard.css';
 import '../css/Main.css';
