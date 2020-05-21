@@ -58,7 +58,19 @@ export default class ShoppingCart extends React.Component{
     }
     handleRemove(object){
         let items=this.state.cartItem;
-        items=items.filter(x=> x.isbn!==object.isbn);
+        if(object.quantity>1){
+            for(var i=0;i<items.length;i++){
+                if(items[i].isbn===object.isbn){
+                    items[i].quantity-=1;
+                }
+            }
+        }
+        else{
+            items=items.filter(x=> x.isbn!==object.isbn);
+            let number=localStorage.getItem("count");
+            number-=1;
+            localStorage.setItem("count",JSON.stringify(number));
+        }
         localStorage.setItem("bookData",JSON.stringify(items));
         this.setState({
             cartItem:JSON.parse(localStorage.getItem("bookData"))
