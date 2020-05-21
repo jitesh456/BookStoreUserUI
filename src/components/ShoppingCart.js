@@ -57,11 +57,7 @@ export default class ShoppingCart extends React.Component{
         })
     }
     handleRemove(object){
-        // this.state.cartItem = this.state.cartItem.filter(function(item) {
-        //     return item !== e;
-        // })
-        // console.log(this.state.cartItem);
-        console.log(object);
+        
     }
 
     handleEditCustomer=(e)=>{
@@ -121,7 +117,7 @@ export default class ShoppingCart extends React.Component{
             if(this.state.itemquantity>4){
                 increase=<AddCircleOutlineIcon disabled={true}/>
             }
-            
+                       
         let book=this.state.cartItem.map(item=>{
             return (
             <div style={{height:"fit-content",paddingBottom:"40px"}}>
@@ -161,6 +157,7 @@ export default class ShoppingCart extends React.Component{
             </div>
             );
         });
+    
 
         const   im=<div className="shopping_cart">
             <header className="app_header">
@@ -182,7 +179,7 @@ export default class ShoppingCart extends React.Component{
 
             <div className="cart_content">
             <div className="cart" >
-                <p><b>My Cart ( {JSON.parse(localStorage.getItem("bookData")).length} )</b></p>
+                <p><b>My Cart( {this.state.cartItem.length } )</b></p>
                 <Card className="shoppingcart_details" style={{height:"342px"}}>
                     <div style={{height:"fit-content",overflowY:"scroll"}}>
                         {book}
@@ -236,7 +233,43 @@ export default class ShoppingCart extends React.Component{
                 </div>
                 </footer>
         </div>
-        
-        return( im );
+
+        if(this.state.cartItem.length==0){
+            return(
+                <div className="shopping_cart">
+                <header className="app_header">
+                    <div className="admin_header">
+                        <img src={booklogo} alt="asd" className="bk_image" />
+                        <span className="admin">BB Store</span>  
+                    </div >
+                    <div className="search">
+                    <div className="searchIcon" >
+                    <SearchIcon/>
+                    </div>
+                    <InputBase
+                        placeholder=" Search"
+                        disabled="true"
+                        onChange={this.handleTextChange}
+                    />
+                  </div>
+            </header>
+
+            <div className="cart_content">
+            <div className="cart" >
+            <h1> Please Add book Into Cart</h1>
+            </div>
+            </div>
+            <footer className='app_footer'>
+            <div className='admin_footer'>
+                        <p> © Online Book Store.All Rights Reserved.</p>
+                </div>
+                </footer>
+        </div>
+            )
+        }
+        else
+        {
+            return(  im );
+        }    
     }
 }

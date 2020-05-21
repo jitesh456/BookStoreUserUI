@@ -7,8 +7,7 @@ import { withStyles } from "@material-ui/core/styles";
 import Tooltip from "@material-ui/core/Tooltip";
 import Typography from "@material-ui/core/Typography";
 import MuiCardContent from "@material-ui/core/CardContent";
-
-
+import history from './history';
 
 const HtmlTooltip = withStyles((theme) => ({
     tooltip: {
@@ -66,6 +65,7 @@ export default class BookCard extends Component {
         if( bookName!==null && bookName.includes(this.props.bookDetails.name)){
             return(
                     <Button  type="submit" name="addButton" variant="contained" onClick={()=>{
+                    history.push('/cart')
                     this.setState({
                         count:1
                     })

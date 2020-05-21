@@ -53,6 +53,7 @@
     background-color: white;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     overflow-y: scroll;
     
 }
@@ -139,6 +140,7 @@
 }
 
 .cart{
+    
     border: 1px solid white;
     margin-top: 2%;
     width: 77%;

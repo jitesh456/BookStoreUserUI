@@ -21,7 +21,7 @@ export default class Main extends Component {
         super(props);
         this.state = {
             offset: 0,
-            perPage: 10,
+            perPage: 8,
             currentPage: 0,
             search:'',
             booklist: [ ],
