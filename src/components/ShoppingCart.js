@@ -57,7 +57,12 @@ export default class ShoppingCart extends React.Component{
         })
     }
     handleRemove(object){
-        
+        let items=this.state.cartItem;
+        items=items.filter(x=> x.isbn!==object.isbn);
+        localStorage.setItem("bookData",JSON.stringify(items));
+        this.setState({
+            cartItem:JSON.parse(localStorage.getItem("bookData"))
+        });  
     }
 
     handleEditCustomer=(e)=>{
