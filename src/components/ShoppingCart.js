@@ -58,19 +58,10 @@ export default class ShoppingCart extends React.Component{
     }
     handleRemove(object){
         let items=this.state.cartItem;
-        if(object.quantity>1){
-            for(var i=0;i<items.length;i++){
-                if(items[i].isbn===object.isbn){
-                    items[i].quantity-=1;
-                }
-            }
-        }
-        else{
-            items=items.filter(x=> x.isbn!==object.isbn);
-            let number=localStorage.getItem("count");
-            number-=1;
-            localStorage.setItem("count",JSON.stringify(number));
-        }
+        let number=localStorage.getItem("count");
+        items=items.filter(x=> x.isbn!==object.isbn);
+        number-=1;
+        localStorage.setItem("count",JSON.stringify(number));
         localStorage.setItem("bookData",JSON.stringify(items));
         this.setState({
             cartItem:JSON.parse(localStorage.getItem("bookData"))
@@ -108,6 +99,7 @@ export default class ShoppingCart extends React.Component{
     }
 
     handlePlus=(e)=>{
+
         this.setState({
             itemquantity:e.value+1
         })
@@ -115,6 +107,7 @@ export default class ShoppingCart extends React.Component{
     }
 
     handleMinus=(e)=>{
+        
         this.setState({
             itemquantity:this.state.itemquantity-1
         })
