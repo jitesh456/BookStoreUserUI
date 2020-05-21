@@ -56,11 +56,12 @@ export default class ShoppingCart extends React.Component{
             placebutton:'none'
         })
     }
-    handleRemove=(e)=>{
+    handleRemove(object){
         // this.state.cartItem = this.state.cartItem.filter(function(item) {
         //     return item !== e;
         // })
         // console.log(this.state.cartItem);
+        console.log(object);
     }
 
     handleEditCustomer=(e)=>{
