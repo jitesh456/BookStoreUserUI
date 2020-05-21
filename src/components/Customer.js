@@ -11,7 +11,13 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 
-
+let nameError = '';
+let phoneNumberError = '';
+let pincodeError = '';
+let cityError = '';
+let localityError='';
+let countryError='';
+let emailError = '';
 
 export default class Customer extends Component {
     constructor(props) {
@@ -30,8 +36,9 @@ export default class Customer extends Component {
             emailId: "",
             emailError: "",
             cityError: "",
-            disableForm: false,
+            validateform: false,
             ordersummarybutton:'block'
+
         }
 
         this.handleChange=this.handleChange.bind(this);
@@ -57,13 +64,6 @@ export default class Customer extends Component {
       var localityPattern=/^[A-Za-z0-9]{2,}$/;
       var emailPattern=/^[a-zA-Z]{3,}([-|+|.|_]?[a-zA-Z0-9]+)?[@]{1}[A-Za-z0-9]+[.]{1}[a-zA-Z]{2,4}([.]{1}[a-zA-Z]+)?$/;
 
-      let nameError = '';
-      let phoneNumberError = '';
-      let pincodeError = '';
-      let cityError = '';
-      let localityError='';
-      let countryError='';
-      let emailError = '';
       switch (type) {
   
         case 'name':
@@ -140,7 +140,7 @@ export default class Customer extends Component {
           break;
         case 'emailId':
           if (!emailPattern.test(this.state.emailId)) {
-            emailError = "Enter valid email";
+            emailError = "Enter valid email (eg. example@gmail.com or example876@gmail.com)";
           }
           if (emailPattern.test(this.state.emailId)) {
               emailError = "";
@@ -179,9 +179,14 @@ export default class Customer extends Component {
           cityError: cityError,
           emailError: emailError,
           localityError:localityError,
-          countryError:countryError
+          countryError:countryError,
+          validateform:false
         })
         return false;
+      }else{
+        this.setState({
+          validateform:true
+        })
       }
       return true;
   
@@ -197,8 +202,8 @@ export default class Customer extends Component {
         cityError: '', 
         emailError: '',
         countryError:'',
-        localityError:''
-
+        localityError:'',
+        validateform:false
       });
     }
 
@@ -209,8 +214,8 @@ export default class Customer extends Component {
     }
     
     displayButton(){
-      if(this.state.name!=="" && this.state.phoneNumber!=="" && this.state.pincode!=="" && 
-      this.state.locality!=="" && this.state.emailId!=="" && this.state.address!==null && this.state.city ){
+      if(validateform && this.state.name!=="" && this.state.phoneNumber!=="" && this.state.pincode!=="" && 
+      this.state.locality!=="" && this.state.emailId!=="" && this.state.address!==null && this.state.city!==null ){
         return(
         <Button style={{display:this.props.ordersummary,background:"maroon",color:"white",padding:"8px"}} variant="filled"
         onClick={()=>{ this.props.onClick();}}>Continue</Button>
@@ -218,7 +223,7 @@ export default class Customer extends Component {
       }
         else{
           return(
-            <Button disable="false" style={{display:this.props.ordersummary,background:"silver",color:"white",padding:"8px"}} variant="filled"
+            <Button disabled="true" style={{display:this.props.ordersummary,background:"silver",color:"white",padding:"8px"}} variant="filled"
             >Continue</Button>
             )
         }
@@ -233,7 +238,8 @@ export default class Customer extends Component {
         cityError: '', 
         emailError: '',
         countryError:'',
-        localityError:''
+        localityError:'',
+        validateform:false
       });
     }
 
