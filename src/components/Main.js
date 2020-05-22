@@ -118,12 +118,13 @@ export default class Main extends Component {
             "price":object.price,
             "bookcover":object.bookcover,
             "maxquantity":object.quantity,
-            "quantity":1
+            "quantity":1,
+            "isbn":object.isbn
         }
         this.state.cartItem.push(book); 
         this.state.bookName.push(object.name);
-        this.setState({counter:this.state.cartItem.length})  
-        localStorage.setItem("count",JSON.stringify(this.state.counter+1));
+        this.setState({counter:this.state.cartItem.length}) ;
+        localStorage.setItem("count",JSON.stringify(this.state.counter+1)) ;
         localStorage.setItem("bookName",JSON.stringify(this.state.bookName));
         localStorage.setItem("bookData",JSON.stringify(this.state.cartItem));
         console.log(this.state.cartItem);

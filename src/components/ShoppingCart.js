@@ -58,15 +58,22 @@ export default class ShoppingCart extends React.Component{
     }
     handleRemove(object){
         let items=this.state.cartItem;
-        let number=localStorage.getItem("count");
+        let bookName=localStorage.getItem("bookName");
+        bookName=items.filter(x=> x.name!==object.name).map(y=>y.name);
         items=items.filter(x=> x.isbn!==object.isbn);
+        let number=localStorage.getItem("count");
+
         number-=1;
         localStorage.setItem("count",JSON.stringify(number));
+        
+        localStorage.setItem("bookName",JSON.stringify(bookName));
         localStorage.setItem("bookData",JSON.stringify(items));
+        //localStorage.setItem("bookName",JSON.stringify(object.Name));
         this.setState({
             cartItem:JSON.parse(localStorage.getItem("bookData"))
-        });  
-    }
+        });
+        console.log(items)  ;
+     }
 
     handleEditCustomer=(e)=>{
         this.setState({
@@ -79,7 +86,7 @@ export default class ShoppingCart extends React.Component{
 
     componentDidMount()
     {
-        if(localStorage.getItem("count")!==null)
+        if(localStorage.getItem("bookData")!==null)
         {
         this.setState({
             cartItem:JSON.parse(localStorage.getItem("bookData"))
@@ -157,7 +164,7 @@ export default class ShoppingCart extends React.Component{
                         </div>
                         <div>
                         </div>
-                            <Button style={{padding:"8px",background:"maroon",color:"white"}} onClick={this.handleRemove(item)}>Remove</Button>                        
+                            <Button style={{padding:"8px",background:"maroon",color:"white"}} onClick={()=>{this.handleRemove(item)}}>Remove</Button>                        
                         </div>
                         
                     </div>
@@ -284,4 +291,5 @@ export default class ShoppingCart extends React.Component{
             return(  im );
         }    
     }
+    
 }

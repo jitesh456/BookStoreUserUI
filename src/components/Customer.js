@@ -68,18 +68,18 @@ export default class Customer extends Component {
   
         case 'name':
           if (number.test(this.state.name)) {
-            nameError=nameError.concat(" Only letters allowed");
+            nameError=" Only letters allowed";
           }
           if (this.state.name.length<3 && this.state.name.length>1) {
-              nameError=nameError.concat(" Min 3 characters");
+              nameError=" Min 3 characters";
             }
           if(this.state.name.length===1 && this.state.name===" ")
           {
-              nameError =nameError.concat(" Name should not start with space");
+              nameError =" Name should not start with space";
           }
           if(this.state.name.length===1 && this.state.name!==this.state.name.toUpperCase())
           {
-              nameError =nameError.concat(" First letter must be capital");
+              nameError ="First letter must be capital";
           }
           if (namePattern.test(this.state.name)) {
               nameError="";
@@ -214,8 +214,8 @@ export default class Customer extends Component {
     }
     
     displayButton(){
-      if(validateform && this.state.name!=="" && this.state.phoneNumber!=="" && this.state.pincode!=="" && 
-      this.state.locality!=="" && this.state.emailId!=="" && this.state.address!==null && this.state.city!==null ){
+      if(this.state.validateform && this.state.name!=="" && this.state.phoneNumber!=="" && this.state.pincode!=="" && 
+      this.state.locality!=="" && this.state.emailId!=="" && this.state.address!=="" && this.state.city!=="" ){
         return(
         <Button style={{display:this.props.ordersummary,background:"maroon",color:"white",padding:"8px"}} variant="filled"
         onClick={()=>{ this.props.onClick();}}>Continue</Button>
@@ -487,7 +487,7 @@ export default class Customer extends Component {
                     </FormControl>
                     </div>
                     <div>
-                       {this.displayButton()}
+                   {this.displayButton()}
                     </div>
                 </div>
                 </div>
