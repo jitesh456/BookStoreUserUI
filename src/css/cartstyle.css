@@ -44,33 +44,43 @@
     justify-content:flex-start;
     align-items: center;
     
+    
 }
 
 
 .shoppingcart_details{
+    border: 1px solid silver;
     height:30%;
-    width:100%;
+    width:99%;
     background-color: white;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     overflow-y: scroll;
     
 }
 
 .shoppingcart_image{
-    border: 1px solid black;
+    
     border: none;
-    width:20%;
+    width:17%;
     display:flex;
     flex-direction:column;
     justify-content: center;
     align-items: center;
+    padding-left: 2.5%;
+}
+.book_details{
+    height: fit-content;
+    overflow-y: scroll;
 }
 
+.book_details::-webkit-scrollbar{
+    display: none;
+    width: 0;
+}
 .shopped_image{
-    width:100px;
-    height:150px;
+    width:105px;
+    height:135px;
 }
 
 .add_ons{
@@ -87,8 +97,8 @@
 }
 
 .shopped_book_name{
-    font-size: 80%;
-    font-weight: bold;
+    font-size: 14px;
+    
 }
 
 .shopped_book_author{
@@ -102,8 +112,7 @@
 }
 
 .customer_button{
-    border:1px solid black;
-    border: none;
+    
     margin-bottom: 2%;
     margin-right: 2%;
     display:flex;
@@ -120,9 +129,10 @@
 }
 
 .customer_detail{
-    width:100%;
+    width:99%;
     height:auto;
     background-color: white;
+    border: 1px solid silver;
 }
 
 .customer_header{
@@ -131,7 +141,7 @@
     height:10%;
     display: flex;
     font-size:10px;
-    font-weight:bold;
+    
 }
 
 .cart_content{

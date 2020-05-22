@@ -246,7 +246,7 @@ export default class Customer extends Component {
     render() {
         let im=[]
         if(this.props.show) {                 
-        im=<div style={{height:"20%",width:"100%",paddingLeft:"2%"}}>
+        im=<div style={{height:"20%",width:"100%",paddingLeft:"2%",marginTop:"5px"}}>
                 <div>
                 <div style={{display:"flex"}}>
                     <div style={{width:"40%",height:"0px"}}>
@@ -459,7 +459,7 @@ export default class Customer extends Component {
                       </p>
                     </div>
                 </div>
-                <div style={{height:"30px"}}></div>
+                <div style={{height:"10px"}}></div>
                 
                 <div style={{width:"800px",display:"flex",justifyContent:"flex-end",paddingBottom:"2%",marginRight:"5%"}}>
                     <div style={{width:"800px"}}>
@@ -486,7 +486,7 @@ export default class Customer extends Component {
                         </RadioGroup>
                     </FormControl>
                     </div>
-                    <div>
+                    <div style={{display:"block"}}>
                    {this.displayButton()}
                     </div>
                 </div>

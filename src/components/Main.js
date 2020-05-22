@@ -13,8 +13,23 @@ import InputLabel from '@material-ui/core/InputLabel';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
+import { createMuiTheme } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
+import { purple } from '@material-ui/core/colors';
 
-
+const theme = createMuiTheme({
+    palette: {
+      primary: {
+        // Purple and green play nicely together.
+        main: purple[500],
+      },
+      secondary: {
+        // This is green.A700 as hex.
+        main: '#B0002A',
+      
+      },
+    },
+  });
 export default class Main extends Component {
     constructor(props) {
         super(props);
@@ -201,7 +216,8 @@ export default class Main extends Component {
                                     <h2>Books <span className="count"> ({this.state.count} items)</span></h2>
                                 </div>
                                 <div className="book_sort">
-                                        <FormControl variant="outlined"  >
+                                    <ThemeProvider>
+                                        <FormControl variant="outlined" color="secondary" >
                                         <InputLabel id="demo-simple-select-outlined-label" ></InputLabel>
                                         <Select
                                             labelId="demo-simple-select-outlined-label"
@@ -218,6 +234,7 @@ export default class Main extends Component {
                                         <MenuItem value="category">Category(A-Z)</MenuItem>
                                         </Select>
                                     </FormControl>
+                                    </ThemeProvider>
                                 </div>
                             </div> 
                         </div>

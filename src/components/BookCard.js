@@ -9,18 +9,20 @@ import Typography from "@material-ui/core/Typography";
 import MuiCardContent from "@material-ui/core/CardContent";
 import history from './history';
 
-const HtmlTooltip = withStyles((theme) => ({
+const ImageToolTip = withStyles((theme) => ({
     tooltip: {
-      backgroundColor: '#f5f5f9',
+      backgroundColor: 'lightgrey',
+      
       color: 'rgba(0, 0, 0, 0.87)',
-      maxWidth: 240,
-      marginLeft:53,
+      maxWidth: 265,
+      
       fontSize: theme.typography.pxToRem(12),
       border: '1px solid #dadde9',
-      marginTop:-20
+      
 
     },
   }))(Tooltip);
+    
 
 const NestedCardContent = withStyles(theme => ({
     root: {
@@ -44,7 +46,7 @@ export default class BookCard extends Component {
         if (this.props.bookDetails.quantity === 0) {
             return (
                 <figure>
-                    <img src={this.props.bookDetails.bookcover} className="image" alt="" />
+                    <img src={this.props.bookDetails.bookcover} id="imageoutofstock" alt="" />
                     <figcaption>OUT OF STOCK</figcaption>
                 </figure>
             );
@@ -92,22 +94,20 @@ export default class BookCard extends Component {
             <div className="cardofbook" name="cardData"  >
                 <Card className="card"  >
                     <NestedCardContent>
-                        <div className="tooltip_content">        
-                        </div>
-                        <div style={{ width: "100%" }}>
-                            <div id="container" class="book_image">
-                            <HtmlTooltip
-                                title={
-                                    <React.Fragment>
-                                        <Typography color="black"><b>Book Details</b></Typography>
-                                        <p style={{color:"grey"}}>{this.props.bookDetails.bookdetails}</p>
-                                    </React.Fragment>
-                                }
-                                placement="right-start"
-                            >
-                                { this.displayImage()}
-                                </HtmlTooltip>
-                            </div>                         
+                        <div >                            
+                                <ImageToolTip
+                                        title={
+                                            <React.Fragment>
+                                                <Typography color="black"><b>Book Details</b></Typography>
+                                                <p style={{color:"black"}}>{this.props.bookDetails.bookdetails}</p>
+                                            </React.Fragment>
+                                        }
+                                        placement="right-start"
+                                    >
+                                    <div id="bookimage">
+                                        { this.displayImage()}
+                                    </div>                         
+                                    </ImageToolTip>              
                             <div className="book_detail">
                                 <span className="book_name">{this.props.bookDetails.name}</span>
                             </div>

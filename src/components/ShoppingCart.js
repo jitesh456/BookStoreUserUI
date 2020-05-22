@@ -91,8 +91,6 @@ export default class ShoppingCart extends React.Component{
         this.setState({
             cartItem:JSON.parse(localStorage.getItem("bookData"))
         });
-        
-        console.log(this.state.cartItem);
         }
     }
 
@@ -105,37 +103,62 @@ export default class ShoppingCart extends React.Component{
         })
     }
 
-    handlePlus=(e)=>{
-
-        this.setState({
-            itemquantity:e.value+1
-        })
-        console.log(this.state.itemquantity);
+    handlePlus=(book)=>{
+        let items=this.state.cartItem;
+        let limit=5;
+        if(book.quantity<book.maxquantity || book.quantity<5 )
+        {
+            for(var i=0;i<items.length;i++){
+                if(items[i].isbn===book.isbn && book.quantity>0){
+                    items[i].quantity+=1;
+                }
+            }
+            localStorage.setItem("bookData",JSON.stringify(items));
+            this.setState({
+                cartItem:items,
+            })
+           
+        }
+        
+        
     }
 
-    handleMinus=(e)=>{
-        
+    handleMinus=(book)=>{
+        let items=this.state.cartItem;
+        let number=localStorage.getItem("count");
+
+        if(book.quantity>1)
+        {
+            for(var i=0;i<items.length;i++){
+            if(items[i].isbn===book.isbn){
+                    items[i].quantity-=1;
+                }
+            }
+
+        }
+
+        localStorage.setItem("bookData",JSON.stringify(items));
         this.setState({
-            itemquantity:this.state.itemquantity-1
+            cartItem:items,
         })
-        console.log(this.state.itemquantity);
     }
 
     render(){
             let increase=[]
             let decrease=[]
-            if (this.state.itemquantity===0){
-                increase=<AddCircleOutlineIcon onClick={this.handlePlus} style={{color:"maroon"}}/>
-                decrease=<RemoveCircleOutlineIcon disabled={true} />
-            }else{
-                increase=<AddCircleOutlineIcon onClick={this.handlePlus} style={{color:"maroon"}}/>
-                decrease=<RemoveCircleOutlineIcon onClick={this.handleMinus} style={{color:"maroon"}}/>
-            }
-            if(this.state.itemquantity>4){
-                increase=<AddCircleOutlineIcon disabled={true}/>
-            }
+            
                        
         let book=this.state.cartItem.map(item=>{
+            if (item.quantity===1){
+                increase=<AddCircleOutlineIcon onClick={()=>{this.handlePlus(item)}} style={{color:"maroon"}}/>
+                decrease=<RemoveCircleOutlineIcon disabled={true} />
+            }else{
+                increase=<AddCircleOutlineIcon onClick={()=>{this.handlePlus(item)}} style={{color:"maroon"}}/>
+                decrease=<RemoveCircleOutlineIcon onClick={()=>{this.handleMinus(item)}} style={{color:"maroon"}}/>
+            }
+            if(item.quantity>4){
+                increase=<AddCircleOutlineIcon disabled={true}/>
+            }
             return (
             <div style={{height:"fit-content",paddingBottom:"40px"}}>
                 <div style={{display:"flex",flexDirection:"row",height:"100px",paddingBottom:"20px"}}>
@@ -154,11 +177,11 @@ export default class ShoppingCart extends React.Component{
                         <div className="shopped_item_quantity">   
 
                         <div style={{display:"flex",width:"100px"}}>           
-                        <RemoveCircleOutlineIcon onClick={this.handleMinus} style={{color:"maroon"}}/>&nbsp;
+                            {decrease}&nbsp;
                         <div style={{textAlign:"center",border:"1px solid silver",width:"28%",height:"25%"}}>
                             <label for="test" >{item.quantity}</label>
                         </div>&nbsp;
-                        <AddCircleOutlineIcon onClick={this.handlePlus} style={{color:"maroon"}}/> 
+                            {increase}
                         </div>
                         <div>
                         </div>
@@ -196,25 +219,26 @@ export default class ShoppingCart extends React.Component{
 
             <div className="cart_content">
             <div className="cart" >
-                <p style={{fontSize:"18px"}}><b>My Cart( {this.state.cartItem.length } )</b></p>
-                <Card className="shoppingcart_details" style={{height:"342px"}}>
-                    <div style={{height:"fit-content",overflowY:"scroll",}}>
+                
+                <div className="shoppingcart_details" style={{height:"342px"}}>
+                    <span style={{fontSize:"18px",marginTop:"3%",marginLeft:"2.5%"}}><b>My Cart( {this.state.cartItem.length } )</b></span>
+                    <div className="book_details">
                         {book}
                     <div className="customer_button">
                         <Button style={{display:this.state.placebutton,padding:"8px",background:"maroon",color:"white"}} variant="contained" 
                         onClick={this.handleCustomer}>Place Order</Button>
                     </div>
                     </div>
-                </Card>
+                </div>
                 <div style={{height:"2%"}}></div>
             
                 <div style={{width:"100%",height:"auto"}}>
                 <ThemeProvider theme={theme} >
 
-                    <Card color="secondary" className="customer_detail">
+                    < div color="secondary" className="customer_detail">
                         <div className="customer_header">
-                            <div style={{fontSize:"20px",width:"87%",height:"50px"}}>Customer Details</div>
-                            <div><Button style={{margin:"5%",padding:"8px",display:this.state.editbutton,background:"maroon",color:"white"}} variant="contained" 
+                            <div style={{fontSize:"15px",width:"87%",paddingBottom:"10px" ,paddingTop:"10px"}}>Customer Details</div>
+                            <div><Button style={{margin:"5%",padding:"3px",display:this.state.editbutton,background:"maroon",color:"white"}} variant="contained" 
                      onClick={this.handleEditCustomer}>Edit</Button></div>
                         </div>
                         <div className="customer_info">
@@ -225,15 +249,15 @@ export default class ShoppingCart extends React.Component{
                                 onClick={this.handleCustomerSummary}/>
                             </div>
                         </div>
-                    </Card>
+                    </div>
                     </ThemeProvider>
                 </div>
                 <div style={{height:"2%"}}></div>
 
                 <div style={{width:"100%",height:"auto"}}>
-                    <Card className="customer_detail">
+                    <div className="customer_detail">
                         <div className="customer_header">
-                            <span style={{fontSize:"20px"}}>Order Summary</span>
+                            <span style={{fontSize:"15px",paddingBottom:"10px" ,paddingTop:"10px"}}>Order Summary</span>
                         </div>
                         <div className="customer_info">
                             <div className="customer_info_detail">
@@ -242,7 +266,7 @@ export default class ShoppingCart extends React.Component{
                                 />
                             </div>
                         </div>
-                    </Card>
+                    </div>
                 </div>
             </div>
             </div>
