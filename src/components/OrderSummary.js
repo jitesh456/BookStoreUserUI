@@ -5,13 +5,18 @@ export default class OrderSummary extends React.Component{
     constructor(props){
         super(props);
         this.handleConfirmation=this.handleConfirmation.bind(this);
+        this.state={
+            totalPrice:0,
+        }
     }
 
     handleConfirmation=(e)=>{
     }
 
     render(){
+        let calPrice=0;
         let book=this.props.cartItem.map(item=>{
+            calPrice+=item.price*item.quantity;
             return (
             <div style={{height:"fit-content",paddingBottom:"40px"}}>
                 <div style={{display:"flex",flexDirection:"row",height:"100px",paddingBottom:"20px"}}>
@@ -28,22 +33,24 @@ export default class OrderSummary extends React.Component{
                         <div style={{height:"5%"}}></div>
                         <span className="shopped_book_price">RS. {item.price}</span>
                         <div style={{height:"5%"}}></div>
-                        <span className="">{item.quantity}</span>
+                        <span className="">Quantity: {item.quantity}</span>
                     </div>
                    
                 </div>
             </div>
             );
         });
+       
         let im=[]
         if(this.props.show)
         {
             im=
             
             <div>
-                <div>
+                <div style={{height:"300px",overflowY:"scroll"}}>
                     {book}
                 </div>
+                <p style={{paddingLeft:"175px",fontSize:"15px"}}><b>Total Price:</b> RS {calPrice}</p>
                 <div style={{height:"auto",display:"flex",justifyContent:"flex-end"}}>
                     <Button style={{background:"maroon",color:"white",padding:"8px"}} variant="contained" 
                         onClick={this.handleConfirmation}>Confirm</Button>

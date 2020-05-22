@@ -246,7 +246,7 @@ export default class Customer extends Component {
     render() {
         let im=[]
         if(this.props.show) {                 
-        im=<div style={{height:"20%",width:"100%",paddingLeft:"2%",marginTop:"5px"}}>
+        im=<div style={{height:"20%",width:"99%",paddingLeft:"2%",marginTop:"5px"}}>
                 <div>
                 <div style={{display:"flex"}}>
                     <div style={{width:"40%",height:"0px"}}>
