@@ -167,7 +167,7 @@ export default class ShoppingCart extends React.Component{
                             <img src={item.bookcover} alt="" className="shopped_image"/>
                         </div>
                     </div>
-                    <div style={{display:"flex",flexDirection:"column",paddingTop:"40px",justifyContent:"flex-start",height:"200px"}}>
+                    <div style={{display:"flex",flexDirection:"column",paddingTop:"11px",justifyContent:"flex-start",height:"225px",paddingLeft:"1%"}}>
 
                         <span className="shopped_book_name">{item.name}</span>
                         <div style={{height:"5%"}}></div>
