@@ -60,7 +60,7 @@ export default class Customer extends Component {
       var name = /[a-zA-Z]{1,}$/;
       var number = /[0-9]{1,}$/;
       var pincodePattern=/^[0-9]{6}$|^[0-9]{3}\\s{1}[0-9]{3}$/;
-      var cityPattern=/[A-Z][a-z]{2,}$/;
+      var cityPattern=/[A-Z]{1}[A-Za-z]{2,}$/;
       var localityPattern=/^[A-Za-z0-9]{2,}$/;
       var emailPattern=/^[a-zA-Z]{3,}([-|+|.|_]?[a-zA-Z0-9]+)?[@]{1}[A-Za-z0-9]+[.]{1}[a-zA-Z]{2,4}([.]{1}[a-zA-Z]+)?$/;
 
@@ -73,11 +73,11 @@ export default class Customer extends Component {
           if (this.state.name.length<3 && this.state.name.length>1) {
               nameError=" Min 3 characters";
             }
-          if(this.state.name.length===1 && this.state.name===" ")
+          if( this.state.name.slice(0,1)===" ")
           {
               nameError =" Name should not start with space";
           }
-          if(this.state.name.length===1 && this.state.name!==this.state.name.toUpperCase())
+          if(this.state.name.slice(0,1)!==this.state.name.slice(0,1).toUpperCase())
           {
               nameError ="First letter must be capital";
           }
@@ -86,15 +86,18 @@ export default class Customer extends Component {
             }
           break;
         case 'pincode':
-          if (this.state.pincode.length===1 && this.state.pincode===" " ) {
+          if ( this.state.pincode.slice(0,1)===" " ) {
               pincodeError = " Pincode should not start with space";
+          }
+          else{
+            if (!pincodePattern.test(this.state.pincode) && this.state.pincode.length>1) {
+              pincodeError = " Pincode must be of 6 digits";
+            }
           }
           if (this.state.pincode.length===1 && this.state.pincode==='0' ) {
               pincodeError = " Pincode should not start with zero";
             }
-          if (!pincodePattern.test(this.state.pincode) && this.state.pincode.length>1) {
-            pincodeError = " Pincode must be of 6 digits";
-          }
+          
           if (pincodePattern.test(this.state.pincode)) {
               pincodeError = "";
             }
@@ -104,14 +107,14 @@ export default class Customer extends Component {
             if (this.state.phoneNumber==='0' && this.state.phoneNumber.length===1) {
               phoneNumberError = " Number should not start with zero";
             }
-            if (this.state.phoneNumber<7 && this.state.phoneNumber.length>=1) {
+            if (this.state.phoneNumber.slice(0,1)<7) {
               phoneNumberError = " Number should start with 7,8 or 9";
             }else{
               if (this.state.phoneNumber.length<10 && this.state.phoneNumber.length>0) {
-                  phoneNumberError = " Invalid number";
+                  phoneNumberError = " Number must be of 10 digits";
                 }
             }
-            if (this.state.phoneNumber.length>10) {
+            if (this.state.phoneNumber.length>9) {
               phoneNumberError = " Number must be of 10 digits";
             }    
           if (name.test(this.state.phoneNumber) && this.state.phoneNumber.length>0) {
@@ -120,16 +123,23 @@ export default class Customer extends Component {
           if (this.state.phoneNumber===" " && this.state.phoneNumber.length===1) {
               phoneNumberError = " Number should not start with space";
             }
-            if (phonePattern.test(this.state.phoneNumber) && this.state.phoneNumber.length>0) {
+            if (phonePattern.test(this.state.phoneNumber) && this.state.phoneNumber.length===10) {
               phoneNumberError = "";
             }
           break;
         case 'city':
-          if (number.test(this.state.city)) {
+            if (number.test(this.state.city)) {
               cityError=" Only letters allowed";
             }  
-            if (this.state.city===" " && this.state.city.length===1) {
+            if (this.state.city.slice(0,1)===" ") {
               cityError = "City name should not start with space";
+            }
+            else
+            {
+              if (this.state.city.slice(0,1)===this.state.city.slice(0,1).toUpperCase()) {
+                cityError = "First letter must be capital";
+              }
+  
             }
             if (!cityPattern.test(this.state.city) && this.state.city.length>1) {
             cityError = "Enter valid city name";
@@ -160,7 +170,7 @@ export default class Customer extends Component {
           break;
       case 'country':
           if (!namePattern.test(this.state.country) && this.state.country.length>1) {
-              countryError = "Enter valid country name";
+              countryError = "Only Letter is Allowed";
               }
           if (name.test(this.state.country)) {
               countryError = "";
@@ -461,7 +471,7 @@ export default class Customer extends Component {
                 </div>
                 <div style={{height:"10px"}}></div>
                 
-                <div style={{width:"800px",display:"flex",justifyContent:"flex-end",paddingBottom:"2%",marginRight:"5%"}}>
+                <div style={{width:"95%",display:"flex",justifyContent:"flex-end",paddingBottom:"2%",marginRight:"5%"}}>
                     <div style={{width:"800px"}}>
                     <FormControl component="fieldset">
                         <FormLabel  color="secondary" component="legend">Type</FormLabel>

@@ -11,15 +11,9 @@ import history from './history';
 
 const ImageToolTip = withStyles((theme) => ({
     tooltip: {
-      backgroundColor: 'lightgrey',
-      
-      color: 'rgba(0, 0, 0, 0.87)',
+      color: 'FCF2F2',
       maxWidth: 265,
-      
       fontSize: theme.typography.pxToRem(12),
-      border: '1px solid #dadde9',
-      
-
     },
   }))(Tooltip);
     
@@ -71,7 +65,7 @@ export default class BookCard extends Component {
                     this.setState({
                         count:1
                     })
-                }} disabled={ !this.props.bookDetails.quantity} size="50%" style={{ width:"90%", backgroundColor:'blue', color: "white" }} >ADDED TO CART</Button>
+                }} disabled={ !this.props.bookDetails.quantity} size="50%" style={{ width:"90%", backgroundColor:'#DC143C', color: "white" }} >GO TO CART</Button>
             );
         }
          else {
@@ -98,8 +92,8 @@ export default class BookCard extends Component {
                                 <ImageToolTip
                                         title={
                                             <React.Fragment>
-                                                <Typography color="black"><b>Book Details</b></Typography>
-                                                <p style={{color:"black"}}>{this.props.bookDetails.bookdetails}</p>
+                                                <Typography ><b>Book Details</b></Typography>
+                                                <p>{this.props.bookDetails.bookdetails}</p>
                                             </React.Fragment>
                                         }
                                         placement="right-start"

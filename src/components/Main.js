@@ -4,19 +4,20 @@ import '../css/Main.css';
 import '../css/Pagination.css';
 import BookCard from "./BookCard";
 import booklogo from '../booklogo.png';
-import ReactPaginate from 'react-paginate';
+// import ReactPaginate from 'react-paginate';
 import Service from '../service/Service';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+
 import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 import { purple } from '@material-ui/core/colors';
-
+import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
+import Pagination from '@material-ui/lab/Pagination';
 const theme = createMuiTheme({
     palette: {
       primary: {
@@ -42,11 +43,11 @@ export default class Main extends Component {
             bookName:[],
             price: '',
             bookDetails: '',
-            count:0,
             sorting:'',
             input:'',
             cartItem:[],
             counter:0
+            
         }
         this.handleTextChange=this.handleTextChange.bind(this)
         this.handlePageClick = this.handlePageClick.bind(this);
@@ -73,8 +74,7 @@ export default class Main extends Component {
             bookName:JSON.parse(localStorage.getItem("bookName"))
         });
         
-        }
-       
+        }   
     }
 
     sortedData(input){
@@ -113,9 +113,9 @@ export default class Main extends Component {
 
     }
 
-    handlePageClick = (e) => {
-        const selectedPage = e.selected;
-        const offset = selectedPage * this.state.perPage;
+    handlePageClick = (e,page) => {
+        const selectedPage = page;
+        const offset = selectedPage * this.state.perPage/2;
 
         this.setState({
             currentPage: selectedPage,
@@ -123,6 +123,8 @@ export default class Main extends Component {
         },()=>{
             this.state.input.length>0?this.filterData():this.receivedData();
         } );
+        console.log(page);
+        console.log(offset);
         
     }
     handleAddCart(object)
@@ -182,6 +184,10 @@ export default class Main extends Component {
         this.sortedData(event.target.value)
         }
 
+        onPageChange(pageIndex) {
+            alert(pageIndex);
+         }
+
     render() {
         return (
             <div >
@@ -201,13 +207,16 @@ export default class Main extends Component {
                     />
                     
                   </div>
-                  <div style={{marginLeft:"15%",marginTop:"1%"}}>
-                  
-                    <a style={{color:"white"}} link href="/cart">
-                        <ShoppingCartIcon shoppingitem={this.state.cartItem}/>
-                    </a>
-                    {this.state.counter}
+                    <div className="shoppingcart">
+                    <div className="shooping_carticon" >
+                        <a  href="/cart">
+                            <ShoppingCartOutlinedIcon  style={{color:"white"}}/>
+                        </a>
                     </div>
+                    <div className="cart_itemcount">
+                      {this.state.counter}
+                    </div>  
+                </div>
                 </header>              
                     <div className="main">
                         <div className="book_cont">
@@ -226,9 +235,9 @@ export default class Main extends Component {
                                             name="sorting"
                                             placeholder="Sort By"
                                             className="card_content"
-                                            defaultValue="None"
+                                            defaultValue="category"
                                         >
-                                        <MenuItem value="None"><em>None</em></MenuItem>
+                                        
                                         <MenuItem value="authorname">Authorname(A-Z)</MenuItem>
                                         <MenuItem value="price">Price:Low to High</MenuItem>
                                         <MenuItem value="category">Category(A-Z)</MenuItem>
@@ -246,10 +255,11 @@ export default class Main extends Component {
                     </div>
                 <footer className='app_footer'>
                 <div className="pagination">
-                <ReactPaginate
+                {/* <ReactPaginate
                     previousLabel={"prev"}
                     nextLabel={"next"}
                     breakLabel={"..."}
+                    disabledClassName={"disabled"}
                     breakClassName={"break-me"}
                     pageCount={this.state.pageCount}
                     marginPagesDisplayed={2}
@@ -258,7 +268,16 @@ export default class Main extends Component {
                     containerClassName={"pagination"}
                     subContainerClassName={"pages pagination"}
                     activeClassName={"active"}                                    
-                />
+                /> */}
+                <Pagination  
+                activePage={this.state.currentPage}
+
+                itemsCountPerPage={this.state.perPage}
+       
+                count={this.state.pageCount}
+       
+                onChange={this.handlePageClick}
+                 ariant="outlined" shape="rounded" />
                 </div>            
                 <div className='admin_footer'>
                         <p> © Online Book Store.All Rights Reserved.</p>

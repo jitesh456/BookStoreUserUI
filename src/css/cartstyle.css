@@ -6,6 +6,12 @@
 .div_success_image{
     height:70%;
 }
+.shopping_cart {
+    display: flex;
+    flex-direction: column;
+
+    
+}
 
 .main_body{
     border:1px solid black;
@@ -22,6 +28,8 @@
     height:5%;
     width: 100%;
     color:maroon;
+    position: sticky;
+    top:0
 }
 
 .div_body{
@@ -36,22 +44,11 @@
     color:maroon;
 }
 
-.shopping_cart{
-    height:100%;
-    width:100%;
-    display:flex;
-    flex-direction: column;
-    justify-content:flex-start;
-    align-items: center;
-    
-    
-}
-
-
 .shoppingcart_details{
     border: 1px solid silver;
-    height:30%;
+    max-height:82%;
     width:99%;
+    
     background-color: white;
     display: flex;
     flex-direction: column;
@@ -113,8 +110,9 @@
 
 .customer_button{
     
-    margin-bottom: 2%;
-    margin-right: 2%;
+    margin-Top: 3%;
+    margin-bottom: 4%;
+    margin-right: 5%;
     display:flex;
     padding-left: 400px;
     justify-content: flex-end;
@@ -154,8 +152,9 @@
     
     border: 1px solid white;
     margin-top: 2%;
+    min-height: 620px;
     width: 77%;
-    height: 611px;
+    margin-left: 11%;
     align-items: center;
     overflow-y: scroll;
 

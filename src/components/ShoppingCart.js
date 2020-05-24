@@ -3,14 +3,15 @@ import Button from '@material-ui/core/Button';
 import booklogo from '../booklogo.png';
 import Customer from './Customer';
 import OrderSummary from './OrderSummary';
-import Card from '@material-ui/core/Card';
 import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
 import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
- import { createMuiTheme } from '@material-ui/core/styles';
+import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 import { purple } from '@material-ui/core/colors';
+import Tooltip from "@material-ui/core/Tooltip";
+import HomeIcon from '@material-ui/icons/Home';
 
 
 
@@ -118,9 +119,7 @@ export default class ShoppingCart extends React.Component{
                 cartItem:items,
             })
            
-        }
-        
-        
+        }     
     }
 
     handleMinus=(book)=>{
@@ -167,13 +166,13 @@ export default class ShoppingCart extends React.Component{
                             <img src={item.bookcover} alt="" className="shopped_image"/>
                         </div>
                     </div>
-                    <div style={{display:"flex",flexDirection:"column",paddingTop:"11px",justifyContent:"flex-start",height:"225px",paddingLeft:"1%"}}>
+                    <div style={{display:"flex",flexDirection:"column",paddingTop:"20px",width:"60%",justifyContent:"flex-start",height:"200px",paddingLeft:"1%"}}>
 
                         <span className="shopped_book_name">{item.name}</span>
                         <div style={{height:"5%"}}></div>
                         <span className="shopped_book_author">{item.authorname}</span>
                         <div style={{height:"5%"}}></div>
-                        <span className="shopped_book_price">RS. {item.price}</span>
+                        <span className="shopped_book_price">RS.{item.price*item.quantity}</span>
                         <div className="shopped_item_quantity">   
 
                         <div style={{display:"flex",width:"100px"}}>           
@@ -205,33 +204,27 @@ export default class ShoppingCart extends React.Component{
                         <img src={booklogo} alt="asd" className="bk_image" />
                         <span className="admin">BB Store</span>  
                     </div >
-                    <div className="search">
-                    <div className="searchIcon" >
-                    <SearchIcon/>
-                    </div>
-                    <InputBase
-                        placeholder=" Search"
-                        disabled="true"
-                        onChange={this.handleTextChange}
-                    />
-                  </div>
+                    <div style={{ display:"flex",width:"60%",marginTop:"1%",justifyContent:"flex-end"}}>
+                        <a href="/"><Tooltip  title="Go To Home" ><HomeIcon style={{color:"white"}}/></Tooltip></a>
+                    </div>    
+                    
             </header>
 
             <div className="cart_content">
             <div className="cart" >
                 
-                <div className="shoppingcart_details" style={{height:"342px"}}>
-                    <span style={{fontSize:"18px",marginTop:"3%",marginLeft:"2.5%"}}><b>My Cart( {this.state.cartItem.length } )</b></span>
+                <div className="shoppingcart_details">
+                    <span style={{fontSize:"18px",marginTop:"2%",marginLeft:"2.5%",marginBottom:"2%"}}><b>My Cart( {this.state.cartItem.length } )</b></span>
                     <div className="book_details">
                         {book}
+                    </div>
                     <div className="customer_button">
                         <Button style={{display:this.state.placebutton,padding:"8px",background:"maroon",color:"white"}} variant="contained" 
-                        onClick={this.handleCustomer}>Place Order</Button>
-                    </div>
-                    </div>
+                        onClick={this.handleCustomer}>Continue</Button>
                 </div>
-                <div style={{height:"2%"}}></div>
-            
+                </div>
+                <div style={{height:"25px"}}></div>
+               
                 <div style={{width:"100%",height:"auto"}}>
                 <ThemeProvider theme={theme} >
 
@@ -252,7 +245,7 @@ export default class ShoppingCart extends React.Component{
                     </div>
                     </ThemeProvider>
                 </div>
-                <div style={{height:"2%"}}></div>
+                <div style={{height:"25px"}}></div>
 
                 <div style={{width:"100%",height:"auto"}}>
                     <div className="customer_detail">
