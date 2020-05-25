@@ -11,6 +11,7 @@ import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 import { purple } from '@material-ui/core/colors';
 import Tooltip from "@material-ui/core/Tooltip";
+
 import HomeIcon from '@material-ui/icons/Home';
 
 
@@ -197,7 +198,6 @@ export default class ShoppingCart extends React.Component{
             );
         });
     
-
         const   im=<div className="shopping_cart">
             <header className="app_header">
                     <div className="admin_header">
@@ -205,7 +205,7 @@ export default class ShoppingCart extends React.Component{
                         <span className="admin">BB Store</span>  
                     </div >
                     <div style={{ display:"flex",width:"60%",marginTop:"1%",justifyContent:"flex-end"}}>
-                        <a href="/"><Tooltip  title="Go To Home" ><HomeIcon style={{color:"white"}}/></Tooltip></a>
+                        <a href="/"><Tooltip  title="Go To Home" ><HomeIcon style={{color:"white",cursor:"pointer"}}/></Tooltip></a>
                     </div>    
                     
             </header>
@@ -273,7 +273,7 @@ export default class ShoppingCart extends React.Component{
         if(this.state.cartItem.length==0){
             return(
                 <div className="shopping_cart">
-                <header className="app_header">
+                <header className="header">
                     <div className="admin_header">
                         <img src={booklogo} alt="asd" className="bk_image" />
                         <span className="admin">BB Store</span>  

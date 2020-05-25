@@ -4,7 +4,6 @@ import '../css/Main.css';
 import '../css/Pagination.css';
 import BookCard from "./BookCard";
 import booklogo from '../booklogo.png';
-// import ReactPaginate from 'react-paginate';
 import Service from '../service/Service';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
@@ -255,29 +254,15 @@ export default class Main extends Component {
                     </div>
                 <footer className='app_footer'>
                 <div className="pagination">
-                {/* <ReactPaginate
-                    previousLabel={"prev"}
-                    nextLabel={"next"}
-                    breakLabel={"..."}
-                    disabledClassName={"disabled"}
-                    breakClassName={"break-me"}
-                    pageCount={this.state.pageCount}
-                    marginPagesDisplayed={2}
-                    pageRangeDisplayed={5}
-                    onPageChange={this.handlePageClick}
-                    containerClassName={"pagination"}
-                    subContainerClassName={"pages pagination"}
-                    activeClassName={"active"}                                    
-                /> */}
-                <Pagination  
-                activePage={this.state.currentPage}
+                    <Pagination  
+                    activePage={this.state.currentPage}
 
-                itemsCountPerPage={this.state.perPage}
-       
-                count={this.state.pageCount}
-       
-                onChange={this.handlePageClick}
-                 ariant="outlined" shape="rounded" />
+                    itemsCountPerPage={this.state.perPage}
+        
+                    count={this.state.pageCount}
+        
+                    onChange={this.handlePageClick}
+                    ariant="outlined" shape="rounded" />
                 </div>            
                 <div className='admin_footer'>
                         <p> © Online Book Store.All Rights Reserved.</p>

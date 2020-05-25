@@ -23,13 +23,12 @@
 }
 
 .header{
-    border:1px solid green;
-    background-color:orange;
+    
     height:5%;
     width: 100%;
     color:maroon;
-    position: sticky;
-    top:0
+    /* position: sticky;
+    top:0 */
 }
 
 .div_body{

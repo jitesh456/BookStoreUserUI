@@ -15,6 +15,10 @@ class DataService {
     return axios.get(`${BASIC_API_URL}/books/field`,{params:{field:sortingValue}});
   }
 
+  sendMail = (data) => {
+    return axios.post(`${BASIC_API_URL}/mail`,data );
+}
+
 
 }
 export default new DataService()

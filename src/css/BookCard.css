@@ -76,9 +76,9 @@ div::hover{
 }
 
 .button:disabled{
-border: 1px solid #999999;
-background-color: #cccccc;
-color: #666666;
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
 }
 
 figure {
@@ -107,6 +107,7 @@ figcaption {
   height: 135px;
   margin-top: 16px;
   margin-left: 30px;
+  
 }
 
 .card{
@@ -126,7 +127,7 @@ figcaption {
 #bookimage {
   background-color: lightGrey;
   height:171px;
-  width: 233px;
+  cursor: pointer;
   display: flex;
 }
 

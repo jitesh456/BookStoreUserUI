@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
 import history from "./history";
+import Service from '../service/Service';
 
 export default class OrderSummary extends React.Component{
     constructor(props){
@@ -11,9 +12,23 @@ export default class OrderSummary extends React.Component{
         }
     }
 
-    handleConfirmation=(e)=>{
            
+    handleConfirmation=(e)=>{
+        const data={
+            body:"Thank you for shopping with us. We'll let you know once your item(s) are shipped. Your estimated delivery date 27 May.",
+            recipientAddress:JSON.parse(localStorage.getItem("mail")),
+            subject:"Order Confirmation "         
+        };
+        Service.sendMail(data).then((response)=>{
+            console.log(response);
+            
+        }).catch((error)=>{
+        console.log(error)
+        });
+        
+        
     }
+    
 
     render(){
         let calPrice=0;
@@ -55,7 +70,7 @@ export default class OrderSummary extends React.Component{
                 <p style={{paddingLeft:"175px",fontSize:"15px"}}><b>Total Price:</b> RS {calPrice}</p>
                 <div style={{height:"auto",display:"flex",justifyContent:"flex-end",paddingRight:"3%",paddingBottom:"2%"}}>
                     <Button style={{background:"maroon",color:"white",padding:"8px"}} variant="contained" 
-                        onClick={()=>{history.push('/ordersuccessful')}}>Place Order</Button>
+                        onClick={()=>{history.push('/ordersuccessful');this.handleConfirmation()}}>Place Order</Button>
                 </div>
             </div>
         }else{

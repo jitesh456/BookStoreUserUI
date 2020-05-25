@@ -43,7 +43,8 @@ export default class Customer extends Component {
 
         this.handleChange=this.handleChange.bind(this);
         this.handleSubmit=this.handleSubmit.bind(this);
-        this.displayButton=this.displayButton.bind(this);
+        this.displayButton=this.displayButton.bind(this)
+        this.handleSubmit=this.handleSubmit.bind(this);
 
     }
 
@@ -218,9 +219,7 @@ export default class Customer extends Component {
     }
 
     handleSubmit(event){
-      event.preventDefault();
-
-      this.validate("name");
+      localStorage.setItem("mail",JSON.stringify(this.state.emailId));
     }
     
     displayButton(){
@@ -228,7 +227,7 @@ export default class Customer extends Component {
       this.state.locality!=="" && this.state.emailId!=="" && this.state.address!=="" && this.state.city!=="" ){
         return(
         <Button style={{display:this.props.ordersummary,background:"maroon",color:"white",padding:"8px"}} variant="filled"
-        onClick={()=>{ this.props.onClick();}}>Continue</Button>
+        onClick={()=>{ this.props.onClick();this.handleSubmit()}}>Continue</Button>
         )
       }
         else{
