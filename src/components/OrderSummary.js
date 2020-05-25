@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
+import history from "./history";
 
 export default class OrderSummary extends React.Component{
     constructor(props){
@@ -11,6 +12,7 @@ export default class OrderSummary extends React.Component{
     }
 
     handleConfirmation=(e)=>{
+           
     }
 
     render(){
@@ -53,7 +55,7 @@ export default class OrderSummary extends React.Component{
                 <p style={{paddingLeft:"175px",fontSize:"15px"}}><b>Total Price:</b> RS {calPrice}</p>
                 <div style={{height:"auto",display:"flex",justifyContent:"flex-end",paddingRight:"3%",paddingBottom:"2%"}}>
                     <Button style={{background:"maroon",color:"white",padding:"8px"}} variant="contained" 
-                        onClick={this.handleConfirmation}>Place Order</Button>
+                        onClick={()=>{history.push('/ordersuccessful')}}>Place Order</Button>
                 </div>
             </div>
         }else{

@@ -2,7 +2,7 @@ import Main from "./Main";
 import React from 'react';
 import ShoppingCart from "./ShoppingCart";
 import Customer from "./Customer";
-// import OrderConfirmation from "./OrderConfirmation";
+import OrderSuccessful from "./OrderSuccessful";
 import OrderSummary from "./OrderSummary";
 import {Router,Route,Switch} from 'react-router-dom';
 import BookCard from "./BookCard";
@@ -22,7 +22,7 @@ class Routers extends React.Component{
                 <Route path="/cart" component={ShoppingCart}/>
                 <Route path="/customerdetails" component={Customer}/>
                 <Route path="/ordersummary" component={OrderSummary}/>
-                {/* <Route path="/ordercomfirmation" component={OrderConfirmation}/> */}
+                <Route path="/ordersuccessful" component={OrderSuccessful}/>
             </Switch>
             </Router>
         )
