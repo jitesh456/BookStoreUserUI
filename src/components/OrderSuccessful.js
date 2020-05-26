@@ -21,9 +21,7 @@ class OrderSuccessful extends Component {
                         <img src={booklogo} alt="asd" className="bk_image" />
                         <span className="admin">BB Store</span>  
                     </div >
-                    <div style={{ display:"flex",width:"60%",marginTop:"1%",justifyContent:"flex-end"}}>
-                        <a href="/"><Tooltip  title="Go To Home" ><HomeIcon style={{color:"white"}}/></Tooltip></a>
-                    </div>    
+                   
             </header>
             <div className="mainformorder">
                 <img className={'successfulimage'} src={OrderSuccess}/>
@@ -43,7 +41,7 @@ class OrderSuccessful extends Component {
                             return <tr>
                                 <td className="email">{info.EmailUs}</td>
                                 <td id="number">{info.ContactUs}</td>
-                                <td id="address">{info.Address}</td>
+                                <td id="address" >{info.Address}</td>
                             </tr>
                         })
                     }

@@ -46,7 +46,7 @@ export default class OrderSummary extends React.Component{
                         <div style={{height:"5%"}}></div>
                         <span className="shopped_book_author">{item.authorname}</span>
                         <div style={{height:"5%"}}></div>
-                        <span className="shopped_book_price">RS. {item.price*item.quantity}</span>
+                        <span className="shopped_book_price">Rs. {item.price*item.quantity}</span>
                         <div style={{height:"5%"}}></div>
                         <span className="">QTY: {item.quantity}</span>
                     </div>
@@ -65,7 +65,7 @@ export default class OrderSummary extends React.Component{
                 <div className="order-summary">
                     {book}
                 </div>
-                <p style={{paddingLeft:"175px",fontSize:"18px"}}><b>Total Price: &nbsp;&nbsp;</b> RS.&nbsp; {calPrice}</p>
+                <p style={{paddingLeft:"3%",fontSize:"17px"}}><b>Total Price: &nbsp;&nbsp;Rs.&nbsp; {calPrice}</b> </p>
                 <div style={{height:"auto",display:"flex",justifyContent:"flex-end",paddingRight:"3%",paddingBottom:"2%"}}>
                     <Button style={{background:"maroon",color:"white",paddingLeft:"45px",paddingRight:"45px",paddingTop:"10px",paddingBottom:"10px"}} variant="contained" 
                         onClick={()=>{history.push('/ordersuccessful');this.handleConfirmation()}}>Place Order</Button>

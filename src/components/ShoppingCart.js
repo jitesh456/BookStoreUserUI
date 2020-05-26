@@ -167,7 +167,7 @@ export default class ShoppingCart extends React.Component{
                         <div style={{height:"5%"}}></div>
                         <span className="shopped_book_author">{item.authorname}</span>
                         <div style={{height:"5%"}}></div>
-                        <span className="shopped_book_price">RS.{item.price*item.quantity}</span>
+                        <span className="shopped_book_price">Rs.{item.price*item.quantity}</span>
                         <div className="shopped_item_quantity">   
 
                         <div style={{display:"flex",width:"100px"}}>           

@@ -257,8 +257,8 @@ export default class Customer extends Component {
         if(this.props.show) {                 
         im=<div style={{height:"20%",width:"99%",paddingLeft:"2%",marginTop:"5px"}}>
                 <div>
-                <div style={{display:"flex"}}>
-                    <div style={{width:"40%",height:"0px"}}>
+                <div style={{display:"flex", justifyContent:"space-between" ,width:"84%",height:"20px"}}>
+                    <div style={{width:"47%"}}>
                     <TextField
                         label="Name"
                         id="outlined-start-adornment"
@@ -282,8 +282,8 @@ export default class Customer extends Component {
                             {this.state.nameError}
                         </p>
                     </div>
-                    <div style={{width:"35px"}}></div>
-                    <div style={{width:"40%",height:"80px"}}>
+                    
+                    <div style={{width:"47%"}}>
                     <TextField
                         label="Phone Number"
                         id="outlined-start-adornment"
@@ -308,9 +308,9 @@ export default class Customer extends Component {
                     </p>
                     </div>
                 </div>
-                <div style={{height:"10px"}}></div>
-                <div style={{display:"flex"}}>
-                    <div style={{width:"40%",height:"40px"}}>
+                <div style={{height:"75px"}}></div>
+                <div style={{display:"flex", justifyContent:"space-between" ,width:"84%",height:"25px"}}>
+                    <div style={{width:"47%"}}>
                     <TextField
                         label="Pincode"
                         id="outlined-start-adornment"
@@ -334,8 +334,8 @@ export default class Customer extends Component {
                         {this.state.pincodeError}
                     </p>
                     </div>
-                    <div style={{width:"35px"}}></div>
-                    <div style={{width:"40%",height:"40px"}}>
+                    
+                    <div style={{width:"47%"}} >
                     <TextField
                         label="Locality"
                         id="outlined-start-adornment"
@@ -360,20 +360,20 @@ export default class Customer extends Component {
                   </p>
                 </div>
                 </div>
-                <div style={{height:"55px"}}></div>
+                <div style={{height:"70px"}}></div>
                 <div style={{display:"flex"}}>
-                <div style={{width:"84.7%",height:"60px"}}>
+                <div style={{width:"84%",height:"60px"}}>
                     <TextField
                         label="Address"
                         id="outlined-start-adornment"
                         variant="outlined"
-                        style={{borderColor:"maroon"}}
+                        style={{borderColor:"maroon",width:"100%"}}
                         className="info" 
                         multiline
                         rows={2}
                         color="secondary"
                         name="address"
-                        style={{width:"100%"}}
+                        
                         onChange={this.handleChange.bind(this, 'address')}
                         disabled={this.props.disableform}
                         />
@@ -390,8 +390,8 @@ export default class Customer extends Component {
                     </div>
                 </div>
                 <div style={{height:"55px"}}></div>
-                <div style={{display:"flex"}}>
-                    <div style={{width:"40%",height:"40px"}}>
+                <div style={{display:"flex", justifyContent:"space-between" ,width:"84%",height:"20px"}}>
+                    <div style={{width:"47%"}}>
                     <TextField
                         label="City"
                         id="outlined-start-adornment"
@@ -399,7 +399,7 @@ export default class Customer extends Component {
                         color="secondary"
                         className="info" 
                         name="city"
-                        style={{width:"100%"}}                               
+                        style={{width:"100%"}}                                                     
                         onChange={this.handleChange.bind(this, 'city')}
                                 disabled={this.props.disableform}
                         />
@@ -415,16 +415,17 @@ export default class Customer extends Component {
                           {this.state.cityError}
                       </p>
                     </div>
-                    <div style={{width:"35px"}}></div>
-                    <div style={{width:"40%"}}>
+                    
+                    <div style={{width:"47%"}} >
                     <TextField
                         label="Country"
                         id="outlined-start-adornment"
                         variant="outlined"
                         className="info"
+                        style={{width:"100%"}}
                         color="secondary"
                         name="country"
-                        style={{width:"100%"}}
+                        
                         onChange={this.handleChange.bind(this, 'country')}
                         disabled={this.props.disableform}
                     />
@@ -441,9 +442,9 @@ export default class Customer extends Component {
                   </p>
                     </div>
                 </div>
-                <div style={{height:"55px"}}></div>
+                <div style={{height:"75px"}}></div>
                 <div style={{display:"flex"}}>
-                    <div style={{width:"84.7%",height:"80px"}}>
+                    <div style={{width:"84%",height:"80px"}}>
                     <TextField
                         label="Email"
                         id="outlined-start-adornment"

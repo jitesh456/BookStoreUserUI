@@ -15,7 +15,7 @@
 .app_header {
     border:1px solid greenyellow;
     border:none;
-    /* position: sticky; */
+    position: sticky;
     top:0;
     background-color: #9b2020;
     display: flex;
@@ -103,7 +103,7 @@ td{
 
 #address{
     width:100px;
-    text-overflow: ellipsis;
+    
 }
 
 #number{
