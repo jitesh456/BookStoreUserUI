@@ -226,13 +226,13 @@ export default class Customer extends Component {
       if(this.state.validateform && this.state.name!=="" && this.state.phoneNumber!=="" && this.state.pincode!=="" && 
       this.state.locality!=="" && this.state.emailId!=="" && this.state.address!=="" && this.state.city!=="" ){
         return(
-        <Button style={{display:this.props.ordersummary,background:"maroon",color:"white",padding:"8px"}} variant="filled"
+        <Button style={{display:this.props.ordersummary,background:"maroon",color:"white",paddingLeft:"45px",paddingRight:"45px",paddingTop:"10px",paddingBottom:"10px"}} variant="filled"
         onClick={()=>{ this.props.onClick();this.handleSubmit()}}>Continue</Button>
         )
       }
         else{
           return(
-            <Button disabled="true" style={{display:this.props.ordersummary,background:"silver",color:"white",padding:"8px"}} variant="filled"
+            <Button disabled="true" style={{display:this.props.ordersummary,background:"silver",color:"white",paddingLeft:"45px",paddingRight:"45px",paddingTop:"10px",paddingBottom:"10px"}} variant="filled"
             >Continue</Button>
             )
         }

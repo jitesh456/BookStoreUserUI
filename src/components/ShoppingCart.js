@@ -10,11 +10,7 @@ import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 import { purple } from '@material-ui/core/colors';
-import Tooltip from "@material-ui/core/Tooltip";
-
-import HomeIcon from '@material-ui/icons/Home';
-
-
+import AppBar from '@material-ui/core/AppBar';
 
 const theme = createMuiTheme({
   palette: {
@@ -160,14 +156,12 @@ export default class ShoppingCart extends React.Component{
                 increase=<AddCircleOutlineIcon disabled={true}/>
             }
             return (
-            <div style={{height:"fit-content",paddingBottom:"40px"}}>
-                <div style={{display:"flex",flexDirection:"row",height:"100px",paddingBottom:"20px"}}>
+            <div className="cart-item">
+                <div className="cart-item-content">
                     <div className="shoppingcart_image">
-                        <div style={{width:"100%",height:"80%",paddingTop:"10%"}}>
-                            <img src={item.bookcover} alt="" className="shopped_image"/>
-                        </div>
+                        <img src={item.bookcover} alt="" className="shopped_image"/>
                     </div>
-                    <div style={{display:"flex",flexDirection:"column",paddingTop:"20px",width:"60%",justifyContent:"flex-start",height:"200px",paddingLeft:"1%"}}>
+                    <div className="cart-item-content-details">
 
                         <span className="shopped_book_name">{item.name}</span>
                         <div style={{height:"5%"}}></div>
@@ -199,16 +193,15 @@ export default class ShoppingCart extends React.Component{
         });
     
         const   im=<div className="shopping_cart">
-            <header className="app_header">
+
+             <AppBar id="app-header">
+                    
                     <div className="admin_header">
                         <img src={booklogo} alt="asd" className="bk_image" />
-                        <span className="admin">BB Store</span>  
+                       <a href="/" style={{color:"white" ,textDecoration:"none"}}> <span className="admin">BB Store</span></a>  
                     </div >
-                    <div style={{ display:"flex",width:"60%",marginTop:"1%",justifyContent:"flex-end"}}>
-                        <a href="/"><Tooltip  title="Go To Home" ><HomeIcon style={{color:"white",cursor:"pointer"}}/></Tooltip></a>
-                    </div>    
-                    
-            </header>
+                        
+             </AppBar>
 
             <div className="cart_content">
             <div className="cart" >
@@ -219,7 +212,7 @@ export default class ShoppingCart extends React.Component{
                         {book}
                     </div>
                     <div className="customer_button">
-                        <Button style={{display:this.state.placebutton,padding:"8px",background:"maroon",color:"white"}} variant="contained" 
+                        <Button style={{display:this.state.placebutton,paddingLeft:"45px",paddingRight:"45px",paddingTop:"10px",paddingBottom:"10px",background:"maroon",color:"white"}} variant="contained" 
                         onClick={this.handleCustomer}>Continue</Button>
                 </div>
                 </div>
@@ -273,34 +266,24 @@ export default class ShoppingCart extends React.Component{
         if(this.state.cartItem.length==0){
             return(
                 <div className="shopping_cart">
-                <header className="header">
-                    <div className="admin_header">
-                        <img src={booklogo} alt="asd" className="bk_image" />
-                        <span className="admin">BB Store</span>  
-                    </div >
-                    <div className="search">
-                    <div className="searchIcon" >
-                    <SearchIcon/>
+                    <AppBar id="app-header">
+                        <div className="admin_header">
+                            <img src={booklogo} alt="asd" className="bk_image" />
+                        <a href="/" style={{color:"white" ,textDecoration:"none"}}> <span className="admin">BB Store</span></a>  
+                        </div >
+                            
+                    </AppBar>
+                    <div className="cart_content">
+                        <div className="cart" >
+                            <h1> Please Add book Into Cart</h1>
+                        </div>
                     </div>
-                    <InputBase
-                        placeholder=" Search"
-                        disabled="true"
-                        onChange={this.handleTextChange}
-                    />
-                  </div>
-            </header>
-
-            <div className="cart_content">
-            <div className="cart" >
-            <h1> Please Add book Into Cart</h1>
-            </div>
-            </div>
-            <footer className='app_footer'>
-            <div className='admin_footer'>
-                        <p> © Online Book Store.All Rights Reserved.</p>
+                    <footer className='app_footer'>
+                        <div className='admin_footer'>
+                            <p> © Online Book Store.All Rights Reserved.</p>
+                        </div>
+                    </footer>
                 </div>
-                </footer>
-        </div>
             )
         }
         else

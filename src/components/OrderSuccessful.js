@@ -43,7 +43,7 @@ class OrderSuccessful extends Component {
                             return <tr>
                                 <td className="email">{info.EmailUs}</td>
                                 <td id="number">{info.ContactUs}</td>
-                                <td>{info.Address}</td>
+                                <td id="address">{info.Address}</td>
                             </tr>
                         })
                     }

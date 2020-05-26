@@ -65,7 +65,7 @@ export default class BookCard extends Component {
                     this.setState({
                         count:1
                     })
-                }} disabled={ !this.props.bookDetails.quantity} size="50%" style={{ width:"90%", backgroundColor:'#DC143C', color: "white" }} >GO TO CART</Button>
+                }} disabled={ !this.props.bookDetails.quantity} size="50%" style={{ width:"90%", backgroundColor:"#A52A20", color: "whitesmoke"}} >GO TO CART</Button>
             );
         }
          else {

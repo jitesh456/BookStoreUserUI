@@ -25,7 +25,7 @@ export default class OrderSummary extends React.Component{
         }).catch((error)=>{
         console.log(error)
         });
-        
+        localStorage.clear();
         
     }
     
@@ -35,22 +35,20 @@ export default class OrderSummary extends React.Component{
         let book=this.props.cartItem.map(item=>{
             calPrice+=item.price*item.quantity;
             return (
-            <div style={{height:"fit-content",paddingBottom:"40px"}}>
-                <div style={{display:"flex",flexDirection:"row",height:"100px",paddingBottom:"20px"}}>
-                    <div className="shoppingcart_image">
-                        <div style={{width:"100%",height:"80%",paddingTop:"10%"}}>
+            <div className="cart-item">
+                <div className="cart-item-content">
+                    <div className="shoppingcart_image">                        
                             <img src={item.bookcover} alt="" className="shopped_image"/>
-                        </div>
                     </div>
-                    <div style={{display:"flex",flexDirection:"column",paddingTop:"40px",justifyContent:"flex-start",height:"200px"}}>
+                    <div className="cart-item-content-details">
 
                         <span className="shopped_book_name">{item.name}</span>
                         <div style={{height:"5%"}}></div>
                         <span className="shopped_book_author">{item.authorname}</span>
                         <div style={{height:"5%"}}></div>
-                        <span className="shopped_book_price">RS. {item.price}</span>
+                        <span className="shopped_book_price">RS. {item.price*item.quantity}</span>
                         <div style={{height:"5%"}}></div>
-                        <span className="">Quantity: {item.quantity}</span>
+                        <span className="">QTY: {item.quantity}</span>
                     </div>
                    
                 </div>
@@ -64,12 +62,12 @@ export default class OrderSummary extends React.Component{
             im=
             
             <div>
-                <div style={{height:"300px",overflowY:"scroll"}}>
+                <div className="order-summary">
                     {book}
                 </div>
-                <p style={{paddingLeft:"175px",fontSize:"15px"}}><b>Total Price:</b> RS {calPrice}</p>
+                <p style={{paddingLeft:"175px",fontSize:"18px"}}><b>Total Price: &nbsp;&nbsp;</b> RS.&nbsp; {calPrice}</p>
                 <div style={{height:"auto",display:"flex",justifyContent:"flex-end",paddingRight:"3%",paddingBottom:"2%"}}>
-                    <Button style={{background:"maroon",color:"white",padding:"8px"}} variant="contained" 
+                    <Button style={{background:"maroon",color:"white",paddingLeft:"45px",paddingRight:"45px",paddingTop:"10px",paddingBottom:"10px"}} variant="contained" 
                         onClick={()=>{history.push('/ordersuccessful');this.handleConfirmation()}}>Place Order</Button>
                 </div>
             </div>

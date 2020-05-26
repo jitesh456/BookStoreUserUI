@@ -1,11 +1,12 @@
 
-.app_header {
+#app-header {
   border:1px solid greenyellow;
   border:none;
   position: sticky;
   top:0;
   background-color: #9b2020;
   display: flex;
+  flex-direction: row;
   height: 50px;
   width: 100%;
   justify-content: flex-start;
@@ -60,7 +61,7 @@
   padding: 5px;
   justify-content: flex-start;
   padding-top: -0px;
-  height: 780px;
+  height: 744px;
 }
 
 .shoppingcart{
@@ -124,10 +125,10 @@
   position: relative;
   left: 20px;
   display: flex;
-  margin-top: 5px;
-  margin-bottom: 5px;
+  margin-top: 7px;
+  margin-bottom: 7px;
   width: 40%;
-  height: 80%;
+  height: 70%;
   border-radius: 5px;
   background-color: white;;
  

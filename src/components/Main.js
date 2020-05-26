@@ -9,7 +9,6 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
-
 import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
 import { createMuiTheme } from '@material-ui/core/styles';
@@ -17,19 +16,23 @@ import { ThemeProvider } from '@material-ui/styles';
 import { purple } from '@material-ui/core/colors';
 import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 import Pagination from '@material-ui/lab/Pagination';
+
+import AppBar from '@material-ui/core/AppBar';
+
+
 const theme = createMuiTheme({
     palette: {
       primary: {
-        // Purple and green play nicely together.
+        
         main: purple[500],
       },
       secondary: {
-        // This is green.A700 as hex.
         main: '#B0002A',
       
       },
     },
   });
+  
 export default class Main extends Component {
     constructor(props) {
         super(props);
@@ -45,7 +48,7 @@ export default class Main extends Component {
             sorting:'',
             input:'',
             cartItem:[],
-            counter:0
+            counter:0,
             
         }
         this.handleTextChange=this.handleTextChange.bind(this)
@@ -53,6 +56,7 @@ export default class Main extends Component {
         this.handleChange = this.handleChange.bind(this);
 
     }
+    
 
     componentDidMount() {
         Service.getBookData().then((response)=>{
@@ -74,8 +78,9 @@ export default class Main extends Component {
         });
         
         }   
+        
     }
-
+    
     sortedData(input){
         const sortingValue=input;
         console.log("Sorted Data");
@@ -94,7 +99,7 @@ export default class Main extends Component {
     receivedData() {
         
        var data = this.state.booklist;
-        
+       
         this.setState({count:data.length});
         const slice = data.slice(this.state.offset, this.state.offset + this.state.perPage)
         const postData = slice.map(book => {
@@ -190,33 +195,34 @@ export default class Main extends Component {
     render() {
         return (
             <div >
-                <header className="app_header">
+               
+                <AppBar id="app-header">
+                    
                     <div className="admin_header">
                         <img src={booklogo} alt="asd" className="bk_image" />
                         <span className="admin">BB Store</span>  
                     </div >
                     <div className="search">
-                    <div className="searchIcon">
-                    <SearchIcon/>
-                    
+                        <div className="searchIcon">
+                        <SearchIcon/>
+                        
+                        </div>
+                        <InputBase
+                            placeholder=" Search"
+                            onChange={this.handleTextChange}
+                        />      
                     </div>
-                    <InputBase
-                        placeholder=" Search"
-                        onChange={this.handleTextChange}
-                    />
-                    
-                  </div>
                     <div className="shoppingcart">
-                    <div className="shooping_carticon" >
-                        <a  href="/cart">
-                            <ShoppingCartOutlinedIcon  style={{color:"white"}}/>
-                        </a>
-                    </div>
-                    <div className="cart_itemcount">
-                      {this.state.counter}
-                    </div>  
-                </div>
-                </header>              
+                        <div className="shooping_carticon" >
+                            <a  href="/cart">
+                                <ShoppingCartOutlinedIcon  style={{color:"white"}}/>
+                            </a>
+                        </div>
+                        <div className="cart_itemcount">
+                        {this.state.counter}
+                        </div>  
+                    </div>    
+                </AppBar>
                     <div className="main">
                         <div className="book_cont">
                             <div className="book">
