@@ -17,7 +17,13 @@ class DataService {
 
   sendMail = (data) => {
     return axios.post(`${BASIC_API_URL}/mail`,data );
-}
+  }
+
+  updateQuantity=(bookdata)=>{
+    return axios.put(`${BASIC_API_URL}/book`,bookdata );
+  }
+
+
 
 
 }

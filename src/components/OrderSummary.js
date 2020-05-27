@@ -19,11 +19,21 @@ export default class OrderSummary extends React.Component{
             recipientAddress:JSON.parse(localStorage.getItem("mail")),
             subject:"Order Confirmation "         
         };
+
         Service.sendMail(data).then((response)=>{
             console.log(response);
             
         }).catch((error)=>{
         console.log(error)
+        });
+
+        this.props.cartItem.map(item=>{
+            const bookdata={
+                quantity:item.maxquantity-item.quantity,
+                isbn:item.isbn
+            }
+            Service.updateQuantity(bookdata);    
+
         });
         localStorage.clear();
         
@@ -60,13 +70,13 @@ export default class OrderSummary extends React.Component{
         if(this.props.show)
         {
             im=
-            
             <div>
                 <div className="order-summary">
                     {book}
                 </div>
-                <p style={{paddingLeft:"3%",fontSize:"17px"}}><b>Total Price: &nbsp;&nbsp;Rs.&nbsp; {calPrice}</b> </p>
-                <div style={{height:"auto",display:"flex",justifyContent:"flex-end",paddingRight:"3%",paddingBottom:"2%"}}>
+               
+                <div style={{height:"auto",display:"flex",justifyContent:"space-between",paddingRight:"3%",paddingBottom:"2%"}}>
+                    <p style={{paddingLeft:"3%",fontSize:"17px"}}><b>Total Price: &nbsp;&nbsp;Rs.&nbsp; {calPrice}</b> </p>
                     <Button style={{background:"maroon",color:"white",paddingLeft:"45px",paddingRight:"45px",paddingTop:"10px",paddingBottom:"10px"}} variant="contained" 
                         onClick={()=>{history.push('/ordersuccessful');this.handleConfirmation()}}>Place Order</Button>
                 </div>

@@ -71,7 +71,7 @@ export default class BookCard extends Component {
          else {
             return (
                 <Button  
-                name= "button" type="submit" variant="contained" onClick={(event)=>{
+                    name= "button" type="submit" variant="contained" onClick={(event)=>{
                     this.props.addFunction(this.props.bookDetails)
                     this.setState({
                         count:1,
@@ -97,6 +97,7 @@ export default class BookCard extends Component {
                                             </React.Fragment>
                                         }
                                         placement="right-start"
+                                        arrow
                                     >
                                     <div id="bookimage">
                                         { this.displayImage()}

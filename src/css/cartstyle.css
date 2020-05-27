@@ -45,7 +45,7 @@
 
 .shoppingcart_details{
     border: 1px solid silver;
-    max-height:490px;
+    max-height:560px;
     width:99%;
     background-color: white;
     display: flex;
@@ -68,14 +68,11 @@
 }
 
 .book_details{
-    height: 362px;
+    min-height: 235px;
+    max-height: 450px;
     overflow-y: scroll;
 }
 
-.book_details::-webkit-scrollbar{
-    display: none;
-    width: 0;
-}
 .shopped_image{
     width:105px;
     height:135px;
@@ -112,6 +109,7 @@
 
 .cart-item{
     height:fit-content;
+    width:800px;
     padding-bottom:40px;
 }
 
@@ -120,6 +118,10 @@
     height:100px;
     padding-bottom:20px;
 }
+
+
+
+
 
 .book_details::-webkit-scrollbar{
     display: none;
@@ -170,13 +172,22 @@
     
 }
 .order-summary{
-    height:362px;
-    overflow-y:scroll;
+    min-height: 235px;
+    max-height: 450px;
+    overflow-y: hidden;
+
 }
 
-.order-summary::-webkit-scrollbar{
-    display: none;
-    width: 0;
+::-webkit-scrollbar-track {
+    background:maroon; 
+
+}
+
+
+.order-summary:hover{
+    
+    overflow-y: scroll;
+    
 }
 
 .cart_content{

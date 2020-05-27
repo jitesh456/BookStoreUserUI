@@ -3,8 +3,6 @@ import Button from '@material-ui/core/Button';
 import booklogo from '../booklogo.png';
 import Customer from './Customer';
 import OrderSummary from './OrderSummary';
-import SearchIcon from '@material-ui/icons/Search';
-import InputBase from '@material-ui/core/InputBase';
 import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import { createMuiTheme } from '@material-ui/core/styles';
@@ -104,7 +102,7 @@ export default class ShoppingCart extends React.Component{
     handlePlus=(book)=>{
         let items=this.state.cartItem;
         let limit=5;
-        if(book.quantity<book.maxquantity || book.quantity<5 )
+        if(book.quantity<book.maxquantity && book.quantity<5 )
         {
             for(var i=0;i<items.length;i++){
                 if(items[i].isbn===book.isbn && book.quantity>0){
@@ -152,7 +150,7 @@ export default class ShoppingCart extends React.Component{
                 increase=<AddCircleOutlineIcon onClick={()=>{this.handlePlus(item)}} style={{color:"maroon"}}/>
                 decrease=<RemoveCircleOutlineIcon onClick={()=>{this.handleMinus(item)}} style={{color:"maroon"}}/>
             }
-            if(item.quantity>4){
+            if(item.quantity>item.maxquantity-1){
                 increase=<AddCircleOutlineIcon disabled={true}/>
             }
             return (
@@ -198,7 +196,7 @@ export default class ShoppingCart extends React.Component{
                     
                     <div className="admin_header">
                         <img src={booklogo} alt="asd" className="bk_image" />
-                       <a href="/" style={{color:"white" ,textDecoration:"none"}}> <span className="admin">BB Store</span></a>  
+                        <a href="/" style={{color:"white" ,textDecoration:"none"}}> <span className="admin">BB Store</span></a>  
                     </div >
                         
              </AppBar>
@@ -213,7 +211,7 @@ export default class ShoppingCart extends React.Component{
                     </div>
                     <div className="customer_button">
                         <Button style={{display:this.state.placebutton,paddingLeft:"45px",paddingRight:"45px",paddingTop:"10px",paddingBottom:"10px",background:"maroon",color:"white"}} variant="contained" 
-                        onClick={this.handleCustomer}>Continue</Button>
+                                onClick={this.handleCustomer}>Continue</Button>
                 </div>
                 </div>
                 <div style={{height:"25px"}}></div>
