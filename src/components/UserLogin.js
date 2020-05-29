@@ -41,6 +41,8 @@ export default class UserLogin extends Component {
             emailError: '',
             mobileError: '',
             passwordError: '',
+            loginChecked:true,
+            signupChecked:false,
             validateform: false
         }
         this.handleChange=this.handleChange.bind(this);
@@ -182,12 +184,21 @@ export default class UserLogin extends Component {
         this.validate("name");
       }
 
+      handleTabSelection=({target})=>{
+        if([target.name]=="login"){
+            this.setState({loginChecked:true,signupChecked:false})
+        }
+        if([target.name]=="signup"){ 
+            this.setState({loginChecked:false,signupChecked:true})
+        }
+    }
+
     render(){
         const displayData=(
             <Tabs defaultIndex={0} onSelect={index=>console.log(index)}>
-                <TabList className="tablist">
-                    <Tab style={{color:"black", marginRight: "60%"}}>Login</Tab>
-                    <Tab style={{color:"black", marginRight: "60%"}}>Signup</Tab>
+                <TabList className="tablist" style={{marginTop:"5%"}}>
+                    <Tab style={{marginRight: "20%"}}><input id="tab-1" type="radio" name="login" className="sign-in" checked={this.state.loginChecked} onClick={this.handleTabSelection} /><label htmlFor="tab-1" className="tab1">Login</label></Tab>
+                    <Tab><input id="tab-2" type="radio" name="signup" className="sign-up" checked={this.state.signupChecked} onClick={this.handleTabSelection}/><label htmlFor="tab-2" className="tab2">SignUp</label></Tab>
                 </TabList>
                 <TabPanel className="tabpanel-content">
                 <div className="login-field-container">

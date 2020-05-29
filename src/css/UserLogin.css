@@ -152,3 +152,33 @@
     align-items: center;  
   }
 
+  .tab1 {
+    font-size: 22px;
+    margin-right:100px;
+    display: inline-block;
+    color: gray;
+    border-bottom: 4px solid transparent;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.tab2 {
+    font-size: 22px;
+    display: inline-block;
+    color: gray;
+    border-bottom: 4px solid transparent;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.sign-in,
+.sign-up
+{
+    display: none;
+}
+
+.sign-in:checked + .tab1,
+.sign-up:checked + .tab2 {
+    color: #000;
+    border-color: rgb(165, 42, 42);
+}
