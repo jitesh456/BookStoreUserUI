@@ -278,7 +278,7 @@ export default class ShoppingCart extends React.Component{
                     </div>
                     <footer className='app_footer'>
                         <div className='admin_footer'>
-                            <p> © Online Book Store.All Rights Reserved.</p>
+                            <p> © Bug Busters Store.All Rights Reserved.</p>
                         </div>
                     </footer>
                 </div>

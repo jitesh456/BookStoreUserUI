@@ -271,7 +271,7 @@ export default class Main extends Component {
                     ariant="outlined" shape="rounded" />
                 </div>            
                 <div className='admin_footer'>
-                        <p> © Online Book Store.All Rights Reserved.</p>
+                        <p> © Bug Busters Store.All Rights Reserved.</p>
                 </div>
                 </footer>
          </div>

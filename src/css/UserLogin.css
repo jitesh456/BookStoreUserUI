@@ -1,0 +1,154 @@
+.main-container{
+    margin-top: 100px;
+    margin-left: 300px;
+    width: 624px;   
+    height: 391px;
+    background: #F5F5F5 0% 0% no-repeat padding-box;
+    border-radius: 21px;
+    opacity: 1;
+}
+
+.login-container{
+    margin-top: -420px;
+    margin-left: 640px;
+    width: 389px;
+    height: 450px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 5px 15px #00000029;
+    border: 1px solid #E4E4E4;
+    border-radius: 6px;
+    opacity: 1;
+}
+
+.div_content{
+    display:flex;
+    height: 50px;
+    margin-top: 0%;
+    margin-left: 0%;
+	flex-direction:column;
+	align-items:flex-start;
+    border: none;
+}
+
+.info{
+    display: flex;
+    height: 50px;
+}
+
+
+.login-image{
+    margin-top: 8%;
+    margin-left: 7%;
+}
+
+.login-field-container{
+    width: 100%;
+    margin-top: 15%;
+    height: 70%;
+}
+
+.signup-field-container{
+    width: 100%;
+    margin-top: 5%;
+    height: 70%;
+}
+
+.login-fields{
+    width: 80%;
+    padding-left: 10%;
+}
+
+#login-button{
+    /* margin-left: 10%; */
+    height: 15%;
+    margin-top: 10px;
+    width: 100%;
+    background-color: maroon;
+    color: white;
+}
+
+.classes-root{
+    flex-grow: 1;
+    max-width: 500;
+}
+
+.tabs{
+    margin-left: 10%;
+    margin-top: 8%;
+}
+.foot-lnk {
+    text-align: right;
+    font-size: 12px;
+    color: #9D9D9D;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+.main-style{
+    margin-top: 0px;
+    margin-left: 0px;
+    width: 100%;
+    height: 650px;
+    background: grey 0% 0% no-repeat padding-box;
+}
+.tablist{
+    display:flex;
+    /* justify-content: space-evenly; */
+    list-style: none;
+}
+
+.tabpanel-content{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.app_header {
+    border:1px solid greenyellow;
+    border:none;
+    position: sticky;
+    top:0;
+    background-color: #9b2020;
+    display: flex;
+    height: 50px;
+    width: 100%;
+    justify-content: flex-start;
+    color: white;
+  }
+  
+  .admin_header{
+    border:1px solid green;
+    border:none;
+    display:flex;
+    width:20%;
+    padding-left: 12%;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  
+  .admin{
+    font-size: larger;
+    font-weight: bold;
+    align-self: center;
+    margin-left: 5px;
+  }
+  
+  .app_footer{
+    border: none;
+    width: 100%;
+    display:flex;
+    padding-top: 2.3%;
+    flex-direction: column;
+    justify-content: space-between;
+    color: white;
+    
+  }
+  
+  .admin_footer{
+    background-color: #9b2020;
+    display:flex;
+    justify-content: space-evenly;
+    align-items: center;  
+  }
+
