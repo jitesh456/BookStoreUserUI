@@ -178,12 +178,7 @@
 
 }
 
-.address-content {
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    width: 200px;
-}
+
 
 .order-summary:hover{
     

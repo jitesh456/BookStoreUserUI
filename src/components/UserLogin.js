@@ -246,7 +246,7 @@ export default class UserLogin extends Component {
                                         <IconButton
                                             aria-label="toggle password visibility"
                                             onClick={this.handleClickShowPassword}
-                                            onMouseDown={this.handleMouseDownPassword}
+                                            // onMouseDown={this.handleMouseDownPassword}
                                         >
                                         {this.state.showPassword ? <Visibility /> : <VisibilityOff />}
                                         </IconButton>

@@ -226,13 +226,13 @@ export default class Customer extends Component {
       if(this.state.validateform && this.state.name!=="" && this.state.phoneNumber!=="" && this.state.pincode!=="" && 
       this.state.locality!=="" && this.state.emailId!=="" && this.state.address!=="" && this.state.city!=="" ){
         return(
-            <Button style={{display:this.props.ordersummary,background:"maroon",color:"white",paddingLeft:"45px",paddingRight:"45px",paddingTop:"10px",paddingBottom:"10px"}} variant="filled"
+            <Button style={{display:this.props.ordersummary,background:"maroon",color:"white",padding:"10px 30px"}} variant="filled"
             onClick={()=>{ this.props.onClick();this.handleSubmit()}}>Continue</Button>
           )
       }
         else{
           return(
-            <Button disabled="true" style={{display:this.props.ordersummary,background:"silver",color:"white",paddingLeft:"45px",paddingRight:"45px",paddingTop:"10px",paddingBottom:"10px"}} variant="filled"
+            <Button disabled="true" style={{display:this.props.ordersummary,background:"silver",color:"white",padding:"10px 30px"}} variant="filled"
             >Continue</Button>
             )
         }
@@ -255,7 +255,7 @@ export default class Customer extends Component {
     render() {
         let im=[]
         if(this.props.show) {                 
-        im=<div style={{height:"20%",width:"99%",paddingLeft:"2%",marginTop:"5px"}}>
+        im=<div style={{height:"18%",width:"99%",paddingLeft:"2%",marginTop:"6px"}}>
                 <div>
                 <div style={{display:"flex", justifyContent:"space-between" ,width:"84%",height:"20px"}}>
                     <div style={{width:"47%"}}>
@@ -469,7 +469,7 @@ export default class Customer extends Component {
                       </p>
                     </div>
                 </div>
-                <div style={{height:"10px"}}></div>
+                <div style={{height:"12px"}}></div>
                 
                 <div style={{width:"95%",display:"flex",justifyContent:"flex-end",paddingBottom:"2%",marginRight:"5%"}}>
                     <div style={{width:"800px"}}>
@@ -496,7 +496,7 @@ export default class Customer extends Component {
                         </RadioGroup>
                     </FormControl>
                     </div>
-                    <div style={{display:"block"}}>
+                    <div style={{display:"block",width:"200px"}}>
                    {this.displayButton()}
                     </div>
                 </div>

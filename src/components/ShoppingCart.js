@@ -210,7 +210,7 @@ export default class ShoppingCart extends React.Component{
                         {book}
                     </div>
                     <div className="customer_button">
-                        <Button style={{display:this.state.placebutton,paddingLeft:"45px",paddingRight:"45px",paddingTop:"10px",paddingBottom:"10px",background:"maroon",color:"white"}} variant="contained" 
+                        <Button style={{display:this.state.placebutton,padding:"10px 30px",background:"maroon",color:"white"}} variant="contained" 
                                 onClick={this.handleCustomer}>Continue</Button>
                 </div>
                 </div>
@@ -222,7 +222,7 @@ export default class ShoppingCart extends React.Component{
                     < div color="secondary" className="customer_detail">
                         <div className="customer_header">
                             <div style={{fontSize:"15px",width:"87%",paddingBottom:"10px" ,paddingTop:"10px"}}>Customer Details</div>
-                            <div><Button style={{margin:"5%",padding:"3px",display:this.state.editbutton,background:"maroon",color:"white"}} variant="contained" 
+                            <div><Button style={{margin:"5%",padding:"2px",display:this.state.editbutton,background:"maroon",color:"white"}} variant="contained" 
                      onClick={this.handleEditCustomer}>Edit</Button></div>
                         </div>
                         <div className="customer_info">

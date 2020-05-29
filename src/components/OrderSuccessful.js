@@ -5,15 +5,28 @@ import '../css/OrderSuccessful.css';
 import siteinfo from '../data/siteinfo.json';
 import booklogo from '../booklogo.png';
 import Tooltip from "@material-ui/core/Tooltip";
-import HomeIcon from '@material-ui/icons/Home';
 
+import { withStyles } from "@material-ui/core/styles";
+
+const TableTooltip = withStyles((theme) => ({
+    tooltip: {
+      color: 'FCF2F2',
+      maxWidth: 265,
+      fontSize: theme.typography.pxToRem(12),
+    },
+  }))(Tooltip);
 class OrderSuccessful extends Component {
+    
+    
 
     handleChange=()=>{
         this.props.history.push("/")
     }
 
     render() {
+        var min = 100000000;
+        var max = 199999999;
+        var orderId =  Math.round(min + (Math.random() * (max-min)));
         return (
             <div>
              <header className="app_header">
@@ -26,7 +39,9 @@ class OrderSuccessful extends Component {
             <div className="mainformorder">
                 <img className={'successfulimage'} src={OrderSuccess}/>
                 <div className='messageorder'>
-                    <p className="firstLine">Congratulations!!... Your order is confirmed.</p>
+                    <p className="firstLine">Congratulations!!... Your order is confirmed.
+                    </p>
+                        <p>Your order id is {orderId}</p>
                 </div>
                 <table>
                     <tbody>
@@ -41,7 +56,12 @@ class OrderSuccessful extends Component {
                             return <tr>
                                 <td className="email">{info.EmailUs}</td>
                                 <td id="number">{info.ContactUs}</td>
-                                <td id="address" ><div className="address-content">{info.Address}</div></td>
+                                
+                                <td id="address" >
+                                    <TableTooltip title={ <React.Fragment>
+                                                <p>{info.Address}}</p>
+                                        </React.Fragment>
+                                    } placement="right" arrow><div className="address-content" >{info.Address}</div></TableTooltip></td>
                             </tr>
                         })
                     }
