@@ -277,6 +277,7 @@ export default class UserLogin extends Component {
                     </div>
                 </TabPanel>
                 <TabPanel className="tabpanel-content">
+               
                 <div className="signup-field-container">
                         <div className="login-fields">
                             <div className="div_content">
@@ -300,11 +301,11 @@ export default class UserLogin extends Component {
                                         marginBottom: "-3em",
 
                                     }}
-                                >{this.state.nameError}
+                                ><div style={{marginTop: "1px"}} >{this.state.nameError}</div>
                                 </p>
                                 
                             </div>
-                            <div style={{ height: "25px" }}></div>
+                            <div style={{ height: "29px" }}></div>
                             <div className="div_content">
                                 <TextField
                                     label="Email id"
@@ -326,12 +327,12 @@ export default class UserLogin extends Component {
                                         marginBottom: "-3em",
 
                                     }}
-                                >{this.state.emailError}
+                                ><div style={{marginTop: "1px"}} >{this.state.emailError}</div>
                                 </p>
                                
                             </div>
                             
-                            <div style={{ height: "25px" }}></div>
+                            <div style={{ height: "29px" }}></div>
                             <div className="div_content">
                                 <FormControl style={{ width: "100%" }}>
                                     <InputLabel htmlFor="outlined-adornment-password" color="secondary" variant="outlined">Password</InputLabel>
@@ -364,13 +365,13 @@ export default class UserLogin extends Component {
                                             marginBottom: "-3em",
 
                                         }}
-                                    >{this.state.passwordError}
+                                    ><div style={{marginTop: "-5px"}} >{this.state.passwordError}</div>
                                     </p>
 
                                 </FormControl>
                                
                             </div>
-                            <div style={{ height: "25px" }}></div>
+                            <div style={{ height: "29px" }}></div>
                             <div className="div_content">
                                 <TextField
                                     label="Mobile Number"
@@ -392,12 +393,12 @@ export default class UserLogin extends Component {
                                         marginBottom: "-3em",
 
                                     }}
-                                >{this.state.mobileError}
+                                ><div style={{marginTop: "1px"}} > {this.state.mobileError}   </div>
                                 </p>  
                             </div>
-                            <div style={{ height: "15px" }}></div>
+                            <div style={{ height: "20px" }}></div>
                             <Button type="submit" id="login-button" variant="contained">Signup</Button>
-                        </div>
+                        </div> 
 
                     </div>
                 </TabPanel>
