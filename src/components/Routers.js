@@ -23,7 +23,7 @@ class Routers extends React.Component{
                 <Route path="/cart" component={ShoppingCart}/>
                 <Route path="/customerdetails" component={Customer}/>
                 <Route path="/ordersummary" component={OrderSummary}/>
-                <Route path="/ordersuccessful" component={OrderSuccessful}/>
+                <Route path="/order/successful" component={OrderSuccessful}/>
                 <Route path="/" component={UserLogin}/>
             </Switch>
             </Router>

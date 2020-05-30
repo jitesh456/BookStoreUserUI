@@ -1,4 +1,10 @@
-.main-container{
+.login-page{
+    display: flex;
+    height: 657px;
+    background-color: gray;
+}
+
+ .main-container{
     margin-top: 100px;
     margin-left: 300px;
     width: 624px;   
@@ -104,54 +110,6 @@
     justify-content: space-evenly;
     align-items: center;
 }
-
-.app_header {
-    border:1px solid greenyellow;
-    border:none;
-    position: sticky;
-    top:0;
-    background-color: #9b2020;
-    display: flex;
-    height: 50px;
-    width: 100%;
-    justify-content: flex-start;
-    color: white;
-  }
-  
-  .admin_header{
-    border:1px solid green;
-    border:none;
-    display:flex;
-    width:20%;
-    padding-left: 12%;
-    justify-content: flex-start;
-    align-items: center;
-  }
-  
-  .admin{
-    font-size: larger;
-    font-weight: bold;
-    align-self: center;
-    margin-left: 5px;
-  }
-  
-  .app_footer{
-    border: none;
-    width: 100%;
-    display:flex;
-    padding-top: 2.3%;
-    flex-direction: column;
-    justify-content: space-between;
-    color: white;
-    
-  }
-  
-  .admin_footer{
-    background-color: #9b2020;
-    display:flex;
-    justify-content: space-evenly;
-    align-items: center;  
-  }
 
   .tab1 {
     font-size: 22px;
