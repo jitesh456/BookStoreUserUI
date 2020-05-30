@@ -279,7 +279,7 @@ export default class Customer extends Component {
                                 
                             }}
                         >
-                            {this.state.nameError}
+                           <div style={{ marginTop: "5px" }} > {this.state.nameError}</div>
                         </p>
                     </div>
                     
@@ -304,7 +304,7 @@ export default class Customer extends Component {
                             
                         }}
                     >
-                        {this.state.phoneNumberError}
+                       <div style={{ marginTop: "5px" }} >{this.state.phoneNumberError}</div>
                     </p>
                     </div>
                 </div>
@@ -331,7 +331,7 @@ export default class Customer extends Component {
                             
                         }}
                     >
-                        {this.state.pincodeError}
+                       <div style={{ marginTop: "5px" }} > {this.state.pincodeError} </div>
                     </p>
                     </div>
                     
@@ -356,7 +356,7 @@ export default class Customer extends Component {
                           
                       }}
                   >      
-                  {this.state.localityError}
+                  <div style={{ marginTop: "5px" }} >{this.state.localityError}</div>
                   </p>
                 </div>
                 </div>
@@ -412,7 +412,7 @@ export default class Customer extends Component {
                               
                           }}
                       >
-                          {this.state.cityError}
+                        <div style={{ marginTop: "5px" }} > {this.state.cityError} </div>
                       </p>
                     </div>
                     
@@ -438,7 +438,7 @@ export default class Customer extends Component {
                           
                       }}
                   >
-                     {this.state.countryError}
+                    <div style={{ marginTop: "5px" }} > {this.state.countryError} </div>
                   </p>
                     </div>
                 </div>
@@ -465,7 +465,7 @@ export default class Customer extends Component {
                               
                           }}
                       >
-                          {this.state.emailError}
+                          <div style={{ marginTop: "5px" }} >{this.state.emailError} </div>
                       </p>
                     </div>
                 </div>

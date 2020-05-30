@@ -17,7 +17,7 @@ import { purple } from '@material-ui/core/colors';
 import Service from '../service/Service';
 import history from './history';
 
-let fullNameError = '';
+let nameError = '';
 let emailError = '';
 let mobileError = ''; let passwordError = '';
 
@@ -69,10 +69,8 @@ export default class UserLogin extends Component {
         var number = /[0-9]{1,}$/;
         var emailPattern=/^[a-zA-Z]{3,}([-|+|.|_]?[a-zA-Z0-9]+)?[@]{1}[A-Za-z0-9]+[.]{1}[a-zA-Z]{2,4}([.]{1}[a-zA-Z]+)?$/;
          var passwordPattern =  /[a-zA-Z0-9]{1,}$/;
-        let nameError = '';
-        // let emailError = '';
-        // let mobileError = ''; let passwordError = '';
-  
+        
+        
         switch (type) {
   
             case 'email':

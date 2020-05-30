@@ -77,7 +77,7 @@ export default class OrderSummary extends React.Component{
                
                 <div style={{height:"auto",display:"flex",justifyContent:"space-between",paddingRight:"3%",paddingBottom:"2%"}}>
                     <p style={{paddingLeft:"3%",fontSize:"17px"}}><b>Total Price: &nbsp;Rs. {calPrice}</b> </p>
-                    <Button style={{background:"maroon",color:"white",padding:"10px 30px"}} variant="filled"
+                    <Button style={{background:"maroon",color:"white",padding:"10px 30px",marginTop:"13px", height:"42px"}} variant="filled"
                     onClick={()=>{history.push('/order/successful');this.handleConfirmation()}}>Place Order</Button>
                     
                 </div>
