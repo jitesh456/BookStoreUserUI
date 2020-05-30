@@ -23,8 +23,13 @@ class DataService {
     return axios.put(`${BASIC_API_URL}/book`,bookdata );
   }
 
+  registerUser=(user)=>{
+    return axios.post(`${BASIC_API_URL}/user`,user );
+  }
 
 
-
+  login=(credentials)=>{
+    return axios.post(`${BASIC_API_URL}/login`,credentials );
+  }
 }
 export default new DataService()

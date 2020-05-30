@@ -15,6 +15,8 @@ import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 import booklogo from '../booklogo.png';
 import { purple } from '@material-ui/core/colors';
+import Service from '../service/Service';
+import history from './history';
 
 const theme = createMuiTheme({
     palette: {
@@ -43,11 +45,16 @@ export default class UserLogin extends Component {
             passwordError: '',
             loginChecked:true,
             signupChecked:false,
-            validateform: false
+            validateform: false,
+            fullName:'',
+            mobileNumber:'',
+            loginMessage:'',
+            singupMessage:''
         }
         this.handleChange=this.handleChange.bind(this);
         this.handleClickShowPassword=this.handleClickShowPassword.bind(this);
         this.handleSubmit=this.handleSubmit.bind(this);
+        this.handleLoginSubmit=this.handleLoginSubmit.bind(this);
         this.handleMouseDownPassword=this.handleMouseDownPassword.bind(this);
     }
 
@@ -179,9 +186,51 @@ export default class UserLogin extends Component {
           });
       }
 
-      handleSubmit(event){
+      handleSubmit(event) {
         event.preventDefault();
-        this.validate("name");
+        const isValid = this.validate();
+        if (isValid) {
+          const user={
+            name :this.state.fullName,
+            email :this.state.email,
+            password :this.state.password,
+            number :this.state.mobileNumber,
+          }
+          Service.registerUser(user).then(response => {
+            console.log(response.data);
+            this.setState({
+              singupMessage:response.data.body
+            })
+            console.log(this.state);
+          }).catch(error => {
+            console.log(error);
+          })
+        }
+        document.getElementById("signupForm").reset();
+      }
+
+      handleLoginSubmit(event) {
+        event.preventDefault();
+        const isValid = this.validate();
+        if (isValid) {
+          const credentials={
+            email :this.state.email,
+            password :this.state.password,
+          }
+          Service.login(credentials).then(response => {
+            console.log(response.data);
+            this.setState({
+              loginMessage:response.data.body
+            })
+            console.log(this.state.loginMessage);
+            if(this.state.loginMessage===true){
+               return history.push('/books');
+            }
+          }).catch(error => {
+            console.log(error);
+          })
+        }
+        document.getElementById("loginForm").reset();
       }
 
       handleTabSelection=({target})=>{
@@ -201,7 +250,9 @@ export default class UserLogin extends Component {
                     <Tab><input id="tab-2" type="radio" name="signup" className="sign-up" checked={this.state.signupChecked} onClick={this.handleTabSelection}/><label htmlFor="tab-2" className="tab2">SignUp</label></Tab>
                 </TabList>
                 <TabPanel className="tabpanel-content">
+                    
                 <div className="login-field-container">
+                <form id="loginForm" onSubmit={this.handleLoginSubmit} onReset={this.reset}>
                         <div className="login-fields">
                         <div className="div_content">
                             <TextField
@@ -273,12 +324,13 @@ export default class UserLogin extends Component {
                         </div>
                         <Button  type="submit" id="login-button" variant="contained">Login</Button>
                         </div>
-                        
+                        </form>
                     </div>
                 </TabPanel>
                 <TabPanel className="tabpanel-content">
                
                 <div className="signup-field-container">
+                <form id="signupForm" onSubmit={this.handleSubmit} onReset={this.reset}>
                         <div className="login-fields">
                             <div className="div_content">
                                 <TextField
@@ -399,7 +451,7 @@ export default class UserLogin extends Component {
                             <div style={{ height: "20px" }}></div>
                             <Button type="submit" id="login-button" variant="contained">Signup</Button>
                         </div> 
-
+                        </form>
                     </div>
                 </TabPanel>
             </Tabs>
