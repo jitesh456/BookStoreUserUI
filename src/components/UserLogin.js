@@ -289,7 +289,7 @@ export default class UserLogin extends Component {
     render() {
         const displayData = (
             <Tabs defaultIndex={0} onSelect={index => console.log(index)}>
-                <TabList className="tablist" style={{ marginTop: "5%", marginLeft:"10%" }}>
+                <TabList className="tablist" >
                     <Tab ><input id="tab-1" type="radio" name="login" className="sign-in" checked={this.state.loginChecked} onClick={this.handleTabSelection} /><label htmlFor="tab-1" className="tab1">Login</label></Tab>
                     <Tab><input id="tab-2" type="radio" name="signup" className="sign-up" checked={this.state.signupChecked} onClick={this.handleTabSelection} /><label htmlFor="tab-2" className="tab2">SignUp</label></Tab>
                 </TabList>
@@ -304,7 +304,7 @@ export default class UserLogin extends Component {
                                         id="outlined-start-adornment"
                                         variant="outlined"
                                         className="info"
-                                        style={{ width: "100%" }}
+
                                         color="secondary"
                                         name="email"
                                         onChange={this.handleChange.bind(this, 'email')}
@@ -333,7 +333,7 @@ export default class UserLogin extends Component {
                                             value={this.state.password}
                                             color="secondary"
                                             name="password"
-                                            style={{ width: "100%" }}
+
                                             onChange={this.handleChange.bind(this, 'password')}
                                             required
                                             endAdornment={
@@ -382,7 +382,7 @@ export default class UserLogin extends Component {
                                         id="outlined-start-adornment"
                                         variant="outlined"
                                         className="info"
-                                        style={{ width: "100%" }}
+
                                         color="secondary"
                                         name="fullName"
                                         onChange={this.handleChange.bind(this, 'fullName')}
@@ -408,7 +408,7 @@ export default class UserLogin extends Component {
                                         id="outlined-start-adornment"
                                         variant="outlined"
                                         className="info"
-                                        style={{ width: "100%" }}
+
                                         color="secondary"
                                         name="email"
                                         onChange={this.handleChange.bind(this, 'email')}
@@ -438,7 +438,7 @@ export default class UserLogin extends Component {
                                             value={this.state.password}
                                             color="secondary"
                                             name="password"
-                                            style={{ width: "100%" }}
+
                                             onChange={this.handleChange.bind(this, 'password')}
                                             endAdornment={
                                                 <InputAdornment position="end">
@@ -474,7 +474,7 @@ export default class UserLogin extends Component {
                                         id="outlined-start-adornment"
                                         variant="outlined"
                                         className="info"
-                                        style={{ width: "100%" }}
+
                                         color="secondary"
                                         name="mobileNumber"
                                         onChange={this.handleChange.bind(this, 'mobileNumber')}
@@ -501,6 +501,7 @@ export default class UserLogin extends Component {
             </Tabs>
         );
         return (
+            <body style={{ backgroundColor: "gray" ,height:"100%", width:"100%" }}>
             <div className= "login-page">
                 <div className="page">
                 <Snackbar anchorOrigin={{vertical: 'top', horizontal: 'right'}} open={this.state.alertShow}
@@ -512,7 +513,9 @@ export default class UserLogin extends Component {
 
                     <div className="main-container">
                         <img src={loginimage} alt="asd" className="login-image" />
-                        <h3 style={{ marginLeft: '14%' }}>Bug Busters Book Store</h3>
+                        <div className="bbStore">
+                            <h3 style={{ marginLeft: '14%' }}>Bug Busters Book Store</h3>
+                        </div>
                     </div>
                     <div className="login-container">
                         <ThemeProvider theme={theme}>
@@ -523,6 +526,7 @@ export default class UserLogin extends Component {
                 </div>
 
              </div>
+            </body>
         );
     }
 }

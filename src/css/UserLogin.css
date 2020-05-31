@@ -1,20 +1,23 @@
-.login-page{
+.login-page {
+    position: absolute;
     display: flex;
+    width: 100%;
     height: 657px;
     background-color: gray;
 }
 
- .main-container{
-    margin-top: 130px;
+.main-container {
+    margin-top: 100px;
     margin-left: 300px;
-    width: 624px;   
+    width: 624px;
     height: 391px;
     background: #F5F5F5 0% 0% no-repeat padding-box;
     border-radius: 21px;
     opacity: 1;
 }
 
-.login-container{
+.login-container {
+    display: flex;
     margin-top: -420px;
     margin-left: 640px;
     width: 389px;
@@ -26,46 +29,60 @@
     opacity: 1;
 }
 
-.div_content{
-    display:flex;
+.div_content {
+    display: flex;
     height: 50px;
     margin-top: 0%;
     margin-left: 0%;
-	flex-direction:column;
-	align-items:flex-start;
+    flex-direction: column;
+    align-items: flex-start;
     border: none;
 }
 
-.info{
+.info {
     display: flex;
     height: 50px;
+    width: 100%;
 }
 
-
-.login-image{
-    margin-top: 8%;
+.login-image {
+    margin-top: 10%;
     margin-left: 7%;
 }
 
-.login-field-container{
+.login-field-container {
+    display: flex;
     width: 100%;
+    justify-content: center;
     margin-top: 15%;
-    height: 70%;
+    margin-left:35%;
+    /*  */
 }
 
-.signup-field-container{
+.page {
+    justify-content: center;
+    width: 100%;
+}
+
+.signup-field-container {
+    display: flex;
+    justify-content: center;
+    margin-left:35%;
     width: 100%;
     margin-top: 5%;
     height: 70%;
 }
 
-.login-fields{
-    width: 80%;
-    padding-left: 10%;
+.login-fields {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 95%;
+    padding-left: 2%;
     margin-top: -9px;
 }
 
-#login-button{
+#login-button {
     /* margin-left: 10%; */
     height: 15%;
     margin-top: 10px;
@@ -74,15 +91,16 @@
     color: white;
 }
 
-.classes-root{
+.classes-root {
     flex-grow: 1;
     max-width: 500;
 }
 
-.tabs{
+.tabs {
     margin-left: 10%;
     margin-top: 8%;
 }
+
 .foot-lnk {
     text-align: right;
     font-size: 12px;
@@ -91,29 +109,36 @@
     margin-top: 10px;
 }
 
-.main-style{
+.main-style {
     margin-top: 0px;
     margin-left: 0px;
     width: 100%;
     height: 650px;
     background: grey 0% 0% no-repeat padding-box;
 }
-.tablist{
-    display:flex;
-    /* justify-content: space-evenly; */
+
+.tablist {
+    display: flex;
+    margin-top: 5%;
+    margin-left: 13%;
     list-style: none;
+
 }
 
-.tabpanel-content{
-    display:flex;
+.bbStore {
+    display: flex;
+}
+
+.tabpanel-content {
+    display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
 }
 
-  .tab1 {
+.tab1 {
     font-size: 22px;
-    margin-right:100px;
+    margin-right: 90px;
     display: inline-block;
     color: gray;
     border-bottom: 4px solid transparent;
@@ -131,13 +156,108 @@
 }
 
 .sign-in,
-.sign-up
-{
+.sign-up {
     display: none;
 }
 
-.sign-in:checked + .tab1,
-.sign-up:checked + .tab2 {
+.sign-in:checked+.tab1,
+.sign-up:checked+.tab2 {
     color: #000;
     border-color: rgb(165, 42, 42);
 }
+
+
+
+@media screen and (max-width: 700px) {
+    .main-container {
+        width: 0%;
+    }
+    .bbStore {
+        display: none;
+    }
+    .login-image {
+        display: none;
+    }
+    .login-fields {
+        width: 96%;
+        padding-left: 3%;
+        margin-left: -15%;
+        margin-top: -9px;
+    }
+    .tab1 {
+        margin-right: 69px;
+    }
+    .tabpanel-content{
+        margin-left: 5%;
+    }
+    .tablist {
+        justify-content: center;
+        margin-left: -5%;
+    }
+    .login-container {
+        width: 88%;
+        margin-left: 5%;
+    }
+}
+
+
+
+@media screen and (max-height: 840px) and (min-height:650px) {
+    .login-page {
+        height: 840px;
+    }
+    /*.login-container {*/
+    /*    !* display: flex; *!*/
+    /*    margin-top: -85%;*/
+    /*}*/
+}
+
+@media screen and (height: 667px) {
+    .login-page {
+        height: 670px;
+    }
+    /*.login-container {*/
+    /*    margin-top: -100%;*/
+    /*}*/
+}
+
+
+@media screen and (max-width: 1024px) and (min-width:768px) {
+    .login-page {
+        height: 1400px;
+        width: 1030px
+    }
+
+    .main-container {
+        margin-top: 40%;
+        margin-left: 10%;
+        width: 70%;
+        height: 30%;
+    }
+
+    .login-container {
+
+        margin-top: -45%;
+        margin-left: 44%;
+        width: 41%;
+        height: 36%;
+    }
+
+    .login-fields {
+        width: 96%;
+        padding-left: 8%;
+        margin-top: -6px;
+    }
+
+    .tab1 {
+        margin-right: 69px;
+    }
+
+    .tablist {
+        justify-content: center;
+        margin-left: 9%;
+    }
+
+
+}
+
