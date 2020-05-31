@@ -16,6 +16,8 @@ import { ThemeProvider } from '@material-ui/styles';
 import { purple } from '@material-ui/core/colors';
 import Service from '../service/Service';
 import history from './history';
+import Snackbar from "@material-ui/core/Snackbar";
+import Alert from "@material-ui/lab/Alert";
 
 let nameError = '';
 let emailError = '';
@@ -52,7 +54,9 @@ export default class UserLogin extends Component {
             fullName:'',
             mobileNumber:'',
             loginMessage:'',
-            singupMessage:''
+            singupMessage:'',
+            alertShow: false,
+            alertResponse: "",
         }
         this.handleChange=this.handleChange.bind(this);
         this.handleClickShowPassword=this.handleClickShowPassword.bind(this);
@@ -75,7 +79,7 @@ export default class UserLogin extends Component {
   
             case 'email':
                 if (!emailPattern.test(this.state.email)) {
-                    emailError = "Enter valid email (eg. example@gmail.com)";
+                    emailError = "Enter valid email";
                   }
                   if (emailPattern.test(this.state.email)) {
                       emailError = "";
@@ -97,7 +101,7 @@ export default class UserLogin extends Component {
                   {
                       nameError ="First letter must be capital";
                   }
-                  if (namePAttern.test(this.state.name)) {
+                  if (namePAttern.test(this.state.fullName)) {
                       nameError="";
                     }
                   break;
@@ -108,9 +112,9 @@ export default class UserLogin extends Component {
                 if (!passwordPattern.test(this.state.password)) {
                     passwordError = "Enter proper password";
                 }
-                // if (passwordPattern.test(this.state.password)) {
-                //     passwordError="";
-                //   }
+                if (passwordPattern.test(this.state.password)) {
+                    passwordError="";
+                  }
                 break;
             case 'mobileNumber':
                
@@ -173,6 +177,7 @@ export default class UserLogin extends Component {
     handleMouseDownPassword = (event) => {
         event.preventDefault();
       };
+
       handleTabSelection=({target})=>{
         if([target.name]=="login"){
             this.setState({loginChecked:true,signupChecked:false})
@@ -200,16 +205,46 @@ export default class UserLogin extends Component {
           }
           Service.registerUser(user).then(response => {
             console.log(response.data);
-            this.setState({
-              singupMessage:response.data.body
-            })
+            if (response.data.body === true) {
+                this.setState({
+                    severity: "success",
+                    alertShow: true,
+                    alertResponse: response.data.message
+                });
+                this.clearFieldsData();
+                document.getElementById("signupForm").reset();
+            } else {
+                this.setState({
+                    severity: "error",
+                    alertShow: true,
+                    alertResponse: response
+                });
+            }
             console.log(this.state);
           }).catch(error => {
             console.log(error);
           })
         }
-        document.getElementById("signupForm").reset();
+        
       }
+
+      clearFieldsData = () => {
+        this.setState({
+            password: "",
+        });
+    };
+
+        closeAlertBox = () => {
+            this.setState({alertShow: false});
+        };
+
+        showAlert = (severity, alertShow, alertResponse) => {
+            this.setState({
+                severity: severity,
+                alertShow: alertShow,
+                alertResponse: alertResponse
+            })
+        }
 
       handleLoginSubmit(event) {
         event.preventDefault();
@@ -221,18 +256,26 @@ export default class UserLogin extends Component {
           }
           Service.login(credentials).then(response => {
             console.log(response.data);
-            this.setState({
-              loginMessage:response.data.body
-            })
-            console.log(this.state.loginMessage);
-            if(this.state.loginMessage===true){
-               return history.push('/books');
+            if (response.data.body === true) {
+                this.setState({
+                    severity: "success",
+                    alertShow: true,
+                    alertResponse: response.data.message
+                });
+                this.clearFieldsData();
+                document.getElementById("loginForm").reset();
+                history.push("/books")
+            } else {
+                this.setState({
+                    severity: "error",
+                    alertShow: true,
+                    alertResponse: response.data.message
+                });
             }
           }).catch(error => {
             console.log(error);
           })
         }
-        document.getElementById("loginForm").reset();
       }
 
       handleTabSelection=({target})=>{
@@ -460,6 +503,12 @@ export default class UserLogin extends Component {
         return (
             <div className= "login-page">
                 <div className="page">
+                <Snackbar anchorOrigin={{vertical: 'top', horizontal: 'right'}} open={this.state.alertShow}
+                          autoHideDuration={6000} onClose={this.closeAlertBox}>
+                    <Alert onClose={this.closeAlertBox} severity={this.state.severity} variant={"filled"}>
+                        {this.state.alertResponse}
+                    </Alert>
+                </Snackbar>
 
                     <div className="main-container">
                         <img src={loginimage} alt="asd" className="login-image" />
