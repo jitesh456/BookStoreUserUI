@@ -264,6 +264,7 @@ export default class UserLogin extends Component {
                 });
                 this.clearFieldsData();
                 document.getElementById("loginForm").reset();
+                history.push("/books")
                 setTimeout(()=>{
                     history.push("/books");
                 },3000)
@@ -335,7 +336,7 @@ export default class UserLogin extends Component {
                                             value={this.state.password}
                                             color="secondary"
                                             name="password"
-
+                                            className="info"
                                             onChange={this.handleChange.bind(this, 'password')}
                                             required
                                             endAdornment={
@@ -440,7 +441,7 @@ export default class UserLogin extends Component {
                                             value={this.state.password}
                                             color="secondary"
                                             name="password"
-
+                                            className="info"
                                             onChange={this.handleChange.bind(this, 'password')}
                                             endAdornment={
                                                 <InputAdornment position="end">
@@ -503,7 +504,7 @@ export default class UserLogin extends Component {
             </Tabs>
         );
         return (
-            <body style={{ backgroundColor: "gray" ,height:"100%", width:"100%" }}>
+            <body >
             <div className= "login-page">
                 <div className="page">
                 <Snackbar anchorOrigin={{vertical: 'top', horizontal: 'right'}} open={this.state.alertShow}
@@ -516,7 +517,7 @@ export default class UserLogin extends Component {
                     <div className="main-container">
                         <img src={loginimage} alt="asd" className="login-image" />
                         <div className="bbStore">
-                            <h3 style={{ marginLeft: '10%' }}>Bug Busters Book Store</h3>
+                            <h3 >Bug Busters Book Store</h3>
                         </div>
                     </div>
                     <div className="login-container">
