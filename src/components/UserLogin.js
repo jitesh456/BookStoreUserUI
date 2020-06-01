@@ -264,7 +264,9 @@ export default class UserLogin extends Component {
                 });
                 this.clearFieldsData();
                 document.getElementById("loginForm").reset();
-                history.push("/books")
+                setTimeout(()=>{
+                    history.push("/books");
+                },3000)
             } else {
                 this.setState({
                     severity: "error",
@@ -347,7 +349,7 @@ export default class UserLogin extends Component {
                                                     </IconButton>
                                                 </InputAdornment>
                                             }
-                                            labelWidth={70}
+                                            // labelWidth={70}
                                         />
                                         <p
                                             style={{
@@ -514,7 +516,7 @@ export default class UserLogin extends Component {
                     <div className="main-container">
                         <img src={loginimage} alt="asd" className="login-image" />
                         <div className="bbStore">
-                            <h3 style={{ marginLeft: '14%' }}>Bug Busters Book Store</h3>
+                            <h3 style={{ marginLeft: '10%' }}>Bug Busters Book Store</h3>
                         </div>
                     </div>
                     <div className="login-container">

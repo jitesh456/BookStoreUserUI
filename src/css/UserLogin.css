@@ -16,6 +16,15 @@
     opacity: 1;
 }
 
+a{
+    color:grey;
+    text-decoration: none;
+}
+
+a:hover{
+    color: blue;
+}
+
 .login-container {
     display: flex;
     margin-top: -420px;

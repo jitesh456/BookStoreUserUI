@@ -175,7 +175,7 @@
     min-height: 235px;
     max-height: 320px;
     overflow-y: hidden;
-
+    overflow-x: hidden;
 }
 
 
