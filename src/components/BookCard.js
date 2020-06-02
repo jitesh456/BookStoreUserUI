@@ -31,7 +31,7 @@ export default class BookCard extends Component {
         super(props);
         this.state = {
             data: [],
-            count:0
+            
         }
         
     }
@@ -52,6 +52,14 @@ export default class BookCard extends Component {
     }
 
     displayButton() {
+        if(localStorage.getItem("token")==null)
+        {
+           return (
+                <Button  type="submit" variant="contained" onClick={()=>{
+                    history.push('/')
+                }} size="50%" style={{ width:"90%", backgroundColor:'maroon', color: "white" }} >ADD TO CART</Button>
+            );  
+        }
         if (this.props.bookDetails.quantity === 0) {
             return (
                 <Button  type="submit" variant="contained"  disabled={ !this.props.bookDetails.quantity} size="50%" style={{ width:"90%", backgroundColor:'silver', color: "black" }} >ADD TO CART</Button>
@@ -62,9 +70,6 @@ export default class BookCard extends Component {
             return(
                     <Button  type="submit" name="addButton" variant="contained" onClick={()=>{
                     history.push('/cart')
-                    this.setState({
-                        count:1
-                    })
                 }} disabled={ !this.props.bookDetails.quantity} size="50%" style={{ width:"90%", backgroundColor:"#A52A20", color: "whitesmoke"}} >GO TO CART</Button>
             );
         }
@@ -73,9 +78,7 @@ export default class BookCard extends Component {
                 <Button  
                     name= "button" type="submit" variant="contained" onClick={(event)=>{
                     this.props.addFunction(this.props.bookDetails)
-                    this.setState({
-                        count:1,
-                    })   
+                       
                 }} disabled={ !this.props.bookDetails.quantity} size="50%" style={{ width:"90%", backgroundColor:'maroon', color: "white" }} >ADD TO CART</Button>
             );
         }

@@ -256,7 +256,8 @@ export default class UserLogin extends Component {
           }
           Service.login(credentials).then(response => {
             console.log(response.data);
-            if (response.data.body === true) {
+            localStorage.setItem("token",response.data.body);
+            if (response.data.body.length> 0) {
                 this.setState({
                     severity: "success",
                     alertShow: true,

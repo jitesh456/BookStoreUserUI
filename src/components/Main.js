@@ -192,6 +192,23 @@ export default class Main extends Component {
             alert(pageIndex);
          }
 
+         displayCartIcon()
+         {
+             if(localStorage.getItem("token")==null)
+             {
+                 return(
+                    <a  href="/">
+                        <ShoppingCartOutlinedIcon  style={{color:"white"}}/>
+                    </a>
+                 );
+             }
+             return(
+                    <a  href="/cart">
+                        <ShoppingCartOutlinedIcon  style={{color:"white"}}/>
+                    </a>
+                    );
+         }
+
     render() {
         return (
             <div >
@@ -214,9 +231,7 @@ export default class Main extends Component {
                     </div>
                     <div className="shoppingcart">
                         <div className="shooping_carticon" >
-                            <a  href="/cart">
-                                <ShoppingCartOutlinedIcon  style={{color:"white"}}/>
-                            </a>
+                           {this.displayCartIcon()}
                         </div>
                         <div className="cart_itemcount">
                         {this.state.counter}
