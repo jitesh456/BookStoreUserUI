@@ -6,18 +6,6 @@
     background-color: gray;
 }
 
-.main-container {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-   
-    width: 624px;
-    height: 391px;
-    background: #F5F5F5 0% 0% no-repeat padding-box;
-    border-radius: 21px;
-    opacity: 1; 
-}
-
 a{
     color:grey;
     text-decoration: none;
@@ -25,6 +13,29 @@ a{
 
 a:hover{
     color: blue;
+}
+
+
+.page {
+    display:flex;
+    /* background-color: hotpink; */
+    width:700px;
+    height: 370px;
+    margin-left: 25%;
+    margin-top: 10%;
+    justify-content: center;
+    /* width: 100%; */
+}
+
+.main-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;   
+    width: 624px;
+    height: 391px;
+    background: #F5F5F5 0% 0% no-repeat padding-box;
+    border-radius: 21px;
+    opacity: 1; 
 }
 
 .login-container {
@@ -65,39 +76,30 @@ a:hover{
     margin-bottom: 4%;
     margin-left: 7%;
 }
+.icon-button{
+    pointer-events: none;
+}
 
 .login-field-container {
     display: flex;
     width: 100%;
     justify-content: center;
-    margin-top: 15%;
-    margin-left:35%;
-    /*  */
+     margin-top: 15%;
+}
+.tabpanel-content {
+    display: flex;
+    width:153%;
+    flex-direction: column;
+    justify-content: space-evenly;
+   justify-content: center;
+   margin-left: -16%;
 }
 
-.page {
-    display:flex;
-    /* background-color: hotpink; */
-    width:700px;
-    height: 370px;
-    margin-left: 25%;
-    margin-top: 10%;
-    justify-content: center;
-    /* width: 100%; */
-}
-
-/* .adornment{
-    pointer-events: none;
-} */
-
-.icon-button{
-    pointer-events: none;
-}
 
 .signup-field-container {
     display: flex;
     justify-content: center;
-    margin-left:35%;
+    
     width: 100%;
     margin-top: 5%;
     height: 70%;
@@ -105,11 +107,10 @@ a:hover{
 
 .login-fields {
     display: flex;
+   
     flex-direction: column;
     justify-content: center;
     width: 110%;
-   margin-left: -7%;
-    margin-top: -9px;
 }
 
 #login-button {
@@ -161,13 +162,6 @@ a:hover{
     margin-top: -4%;
 }
 
-.tabpanel-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-}
-
 .tab1 {
     font-size: 22px;
     margin-right: 90px;
@@ -200,7 +194,7 @@ a:hover{
 
 
  
-@media screen and (max-width: 360px) {
+@media screen and (max-width: 500px) {
     .login-page {
         display: flex;
         position: absolute ;
@@ -221,24 +215,29 @@ a:hover{
     
     .page{
         display: flex;
-        /* width:50%; */
-        /* background-color: hotpink; */
-        /* margin-top:25%; */
+        margin-top:30%;
         justify-content: center;
+        margin-left: 1%;
     }
 
     .login-container {
         justify-content: center;
-        width:103%;
-        margin-top: -20%;
-        margin-left: -20%;
-        /* margin-right: -3%; */
+        width:95%;
+         margin-left: 0%;
     }
+
+    .tabpanel-content{
+        display: flex;
+        width:105%;
+        flex-direction: column;
+        justify-content: space-evenly;
+       justify-content: center;
+       margin-left: -2%;
+    }
+ 
     .login-fields {
-        justify-content: center;
-        width: 94%;
-        margin-left: -15%;
-    }
+    width:100%
+    }   
     .tab1 {
         margin-right: 69px;
     }
@@ -251,7 +250,7 @@ a:hover{
 }
 
 
-@media screen and (max-height: 830px)and (min-height:650px) and (max-width:415px)   {
+@media screen and (max-width: 600px) and (min-width:370px) {
     .login-page {
         display: flex;
         position: absolute ;
@@ -270,38 +269,46 @@ a:hover{
         display: none;
     }
     
-    
-    .login-page {
-        position: absolute;
-        height: 100%;   
-        justify-content: center;
-    }
-    .login-container {
-        justify-content: center;
-        width:106%;
-        margin-top: -10%;
-        margin-left: -23%;
-        margin-right: -3%;
-    }
     .page{
         display: flex;
-        margin-top:25%;
+        margin-top:30%;
         justify-content: center;
+        margin-left: 1%;
     }
 
-    .login-fields {
+    .login-container {
         justify-content: center;
-        width: 110%;
-        margin-left: -23%;
+        width:95%;
+         margin-left: 0%;
+         margin-top: 3%;
     }
+
+    .tabpanel-content{
+        display: flex;
+        width:110%;
+        flex-direction: column;
+        justify-content: space-evenly;
+       justify-content: center;
+       margin-left: -15%;
+    }
+ 
+    .login-fields {
+    width:120%
+    }   
+    .tab1 {
+        margin-right: 69px;
+    }
+    
     .tablist {
         justify-content: center;
         margin-left: -5%;
     }
-} 
+    
+}
 
 
-@media screen and (max-width: 1024px)  {
+
+@media screen and (min-Width:1000px) and (max-width: 1024px) and (min-height:1030px)  {
  
   .page{
       margin-top:40%;
@@ -311,14 +318,16 @@ a:hover{
 } 
 
 
-
-@media screen and (max-width: 768px) and (height: 1024px) {
+@media screen and (max-width: 1000px) and (min-width:700px) {
        
+    .login-page{
+        justify-content: center;
+    }
       .page{
-          margin-top:40%;
-          margin-left: 4%;
+           margin-top:20%; 
+          margin-left: -3%;
           
       }
 
     
-    } 
+    }
