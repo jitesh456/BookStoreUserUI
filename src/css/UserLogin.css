@@ -80,10 +80,18 @@ a:hover{
     /* background-color: hotpink; */
     width:700px;
     height: 370px;
-    margin-left: 37%;
+    margin-left: 25%;
     margin-top: 10%;
     justify-content: center;
     /* width: 100%; */
+}
+
+/* .adornment{
+    pointer-events: none;
+} */
+
+.icon-button{
+    pointer-events: none;
 }
 
 .signup-field-container {

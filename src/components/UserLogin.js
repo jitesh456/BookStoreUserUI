@@ -264,7 +264,6 @@ export default class UserLogin extends Component {
                 });
                 this.clearFieldsData();
                 document.getElementById("loginForm").reset();
-                history.push("/books")
                 setTimeout(()=>{
                     history.push("/books");
                 },3000)
@@ -327,8 +326,8 @@ export default class UserLogin extends Component {
                                     </p>
                                 </div>
                                 <div style={{ height: "35px" }}></div>
-                                <FormControl style={{ width: "100%" }}>
                                     <div className="div_content">
+                                    <FormControl style={{ width: "100%" }}>
                                         <InputLabel htmlFor="outlined-adornment-password" color="secondary" variant="outlined">Password</InputLabel>
                                         <OutlinedInput
                                             id="outlined-adornment-password"
@@ -338,19 +337,18 @@ export default class UserLogin extends Component {
                                             name="password"
                                             className="info"
                                             onChange={this.handleChange.bind(this, 'password')}
-                                            required
                                             endAdornment={
-                                                <InputAdornment position="end">
-                                                    <IconButton
+                                                <InputAdornment position="end" className="adornment">
+                                                    <IconButton  className="icon-button"
                                                         aria-label="toggle password visibility"
                                                         onClick={this.handleClickShowPassword}
-                                                    // onMouseDown={this.handleMouseDownPassword}
+                                                        onMouseDown={this.handleMouseDownPassword}
                                                     >
                                                         {this.state.showPassword ? <Visibility /> : <VisibilityOff />}
                                                     </IconButton>
                                                 </InputAdornment>
                                             }
-                                            // labelWidth={70}
+                                            labelWidth={70}
                                         />
                                         <p
                                             style={{
@@ -360,10 +358,11 @@ export default class UserLogin extends Component {
                                                 marginBottom: "-3em",
 
                                             }}
-                                        >{this.state.passwordError}
+                                        ><div style={{ marginTop: "-5px" }} >{this.state.passwordError}</div>
                                         </p>
+
+                                    </FormControl>
                                     </div>
-                                </FormControl>
 
 
                                 <div className="foot-lnk">
@@ -444,8 +443,8 @@ export default class UserLogin extends Component {
                                             className="info"
                                             onChange={this.handleChange.bind(this, 'password')}
                                             endAdornment={
-                                                <InputAdornment position="end">
-                                                    <IconButton
+                                                <InputAdornment position="end" className="adornment">
+                                                    <IconButton className="icon-button"
                                                         aria-label="toggle password visibility"
                                                         onClick={this.handleClickShowPassword}
                                                         onMouseDown={this.handleMouseDownPassword}
