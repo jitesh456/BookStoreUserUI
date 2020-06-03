@@ -1,0 +1,49 @@
+.showProfile{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+    width:250px;
+    height:160px;
+    padding-left: -3px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 5px 15px #00000029;
+    border: 1px solid #E4E4E4;
+    opacity: 1;
+    
+  }
+  .profileContaint{
+    display: flex;
+    margin-left: 8%;
+    flex-direction: column;
+    color: black;
+  }
+  .dialogBox{
+    display:flex;
+    /* background-color: hotpink; */
+    width:100%;
+    height: 100%;
+    margin-left: 25%;
+    margin-top: 10%;
+    justify-content: center;
+    /* width: 100%; */
+  }
+
+  .login-box {
+    position: absolute;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background-color: gray;
+    opacity: 0.4;
+}
+
+  @media screen and (Width:563px) and  (min-height:487)  {
+ 
+    .page{
+        margin-top:0%;
+        margin-left: 0%;
+    }
+  
+  } 
+  

@@ -40,9 +40,6 @@
   color: white;
   
 }
-
-
-
 .admin_footer{
   background-color: #9b2020;
   display:flex;
@@ -65,11 +62,53 @@
 }
 
 .shoppingcart{
-  margin-Left:14%;
+  margin-Left:-17%;
   display: flex;
   margin-top: 4px;
 }
+.profile{
+  margin-Left:8%;
+  display: flex;
+  height: auto;
+  flex-direction: row;
+  margin-top: 10px;
+  margin-right:2%;
+}
+.profile-Icon{
+  margin-Left:-8%;
+  
+}
 
+.profileButton{
+  color:#9b2020;
+  border:none;
+}
+.profile-div{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width:250px;
+  height:160px;
+  padding-left: -3px;
+  margin-top: 13%;
+  margin-left: -29%;
+  background:none;
+  border: none;
+}
+button {
+  background-color:#9b2020;
+   color: #ffffff;
+   padding: 5px 10px;
+   margin-top: -4px;
+ }
+ 
+ button:hover {
+   border: none;
+   background-color:#9b2020;
+   color: #ffffff;
+   padding: 5px 10px;
+ }
+ 
 .cart_itemcount {
   border: 3px;
   background-color: white;
@@ -123,7 +162,7 @@
 
 .search{
   position: relative;
-  left: 20px;
+  left: -70px;
   display: flex;
   margin-top: 7px;
   margin-bottom: 7px;
@@ -217,6 +256,7 @@
   display: flex;
   margin-top: 4px;
 }
+
 
 }
 
