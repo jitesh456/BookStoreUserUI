@@ -62,17 +62,17 @@
 }
 
 .shoppingcart{
-  margin-Left:-17%;
+  margin-Left:-8%;
   display: flex;
   margin-top: 4px;
 }
 .profile{
-  margin-Left:8%;
+  margin-Left:1%;
   display: flex;
   height: auto;
   flex-direction: row;
   margin-top: 10px;
-  margin-right:2%;
+  /* margin-right:2%; */
 }
 .profile-Icon{
   margin-Left:-8%;
