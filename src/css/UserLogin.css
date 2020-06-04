@@ -26,7 +26,12 @@ a:hover{
     justify-content: center;
     /* width: 100%; */
 }
-
+.login-Box{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+}
 .main-container {
     display: flex;
     justify-content: center;
@@ -93,7 +98,7 @@ a:hover{
     flex-direction: column;
     justify-content: space-evenly;
    justify-content: center;
-   margin-left: -16%;
+   margin-left: -18%;
 }
 
 
@@ -332,4 +337,3 @@ a:hover{
 
     
     }
-

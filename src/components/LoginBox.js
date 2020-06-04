@@ -25,268 +25,266 @@ let mobileError = ''; let passwordError = '';
 
 const theme = createMuiTheme({
     palette: {
-      primary: {
-        // Purple and green play nicely together.
-        main: purple[500],
-      },
-      secondary: {
-        // This is green.A700 as hex.
-        main: '#B0002A',
-      
-      },
+        primary: {
+            // Purple and green play nicely together.
+            main: purple[500],
+        },
+        secondary: {
+            // This is green.A700 as hex.
+            main: '#B0002A',
+
+        },
     },
-  });
+});
 export default class UserLogin extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
-        this.state={
-            password:'',
-            showpassword:false,
-            tabValue:'',
-            email:'',
+        this.state = {
+            password: '',
+            showpassword: false,
+            tabValue: '',
+            email: '',
             nameError: '',
             emailError: '',
             mobileError: '',
             passwordError: '',
-            loginChecked:true,
-            signupChecked:false,
+            loginChecked: true,
+            signupChecked: false,
             validateform: false,
-            fullName:'',
-            mobileNumber:'',
-            loginMessage:'',
-            singupMessage:'',
+            fullName: '',
+            mobileNumber: '',
+            loginMessage: '',
+            singupMessage: '',
             alertShow: false,
             alertResponse: "",
         }
-        this.handleChange=this.handleChange.bind(this);
-        this.handleClickShowPassword=this.handleClickShowPassword.bind(this);
-        this.handleSubmit=this.handleSubmit.bind(this);
-        this.handleLoginSubmit=this.handleLoginSubmit.bind(this);
-        this.handleMouseDownPassword=this.handleMouseDownPassword.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+        this.handleClickShowPassword = this.handleClickShowPassword.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleLoginSubmit = this.handleLoginSubmit.bind(this);
+        this.handleMouseDownPassword = this.handleMouseDownPassword.bind(this);
     }
 
     validate = (type) => {
 
-        var mobilePattern=/[7-9]{1}[0-9]{9}$/;
+        var mobilePattern = /[7-9]{1}[0-9]{9}$/;
         var namePAttern = /[A-Z]{1}[a-zA-Z]{2,}$/;
         var name = /[a-zA-Z]{1,}$/;
         var number = /[0-9]{1,}$/;
-        var emailPattern=/^[a-zA-Z]{3,}([-|+|.|_]?[a-zA-Z0-9]+)?[@]{1}[A-Za-z0-9]+[.]{1}[a-zA-Z]{2,4}([.]{1}[a-zA-Z]+)?$/;
-         var passwordPattern =  /[a-zA-Z0-9]{1,}$/;
-        
-        
+        var emailPattern = /^[a-zA-Z]{3,}([-|+|.|_]?[a-zA-Z0-9]+)?[@]{1}[A-Za-z0-9]+[.]{1}[a-zA-Z]{2,4}([.]{1}[a-zA-Z]+)?$/;
+        var passwordPattern = /[a-zA-Z0-9]{1,}$/;
+
+
         switch (type) {
-  
+
             case 'email':
                 if (!emailPattern.test(this.state.email)) {
                     emailError = "Enter valid email";
-                  }
-                  if (emailPattern.test(this.state.email)) {
-                      emailError = "";
-                    }
-                  break;
+                }
+                if (emailPattern.test(this.state.email)) {
+                    emailError = "";
+                }
+                break;
             case 'fullName':
                 if (number.test(this.state.fullName)) {
-                    nameError=" Only letters allowed";
-                   
-                  }
-                  if (this.state.fullName.length<3 && this.state.fullName.length>1) {
-                      nameError=" Min 3 characters";
-                    }
-                  if( this.state.fullName.slice(0,1)===" ")
-                  {
-                      nameError =" Name should not start with space";
-                  }
-                  if(this.state.fullName.slice(0,1)!==this.state.fullName.slice(0,1).toUpperCase())
-                  {
-                      nameError ="First letter must be capital";
-                  }
-                  if (namePAttern.test(this.state.fullName)) {
-                      nameError="";
-                    }
-                  break;
+                    nameError = " Only letters allowed";
+
+                }
+                if (this.state.fullName.length < 3 && this.state.fullName.length > 1) {
+                    nameError = " Min 3 characters";
+                }
+                if (this.state.fullName.slice(0, 1) === " ") {
+                    nameError = " Name should not start with space";
+                }
+                if (this.state.fullName.slice(0, 1) !== this.state.fullName.slice(0, 1).toUpperCase()) {
+                    nameError = "First letter must be capital";
+                }
+                if (namePAttern.test(this.state.fullName)) {
+                    nameError = "";
+                }
+                break;
             case 'password':
-                if (this.state.password.length<8 && this.state.password.length>1) {
-                    passwordError=" Min 8 characters";
-                  }
+                if (this.state.password.length < 8 && this.state.password.length > 1) {
+                    passwordError = " Min 8 characters";
+                }
                 if (!passwordPattern.test(this.state.password)) {
                     passwordError = "Enter proper password";
                 }
                 if (passwordPattern.test(this.state.password)) {
-                    passwordError="";
-                  }
+                    passwordError = "";
+                }
                 break;
             case 'mobileNumber':
-               
-            if (this.state.mobileNumber==='0' && this.state.mobileNumber.length===1) {
-                mobileError = " Number should not start with zero";
-              }
-              if (this.state.mobileNumber.slice(0,1)<7) {
-                mobileError = " Number should start with 7,8 or 9";
-              }else{
-                if (this.state.mobileNumber.length<10 && this.state.mobileNumber.length>0) {
+
+                if (this.state.mobileNumber === '0' && this.state.mobileNumber.length === 1) {
+                    mobileError = " Number should not start with zero";
+                }
+                if (this.state.mobileNumber.slice(0, 1) < 7) {
+                    mobileError = " Number should start with 7,8 or 9";
+                } else {
+                    if (this.state.mobileNumber.length < 10 && this.state.mobileNumber.length > 0) {
+                        mobileError = " Number must be of 10 digits";
+                    }
+                }
+                if (this.state.mobileNumber.length > 9) {
                     mobileError = " Number must be of 10 digits";
-                  }
-              }
-              if (this.state.mobileNumber.length>9) {
-                mobileError = " Number must be of 10 digits";
-              }    
-            if (name.test(this.state.mobileNumber) && this.state.mobileNumber.length>0) {
-              mobileError = " Only number allowed";
-            }
-            if (this.state.mobileNumber===" " && this.state.mobileNumber.length===1) {
-                mobileError = " Number should not start with space";
-              }
-              if (mobilePattern.test(this.state.mobileNumber) && this.state.mobileNumber.length===10) {
-                mobileError = "";
-              }
-            break;
+                }
+                if (name.test(this.state.mobileNumber) && this.state.mobileNumber.length > 0) {
+                    mobileError = " Only number allowed";
+                }
+                if (this.state.mobileNumber === " " && this.state.mobileNumber.length === 1) {
+                    mobileError = " Number should not start with space";
+                }
+                if (mobilePattern.test(this.state.mobileNumber) && this.state.mobileNumber.length === 10) {
+                    mobileError = "";
+                }
+                break;
             default:
                 break;
         }
-       
-        if (nameError || emailError || mobileError || passwordError) {
-          this.setState({
-              nameError: nameError,
-              emailError: emailError,
-              mobileError: mobileError,
-              passwordError: passwordError,
-          })
-          return false;
-      }
-      return true;
-  }
 
-      handleChange(field,event) {
+        if (nameError || emailError || mobileError || passwordError) {
+            this.setState({
+                nameError: nameError,
+                emailError: emailError,
+                mobileError: mobileError,
+                passwordError: passwordError,
+            })
+            return false;
+        }
+        return true;
+    }
+
+    handleChange(field, event) {
         this.setState({ [event.target.name]: event.target.value }
-          , () => this.validate(field));
-    
+            , () => this.validate(field));
+
         this.setState({
-          emailError: '',
-          nameError:'',
-          mobileError:'',
-          passwordError:'',
-          validateform:false
+            emailError: '',
+            nameError: '',
+            mobileError: '',
+            passwordError: '',
+            validateform: false
         });
-      }
-    
+    }
+
     handleClickShowPassword = () => {
-        this.setState({showPassword: !this.state.showPassword });
-      };
-    
+        this.setState({ showPassword: !this.state.showPassword });
+    };
+
     handleMouseDownPassword = (event) => {
         event.preventDefault();
-      };
+    };
 
-      handleTabSelection=({target})=>{
-        if([target.name]=="login"){
-            this.setState({loginChecked:true,signupChecked:false})
+    handleTabSelection = ({ target }) => {
+        if ([target.name] == "login") {
+            this.setState({ loginChecked: true, signupChecked: false })
         }
-        if([target.name]=="signup"){
-            this.setState({loginChecked:false,signupChecked:true})
+        if ([target.name] == "signup") {
+            this.setState({ loginChecked: false, signupChecked: true })
         }
     }
-      componentDidMount(){
-          this.setState({
+    componentDidMount() {
+        this.setState({
             emailError: '',
             validateform: false
-          });
-      }
+        });
+    }
 
-      handleSubmit(event) {
+    handleSubmit(event) {
         event.preventDefault();
         const isValid = this.validate();
         if (isValid) {
-          const user={
-            name :this.state.fullName,
-            email :this.state.email,
-            password :this.state.password,
-            number :this.state.mobileNumber,
-          }
-          Service.registerUser(user).then(response => {
-            console.log(response.data);
-            if (response.data.body === true) {
-                this.setState({
-                    severity: "success",
-                    alertShow: true,
-                    alertResponse: response.data.message
-                });
-                this.clearFieldsData();
-                document.getElementById("signupForm").reset();
-            } else {
-                this.setState({
-                    severity: "error",
-                    alertShow: true,
-                    alertResponse: response
-                });
+            const user = {
+                name: this.state.fullName,
+                email: this.state.email,
+                password: this.state.password,
+                number: this.state.mobileNumber,
             }
-            console.log(this.state);
-          }).catch(error => {
-            console.log(error);
-          })
+            Service.registerUser(user).then(response => {
+                console.log(response.data);
+                if (response.data.body === true) {
+                    this.setState({
+                        severity: "success",
+                        alertShow: true,
+                        alertResponse: response.data.message
+                    });
+                    this.clearFieldsData();
+                    document.getElementById("signupForm").reset();
+                } else {
+                    this.setState({
+                        severity: "error",
+                        alertShow: true,
+                        alertResponse: response
+                    });
+                }
+                console.log(this.state);
+            }).catch(error => {
+                console.log(error);
+            })
         }
-        
-      }
 
-      clearFieldsData = () => {
+    }
+
+    clearFieldsData = () => {
         this.setState({
             password: "",
         });
     };
 
-        closeAlertBox = () => {
-            this.setState({alertShow: false});
-        };
+    closeAlertBox = () => {
+        this.setState({ alertShow: false });
+    };
 
-        showAlert = (severity, alertShow, alertResponse) => {
-            this.setState({
-                severity: severity,
-                alertShow: alertShow,
-                alertResponse: alertResponse
-            })
-        }
+    showAlert = (severity, alertShow, alertResponse) => {
+        this.setState({
+            severity: severity,
+            alertShow: alertShow,
+            alertResponse: alertResponse
+        })
+    }
 
-      handleLoginSubmit(event) {
+    handleLoginSubmit(event) {
         event.preventDefault();
         const isValid = this.validate();
         if (isValid) {
-          const credentials={
-            email :this.state.email,
-            password :this.state.password,
-          }
-          Service.login(credentials).then(response => {
-            console.log(response.data);
-            localStorage.setItem("token",response.data.body);
-            if (response.data.body.length> 0) {
-                this.setState({
-                    severity: "success",
-                    alertShow: true,
-                    alertResponse: response.data.message
-                });
-                this.clearFieldsData();
-                document.getElementById("loginForm").reset();
-                setTimeout(()=>{
-                    history.push("/books");
-                },3000)
-            } else {
-                this.setState({
-                    severity: "error",
-                    alertShow: true,
-                    alertResponse: response.data.message
-                });
+            const credentials = {
+                email: this.state.email,
+                password: this.state.password,
             }
-          }).catch(error => {
-            console.log(error);
-          })
+            Service.login(credentials).then(response => {
+                console.log(response.data);
+                localStorage.setItem("token", response.data.body);
+                if (response.data.body.length > 0) {
+                    this.setState({
+                        severity: "success",
+                        alertShow: true,
+                        alertResponse: response.data.message
+                    });
+                    this.clearFieldsData();
+                    document.getElementById("loginForm").reset();
+                    setTimeout(() => {
+                        history.push("/books");
+                    }, 3000)
+                } else {
+                    this.setState({
+                        severity: "error",
+                        alertShow: true,
+                        alertResponse: response.data.message
+                    });
+                }
+            }).catch(error => {
+                console.log(error);
+            })
         }
-      }
+    }
 
-      handleTabSelection=({target})=>{
-        if([target.name]=="login"){
-            this.setState({loginChecked:true,signupChecked:false})
+    handleTabSelection = ({ target }) => {
+        if ([target.name] == "login") {
+            this.setState({ loginChecked: true, signupChecked: false })
         }
-        if([target.name]=="signup"){ 
-            this.setState({loginChecked:false,signupChecked:true})
+        if ([target.name] == "signup") {
+            this.setState({ loginChecked: false, signupChecked: true })
         }
     }
     render() {
@@ -327,7 +325,7 @@ export default class UserLogin extends Component {
                                     </p>
                                 </div>
                                 <div style={{ height: "35px" }}></div>
-                                    <div className="div_content">
+                                <div className="div_content">
                                     <FormControl style={{ width: "100%" }}>
                                         <InputLabel htmlFor="outlined-adornment-password" color="secondary" variant="outlined">Password</InputLabel>
                                         <OutlinedInput
@@ -340,7 +338,7 @@ export default class UserLogin extends Component {
                                             onChange={this.handleChange.bind(this, 'password')}
                                             endAdornment={
                                                 <InputAdornment position="end" className="adornment">
-                                                    <IconButton  className="icon-button"
+                                                    <IconButton className="icon-button"
                                                         aria-label="toggle password visibility"
                                                         onClick={this.handleClickShowPassword}
                                                         onMouseDown={this.handleMouseDownPassword}
@@ -363,7 +361,7 @@ export default class UserLogin extends Component {
                                         </p>
 
                                     </FormControl>
-                                    </div>
+                                </div>
 
 
                                 <div className="foot-lnk">
@@ -504,30 +502,30 @@ export default class UserLogin extends Component {
             </Tabs>
         );
         return (
-            
-                <div className="page">
-                <Snackbar anchorOrigin={{vertical: 'top', horizontal: 'right'}} open={this.state.alertShow}
-                          autoHideDuration={6000} onClose={this.closeAlertBox}>
+
+            <div className="login-Box">
+                <Snackbar anchorOrigin={{ vertical: 'top', horizontal: 'right' }} open={this.state.alertShow}
+                    autoHideDuration={6000} onClose={this.closeAlertBox}>
                     <Alert onClose={this.closeAlertBox} severity={this.state.severity} variant={"filled"}>
                         {this.state.alertResponse}
                     </Alert>
                 </Snackbar>
 
-                    <div className="main-container">
-                        <img src={loginimage} alt="asd" className="login-image" />
-                        <div className="bbStore">
-                            <h3 >Bug Busters Book Store</h3>
-                        </div>
+                <div className="main-container">
+                    <img src={loginimage} alt="asd" className="login-image" />
+                    <div className="bbStore">
+                        <h3 >Bug Busters Book Store</h3>
                     </div>
-                    <div className="login-container">
-                        <ThemeProvider theme={theme}>
-                            {displayData}
-                        </ThemeProvider>
-                    </div>
-
+                </div>
+                <div className="login-container">
+                    <ThemeProvider theme={theme}>
+                        {displayData}
+                    </ThemeProvider>
                 </div>
 
-            
+            </div>
+
+
         );
     }
 }
