@@ -236,19 +236,6 @@ export default class Main extends Component {
                             onChange={this.handleTextChange}
                         />
                     </div>
-                    <div className="profile">
-                        <div className="profile-Icon">
-                            <button className="profileButton" variant="outlined"style={{}}
-                                onClick={this.handleShowProfile}>
-                                <PersonOutlineIcon style={{ color: "white" }} />
-                            </button>
-
-                        </div>
-                        <div className="profile-div">
-                            {this.state.profile && <Profile />}
-                        </div>
-                    </div>
-
                     <div className="shoppingcart">
                         <div className="shooping_carticon" >
                             {this.displayCartIcon()}
@@ -257,6 +244,16 @@ export default class Main extends Component {
                             {this.state.counter}
                         </div>
                     </div>
+                    <div className="profile">
+                        <div className="profile-Icon">
+                                <PersonOutlineIcon style={{ color: "white" }} onClick={this.handleShowProfile} />
+                        </div>
+                        <div className="profile-div">
+                            {this.state.profile && <Profile />}
+                        </div>
+                    </div>
+
+                    
                 </AppBar>
                 <div className="main">
                     <div className="book_cont">

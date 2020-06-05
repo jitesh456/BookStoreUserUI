@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 
 import DialogContent from '@material-ui/core/DialogContent';
 import Dialog from '@material-ui/core/Dialog';
-import '../css/UserLogin.css';
 import LoginBox from "./LoginBox";
-import '../css/Main.css';
+import Button from '@material-ui/core/Button';
 
 export default class profile extends React.Component {
 
@@ -32,13 +31,14 @@ export default class profile extends React.Component {
 
                 </div>
                 <div>
-                    <button type="button" onClick={this.openDialog}
-                        style={{ width: "54%", fontSize: "14px", backgroundColor: 'grey', border: "maroon", color: "maroon", marginLeft: "5%", marginTop: "7%" }}>
-                        Login/Signup</button>
+                    <Button type="button" onClick={this.openDialog}
+                        style={{ width: "65%", fontSize: "14px", backgroundColor: 'grey', border: "maroon", color: "maroon", marginLeft: "5%", marginTop: "5%" }}>
+                        Login/Signup</Button>
+                    
                     <div>
 
-                        <Dialog maxWidth="md" style={{ backgroundColor: "transparent" }} open={this.state.isDialogOpen} onClose={this.handleClose}>
-                            <DialogContent style={{ backgroundColor: "transparent" }}>
+                        <Dialog maxWidth="md" className="main-dialog" open={this.state.isDialogOpen} onClose={this.handleClose}>
+                            <DialogContent className="dialog-content">
                                 <div className="dialogBox">
                                     <div className="pageSet">
                                         <LoginBox />

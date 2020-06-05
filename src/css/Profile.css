@@ -3,8 +3,9 @@
     display: flex;
     flex-direction: column;
     background-color: black;
-    width:210px;
-    height:100px;
+    width: 170px;
+    height: 105px;
+    margin-top: 4px;
     padding-left: -3px;
     background: #FFFFFF 0% 0% no-repeat padding-box;
     box-shadow: 0px 5px 15px #00000029;
@@ -12,21 +13,42 @@
     opacity: 1;
     
   }
+
+  .main-dialog{
+    background-color: transparent !important;
+  }
+
+  .body{
+    padding-right: 0px !important;
+    overflow: hidden;
+}
+
   .profileContaint{
     display: flex;
     margin-left: 8%;
     flex-direction: column;
     color: black;
   }
+  
+  .MuiPaper-root {
+    color: rgba(0, 0, 0, 0.87);
+    transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    background-color: transparent !important;
+}
+
+.MuiPaper-elevation24 {
+    box-shadow: none !important;
+}
+
+  .dialog-content{
+    background-color: transparent !important;
+  }
+
   .dialogBox{
     display:flex;
-    width:750px;
     height: 476px;
     margin-left: 0%;
-    /* background-color:rgba(63, 61, 61, 0.212); */
     justify-content: center;
-    
-    /* width: 100%; */
   }
 .pageSet{
   width:700px;
@@ -39,14 +61,7 @@
    height: 600px; 
 }
 .dialog-box{
-/* top: 0px; */
-/* left: 0px; */
-/* width: 1366px; */
-/* height: 768px; */
-/* background: #000000 0% 0% no-repeat padding-box;
-opacity: 0.31 */
 display:flex;
-/* background-color: hotpink; */
 width:100%;
 height: 100%;
 margin-left: 25%;

@@ -4,7 +4,7 @@
   border:none;
   position: sticky;
   top:0;
-  background-color: #9b2020;
+  background-color: #9b2020 !important;
   display: flex;
   flex-direction: row;
   height: 50px;
@@ -62,10 +62,11 @@
 }
 
 .shoppingcart{
-  margin-Left:-8%;
+  margin-Left:5%;
   display: flex;
   margin-top: 4px;
 }
+
 .profile{
   margin-Left:1%;
   display: flex;
@@ -75,14 +76,10 @@
   /* margin-right:2%; */
 }
 .profile-Icon{
-  margin-Left:18%;
+  margin-Left:35%;
   
 }
 
-.profileButton{
-  color:#9b2020;
-  border:none;
-}
 .profile-div{
   position: relative;
   display: flex;
