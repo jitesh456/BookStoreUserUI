@@ -12,7 +12,7 @@ class DataService {
   }
 
   getSortedBook=(sortingValue)=>{
-    return axios.get(`${BASIC_API_URL}/books/field`,{params:{field:sortingValue}});
+    return axios.get(`${BASIC_API_URL}/books/sort`,{params:{field:sortingValue}});
   }
 
   sendMail = (data) => {

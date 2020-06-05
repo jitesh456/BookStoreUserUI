@@ -274,7 +274,6 @@ export default class Main extends Component {
                                             className="card_content"
                                             defaultValue="category"
                                         >
-
                                             <MenuItem value="authorname">Authorname(A-Z)</MenuItem>
                                             <MenuItem value="price">Price:Low to High</MenuItem>
                                             <MenuItem value="category">Category(A-Z)</MenuItem>

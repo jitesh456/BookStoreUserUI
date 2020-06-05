@@ -154,7 +154,16 @@ button {
   width:30%;
   margin-right: 5%;
   justify-content: flex-start;
+  background-color: white !important;
   align-items:center;
+}
+
+.MuiList-root {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  list-style: none;
+  background-color: white !important;
 }
 
 .search{
