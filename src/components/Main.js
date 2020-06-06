@@ -39,6 +39,7 @@ export default class Main extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            isDialogOpen: false,
             offset: 0,
             perPage: 8,
             currentPage: 0,
@@ -193,12 +194,15 @@ export default class Main extends Component {
         alert(pageIndex);
     }
 
+  
+
     displayCartIcon() {
         if (localStorage.getItem("token") == null) {
             return (
                 <a href="/">
                     <ShoppingCartOutlinedIcon style={{ color: "white" }} />
                 </a>
+               
             );
         }
         return (
@@ -246,14 +250,14 @@ export default class Main extends Component {
                     </div>
                     <div className="profile">
                         <div className="profile-Icon">
-                                <PersonOutlineIcon style={{ color: "white" }} onClick={this.handleShowProfile} />
+                            <PersonOutlineIcon style={{ color: "white" }} onClick={this.handleShowProfile} />
                         </div>
                         <div className="profile-div">
                             {this.state.profile && <Profile />}
                         </div>
                     </div>
 
-                    
+
                 </AppBar>
                 <div className="main">
                     <div className="book_cont">

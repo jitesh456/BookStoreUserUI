@@ -1,23 +1,21 @@
 import React, { Component } from 'react';
-
-import DialogContent from '@material-ui/core/DialogContent';
-import Dialog from '@material-ui/core/Dialog';
-import LoginBox from "./LoginBox";
 import '../css/Main.css'
 import Button from '@material-ui/core/Button';
-
+import DialogBox from "./DialogBox";
 export default class profile extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            isDialogOpen: false
+            isDialogOpen: false,
+            isDialogClose:false
         }
 
     }
 
     openDialog = () => {
         this.setState({ isDialogOpen: true })
+        console.log(this.state.isDialogOpen);
     }
 
     handleClose = () => this.setState({ isDialogOpen: false })
@@ -35,18 +33,12 @@ export default class profile extends React.Component {
                     <Button type="button" onClick={this.openDialog}
                         style={{ width: "65%", fontSize: "14px", backgroundColor: 'grey', border: "maroon", color: "maroon", marginLeft: "5%", marginTop: "5%" }}>
                         Login/Signup</Button>
-                    
+
                     <div>
 
-                        <Dialog maxWidth="md" className="main-dialog" open={this.state.isDialogOpen} onClose={this.handleClose}>
-                            <DialogContent className="dialog-content">
-                                <div className="dialogBox">
-                                    <div className="pageSet">
-                                        <LoginBox />
-                                    </div>
-                                </div>
-                            </DialogContent>
-                        </Dialog>
+                        <DialogBox DialogOpen = {this.state.isDialogOpen}
+                            DialogClose= {this.handleClose}
+                        />
 
                     </div>
 
