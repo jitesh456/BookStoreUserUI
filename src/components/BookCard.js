@@ -61,7 +61,7 @@ export default class BookCard extends Component {
 
 
     displayButton() {
-        if (localStorage.getItem("token") == null) {
+        if (localStorage.getItem("token") === null) {
             return (
                 <Button type="submit" variant="contained"
                     onClick={this.openDialog}
@@ -74,7 +74,9 @@ export default class BookCard extends Component {
             );
         }
         const bookName = JSON.parse(localStorage.getItem("bookName"));
-        if (bookName !== null && bookName.includes(this.props.bookDetails.name)) {
+        if (bookName!==null && bookName.includes(this.props.bookDetails.name)) {
+            
+            console.log('if')
             return (
                 <Button type="submit" name="addButton" variant="contained" onClick={() => {
                     history.push('/cart')
@@ -82,6 +84,7 @@ export default class BookCard extends Component {
             );
         }
         else {
+            console.log('else')
             return (
                 <Button
                     name="button" type="submit" variant="contained" onClick={(event) => {
@@ -94,45 +97,46 @@ export default class BookCard extends Component {
     }
 
     render() {
-
+        let im=[]
+        im= <div className="cardofbook" name="cardData"  >
+        <Card className="card"  >
+            <NestedCardContent>
+                <div >
+                    <ImageToolTip
+                        title={
+                            <React.Fragment>
+                                <Typography ><b>Book Details</b></Typography>
+                                <p>{this.props.bookDetails.bookdetails}</p>
+                            </React.Fragment>
+                        }
+                        placement="right-start"
+                        arrow
+                    >
+                        <div id="bookimage">
+                            {this.displayImage()}
+                        </div>
+                    </ImageToolTip>
+                    <div className="book_detail">
+                        <span className="book_name">{this.props.bookDetails.name}</span>
+                    </div>
+                    <div className="space-between"></div>
+                    <div className="book_detail">
+                        <span className="book_author">{this.props.bookDetails.authorname}</span>
+                        <span className="book_price">Rs:{this.props.bookDetails.price}</span>
+                    </div>
+                </div>
+                <div style={{ marginBottom: "40px" }}>
+                    <CardActions className="card_action">
+                        {this.displayButton()}
+                    </CardActions>
+                    <DialogBox DialogOpen={this.state.isDialogOpen}
+                        DialogClose={this.handleClose} />
+                </div>
+            </NestedCardContent>
+        </Card>
+    </div>
         return (
-            <div className="cardofbook" name="cardData"  >
-                <Card className="card"  >
-                    <NestedCardContent>
-                        <div >
-                            <ImageToolTip
-                                title={
-                                    <React.Fragment>
-                                        <Typography ><b>Book Details</b></Typography>
-                                        <p>{this.props.bookDetails.bookdetails}</p>
-                                    </React.Fragment>
-                                }
-                                placement="right-start"
-                                arrow
-                            >
-                                <div id="bookimage">
-                                    {this.displayImage()}
-                                </div>
-                            </ImageToolTip>
-                            <div className="book_detail">
-                                <span className="book_name">{this.props.bookDetails.name}</span>
-                            </div>
-                            <div className="space-between"></div>
-                            <div className="book_detail">
-                                <span className="book_author">{this.props.bookDetails.authorname}</span>
-                                <span className="book_price">Rs:{this.props.bookDetails.price}</span>
-                            </div>
-                        </div>
-                        <div style={{ marginBottom: "40px" }}>
-                            <CardActions className="card_action">
-                                {this.displayButton()}
-                            </CardActions>
-                            <DialogBox DialogOpen={this.state.isDialogOpen}
-                                DialogClose={this.handleClose} />
-                        </div>
-                    </NestedCardContent>
-                </Card>
-            </div>
+           im
         )
     }
 }

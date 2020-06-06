@@ -264,7 +264,7 @@ export default class UserLogin extends Component {
                     this.clearFieldsData();
                     document.getElementById("loginForm").reset();
                     setTimeout(() => {
-                        history.push("/books");
+                        window.location.replace("/books");
                     }, 3000)
                 } else {
                     this.setState({

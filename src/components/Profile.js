@@ -1,21 +1,23 @@
 import React, { Component } from 'react';
+
+import DialogContent from '@material-ui/core/DialogContent';
+import Dialog from '@material-ui/core/Dialog';
+import LoginBox from "./LoginBox";
 import '../css/Main.css'
 import Button from '@material-ui/core/Button';
-import DialogBox from "./DialogBox";
+
 export default class profile extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            isDialogOpen: false,
-            isDialogClose:false
+            isDialogOpen: false
         }
 
     }
 
     openDialog = () => {
         this.setState({ isDialogOpen: true })
-        console.log(this.state.isDialogOpen);
     }
 
     handleClose = () => this.setState({ isDialogOpen: false })
@@ -30,15 +32,21 @@ export default class profile extends React.Component {
 
                 </div>
                 <div>
-                    <Button type="button" onClick={this.openDialog}
-                        style={{ width: "65%", fontSize: "14px", backgroundColor: 'grey', border: "maroon", color: "maroon", marginLeft: "5%", marginTop: "5%" }}>
-                        Login/Signup</Button>
-
+                    <button type="button" onClick={this.openDialog}
+                        style={{ width: "65%", fontSize: "14px", backgroundColor: 'white', border: "maroon 1px solid", color: "maroon", marginLeft: "5%", marginTop: "5%" }}>
+                        Login/Signup</button>
+                    
                     <div>
 
-                        <DialogBox DialogOpen = {this.state.isDialogOpen}
-                            DialogClose= {this.handleClose}
-                        />
+                        <Dialog maxWidth="md" className="main-dialog" open={this.state.isDialogOpen} onClose={this.handleClose}>
+                            <DialogContent className="dialog-content">
+                                <div className="dialogBox">
+                                    <div className="pageSet">
+                                        <LoginBox />
+                                    </div>
+                                </div>
+                            </DialogContent>
+                        </Dialog>
 
                     </div>
 
