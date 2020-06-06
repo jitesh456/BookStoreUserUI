@@ -20,7 +20,7 @@ import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 import Pagination from '@material-ui/lab/Pagination';
 import PersonOutlineIcon from '@material-ui/icons/PersonOutline';
 import AppBar from '@material-ui/core/AppBar';
-
+import DialogBox from "./DialogBox";
 
 const theme = createMuiTheme({
     palette: {
@@ -194,15 +194,22 @@ export default class Main extends Component {
         alert(pageIndex);
     }
 
-  
+    openDialog = () => {
+        this.setState({ isDialogOpen: true })
+        console.log(this.state.isDialogOpen);
+    }
+
+    handleClose = () => this.setState({ isDialogOpen: false })
+
 
     displayCartIcon() {
         if (localStorage.getItem("token") == null) {
             return (
-                <a href="/">
-                    <ShoppingCartOutlinedIcon style={{ color: "white" }} />
-                </a>
-               
+                // <a href="/">
+                //     <ShoppingCartOutlinedIcon style={{ color: "white" }} />
+                // </a>
+                <ShoppingCartOutlinedIcon style={{ color: "white" }} onClick={this.openDialog} />
+
             );
         }
         return (
@@ -243,6 +250,8 @@ export default class Main extends Component {
                     <div className="shoppingcart">
                         <div className="shooping_carticon" >
                             {this.displayCartIcon()}
+                            <DialogBox DialogOpen={this.state.isDialogOpen}
+                                DialogClose={this.handleClose} />
                         </div>
                         <div className="cart_itemcount">
                             {this.state.counter}
