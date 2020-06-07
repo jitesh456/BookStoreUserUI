@@ -31,5 +31,11 @@ class DataService {
   login=(credentials)=>{
     return axios.post(`${BASIC_API_URL}/login`,credentials );
   }
+
+  addtoCart=(cart)=>{
+    return axios.post(`${BASIC_API_URL}/book`,{headers:{ 'Token': localStorage.getItem('token')} } ,cart);
+    
+  }
+
 }
 export default new DataService()

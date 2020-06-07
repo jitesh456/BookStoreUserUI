@@ -262,10 +262,11 @@ export default class UserLogin extends Component {
                         alertResponse: response.data.message
                     });
                     this.clearFieldsData();
+
                     document.getElementById("loginForm").reset();
                     setTimeout(() => {
                         window.location.replace("/books");
-                    }, 3000)
+                    }, 2000)
                 } else {
                     this.setState({
                         severity: "error",

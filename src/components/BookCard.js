@@ -9,6 +9,7 @@ import Tooltip from "@material-ui/core/Tooltip";
 import Typography from "@material-ui/core/Typography";
 import MuiCardContent from "@material-ui/core/CardContent";
 import history from './history';
+import Service from '../service/Service';
 
 const ImageToolTip = withStyles((theme) => ({
     tooltip: {
@@ -33,6 +34,7 @@ export default class BookCard extends Component {
         this.state = {
             data: [],
             isDialogOpen: false,
+            i:0,
         }
 
     }
@@ -59,6 +61,19 @@ export default class BookCard extends Component {
 
     handleClose = () => this.setState({ isDialogOpen: false })
 
+    // addToCart(bookDetails){
+    //     const cart = {
+    //         bookId: bookDetails.bookId,
+    //         Quantity:bookDetails.quantity
+    //     }
+    //     Service.addtoCart(cart).then((response) => {
+    //         console.log(response);
+            
+    //     }).catch((error) => {
+    //         console.log(error)
+    //     })
+    // }
+
 
     displayButton() {
         if (localStorage.getItem("token") === null) {
@@ -74,9 +89,9 @@ export default class BookCard extends Component {
             );
         }
         const bookName = JSON.parse(localStorage.getItem("bookName"));
-        if (bookName!==null && bookName.includes(this.props.bookDetails.name)) {
+        if (bookName!==null && bookName.includes(this.props.bookDetails.name) || this.state.i=== 1) {
             
-            console.log('if')
+            
             return (
                 <Button type="submit" name="addButton" variant="contained" onClick={() => {
                     history.push('/cart')
@@ -84,12 +99,17 @@ export default class BookCard extends Component {
             );
         }
         else {
-            console.log('else')
+           
             return (
+                
                 <Button
                     name="button" type="submit" variant="contained" onClick={(event) => {
-                        this.props.addFunction(this.props.bookDetails)
-
+                        this.props.addFunction(this.props.bookDetails);
+                        // this.addToCart(this.props.bookDetails);
+                        this.setState({
+                            i:1
+                        })
+                        
                     }} disabled={!this.props.bookDetails.quantity} size="50%" style={{ width: "90%", backgroundColor: 'maroon', color: "white" }} >ADD TO CART</Button>
             );
         }
