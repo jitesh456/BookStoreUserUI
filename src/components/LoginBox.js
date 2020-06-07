@@ -56,7 +56,7 @@ export default class UserLogin extends Component {
             loginMessage: '',
             singupMessage: '',
             alertShow: false,
-            alertResponse: "",
+            alertResponse: "",index:0,
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleClickShowPassword = this.handleClickShowPassword.bind(this);
@@ -163,7 +163,7 @@ export default class UserLogin extends Component {
             emailError: '',
             nameError: '',
             mobileError: '',
-            passwordError: '',
+            passwordError: '',ChangeTab: false,
             validateform: false
         });
     }
@@ -207,9 +207,12 @@ export default class UserLogin extends Component {
                     this.setState({
                         severity: "success",
                         alertShow: true,
-                        alertResponse: response.data.message
+                        alertResponse: response.data.message,
+                        ChangeTab: true,index:0,
+                        loginChecked: true,signupChecked: false,
                     });
                     this.clearFieldsData();
+                    this.handleTabSelection("login");
                     document.getElementById("signupForm").reset();
                 } else {
                     this.setState({
@@ -226,6 +229,7 @@ export default class UserLogin extends Component {
 
     }
 
+    
     clearFieldsData = () => {
         this.setState({
             password: "",
@@ -237,11 +241,14 @@ export default class UserLogin extends Component {
     };
 
     showAlert = (severity, alertShow, alertResponse) => {
+        let alertResponseVar = alertResponse;
         this.setState({
             severity: severity,
             alertShow: alertShow,
             alertResponse: alertResponse
         })
+        this.props.dialogResponce(this.alertResponseVar);
+        console.log(alertResponseVar);
     }
 
     handleLoginSubmit(event) {
@@ -253,19 +260,18 @@ export default class UserLogin extends Component {
                 password: this.state.password,
             }
             Service.login(credentials).then(response => {
-                console.log(response.data);
-                localStorage.setItem("token", response.data.body);
-                if (response.data.body.length > 0) {
+                console.log(response.headers.token);
+                localStorage.setItem("token", response.headers.token);
+                if (response.headers.token.length > 0) {
                     this.setState({
                         severity: "success",
                         alertShow: true,
                         alertResponse: response.data.message
                     });
                     this.clearFieldsData();
-
                     document.getElementById("loginForm").reset();
                     setTimeout(() => {
-                        window.location.replace("/books");
+                        window.location.replace("/books");    
                     }, 2000)
                 } else {
                     this.setState({
@@ -281,21 +287,21 @@ export default class UserLogin extends Component {
     }
 
     handleTabSelection = ({ target }) => {
-        if ([target.name] == "login") {
-            this.setState({ loginChecked: true, signupChecked: false })
+        if( ([target.name] == "login") || this.state.ChangeTab ){
+            this.setState({ loginChecked: true, signupChecked: false ,index:0 })
         }
         if ([target.name] == "signup") {
-            this.setState({ loginChecked: false, signupChecked: true })
+            this.setState({ loginChecked: false, signupChecked: true, index:1 })
         }
     }
     render() {
         const displayData = (
-            <Tabs defaultIndex={0} onSelect={index => console.log(index)}>
+            <Tabs defaultIndex={this.state.index} >
                 <TabList className="tablist" >
                     <Tab ><input id="tab-1" type="radio" name="login" className="sign-in" checked={this.state.loginChecked} onClick={this.handleTabSelection} /><label htmlFor="tab-1" className="tab1">Login</label></Tab>
                     <Tab><input id="tab-2" type="radio" name="signup" className="sign-up" checked={this.state.signupChecked} onClick={this.handleTabSelection} /><label htmlFor="tab-2" className="tab2">SignUp</label></Tab>
                 </TabList>
-                <TabPanel className="tabpanel-content">
+                <TabPanel className="tabpanel-content" show ={this.state.loginChecked}>
 
                     <div className="login-field-container">
                         <form id="loginForm" onSubmit={this.handleLoginSubmit} onReset={this.reset}>
@@ -375,7 +381,7 @@ export default class UserLogin extends Component {
                 </TabPanel>
                 <TabPanel className="tabpanel-content">
 
-                    <div className="signup-field-container">
+                    <div className="signup-field-container" show={this.state.signupChecked}>
                         <form id="signupForm" onSubmit={this.handleSubmit} onReset={this.reset}>
                             <div className="login-fields">
                                 <div className="div_content">
