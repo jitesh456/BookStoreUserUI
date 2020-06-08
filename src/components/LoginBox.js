@@ -265,7 +265,7 @@ export default class UserLogin extends Component {
             Service.login(credentials).then(response => {
                 console.log(response);
                 
-                
+               
                     this.setState({
                         severity: "success",
                         alertShow: true,
@@ -319,7 +319,7 @@ export default class UserLogin extends Component {
                                         style={{
                                             color: "red",
                                             fontSize: "12px",
-                                            marginTop: "3%",
+                                            marginTop: "0.8%",
                                             marginBottom: "-3em",
 
                                         }}
@@ -356,7 +356,7 @@ export default class UserLogin extends Component {
                                             style={{
                                                 color: "red",
                                                 fontSize: "12px",
-                                                marginTop: "1%",
+                                                marginTop: "-1%",
                                                 marginBottom: "-3em",
 
                                             }}
@@ -397,7 +397,7 @@ export default class UserLogin extends Component {
                                         style={{
                                             color: "red",
                                             fontSize: "12px",
-                                            marginTop: "1%",
+                                            marginTop: "-1%",
                                             marginBottom: "-3em",
 
                                         }}
@@ -423,7 +423,7 @@ export default class UserLogin extends Component {
                                         style={{
                                             color: "red",
                                             fontSize: "12px",
-                                            marginTop: "1%",
+                                            marginTop: "-1%",
                                             marginBottom: "-3em",
 
                                         }}
@@ -461,7 +461,7 @@ export default class UserLogin extends Component {
                                             style={{
                                                 color: "red",
                                                 fontSize: "12px",
-                                                marginTop: "1%",
+                                                marginTop: "-1%",
                                                 marginBottom: "-3em",
 
                                             }}
@@ -489,7 +489,7 @@ export default class UserLogin extends Component {
                                         style={{
                                             color: "red",
                                             fontSize: "12px",
-                                            marginTop: "1%",
+                                            marginTop: "-1%",
                                             marginBottom: "-3em",
 
                                         }}
