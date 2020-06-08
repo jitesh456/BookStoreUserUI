@@ -7,6 +7,7 @@ import OrderSummary from "./OrderSummary";
 import UserLogin from "./UserLogin";
 import {Router,Route,Switch} from 'react-router-dom';
 import BookCard from "./BookCard";
+import MyOrder from "./MyOrder";
 import history from "./history";
 
 
@@ -25,6 +26,7 @@ class Routers extends React.Component{
                 <Route path="/customerdetails" component={Customer}/>
                 <Route path="/ordersummary" component={OrderSummary}/>
                 <Route path="/order/successful" component={OrderSuccessful}/>
+                <Route path="myorder" component={MyOrder}/>
                 <Route path="/" component={UserLogin}/>
                
             </Switch>

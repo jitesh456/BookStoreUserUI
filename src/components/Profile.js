@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-
-import DialogContent from '@material-ui/core/DialogContent';
-import Dialog from '@material-ui/core/Dialog';
-import LoginBox from "./LoginBox";
+import LocalMallIcon from '@material-ui/icons/LocalMall';
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+import history from "./history";
 import '../css/Main.css'
-import button from '@material-ui/core/Button';
+
 import DialogBox from "./DialogBox";
 
 export default class profile extends React.Component {
@@ -13,46 +12,53 @@ export default class profile extends React.Component {
         super(props);
         this.state = {
             isDialogOpen: false,
-            login:'', logOut:true,
+            login: '', logOut: true,
         }
 
     }
-   
+
 
     openDialog = () => {
-        this.setState({ isDialogOpen: true,
-                        
+        this.setState({
+            isDialogOpen: true,
+
         })
     }
 
     handleClose = () => this.setState({ isDialogOpen: false })
-    
-    diaplayButton(){
-        
-        if(localStorage.getItem("token")== null  && this.state.logOut){
-            return(
-            <button type="button" onClick={this.openDialog}
-            style={{ width: "65%", fontSize: "14px", backgroundColor: 'white', border: "maroon 1px solid", color: "maroon", marginLeft: "5%", marginTop: "5%" }}>
-            Login/Signup</button>);
+
+    diaplayButton() {
+
+        if (localStorage.getItem("token") == null && this.state.logOut) {
+            return (
+                <button type="button" onClick={this.openDialog}
+                    style={{ width: "65%", fontSize: "14px", backgroundColor: 'white', border: "maroon 1px solid", color: "maroon", marginLeft: "5%", marginTop: "5%" }}>
+                    Login/Signup</button>);
         }
-        else{
-            return(
-            <button type="button" onClick={this.DoLogOut}
-            style={{ width: "65%", fontSize: "14px", backgroundColor: 'white', border: "maroon 1px solid", color: "maroon", marginLeft: "5%", marginTop: "5%" }}>
-            LogOut</button>
-            
+        else {
+            return (
+                <button type="button" onClick={this.DoLogOut}
+                    style={{ width: "65%", fontSize: "14px", backgroundColor: 'white', border: "maroon 1px solid", color: "maroon", marginLeft: "5%", marginTop: "5%" }}>
+                    LogOut</button>
+
             );
         }
-    
+
     }
 
-    DoLogOut = ()=>{
+    DoLogOut = () => {
         localStorage.clear();
         this.setState({
-            logOut:true,
+            logOut: true,
         })
         window.location.replace("/books");
     }
+
+    showMyorder=()=>{
+        
+        history.push("/myorder");
+    }
+
     render() {
         return (
             <div className="showProfile">
@@ -62,26 +68,18 @@ export default class profile extends React.Component {
 
                 </div>
                 <div>
-                   {this.diaplayButton()}
-                    
+                    {this.diaplayButton()}
                     <div>
-{/* 
-                        <Dialog maxWidth="md" className="main-dialog" open={this.state.isDialogOpen} onClose={this.handleClose}>
-                            <DialogContent className="dialog-content">
-                                <div className="dialogBox">
-                                    <div className="pageSet">
-                                        <LoginBox 
-                                            
-                                        />
-                                    </div>
-                                </div>
-                            </DialogContent>
-                        </Dialog> */}
                         <DialogBox DialogOpen={this.state.isDialogOpen}
-                        DialogClose={this.handleClose} />
-
+                            DialogClose={this.handleClose} />
                     </div>
-
+                </div>
+                <hr/>
+                <div>
+                    <div className="Myorder">
+                        <LocalMallIcon style={{ color: "gray" , marginLeft: "4%" }} fontSize="small" onClick={this.showMyorder}/>
+                        <h6 style={{ color: "gray" ,marginTop:"-12%", marginLeft: "18%"}}  onClick={this.showMyorder}> MyOrder</h6>
+                    </div>
                 </div>
             </div>
         );
