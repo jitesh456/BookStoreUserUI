@@ -33,7 +33,13 @@ class DataService {
   }
 
   addtoCart=(cart)=>{
-    return axios.post(`${BASIC_API_URL}/book`,{headers:{ 'Token': localStorage.getItem('token')} } ,cart);
+    console.log(localStorage.getItem('token'));
+    return axios({
+        headers:{Token:localStorage.getItem('token')},
+        method:'post',
+        url:`${BASIC_API_URL}/book`,
+        data:cart
+    });
     
   }
 

@@ -9,6 +9,7 @@ import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 import { purple } from '@material-ui/core/colors';
 import AppBar from '@material-ui/core/AppBar';
+import Service from '../service/Service';
 
 const theme = createMuiTheme({
   palette: {
@@ -82,12 +83,17 @@ export default class ShoppingCart extends React.Component{
 
     componentDidMount()
     {
-        if(localStorage.getItem("bookData")!==null)
-        {
-        this.setState({
-            cartItem:JSON.parse(localStorage.getItem("bookData"))
-        });
-        }
+        Service.getCartBook().then((response) => {
+                console.log(response);
+                this.setState({
+                    cartItem:response.data.body
+                })
+                this.receivedData();
+                console.log(this.state.cartItem)
+            }).catch((error) => {
+                console.log(error)
+            })
+        
     }
 
     handleCustomerSummary=(e)=>{

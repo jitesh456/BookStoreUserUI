@@ -257,7 +257,7 @@ export default class UserLogin extends Component {
     handleLoginSubmit(event) {
         event.preventDefault();
         const isValid = this.validate();
-        if (isValid) {
+       
             const credentials = {
                 email: this.state.email,
                 password: this.state.password,
@@ -265,7 +265,7 @@ export default class UserLogin extends Component {
             Service.login(credentials).then(response => {
                 console.log(response);
                 
-                if (response.data.statusCode===200) {
+                
                     this.setState({
                         severity: "success",
                         alertShow: true,
@@ -273,21 +273,13 @@ export default class UserLogin extends Component {
                     });
                     this.clearFieldsData();
                     localStorage.setItem("token", response.headers.token);
-                    document.getElementById("loginForm").reset();
-                    setTimeout(() => {
-                        window.location.replace("/books");    
-                    }, 2000)
-                } else {
-                    this.setState({
-                        severity: "error",
-                        alertShow: true,
-                        alertResponse: response.data
-                    });
-                }
+                history.push("/books")
+                
             }).catch(error => {
                 console.log(error.data)
             })
-        }
+        
+        
     }
 
     handleTabSelection = ({ target }) => {

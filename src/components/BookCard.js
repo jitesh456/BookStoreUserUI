@@ -61,18 +61,18 @@ export default class BookCard extends Component {
 
     handleClose = () => this.setState({ isDialogOpen: false })
 
-    // addToCart(bookDetails){
-    //     const cart = {
-    //         bookId: bookDetails.bookId,
-    //         Quantity:bookDetails.quantity
-    //     }
-    //     Service.addtoCart(cart).then((response) => {
-    //         console.log(response);
+    addToCart(bookDetails){
+        const cart = {
+            bookId: bookDetails.id,
+            Quantity:bookDetails.quantity
+        }
+        Service.addtoCart(cart).then((response) => {
+            console.log(response);
             
-    //     }).catch((error) => {
-    //         console.log(error)
-    //     })
-    // }
+        }).catch((error) => {
+            console.log(error)
+        })
+    }
 
 
     displayButton() {
@@ -105,7 +105,7 @@ export default class BookCard extends Component {
                 <Button
                     name="button" type="submit" variant="contained" onClick={(event) => {
                         this.props.addFunction(this.props.bookDetails);
-                        // this.addToCart(this.props.bookDetails);
+                        this.addToCart(this.props.bookDetails);
                         this.setState({
                             i:1
                         })
