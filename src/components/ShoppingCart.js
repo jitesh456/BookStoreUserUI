@@ -88,8 +88,7 @@ export default class ShoppingCart extends React.Component{
                 this.setState({
                     cartItem:response.data.body
                 })
-                this.receivedData();
-                console.log(this.state.cartItem)
+                console.log(response.data);
             }).catch((error) => {
                 console.log(error)
             })

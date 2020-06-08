@@ -64,7 +64,7 @@ export default class BookCard extends Component {
     addToCart(bookDetails){
         const cart = {
             bookId: bookDetails.id,
-            Quantity:bookDetails.quantity
+            quantity:1
         }
         Service.addtoCart(cart).then((response) => {
             console.log(response);

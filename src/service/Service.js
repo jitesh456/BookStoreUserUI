@@ -43,5 +43,15 @@ class DataService {
     
   }
 
+  getCartBook=()=>{
+
+    return axios({
+      headers:{Token:localStorage.getItem('token')},
+      method:'get',
+      url:`${BASIC_API_URL}/book`,
+  });
+  
+  }
+
 }
 export default new DataService()
