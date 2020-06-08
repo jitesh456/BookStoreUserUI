@@ -203,7 +203,8 @@ export default class UserLogin extends Component {
             }
             Service.registerUser(user).then(response => {
                 console.log(response.data);
-                if (response.data.body === true) {
+                // if (response.data.body === true)
+                 {
                     this.setState({
                         severity: "success",
                         alertShow: true,
@@ -212,18 +213,25 @@ export default class UserLogin extends Component {
                         loginChecked: true,signupChecked: false,
                     });
                     this.clearFieldsData();
-                    this.handleTabSelection("login");
+                   
                     document.getElementById("signupForm").reset();
-                } else {
-                    this.setState({
-                        severity: "error",
-                        alertShow: true,
-                        alertResponse: response
-                    });
+                    this.handleTabSelection("login");
                 }
+                //  else {
+                //     this.setState({
+                //         severity: "error",
+                //         alertShow: true,
+                //         alertResponse: response
+                //     });
+                // }
                 console.log(this.state);
             }).catch(error => {
-                console.log(error);
+                console.log(error.response);
+                this.setState({
+                    severity: "error",
+                    alertShow: true,
+                    alertResponse: error.response.data
+                });
             })
         }
 
@@ -281,7 +289,12 @@ export default class UserLogin extends Component {
                     });
                 }
             }).catch(error => {
-                console.log(error);
+                console.log(error.response);
+                this.setState({
+                    severity: "error",
+                    alertShow: true,
+                    alertResponse: error.response.data
+                });
             })
         }
     }
