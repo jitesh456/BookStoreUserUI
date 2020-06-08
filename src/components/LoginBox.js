@@ -203,7 +203,7 @@ export default class UserLogin extends Component {
             }
             Service.registerUser(user).then(response => {
                 console.log(response.data);
-                // if (response.data.body === true)
+                if (response.data.statusCode === 200)
                  {
                     this.setState({
                         severity: "success",
@@ -217,21 +217,16 @@ export default class UserLogin extends Component {
                     document.getElementById("signupForm").reset();
                     this.handleTabSelection("login");
                 }
-                //  else {
-                //     this.setState({
-                //         severity: "error",
-                //         alertShow: true,
-                //         alertResponse: response
-                //     });
-                // }
+                 else {
+                    this.setState({
+                        severity: "error",
+                        alertShow: true,
+                        alertResponse: response.data
+                    });
+                }
                 console.log(this.state);
             }).catch(error => {
                 console.log(error.response);
-                this.setState({
-                    severity: "error",
-                    alertShow: true,
-                    alertResponse: error.response.data
-                });
             })
         }
 
@@ -268,15 +263,16 @@ export default class UserLogin extends Component {
                 password: this.state.password,
             }
             Service.login(credentials).then(response => {
-                console.log(response.headers.token);
-                localStorage.setItem("token", response.headers.token);
-                if (response.headers.token.length > 0) {
+                console.log(response);
+                
+                if (response.data.statusCode===200) {
                     this.setState({
                         severity: "success",
                         alertShow: true,
                         alertResponse: response.data.message
                     });
                     this.clearFieldsData();
+                    localStorage.setItem("token", response.headers.token);
                     document.getElementById("loginForm").reset();
                     setTimeout(() => {
                         window.location.replace("/books");    
@@ -285,16 +281,11 @@ export default class UserLogin extends Component {
                     this.setState({
                         severity: "error",
                         alertShow: true,
-                        alertResponse: response.data.message
+                        alertResponse: response.data
                     });
                 }
             }).catch(error => {
-                console.log(error.response);
-                this.setState({
-                    severity: "error",
-                    alertShow: true,
-                    alertResponse: error.response.data
-                });
+                console.log(error.data)
             })
         }
     }

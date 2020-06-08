@@ -29,15 +29,10 @@
     flex-direction: column;
     color: black;
   }
-  
-  .MuiPaper-root {
-    color: rgba(0, 0, 0, 0.87);
-    transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-    background-color: transparent !important;
-}
 
 .MuiPaper-elevation24 {
     box-shadow: none !important;
+    background-color: transparent !important;
 }
 
   .dialog-content{
