@@ -63,6 +63,7 @@ export default class Main extends Component {
 
 
     componentDidMount() {
+
         Service.getBookData().then((response) => {
             console.log(response);
             this.setState({
@@ -73,15 +74,30 @@ export default class Main extends Component {
         }).catch((error) => {
             console.log(error)
         })
-        if (localStorage.getItem("count") !== null) {
-            this.setState({
-                counter: parseInt(localStorage.getItem("count")),
-                cartItem: JSON.parse(localStorage.getItem("bookData")),
-                bookName: JSON.parse(localStorage.getItem("bookName"))
+
+        Service.getCartBook().then((response)=>{
+            this.setState({cartItem:response.data.body,
+            counter:response.data.body.length
+        
             });
+            this.addBookName(response.data.body);
+            console.log(response.data.body);
+           
 
-        }
+        }).catch((error)=>{
+            console.log(error);
+            
+        })            
+    }
 
+    addBookName(object){
+        let name;
+        for(var i=0;i<object.length;i++){
+            name=object[i].name;
+            this.state.bookName.push(name);
+    }
+    console.log("Book Names");
+    localStorage.setItem("bookName", JSON.stringify(this.state.bookName));
     }
 
     sortedData(input) {
@@ -109,7 +125,7 @@ export default class Main extends Component {
             return <BookCard
                 price={book.price}
                 bookDetails={book}
-                addFunction={this.handleAddCart.bind(this)}
+                addFunction={this.handleAddCart}
             />;
         })
         console.log(this.data)
@@ -132,26 +148,14 @@ export default class Main extends Component {
         });
         console.log(page);
         console.log(offset);
-
     }
+
     handleAddCart(object) {
-        const book = {
-            "name": object.name,
-            "authorname": object.authorname,
-            "price": object.price,
-            "bookcover": object.bookcover,
-            "maxquantity": object.quantity,
-            "quantity": 1,
-            "isbn": object.isbn
-        }
-        this.state.cartItem.push(book);
-        this.state.bookName.push(object.name);
-        this.setState({ counter: this.state.cartItem.length });
-        localStorage.setItem("count", JSON.stringify(this.state.counter + 1));
-        localStorage.setItem("bookName", JSON.stringify(this.state.bookName));
-        localStorage.setItem("bookData", JSON.stringify(this.state.cartItem));
+        this.setState({ counter: this.state.counter+1
+        });
         console.log(this.state.cartItem);
     }
+    
 
     handleChange(field, event) {
         this.setState({ [event.target.name]: event.target.value })
