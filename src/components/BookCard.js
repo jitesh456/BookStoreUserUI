@@ -95,7 +95,7 @@ export default class BookCard extends Component {
             return (
                 <Button type="submit" name="addButton" variant="contained" onClick={() => {
                     history.push('/cart')
-                }} disabled={!this.props.bookDetails.quantity} size="50%" style={{ width: "90%", backgroundColor: "#A52A20", color: "whitesmoke" }} >GO TO CART</Button>
+                }} disabled={!this.props.bookDetails.quantity} size="50%" style={{ width: "90%", backgroundColor: "blue", color: "whitesmoke" }} >GO TO CART</Button>
             );
         }
         else {

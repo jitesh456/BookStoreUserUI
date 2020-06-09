@@ -69,6 +69,7 @@ export default class ShoppingCart extends React.Component{
         this.setState({
             cartItem:JSON.parse(localStorage.getItem("bookData"))
         });
+
         console.log(items)  ;
      }
 
@@ -184,7 +185,7 @@ export default class ShoppingCart extends React.Component{
                         </div>
                         <div>
                         </div>
-                            <Button style={{padding:"8px",background:"maroon",color:"white"}} onClick={()=>{this.handleRemove(item)}}>Remove</Button>                        
+                            <Button style={{padding:"8px",background:"maroon",color:"white" }} onClick={()=>{this.handleRemove(item)}}>Remove</Button>                        
                         </div>
                         
                     </div>

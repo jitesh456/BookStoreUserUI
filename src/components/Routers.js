@@ -26,7 +26,7 @@ class Routers extends React.Component{
                 <Route path="/customerdetails" component={Customer}/>
                 <Route path="/ordersummary" component={OrderSummary}/>
                 <Route path="/order/successful" component={OrderSuccessful}/>
-                <Route path="myorder" component={MyOrder}/>
+                <Route path="/myorder" component={MyOrder}/>
                 <Route path="/" component={UserLogin}/>
                
             </Switch>

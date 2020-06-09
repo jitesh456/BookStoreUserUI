@@ -273,7 +273,9 @@ export default class UserLogin extends Component {
                     });
                     this.clearFieldsData();
                     localStorage.setItem("token", response.headers.token);
-                history.push("/books")
+                    setTimeout(() => {
+                        window.location.replace("/books");    
+                    }, 1000)
                 
             }).catch(error => {
                 console.log(error.data)

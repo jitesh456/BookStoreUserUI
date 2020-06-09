@@ -12,6 +12,8 @@ export default class OrderSummary extends React.Component{
         }
     }
 
+
+
            
     handleConfirmation=(e)=>{
         const data={
@@ -19,6 +21,12 @@ export default class OrderSummary extends React.Component{
             recipientAddress:JSON.parse(localStorage.getItem("mail")),
             subject:"Order Confirmation "         
         };
+
+        Service.placeOrder().then((response)=>{
+            console.log(response);
+        }).catch((error)=>{
+            console.log(error);
+        });
 
         Service.sendMail(data).then((response)=>{
             console.log(response);

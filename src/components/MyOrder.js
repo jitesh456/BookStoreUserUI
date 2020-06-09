@@ -12,14 +12,9 @@ export default class MyOrder extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            booklist: [
-                // { id: 1, src: image1, authorname: 'foo', price: 150, quantity: 3, name: 'ssss' },
-                // { id: 2, src: image1, authorname: 'foo', price: 150, quantity: 3, name: 'ssss' },
-                // { id: 3, src: image1, authorname: 'foo', price: 150,quantity: 3, name:'ssss' },
-                // { id: 4, src: image1, authorname: 'foo', price: 150, quantity: 3,name:'ssss' },
-                // { id: 5, src: image1, authorname: 'foo', price: 150, quantity: 3,name:'ssss' },
-                // { id: 6, src: image1, authorname: 'foo', price: 150,quantity: 3, name:'ssss' },
-            ],
+            booklist: [],
+            orderDetails:''
+
         }
 
 
@@ -30,10 +25,10 @@ export default class MyOrder extends React.Component {
         Service.getMyOrder().then((response) => {
             console.log(response);
             this.setState({
-                booklist: response.data.body
+                booklist: response.data.body.bookList,
+                orderDetails:response.data.body.cart
             })
-            this.receivedData();
-            console.log(this.state.booklist)
+            console.log(response.data.body.cart)
         }).catch((error) => {
             console.log(error)
         })
@@ -66,7 +61,7 @@ export default class MyOrder extends React.Component {
                         <div style={{ marginLeft: "10%" }}>
                             <h4 style={{ marginTop: "35px", marginBottom: "15px" }}>Order Placed on</h4>
 
-                            <span style={{ marginTop: "5px" }} >!11 june 2020</span>
+                            <span style={{ marginTop: "5px" }} >!12 june 2020</span>
 
                         </div>
                     </div>

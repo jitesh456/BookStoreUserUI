@@ -53,5 +53,33 @@ class DataService {
   
   }
 
+
+  placeOrder=()=>{
+
+    return axios({
+      headers:{Token:localStorage.getItem('token')},
+      method:'put',
+      url:`${BASIC_API_URL}/cart`
+  });
+  
+  }
+
+  removeBook=(id)=>{
+
+    return axios({
+      headers:{Token:localStorage.getItem('token')},
+      method:'DELETE',
+      url:`${BASIC_API_URL}/book/${id}`
+  });
+  
+  }
+  getMyOrder=()=>{
+    return axios({
+      headers:{Token:localStorage.getItem('token')},
+      method:'get',
+      url:`${BASIC_API_URL}/order/details`
+  });
+  
+  }
 }
 export default new DataService()
