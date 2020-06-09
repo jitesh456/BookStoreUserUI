@@ -29,11 +29,16 @@
   align-self: center;
   margin-left: 5px;
 }
+.OrderBox{
+  display: flex;
+  width:100%;
+  background-color:rgb(136, 119, 119);
 
+}
 .MainClass{
   display: flex;
   flex-direction: column;
-  width:50%;
+  width:65%;
   padding-bottom: 2%;
   padding-left: 3%;
 
@@ -47,8 +52,8 @@
   display: flex;
   flex-direction: column;
   border: black;
- 
-  width:90%;
+ margin-left: -3%;
+  width:96%;
   min-height: 235px;
   max-height: 320px;
   overflow-y: hidden;
@@ -69,11 +74,19 @@
   /* background-color: royalblue; */
   flex-direction:column;
   padding-top:25px;
-  margin-left: -13%;
+  margin-left: 4%;
   width:30%;
   justify-content:flex-start;
   height:200px;
-  padding-left:15%;
+  padding-left:2%;
+}
+
+.orderDate{
+  display:flex;
+  /* background-color: royalblue; */
+  flex-direction:column;
+  justify-content: center;
+  margin-left: 10%;
 }
 
 .shopped_book_name{
@@ -98,7 +111,7 @@
 .shoppingcart_image{
   
   border: none;
-  width:17%;
+  width:22%;
   display:flex;
   flex-direction:column;
   justify-content: center;
@@ -152,7 +165,14 @@
   background-color: white;
   padding-left: 3.5%;
 }
- 
+
+.orderTitle{
+  margin-left: 4%;
+  color: gray;
+}
+
+
+
 
 @media screen and (max-width:1024px) and (max-height:1360px){
   .shoppingcart_details{
@@ -176,25 +196,40 @@
       margin-top: 7%;
       height:20%;
   }
-  
+ 
   
   
 }
 
 @media screen and (max-width:411px){
-  .shoppingcart_details{
-      margin-top: 7%;
-      width:80%;;
-      height:20%;
-  }
-
+ 
   .shoppingcart_image{
-      width:20%;
-  }
+    width:15%;
+}
+.orderTitle{
+  margin-left: -55%;
+}
+.MyOrder-details{
+  margin-left: -10%;
+  font-size: 80%;
+}
+.orderDate{
+  margin-left: -8%;
+  font-size: 80%;
+  margin-top: -3%;
+}
+.MainClass{
+  display: flex;
+  flex-direction: column;
+  width:90%;
+  
+  margin-top: 7%;
+  margin-left: 3%;
+  /* background-color: white;
+  border: 1px solid silver;
+  */
+}
 
-  .customer_detail{
-      width:80%
-  }
 }
 
 @media screen and (max-width:731px) and (max-height:411px){
@@ -220,34 +255,62 @@
 
 @media screen and (max-width:414px) and (max-height:736px){
 
-  .shoppingcart_details{
-      width:80%;
-  }
-
   .shoppingcart_image{
-      width:25%;
-  }
+    width:12%;
+}
+.orderTitle{
+  margin-left: -50%;
+}
+.MyOrder-details{
+  margin-left: -9%;
+  font-size: 80%;
+}
+.orderDate{
+  margin-left: -5%;
+  font-size: 80%;
+  margin-top: -3%;
+}
+.MainClass{
+  display: flex;
+  flex-direction: column;
+  width:90%;
+  
+  margin-top: 7%;
+  margin-left: 3%;
+  /* background-color: white;
+  border: 1px solid silver;
+  */
+}
 
   
 
 }
 
 @media screen and (max-width:360px) and (max-height:640px){
-  .shoppingcart_details{
-      margin-top: 7%;
-      width:70%;;
-      height:20%;
-  }
+  
 
   .shoppingcart_image{
-      width:20%;
+      width:12%;
   }
-
-  .shopped_details{
-      font-size: 80%;
-  }
-
  
+  .MyOrder-details{
+    margin-left: -10%;
+    font-size: 80%;
+  }
+  .orderDate{
+    margin-left: -8%;
+    font-size: 80%;
+    margin-top: -3%;
+  }
+  .MainClass{
+    display: flex;
+    flex-direction: column;
+    width:90%;
+    
+    margin-top: 7%;
+    margin-left: 3%;
+  
+  }
 }
 
 @media screen and (max-width:640px) and (max-height:360px){
@@ -264,5 +327,6 @@
   .shopped_details{
       font-size: 80%;
   }
+
 
 }

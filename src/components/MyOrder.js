@@ -35,6 +35,10 @@ export default class MyOrder extends React.Component {
 
     }
 
+    changePage=()=>{
+        history.push("/");
+    }
+
 
     render() {
 
@@ -81,8 +85,11 @@ export default class MyOrder extends React.Component {
                         <span className="admin">BB Store</span>
                     </div >
                 </AppBar>
+                <div>
+                <h4 className="orderTitle" onClick={this.changePage} >home/MyOrder</h4>
+                </div>
                 <div className ="MainClass">
-                    <h3 style={{ marginLeft: "-80%" }} >MyOrders</h3>
+                    <h4 style={{ marginLeft: "3%" }} >MyOrders</h4>
                     <div ClassName="MyOrderBox" >
                         <div className="Myorder-summary">
                             {book}
