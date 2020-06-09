@@ -80,12 +80,12 @@ export default class BookCard extends Component {
             return (
                 <Button type="submit" variant="contained"
                     onClick={this.openDialog}
-                    size="50%" style={{ width: "90%", backgroundColor: 'maroon', color: "white" }} >ADD TO CART</Button>
+                    size="50%" style={{ width: "95%", backgroundColor: 'maroon', color: "white" }} >ADD TO CART</Button>
             );
         }
         if (this.props.bookDetails.quantity === 0) {
             return (
-                <Button type="submit" variant="contained" disabled={!this.props.bookDetails.quantity} size="50%" style={{ width: "90%", backgroundColor: 'silver', color: "black" }} >ADD TO CART</Button>
+                <Button type="submit" variant="contained" disabled={!this.props.bookDetails.quantity} size="50%" style={{ width: "95%", backgroundColor: 'silver', color: "black" }} >ADD TO CART</Button>
             );
         }
         const bookName = JSON.parse(localStorage.getItem("bookName"));
@@ -95,7 +95,7 @@ export default class BookCard extends Component {
             return (
                 <Button type="submit" name="addButton" variant="contained" onClick={() => {
                     history.push('/cart')
-                }} disabled={!this.props.bookDetails.quantity} size="50%" style={{ width: "90%", backgroundColor: "blue", color: "whitesmoke" }} >GO TO CART</Button>
+                }} disabled={!this.props.bookDetails.quantity} size="50%" style={{ width: "95%", backgroundColor: "blue", color: "whitesmoke" }} >GO TO CART</Button>
             );
         }
         else {

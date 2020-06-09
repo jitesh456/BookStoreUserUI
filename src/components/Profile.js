@@ -51,7 +51,7 @@ export default class profile extends React.Component {
         this.setState({
             logOut: true,
         })
-        window.location.replace("/books");
+        window.location.replace("/");
     }
 
     showMyorder=()=>{

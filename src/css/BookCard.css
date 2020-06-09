@@ -163,7 +163,6 @@ figcaption {
 .card_action{
   display: flex; 
   justify-content: center;
-  width: 90%
 }
 
 @media screen and (max-width: 1125px) {

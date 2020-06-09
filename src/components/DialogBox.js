@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import LoginBox from "./LoginBox";
 import '../css/UserLogin.css';
-
 import DialogContent from '@material-ui/core/DialogContent';
 import Dialog from '@material-ui/core/Dialog';
 export default class profile extends React.Component {

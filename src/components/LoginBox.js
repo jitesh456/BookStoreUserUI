@@ -265,7 +265,7 @@ export default class UserLogin extends Component {
             Service.login(credentials).then(response => {
                 console.log(response);
                 
-                if (response.data.statusCode===200) {
+                if (response.data.statusCode === 200) {
                     this.setState({
                         severity: "success",
                         alertShow: true,
@@ -276,15 +276,14 @@ export default class UserLogin extends Component {
                     document.getElementById("loginForm").reset();
                     setTimeout(() => {
                         window.location.replace("/");    
-                    }, 1000)
+                    }, 5000)
                 } else {
                     this.setState({
                         severity: "error",
                         alertShow: true,
-                        alertResponse: response.data
+                        alertResponse: response.data.message
                     });
                 }
-                
             }).catch(error => {
                 console.log(error.data)
             })
