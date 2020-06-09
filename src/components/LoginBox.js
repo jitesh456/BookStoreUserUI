@@ -265,7 +265,7 @@ export default class UserLogin extends Component {
             Service.login(credentials).then(response => {
                 console.log(response);
                 
-               
+                if (response.data.statusCode===200) {
                     this.setState({
                         severity: "success",
                         alertShow: true,
@@ -273,9 +273,17 @@ export default class UserLogin extends Component {
                     });
                     this.clearFieldsData();
                     localStorage.setItem("token", response.headers.token);
+                    document.getElementById("loginForm").reset();
                     setTimeout(() => {
-                        window.location.replace("/books");    
+                        window.location.replace("/");    
                     }, 1000)
+                } else {
+                    this.setState({
+                        severity: "error",
+                        alertShow: true,
+                        alertResponse: response.data
+                    });
+                }
                 
             }).catch(error => {
                 console.log(error.data)

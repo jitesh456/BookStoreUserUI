@@ -20,15 +20,13 @@ class Routers extends React.Component{
         return (
             <Router history={history}>
             <Switch>
-                <Route path="/books" component={Main} exact={true}/>
                 <Route path="/main" component={BookCard} exact={true}/>
                 <Route path="/cart" component={ShoppingCart}/>
                 <Route path="/customerdetails" component={Customer}/>
                 <Route path="/ordersummary" component={OrderSummary}/>
                 <Route path="/order/successful" component={OrderSuccessful}/>
                 <Route path="/myorder" component={MyOrder}/>
-                <Route path="/" component={UserLogin}/>
-               
+                <Route path="/" component={Main}/>
             </Switch>
             </Router>
         )
