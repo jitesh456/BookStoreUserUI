@@ -75,29 +75,30 @@ export default class Main extends Component {
             console.log(error)
         })
 
-        Service.getCartBook().then((response)=>{
-            this.setState({cartItem:response.data.body,
-            counter:response.data.body.length
-        
+        Service.getCartBook().then((response) => {
+            this.setState({
+                cartItem: response.data.body,
+                counter: response.data.body.length
+
             });
             this.addBookName(response.data.body);
             console.log(response.data.body);
-           
 
-        }).catch((error)=>{
+
+        }).catch((error) => {
             console.log(error);
-            
-        })            
+
+        })
     }
 
-    addBookName(object){
+    addBookName(object) {
         let name;
-        for(var i=0;i<object.length;i++){
-            name=object[i].name;
+        for (var i = 0; i < object.length; i++) {
+            name = object[i].name;
             this.state.bookName.push(name);
-    }
-    console.log("Book Names");
-    localStorage.setItem("bookName", JSON.stringify(this.state.bookName));
+        }
+        console.log("Book Names");
+        localStorage.setItem("bookName", JSON.stringify(this.state.bookName));
     }
 
     sortedData(input) {
@@ -125,7 +126,7 @@ export default class Main extends Component {
             return <BookCard
                 price={book.price}
                 bookDetails={book}
-                addFunction={this.handleAddCart}
+                addFunction={this.handleAddCart.bind(this)}
             />;
         })
         console.log(this.data)
@@ -150,12 +151,17 @@ export default class Main extends Component {
         console.log(offset);
     }
 
-    handleAddCart(object) {
-        this.setState({ counter: this.state.counter+1
+    handleAddCart( object) {
+      
+        this.setState({
+            counter: this.state.counter + 1,
+            bookName: object.bookName,
         });
+        
+
         console.log(this.state.cartItem);
     }
-    
+
 
     handleChange(field, event) {
         this.setState({ [event.target.name]: event.target.value })
@@ -263,7 +269,7 @@ export default class Main extends Component {
                     </div>
                     <div className="profile">
                         <div className="profile-Icon">
-                            <PersonOutlineIcon style={{ color: "white" }} onClick={this.handleShowProfile} />
+                            <PersonOutlineIcon style={{ color: "white",cursor:"pointer" }} onClick={this.handleShowProfile} />
                         </div>
                         <div className="profile-div">
                             {this.state.profile && <Profile />}

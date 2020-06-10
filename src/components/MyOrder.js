@@ -12,8 +12,8 @@ export default class MyOrder extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            booklist: [],
-            orderDetails:''
+
+            orderDetails: [],
 
         }
 
@@ -21,14 +21,18 @@ export default class MyOrder extends React.Component {
     }
 
 
-    componentDidMount(){
+    componentDidMount() {
         Service.getMyOrder().then((response) => {
             console.log(response);
+            console.log(response.data.body[0].bookList);
+            console.log(response.data.body[0].cart);
+
             this.setState({
-                booklist: response.data.body.bookList,
-                orderDetails:response.data.body.cart
+                // booklist: response.data.body[0].bookList,
+                orderDetails: response.data.body
             })
-            console.log(response.data.body.cart)
+            console.log(this.state.orderDetails);
+            // console.log(this.state.booklist)
         }).catch((error) => {
             console.log(error)
         })
@@ -36,42 +40,65 @@ export default class MyOrder extends React.Component {
     }
 
 
+    changePage = () => {
+        history.push("/");
+    }
+
+
     render() {
-
-        let book = this.state.booklist.map(item => {
+        let book;
+        if (this.state.orderDetails.length === 0) {
+            book =  <h4 >Please Order something to see MyOrder</h4>
             return (
+               book
+            )
+        }
+        else {
+            book = this.state.orderDetails.map(item => {
 
+                let order = item.bookList;
+                let date = item.cart;
+                console.log(this.order);
 
-                <div className="cart-item">
-                    <div className="cart-item-content">
-                        <div className="shoppingcart_image">
-                            <img src={`http://localhost:8090/admin/downloadFile/${item.bookcover}`} alt="" className="shopped_image" />
-                            
-                        </div>
-                        <div className="MyOrder-details">
+                return (
+                    order.map(list => {
+                        return (
+                            <div>
+                                <div className="Myorder-summary">
+                                    <div className="cart-item">
+                                        <div className="cart-item-content">
+                                            <div className="shoppingcart_image">
+                                                <img src={`http://localhost:8090/admin/downloadFile/${list.bookcover}`} alt="" className="shopped_image" />
 
-                            <span className="shopped_book_name">{item.name}</span>
-                            <div style={{ height: "5%" }}></div>
-                            <span className="shopped_book_author">{item.authorname}</span>
-                            <div style={{ height: "5%" }}></div>
-                            <span className="shopped_book_price">Rs. {item.price * item.quantity}</span>
-                            <div style={{ height: "5%" }}></div>
-                            <span className="shopped_book_name">QTY: {item.quantity}</span>
-                        </div>
-                        <div style={{ marginLeft: "10%" }}>
-                            <h4 style={{ marginTop: "35px", marginBottom: "15px" }}>Order Placed on</h4>
+                                            </div>
+                                            <div className="MyOrder-details">
 
-                            <span style={{ marginTop: "5px" }} >!12 june 2020</span>
+                                                <span className="shopped_book_name">{list.name}</span>
+                                                <div style={{ height: "5%" }}></div>
+                                                <span className="shopped_book_author">{list.authorname}</span>
+                                                <div style={{ height: "5%" }}></div>
+                                                <span className="shopped_book_price">Rs. {list.price * list.quantity}</span>
+                                                <div style={{ height: "5%" }}></div>
+                                                <span className="shopped_book_name">QTY: {list.quantity}</span>
+                                            </div>
+                                            <div style={{ marginLeft: "10%" }}>
+                                                <h4 style={{ marginTop: "35px", marginBottom: "15px" }}>Order Placed on</h4>
 
-                        </div>
-                    </div>
+                                                <span style={{ marginTop: "5px" }} >{date.orderPlacedDate}</span>
 
+                                            </div>
+                                        </div>
+                                    </div>
 
+                                </div>
 
-                </div>
-            );
-        });
-
+                                <div style={{ height: "35px" }}></div>
+                            </div>
+                        );
+                    })
+                );
+            });
+        }
         return (
             <div>
                 <AppBar id="app-header">
@@ -81,13 +108,13 @@ export default class MyOrder extends React.Component {
                         <span className="admin">BB Store</span>
                     </div >
                 </AppBar>
-                <div className ="MainClass">
-                    <h3 style={{ marginLeft: "-80%" }} >MyOrders</h3>
+                <div>
+                    <h4 className="orderTitle" onClick={this.changePage} >home/MyOrder</h4>
+                </div>
+                <div className="MainClass">
                     <div ClassName="MyOrderBox" >
-                        <div className="Myorder-summary">
-                            {book}
-                        </div>
-
+                        {book}
+                        <div style={{ height: "35px" }}></div>
                     </div>
 
                 </div>

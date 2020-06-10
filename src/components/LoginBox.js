@@ -221,12 +221,12 @@ export default class UserLogin extends Component {
                     this.setState({
                         severity: "error",
                         alertShow: true,
-                        alertResponse: response.data
+                        alertResponse: response.data.message
                     });
                 }
                 console.log(this.state);
             }).catch(error => {
-                console.log(error.response);
+                console.log(error.data);
             })
         }
 
