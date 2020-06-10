@@ -9,7 +9,8 @@ import {Router,Route,Switch} from 'react-router-dom';
 import BookCard from "./BookCard";
 import MyOrder from "./MyOrder";
 import history from "./history";
-
+import ForgetPassword from "./ForgetPassword";
+import ResetPassword from "./ResetPassword";
 
 class Routers extends React.Component{
     constructor(props){
@@ -26,6 +27,8 @@ class Routers extends React.Component{
                 <Route path="/ordersummary" component={OrderSummary}/>
                 <Route path="/order/successful" component={OrderSuccessful}/>
                 <Route path="/myorder" component={MyOrder}/>
+                <Route path="/forgetpassword" component={ForgetPassword}/>
+                <Route path="/resetpassword" component={ResetPassword}/>
                 <Route path="/" component={Main}/>
             </Switch>
             </Router>

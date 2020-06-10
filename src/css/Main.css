@@ -107,17 +107,15 @@ button {
  }
  
 .cart_itemcount {
-  border: 3px;
   background-color: white;
   color: maroon;
-  height: 14px;
-  border-radius: 100px;
+  height: 16px;
+  border-radius: 50%;
   position: absolute;
-  width: 11px;
+  width: 16px;
+  text-align: center;
   font-size: 12px;
-  padding-left: 3px;
-  margin-left: 14px;
-  margin-top: 4px;
+  margin-left: 15px;
 }
 
 .shooping_carticon{

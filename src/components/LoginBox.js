@@ -21,7 +21,8 @@ import Alert from "@material-ui/lab/Alert";
 
 let nameError = '';
 let emailError = '';
-let mobileError = ''; let passwordError = '';
+let mobileError = ''; 
+let passwordError = '';
 
 const theme = createMuiTheme({
     palette: {
@@ -536,8 +537,6 @@ export default class UserLogin extends Component {
                 </div>
 
             </div>
-
-
         );
     }
 }

@@ -69,7 +69,6 @@ export default class Main extends Component {
                 booklist: response.data.body
             })
             this.receivedData();
-            console.log(this.state.booklist)
         }).catch((error) => {
             console.log(error)
         })
@@ -85,24 +84,19 @@ export default class Main extends Component {
     }
 
     sortedData(input) {
-        const sortingValue = input;
-        console.log("Sorted Data");
-        Service.getSortedBook(sortingValue).then((response) => {
+        Service.getSortedBook(input).then((response) => {
             console.log(response);
             this.setState({
                 booklist: response.data.body
             })
             this.state.input.length > 0 ? this.filterData() : this.receivedData();
-            console.log(this.state.booklist)
         }).catch((error) => {
             console.log(error)
         })
     }
 
     receivedData() {
-
         var data = this.state.booklist;
-
         this.setState({ count: data.length });
         const slice = data.slice(this.state.offset, this.state.offset + this.state.perPage)
         const postData = slice.map(book => {
@@ -112,7 +106,6 @@ export default class Main extends Component {
                 addFunction={this.handleAddCart.bind(this)}
             />;
         })
-        console.log(this.data)
         this.setState({
             pageCount: Math.ceil(data.length / this.state.perPage),
             postData
@@ -160,12 +153,10 @@ export default class Main extends Component {
     }
 
     filterData = () => {
-        console.log(this.state.input);
         const data = this.state.booklist
             .filter(x => x.authorname.toLowerCase().indexOf(this.state.input.trim().toLowerCase()) !== -1 ||
                 x.name.toLowerCase().indexOf(this.state.input.trim().toLowerCase()) !== -1);
         this.setState({ count: data.length });
-        console.log(data);
         const slice = data.slice(this.state.offset, this.state.offset + this.state.perPage)
         const postData = slice.map(book => {
             return <BookCard
@@ -205,11 +196,7 @@ export default class Main extends Component {
     displayCartIcon() {
         if (localStorage.getItem("token") == null) {
             return (
-                // <a href="/">
-                //     <ShoppingCartOutlinedIcon style={{ color: "white" }} />
-                // </a>
                 <ShoppingCartOutlinedIcon style={{ color: "white" }} onClick={this.openDialog} />
-
             );
         }
         return (
@@ -232,8 +219,7 @@ export default class Main extends Component {
             <div >
 
                 <AppBar id="app-header">
-
-                    <div className="admin_header">
+                   <div className="admin_header">
                         <img src={booklogo} alt="asd" className="bk_image" />
                         <span className="admin">BB Store</span>
                     </div >
