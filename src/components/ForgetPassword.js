@@ -4,16 +4,33 @@ import AppBar from '@material-ui/core/AppBar';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import '../css/ForgetPassword.css';
-
+import Service from '../service/Service';
 export default class ForgetPassword extends React.Component {
     constructor(props){
         super(props);
+        this.state={
+            email : '',
+        }
         this.handleChange=this.handleChange.bind(this);
     }
 
-    handleChange=()=>{
-
+    handleChange=(field,event)=>{
+        this.setState({ [event.target.name]: event.target.value })
     }
+
+    forgetPassword=()=>{
+        console.log(this.state.email)
+        let email = this.state.email;
+        Service.forgetPassword(email).then(
+            (response)=>{
+                console.log(response)
+            }
+        ).catch(error => {
+            console.log(error.data);
+        })
+        
+    }
+
 
     render(){
         return(
@@ -36,11 +53,13 @@ export default class ForgetPassword extends React.Component {
                         </div>
                         <div className="forget_content">
                             <TextField id="outlined-basic" label="Email" variant="outlined" 
-                            style={{width:"100%"}}/>
+                             name="email"
+                             onChange={this.handleChange.bind(this,'email')}
+                                style={{width:"100%"}}/>
                         </div>
                         <div className="forget_content" >
                             <Button id="forget_button" variant="filled" 
-                            onclick={this.handleChange}>Send Email</Button>
+                            onClick={this.forgetPassword}>Send Email</Button>
                         </div>
                     </div>
                     <div className="create_account">

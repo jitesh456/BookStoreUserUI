@@ -4,14 +4,38 @@ import AppBar from '@material-ui/core/AppBar';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import '../css/ForgetPassword.css';
-
+import Service from '../service/Service';
 export default class ResetPassword extends React.Component {
     constructor(props){
         super(props);
+        this.state={
+            password1 : '', password2 : '',
+        }
         this.handleChange=this.handleChange.bind(this);
     }
 
-    handleChange=()=>{
+    handleChange=(field,event)=>{
+        this.setState({ [event.target.name]: event.target.value })
+    }
+
+
+    componentDidMount(){
+     
+        console.log((this.props.location.search).substring(1))
+        
+    }
+
+    resetPassword=()=>{
+       
+        // String token =this.props.location.search;
+        let password = this.state.password2;
+        Service.resetPassword(password,(this.props.location.search).substring(1)).then(
+            (response)=>{
+                console.log(response)
+            }
+        ).catch(error => {
+            console.log(error.data);
+        })
         
     }
 
@@ -36,15 +60,17 @@ export default class ResetPassword extends React.Component {
                         </div>
                         <div className="forget_content">
                             <TextField id="outlined-basic" label="Password" variant="outlined" 
+                            name= "password1" onChange={this.handleChange.bind(this,"password1")}
                             style={{width:"100%"}}/>
                         </div>
                         <div className="forget_content">
                             <TextField id="outlined-basic" label="Confirm Password" variant="outlined" 
+                            name= "password2" onChange={this.handleChange.bind(this,"password1")}
                             style={{width:"100%"}}/>
                         </div>
                         <div className="forget_content" >
                             <Button id="reset_button" variant="filled" 
-                            onclick={this.handleChange}>Reset Password</Button>
+                            onClick={this.resetPassword}>Reset Password</Button>
                         </div>
                     </div>
                 </div>

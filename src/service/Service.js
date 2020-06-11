@@ -90,5 +90,19 @@ class DataService {
   });
   
   }
+
+  forgetPassword=(email)=>{
+    return axios.get(`${BASIC_API_URL}/forget`,{params:{email:email}});
+  
+  }
+
+  resetPassword=(password , token)=>{
+        return axios({
+        headers:{Token:token},
+        method:'get',
+        url:`${BASIC_API_URL}/reset/password?password=`+password
+    });    
+  }
+
 }
 export default new DataService()
