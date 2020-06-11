@@ -27,8 +27,9 @@ class Routers extends React.Component{
                 <Route path="/ordersummary" component={OrderSummary}/>
                 <Route path="/order/successful" component={OrderSuccessful}/>
                 <Route path="/myorder" component={MyOrder}/>
-                <Route path="/forgetpassword" component={ForgetPassword}/>
-                <Route path="/resetpassword" component={ResetPassword}/>
+                <Route path="/reser/password" component={ResetPassword}/>
+                <Route path="/forget/password" component={ForgetPassword}/>
+                <Route path="/user/login" component={UserLogin}/>
                 <Route path="/" component={Main}/>
             </Switch>
             </Router>

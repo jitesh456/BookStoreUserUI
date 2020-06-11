@@ -79,6 +79,15 @@ class DataService {
       method:'get',
       url:`${BASIC_API_URL}/order/details`
   });
+  }
+
+  addUserDetails=(object)=>{
+    return axios({
+      headers:{Token:localStorage.getItem('token')},
+      method:'post',
+      url:`${BASIC_API_URL}/userdetail`,
+      data:object
+  });
   
   }
 }

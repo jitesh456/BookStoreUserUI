@@ -10,6 +10,7 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
+import Service from '../service/Service';
 
 let nameError = '';
 let phoneNumberError = '';
@@ -220,6 +221,20 @@ export default class Customer extends Component {
 
     handleSubmit(event){
       localStorage.setItem("mail",JSON.stringify(this.state.emailId));
+      const address={
+        addressType :"Home",
+        pincode: this.state.pincode,
+        locality:this.state.locality,
+        address :this.state.address,
+        city :this.state.city,
+        country :this.state.country
+      }
+      Service.addUserDetails(address).then((response)=>{
+          console.log(response.data.body);
+      }).catch((error)=>{
+        console.log(error);
+      });
+      
     }
     
     displayButton(){

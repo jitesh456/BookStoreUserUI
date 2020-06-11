@@ -21,8 +21,7 @@ import Alert from "@material-ui/lab/Alert";
 
 let nameError = '';
 let emailError = '';
-let mobileError = ''; 
-let passwordError = '';
+let mobileError = ''; let passwordError = '';
 
 const theme = createMuiTheme({
     palette: {
@@ -57,7 +56,7 @@ export default class UserLogin extends Component {
             loginMessage: '',
             singupMessage: '',
             alertShow: false,
-            alertResponse: "",index:0,
+            alertResponse: "", index: 0,
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleClickShowPassword = this.handleClickShowPassword.bind(this);
@@ -164,7 +163,7 @@ export default class UserLogin extends Component {
             emailError: '',
             nameError: '',
             mobileError: '',
-            passwordError: '',ChangeTab: false,
+            passwordError: '', ChangeTab: false,
             validateform: false
         });
     }
@@ -204,36 +203,35 @@ export default class UserLogin extends Component {
             }
             Service.registerUser(user).then(response => {
                 console.log(response.data);
-                if (response.data.statusCode === 200)
-                 {
+                if (response.data.statusCode === 200) {
                     this.setState({
                         severity: "success",
                         alertShow: true,
                         alertResponse: response.data.message,
-                        ChangeTab: true,index:0,
-                        loginChecked: true,signupChecked: false,
+                        ChangeTab: true, index: 0,
+                        loginChecked: true, signupChecked: false,
                     });
                     this.clearFieldsData();
-                   
+
                     document.getElementById("signupForm").reset();
                     this.handleTabSelection("login");
                 }
-                 else {
+                else {
                     this.setState({
                         severity: "error",
                         alertShow: true,
-                        alertResponse: response.data
+                        alertResponse: response.data.message
                     });
                 }
                 console.log(this.state);
             }).catch(error => {
-                console.log(error.response);
+                console.log(error.data);
             })
         }
 
     }
 
-    
+
     clearFieldsData = () => {
         this.setState({
             password: "",
@@ -258,46 +256,46 @@ export default class UserLogin extends Component {
     handleLoginSubmit(event) {
         event.preventDefault();
         const isValid = this.validate();
-       
-            const credentials = {
-                email: this.state.email,
-                password: this.state.password,
+
+        const credentials = {
+            email: this.state.email,
+            password: this.state.password,
+        }
+        Service.login(credentials).then(response => {
+            console.log(response);
+
+            if (response.data.statusCode === 200) {
+                this.setState({
+                    severity: "success",
+                    alertShow: true,
+                    alertResponse: response.data.message
+                });
+                this.clearFieldsData();
+                localStorage.setItem("token", response.headers.token);
+                document.getElementById("loginForm").reset();
+                setTimeout(() => {
+                    window.location.replace("/");
+                }, 2000)
+            } else {
+                this.setState({
+                    severity: "error",
+                    alertShow: true,
+                    alertResponse: response.data.message
+                });
             }
-            Service.login(credentials).then(response => {
-                console.log(response);
-                
-                if (response.data.statusCode === 200) {
-                    this.setState({
-                        severity: "success",
-                        alertShow: true,
-                        alertResponse: response.data.message
-                    });
-                    this.clearFieldsData();
-                    localStorage.setItem("token", response.headers.token);
-                    document.getElementById("loginForm").reset();
-                    setTimeout(() => {
-                        window.location.replace("/");    
-                    }, 5000)
-                } else {
-                    this.setState({
-                        severity: "error",
-                        alertShow: true,
-                        alertResponse: response.data.message
-                    });
-                }
-            }).catch(error => {
-                console.log(error.data)
-            })
-        
-        
+        }).catch(error => {
+            console.log(error.data)
+        })
+
+
     }
 
     handleTabSelection = ({ target }) => {
-        if( ([target.name] == "login") || this.state.ChangeTab ){
-            this.setState({ loginChecked: true, signupChecked: false ,index:0 })
+        if (([target.name] == "login") || this.state.ChangeTab) {
+            this.setState({ loginChecked: true, signupChecked: false, index: 0 })
         }
         if ([target.name] == "signup") {
-            this.setState({ loginChecked: false, signupChecked: true, index:1 })
+            this.setState({ loginChecked: false, signupChecked: true, index: 1 })
         }
     }
     render() {
@@ -307,7 +305,7 @@ export default class UserLogin extends Component {
                     <Tab ><input id="tab-1" type="radio" name="login" className="sign-in" checked={this.state.loginChecked} onClick={this.handleTabSelection} /><label htmlFor="tab-1" className="tab1">Login</label></Tab>
                     <Tab><input id="tab-2" type="radio" name="signup" className="sign-up" checked={this.state.signupChecked} onClick={this.handleTabSelection} /><label htmlFor="tab-2" className="tab2">SignUp</label></Tab>
                 </TabList>
-                <TabPanel className="tabpanel-content" show ={this.state.loginChecked}>
+                <TabPanel className="tabpanel-content" show={this.state.loginChecked}>
 
                     <div className="login-field-container">
                         <form id="loginForm" onSubmit={this.handleLoginSubmit} onReset={this.reset}>
@@ -378,7 +376,7 @@ export default class UserLogin extends Component {
 
 
                                 <div className="foot-lnk">
-                                    <a href="#forgot">Forgot Password?</a>
+                                    <a href="/forget/password">Forgot Password?</a>
                                 </div>
                                 <Button type="submit" id="login-button" variant="contained">Login</Button>
                             </div>
@@ -537,6 +535,8 @@ export default class UserLogin extends Component {
                 </div>
 
             </div>
+
+
         );
     }
 }

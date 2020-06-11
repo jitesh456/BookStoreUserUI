@@ -44,7 +44,7 @@ export default class ForgetPassword extends React.Component {
                         </div>
                     </div>
                     <div className="create_account">
-                        <a href="#" id="anchor">CREATE ACCOUNT</a>
+                        <a href="/user/login" id="anchor">CREATE ACCOUNT</a>
                     </div>
                 </div>
             </div>

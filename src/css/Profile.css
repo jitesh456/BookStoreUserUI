@@ -39,6 +39,11 @@
     background-color: transparent !important;
   }
 
+.Myorder-div{
+  display:flex;
+  cursor: pointer;
+}
+
   .dialogBox{
     display:flex;
     height: 476px;

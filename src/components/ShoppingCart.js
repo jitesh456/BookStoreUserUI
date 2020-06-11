@@ -55,22 +55,14 @@ export default class ShoppingCart extends React.Component{
     }
     handleRemove(object){
         let items=this.state.cartItem;
-        let bookName=localStorage.getItem("bookName");
-        bookName=items.filter(x=> x.name!==object.name).map(y=>y.name);
-        items=items.filter(x=> x.isbn!==object.isbn);
-        let number=localStorage.getItem("count");
+    
+        Service.removeBook(object.id).then((response)=>{
+            console.log(response.data);
+            this.getCartData();
 
-        number-=1;
-        localStorage.setItem("count",JSON.stringify(number));
-        
-        localStorage.setItem("bookName",JSON.stringify(bookName));
-        localStorage.setItem("bookData",JSON.stringify(items));
-        //localStorage.setItem("bookName",JSON.stringify(object.Name));
-        this.setState({
-            cartItem:JSON.parse(localStorage.getItem("bookData"))
-        });
-
-        console.log(items)  ;
+        }).catch((error)=>{
+            console.log(error);
+        })
      }
 
     handleEditCustomer=(e)=>{
@@ -84,16 +76,20 @@ export default class ShoppingCart extends React.Component{
 
     componentDidMount()
     {
+        this.getCartData();
+    }
+
+    getCartData(){
         Service.getCartBook().then((response) => {
-                console.log(response);
-                this.setState({
-                    cartItem:response.data.body
-                })
-                console.log(response.data);
-            }).catch((error) => {
-                console.log(error)
+            console.log(response);
+            this.setState({
+                cartItem:response.data.body
             })
-        
+            console.log(response.data);
+        }).catch((error) => {
+            console.log(error)
+        })
+    
     }
 
     handleCustomerSummary=(e)=>{
@@ -136,7 +132,6 @@ export default class ShoppingCart extends React.Component{
             }
 
         }
-
         localStorage.setItem("bookData",JSON.stringify(items));
         this.setState({
             cartItem:items,
@@ -166,7 +161,6 @@ export default class ShoppingCart extends React.Component{
                         <img src={`http://localhost:8090/admin/downloadFile/${item.bookcover}`} alt="" className="shopped_image"/>
                     </div>
                     <div className="cart-item-content-details">
-
                         <span className="shopped_book_name">{item.name}</span>
                         <div style={{height:"5%"}}></div>
                         <span className="shopped_book_author">{item.authorname}</span>

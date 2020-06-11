@@ -59,7 +59,7 @@ class OrderSuccessful extends Component {
                                 
                                 <td id="address" >
                                     <TableTooltip title={ <React.Fragment>
-                                                <p>{info.Address}}</p>
+                                                <p>{info.Address}</p>
                                         </React.Fragment>
                                     } placement="right" arrow><div className="address-content" >{info.Address}</div></TableTooltip></td>
                             </tr>

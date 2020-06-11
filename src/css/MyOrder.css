@@ -38,52 +38,39 @@
 .MainClass{
   display: flex;
   flex-direction: column;
-  width:65%;
-  padding-bottom: 2%;
+   padding-bottom: 2%;
   padding-left: 3%;
-
-  margin-top: 4%;
-  margin-left: 4%;
-  background-color: white;
-  border: 1px solid silver;
- 
-}
+  margin-top: 2.8%;
+  margin-left: 14%;
+  width:65%;
+  }
 .Myorder-summary{
   display: flex;
   flex-direction: column;
   border: black;
- margin-left: -3%;
-  width:96%;
-  min-height: 235px;
+  background-color: white;
+  border: 1px solid silver;
+ margin-left: -8%;
+  min-height: 254px;
   max-height: 320px;
   overflow-y: hidden;
   overflow-x: hidden;
 }
-.Main-Order-Box{
-  display: flex;
- 
-  width:500px ;
-  height: 500px;
-  border: 1px solid rgb(27, 27, 27);
-  border-radius: 6px;
-  margin-top: 2%;
-  margin-left: 3%;
-}
+
 .MyOrder-details{
   display:flex;
-  /* background-color: royalblue; */
   flex-direction:column;
   padding-top:25px;
-  margin-left: 4%;
+  margin-left: 2%;
   width:30%;
   justify-content:flex-start;
   height:200px;
   padding-left:2%;
+  
 }
 
 .orderDate{
   display:flex;
-  /* background-color: royalblue; */
   flex-direction:column;
   justify-content: center;
   margin-left: 10%;
@@ -105,13 +92,11 @@
 }
 .cart-item-content{
   display:flex;
-  height:100px;
   padding-bottom:20px;
 }
 .shoppingcart_image{
-  
   border: none;
-  width:22%;
+  width:23%;
   display:flex;
   flex-direction:column;
   justify-content: center;
@@ -120,44 +105,14 @@
   padding-top: 8%;
   
 }
-
-.book_details{
-  min-height: 235px;
-  max-height: 450px;
-  overflow-y: scroll;
-}
-
-.shopped_image{
-  width:105px;
-  height:135px;
-}
-
-
-.shopped_details{
-  border:1px solid black;
-  border: none;
-  display:flex;
-  flex-direction: column;
-  justify-content: center;
-  width:53%;
-}
 .cart-item{
   height:fit-content;
   width:800px;
-  padding-bottom:40px;
+  margin-top: 3%;
+  /* padding-bottom:40px; */
 }
-
-.book_details::-webkit-scrollbar{
-  display: none;
-  width: 0;
-}
-
-
-
 .Myorder-summary:hover{
-  
-  overflow-y: scroll;
-  
+  overflow-y: scroll;  
 }
 
 .cart_content{
@@ -167,7 +122,8 @@
 }
 
 .orderTitle{
-  margin-left: 4%;
+  cursor: pointer;
+  margin-left: 12%;
   color: gray;
 }
 

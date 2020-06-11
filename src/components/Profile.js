@@ -32,13 +32,13 @@ export default class profile extends React.Component {
         if (localStorage.getItem("token") == null && this.state.logOut) {
             return (
                 <button type="button" onClick={this.openDialog}
-                    style={{ width: "65%", fontSize: "14px", backgroundColor: 'white', border: "maroon 1px solid", color: "maroon", marginLeft: "5%", marginTop: "5%" }}>
+                    style={{ width: "65%", fontSize: "14px", backgroundColor: 'white', cursor:'pointer', border: "maroon 1px solid", color: "maroon", marginLeft: "5%", marginTop: "5%" }}>
                     Login/Signup</button>);
         }
         else {
             return (
                 <button type="button" onClick={this.DoLogOut}
-                    style={{ width: "65%", fontSize: "14px", backgroundColor: 'white', border: "maroon 1px solid", color: "maroon", marginLeft: "5%", marginTop: "5%" }}>
+                    style={{ width: "65%", fontSize: "14px", backgroundColor: 'white',cursor:'pointer', border: "maroon 1px solid", color: "maroon", marginLeft: "5%", marginTop: "5%" }}>
                     LogOut</button>
 
             );
@@ -76,9 +76,9 @@ export default class profile extends React.Component {
                 </div>
                 <hr/>
                 <div>
-                    <div className="Myorder">
+                    <div className="Myorder-div" >  
                         <LocalMallIcon style={{ color: "gray" , marginLeft: "4%" }} fontSize="small" onClick={this.showMyorder}/>
-                        <h6 style={{ color: "gray" ,marginTop:"-12%", marginLeft: "18%"}}  onClick={this.showMyorder}> MyOrder</h6>
+                        <h6 style={{ color: "gray" ,marginTop:"0%", marginLeft: "3%"}}  onClick={this.showMyorder}> MyOrder</h6>
                     </div>
                 </div>
             </div>
