@@ -7,6 +7,22 @@ import '../css/ForgetPassword.css';
 import Service from '../service/Service';
 import Snackbar from "@material-ui/core/Snackbar";
 import Alert from "@material-ui/lab/Alert";
+import { createMuiTheme } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
+import { purple } from '@material-ui/core/colors';
+
+const theme = createMuiTheme({
+    palette: {
+        primary: {
+
+            main: purple[500],
+        },
+        secondary: {
+            main: '#B0002A',
+
+        },
+    },
+});
 
 export default class ForgetPassword extends React.Component {
     constructor(props){
@@ -98,10 +114,12 @@ export default class ForgetPassword extends React.Component {
                             <span className="message">Enter your email address and we will send you a link to reset password </span>
                         </div>
                         <div className="forget_content">
-                            <TextField id="outlined-basic" label="Email" variant="outlined" 
-                             name="email"
-                             onChange={this.handleChange.bind(this,'email')}
-                                style={{width:"100%"}}/>
+                            <ThemeProvider>
+                                <TextField id="outlined-basic" color="secondary" label="Email" variant="outlined" 
+                                name="email"
+                                onChange={this.handleChange.bind(this,'email')}
+                                    style={{width:"100%"}}/>
+                            </ThemeProvider>
                         </div>
                         <div className="forget_content" >
                             <Button id="forget_button" variant="filled" 

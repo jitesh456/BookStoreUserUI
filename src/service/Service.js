@@ -53,7 +53,6 @@ class DataService {
   
   }
 
-
   placeOrder=()=>{
 
     return axios({
@@ -85,24 +84,36 @@ class DataService {
     return axios({
       headers:{Token:localStorage.getItem('token')},
       method:'post',
-      url:`${BASIC_API_URL}/userdetail`,
+      url:`${BASIC_API_URL}/customerdetail`,
       data:object
   });
   
   }
 
-  forgetPassword=(email)=>{
-    return axios.get(`${BASIC_API_URL}/forget`,{params:{email:email}});
-  
-  }
+  getCustomerDetail=()=>{
+    return axios({
+      headers:{Token:localStorage.getItem('token')},
+      method:'get',
+      url:`${BASIC_API_URL}/customerdetail`
+  });
+}
 
-  resetPassword=(password , token)=>{
-        return axios({
-        headers:{Token:token},
-        method:'get',
-        url:`${BASIC_API_URL}/reset/password?password=`+password
-    });    
-  }
+forgetPassword(emailId){
 
+    return axios.get(`${BASIC_API_URL}/forget`,{params:{email:emailId}}
+    
+    );
+}
+
+resetPassword(data){
+
+  return axios({
+    headers:{Token:localStorage.getItem('token')},
+    method:'post',
+    url:`${BASIC_API_URL}/reset/password`,
+    data:data
+});
+
+}
 }
 export default new DataService()

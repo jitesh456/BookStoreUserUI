@@ -3,11 +3,9 @@ import AppBar from '@material-ui/core/AppBar';
 import booklogo from '../booklogo.png';
 import '../css/MyOrder.css';
 import '../css/Main.css';
-
-// import Button from '@material-ui/core/Button';
 import history from "./history";
 import Service from '../service/Service';
-// import image0 from '../assets/images/image0.jpg';
+
 
 let baseBook = '';
 export default class MyOrder extends React.Component {
@@ -51,8 +49,9 @@ export default class MyOrder extends React.Component {
         else {
             book = this.state.orderDetails.map(item => {
                 let order = item.bookList;
-                let date = item.cart.orderPlacedDate;
-                console.log(this.order);
+                var date = new Date(item.cart.orderPlacedDate).toString().substring(0,15);
+                
+                console.log(item.cart.orderPlacedDate);
                 return (
                     <div>
                         <div className="Myorder-summary">
@@ -61,7 +60,7 @@ export default class MyOrder extends React.Component {
                                     <div className="cart-item">
                                         <div className="cart-item-content">
                                             <div className="shoppingcart_image">
-                                                <img src={`http://localhost:8090/admin/downloadFile/${list.bookcover}`} alt="" className="shopped_image" />
+                                                <img src={`http://localhost:8090/admin/downloadFile/${list.bookCover}`} alt="" className="shopped_image" />
                                             </div>
                                             <div className="MyOrder-details">
                                                 <span className="shopped_book_name">{list.name}</span>
@@ -74,7 +73,7 @@ export default class MyOrder extends React.Component {
                                             </div>
                                             <div style={{ marginLeft: "10%" }}>
                                                 <h4 style={{ marginTop: "35px", marginBottom: "15px" }}>Order Placed on</h4>
-                                                <span style={{ marginTop: "5px" }} >{date.orderPlacedDate}</span>
+                                                <span style={{ marginTop: "5px" }} >{date}</span>
                                             </div>
                                         </div>
                                     </div>
@@ -97,7 +96,7 @@ export default class MyOrder extends React.Component {
                     </div >
                 </AppBar>
                 <div>
-                    <h4 className="orderTitle" onClick={this.changePage} >home/MyOrder</h4>
+                    <h4 className="orderTitle" onClick={this.changePage}>Home/MyOrder</h4>
                 </div>
                 <div className="MainClass">
                     <div ClassName="MyOrderBox" >

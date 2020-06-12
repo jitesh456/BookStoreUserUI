@@ -59,12 +59,12 @@ export default class ResetPassword extends React.Component {
                             <span className="message">Enter new password</span>
                         </div>
                         <div className="forget_content">
-                            <TextField id="outlined-basic" label="Password" variant="outlined" 
+                            <TextField id="outlined-basic" label="Password" variant="outlined" type="password"
                             name= "password1" onChange={this.handleChange.bind(this,"password1")}
                             style={{width:"100%"}}/>
                         </div>
                         <div className="forget_content">
-                            <TextField id="outlined-basic" label="Confirm Password" variant="outlined" 
+                            <TextField id="outlined-basic" label="Confirm Password" variant="outlined" type="password"
                             name= "password2" onChange={this.handleChange.bind(this,"password1")}
                             style={{width:"100%"}}/>
                         </div>

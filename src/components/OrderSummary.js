@@ -11,39 +11,14 @@ export default class OrderSummary extends React.Component{
             totalPrice:0,
         }
     }
-
-
-
-           
+    
     handleConfirmation=(e)=>{
-        const data={
-            body:"Thank you for shopping with us. We'll let you know once your item(s) are shipped. Your estimated delivery date 27 May.",
-            recipientAddress:JSON.parse(localStorage.getItem("mail")),
-            subject:"Order Confirmation "         
-        };
-
+        
         Service.placeOrder().then((response)=>{
             console.log(response);
         }).catch((error)=>{
             console.log(error);
         });
-
-        Service.sendMail(data).then((response)=>{
-            console.log(response);
-            
-        }).catch((error)=>{
-        console.log(error)
-        });
-
-        this.props.cartItem.map(item=>{
-            const bookdata={
-                quantity:item.maxquantity-item.quantity,
-                isbn:item.isbn
-            }
-            Service.updateQuantity(bookdata);    
-
-        });
-        localStorage.clear();
         
     }
     
@@ -56,13 +31,13 @@ export default class OrderSummary extends React.Component{
             <div className="cart-item">
                 <div className="cart-item-content">
                     <div className="shoppingcart_image">                        
-                            <img src={`http://localhost:8090/admin/downloadFile/${item.bookcover}`} alt="" className="shopped_image"/>
+                            <img src={`http://localhost:8090/admin/downloadFile/${item.bookCover}`} alt="" className="shopped_image"/>
                     </div>
                     <div className="cart-item-content-details">
 
                         <span className="shopped_book_name">{item.name}</span>
                         <div style={{height:"5%"}}></div>
-                        <span className="shopped_book_author">{item.authorname}</span>
+                        <span className="shopped_book_author">{item.authorName}</span>
                         <div style={{height:"5%"}}></div>
                         <span className="shopped_book_price">Rs. {item.price*item.quantity}</span>
                         <div style={{height:"5%"}}></div>
@@ -86,8 +61,7 @@ export default class OrderSummary extends React.Component{
                 <div style={{height:"auto",display:"flex",justifyContent:"space-between",paddingRight:"3%",paddingBottom:"2%"}}>
                     <p style={{paddingLeft:"3%",fontSize:"17px"}}><b>Total Price: &nbsp;Rs. {calPrice}</b> </p>
                     <Button style={{background:"maroon",color:"white",padding:"10px 30px",marginTop:"13px", height:"42px"}} variant="filled"
-                    onClick={()=>{history.push('/order/successful');this.handleConfirmation()}}>Place Order</Button>
-                    
+                    onClick={()=>{history.push('/order/successful');this.handleConfirmation()}}>Place Order</Button>  
                 </div>
             </div>
         }else{

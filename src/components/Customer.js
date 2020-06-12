@@ -18,7 +18,7 @@ let pincodeError = '';
 let cityError = '';
 let localityError='';
 let countryError='';
-let emailError = '';
+
 
 export default class Customer extends Component {
     constructor(props) {
@@ -34,11 +34,10 @@ export default class Customer extends Component {
             city: "",
             country: "",
             address:"",
-            emailId: "",
-            emailError: "",
             cityError: "",
             validateform: false,
-            ordersummarybutton:'block'
+            ordersummarybutton:'block',
+            customerDetail:[]
 
         }
 
@@ -64,7 +63,7 @@ export default class Customer extends Component {
       var pincodePattern=/^[0-9]{6}$|^[0-9]{3}\\s{1}[0-9]{3}$/;
       var cityPattern=/[A-Z]{1}[A-Za-z]{2,}$/;
       var localityPattern=/^[A-Za-z0-9]{2,}$/;
-      var emailPattern=/^[a-zA-Z]{3,}([-|+|.|_]?[a-zA-Z0-9]+)?[@]{1}[A-Za-z0-9]+[.]{1}[a-zA-Z]{2,4}([.]{1}[a-zA-Z]+)?$/;
+     
 
       switch (type) {
   
@@ -150,14 +149,6 @@ export default class Customer extends Component {
               cityError = "";
             }
           break;
-        case 'emailId':
-          if (!emailPattern.test(this.state.emailId)) {
-            emailError = "Enter valid email (eg. example@gmail.com or example876@gmail.com)";
-          }
-          if (emailPattern.test(this.state.emailId)) {
-              emailError = "";
-            }
-          break;
 
        case 'locality':
           if (this.state.locality===" " && this.state.localityError.length===1) {
@@ -170,6 +161,7 @@ export default class Customer extends Component {
               localityError = "";
           }
           break;
+
       case 'country':
           if (!namePattern.test(this.state.country) && this.state.country.length>1) {
               countryError = "Only Letter is Allowed";
@@ -183,13 +175,12 @@ export default class Customer extends Component {
       }
   
   
-      if (nameError || phoneNumberError || pincodeError || cityError || emailError || localityError || countryError) {
+      if (nameError || phoneNumberError || pincodeError || cityError ||  localityError || countryError) {
         this.setState({
           nameError: nameError,
           phoneNumberError: phoneNumberError,
           pincodeError: pincodeError,
           cityError: cityError,
-          emailError: emailError,
           localityError:localityError,
           countryError:countryError,
           validateform:false
@@ -212,7 +203,6 @@ export default class Customer extends Component {
         phoneNumberError: '',
         pincodeError: '',
         cityError: '', 
-        emailError: '',
         countryError:'',
         localityError:'',
         validateform:false
@@ -229,6 +219,7 @@ export default class Customer extends Component {
         city :this.state.city,
         country :this.state.country
       }
+
       Service.addUserDetails(address).then((response)=>{
           console.log(response.data.body);
       }).catch((error)=>{
@@ -239,7 +230,7 @@ export default class Customer extends Component {
     
     displayButton(){
       if(this.state.validateform && this.state.name!=="" && this.state.phoneNumber!=="" && this.state.pincode!=="" && 
-      this.state.locality!=="" && this.state.emailId!=="" && this.state.address!=="" && this.state.city!=="" ){
+      this.state.locality!=="" && this.state.address!=="" && this.state.city!=="" ){
         return(
             <Button style={{display:this.props.ordersummary,background:"maroon",color:"white",padding:"10px 30px"}} variant="filled"
             onClick={()=>{ this.props.onClick();this.handleSubmit()}}>Continue</Button>
@@ -260,12 +251,36 @@ export default class Customer extends Component {
         phoneNumberError: '',
         pincodeError: '',
         cityError: '', 
-        emailError: '',
         countryError:'',
         localityError:'',
-        validateform:false
       });
-    }
+
+      Service.getCustomerDetail().then((response)=>{
+        console.log(response.data.body.name);
+        
+        this.setState({customerDetail:response.data.body,
+          name:response.data.body.name,
+          phoneNumber:response.data.body.number,
+          validateform:false
+          
+        });
+        
+        if(response.data.body.userDetail.length>0)
+        {
+          this.setState({
+            address:response.data.body.userDetail[0].address,
+            locality:response.data.body.userDetail[0].locality,
+            pincode:response.data.body.userDetail[0].pincode,
+            city:response.data.body.userDetail[0].city,
+            country:response.data.body.userDetail[0].country,
+            validateform:true
+          });
+        }
+        console.log(this.state.name);
+          }).catch((error)=>{
+                  console.log(error);
+          });
+        }
 
     render() {
         let im=[]
@@ -281,9 +296,10 @@ export default class Customer extends Component {
                         className="info"          
                         style={{width:"100%"}}
                         color="secondary"
-                        name="name"                      
+                        name="name"      
+                        value={this.state.name}                
                         onChange={this.handleChange.bind(this, 'name')}
-                        disabled={this.props.disableform}
+                        disabled="true"
                         />
                         <p
                             style={{
@@ -301,6 +317,7 @@ export default class Customer extends Component {
                     <div style={{width:"47%"}}>
                     <TextField
                         label="Phone Number"
+                        value={this.state.phoneNumber}
                         id="outlined-start-adornment"
                         variant="outlined"
                         className="info"
@@ -308,7 +325,7 @@ export default class Customer extends Component {
                         name="phoneNumber"
                         style={{width:"100%"}}
                         onChange={this.handleChange.bind(this, 'phoneNumber')}
-                        disabled={this.props.disableform}
+                        disabled="true"
                     />
                     <p
                        style={{
@@ -332,6 +349,7 @@ export default class Customer extends Component {
                         variant="outlined"
                         className="info"
                         color="secondary"
+                        value={this.state.pincode}
                         name="pincode"  
                         style={{width:"100%"}}                              
                         onChange={this.handleChange.bind(this, 'pincode')}
@@ -356,6 +374,7 @@ export default class Customer extends Component {
                         id="outlined-start-adornment"
                         variant="outlined"
                         className="info"
+                        value={this.state.locality}
                         color="secondary"
                         name="locality"
                         style={{width:"100%"}}
@@ -383,12 +402,12 @@ export default class Customer extends Component {
                         id="outlined-start-adornment"
                         variant="outlined"
                         style={{borderColor:"maroon",width:"100%"}}
+                        value={this.state.address}
                         className="info" 
                         multiline
                         rows={2}
                         color="secondary"
                         name="address"
-                        
                         onChange={this.handleChange.bind(this, 'address')}
                         disabled={this.props.disableform}
                         />
@@ -411,6 +430,7 @@ export default class Customer extends Component {
                         label="City"
                         id="outlined-start-adornment"
                         variant="outlined"
+                        value={this.state.city}
                         color="secondary"
                         className="info" 
                         name="city"
@@ -437,10 +457,10 @@ export default class Customer extends Component {
                         id="outlined-start-adornment"
                         variant="outlined"
                         className="info"
+                        value={this.state.country}
                         style={{width:"100%"}}
                         color="secondary"
-                        name="country"
-                        
+                        name="country"  
                         onChange={this.handleChange.bind(this, 'country')}
                         disabled={this.props.disableform}
                     />
@@ -458,32 +478,7 @@ export default class Customer extends Component {
                     </div>
                 </div>
                 <div style={{height:"75px"}}></div>
-                <div style={{display:"flex"}}>
-                    <div style={{width:"84%",height:"80px"}}>
-                    <TextField
-                        label="Email"
-                        id="outlined-start-adornment"
-                        variant="outlined"
-                        color="secondary"
-                        style={{width:"100%",borderColor:"maroon"}}
-                        className="info"
-                        name="emailId" 
-                        onChange={this.handleChange.bind(this, 'emailId')}
-                        disabled={this.props.disableform}
-                        />
-                        <p
-                            style={{
-                              color: "red",
-                              fontSize: "12px",
-                              marginTop: "1%",
-                              marginBottom: "-3em",
-                              
-                          }}
-                      >
-                          <div style={{ marginTop: "5px" }} >{this.state.emailError} </div>
-                      </p>
-                    </div>
-                </div>
+              
                 <div style={{height:"12px"}}></div>
                 
                 <div style={{width:"95%",display:"flex",justifyContent:"flex-end",paddingBottom:"2%",marginRight:"5%"}}>

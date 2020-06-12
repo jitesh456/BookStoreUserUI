@@ -10,6 +10,8 @@ import { ThemeProvider } from '@material-ui/styles';
 import { purple } from '@material-ui/core/colors';
 import AppBar from '@material-ui/core/AppBar';
 import Service from '../service/Service';
+import history from "./history";
+
 
 const theme = createMuiTheme({
   palette: {
@@ -36,7 +38,7 @@ export default class ShoppingCart extends React.Component{
             editbutton:'none',
             disableform:false,
             ordersummary:'block',
-            cartItem:[]       
+            cartItem:[] , 
         }
 
         this.handleCustomer=this.handleCustomer.bind(this);
@@ -48,10 +50,25 @@ export default class ShoppingCart extends React.Component{
     }
 
     handleCustomer=(e)=>{
+
         this.setState({
             customer:true,
             placebutton:'none'
         })
+
+        this.state.cartItem.map((item)=>{
+            const cart = {
+                bookId: item.id,
+                quantity:item.quantity
+            }
+            Service.addtoCart(cart).then((response) => {
+                console.log(response);
+                
+            }).catch((error) => {
+                console.log(error)
+            })
+        });
+
     }
     handleRemove(object){
         let items=this.state.cartItem;
@@ -99,24 +116,30 @@ export default class ShoppingCart extends React.Component{
             disableform:true,
             ordersummary:'none'
         })
-    }
+
+       
+   }
 
     handlePlus=(book)=>{
         let items=this.state.cartItem;
         let limit=5;
-        if(book.quantity<book.maxquantity && book.quantity<5 )
+        
+        if(book.quantity<5 )
         {
             for(var i=0;i<items.length;i++){
                 if(items[i].isbn===book.isbn && book.quantity>0){
                     items[i].quantity+=1;
                 }
             }
-            localStorage.setItem("bookData",JSON.stringify(items));
             this.setState({
                 cartItem:items,
             })
            
         }     
+    }
+
+    changePage = () => {
+        history.push("/");
     }
 
     handleMinus=(book)=>{
@@ -130,12 +153,8 @@ export default class ShoppingCart extends React.Component{
                     items[i].quantity-=1;
                 }
             }
-
         }
-        localStorage.setItem("bookData",JSON.stringify(items));
-        this.setState({
-            cartItem:items,
-        })
+        
     }
 
     render(){
@@ -158,12 +177,12 @@ export default class ShoppingCart extends React.Component{
             <div className="cart-item">
                 <div className="cart-item-content">
                     <div className="shoppingcart_image">
-                        <img src={`http://localhost:8090/admin/downloadFile/${item.bookcover}`} alt="" className="shopped_image"/>
+                        <img src={`http://localhost:8090/admin/downloadFile/${item.bookCover}`} alt="" className="shopped_image"/>
                     </div>
                     <div className="cart-item-content-details">
                         <span className="shopped_book_name">{item.name}</span>
                         <div style={{height:"5%"}}></div>
-                        <span className="shopped_book_author">{item.authorname}</span>
+                        <span className="shopped_book_author">{item.authorName}</span>
                         <div style={{height:"5%"}}></div>
                         <span className="shopped_book_price">Rs.{item.price*item.quantity}</span>
                         <div className="shopped_item_quantity">   
@@ -179,7 +198,8 @@ export default class ShoppingCart extends React.Component{
                         </div>
                         <div>
                         </div>
-                            <Button style={{padding:"8px",background:"maroon",color:"white" }} onClick={()=>{this.handleRemove(item)}}>Remove</Button>                        
+                            <Button style={{padding:"8px",background:"maroon",color:"white" }}
+                             onClick={()=>{this.handleRemove(item)}}>Remove</Button>                        
                         </div>
                         
                     </div>
@@ -196,21 +216,24 @@ export default class ShoppingCart extends React.Component{
                     
                     <div className="admin_header">
                         <img src={booklogo} alt="asd" className="bk_image" />
-                        <a href="/" style={{color:"white" ,textDecoration:"none"}}> <span className="admin">BB Store</span></a>  
+                        <a href="/" style={{color:"white" ,textDecoration:"none"}}> 
+                        <span className="admin">BB Store</span></a>  
                     </div >
                         
              </AppBar>
 
             <div className="cart_content">
             <div className="cart" >
-                
+            
                 <div className="shoppingcart_details">
-                    <span style={{fontSize:"18px",marginTop:"2%",marginLeft:"2.5%",marginBottom:"2%"}}><b>My Cart( {this.state.cartItem.length } )</b></span>
+                    <span style={{fontSize:"18px",marginTop:"2%",marginLeft:"2.5%",marginBottom:"2%"}}>
+                        <b onClick={this.changePage}>Home/My Cart( {this.state.cartItem.length } )</b></span>
                     <div className="book_details">
                         {book}
                     </div>
                     <div className="customer_button">
-                        <Button style={{display:this.state.placebutton,padding:"10px 30px",background:"maroon",color:"white"}} variant="contained" 
+                        <Button style={{display:this.state.placebutton,padding:"10px 30px",
+                        background:"maroon",color:"white"}} variant="contained" 
                                 onClick={this.handleCustomer}>Continue</Button>
                 </div>
                 </div>
