@@ -43,13 +43,13 @@ export default class BookCard extends Component {
         if (this.props.bookDetails.quantity === 0) {
             return (
                 <figure>
-                    <img src={`http://localhost:8090/admin/downloadFile/${this.props.bookDetails.bookcover}`} id="imageoutofstock" alt="" />
+                    <img src={`http://localhost:8090/admin/downloadFile/${this.props.bookDetails.bookCover}`} id="imageoutofstock" alt="" />
                     <figcaption>OUT OF STOCK</figcaption>
                 </figure>
             );
         } else {
             return (
-                <img src={`http://localhost:8090/admin/downloadFile/${this.props.bookDetails.bookcover}`} className="image" alt="" />
+                <img src={`http://localhost:8090/admin/downloadFile/${this.props.bookDetails.bookCover}`} className="image" alt="" />
             );
         }
     }
@@ -125,7 +125,7 @@ export default class BookCard extends Component {
                         title={
                             <React.Fragment>
                                 <Typography ><b>Book Details</b></Typography>
-                                <p>{this.props.bookDetails.bookdetails}</p>
+                                <p>{this.props.bookDetails.bookDetails}</p>
                             </React.Fragment>
                         }
                         placement="right-start"
@@ -140,7 +140,7 @@ export default class BookCard extends Component {
                     </div>
                     <div className="space-between"></div>
                     <div className="book_detail">
-                        <span className="book_author">{this.props.bookDetails.authorname}</span>
+                        <span className="book_author">{this.props.bookDetails.authorName}</span>
                         <span className="book_price">Rs:{this.props.bookDetails.price}</span>
                     </div>
                 </div>

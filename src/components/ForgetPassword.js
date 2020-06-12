@@ -5,11 +5,16 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import '../css/ForgetPassword.css';
 import Service from '../service/Service';
+import Snackbar from "@material-ui/core/Snackbar";
+import Alert from "@material-ui/lab/Alert";
+
 export default class ForgetPassword extends React.Component {
     constructor(props){
         super(props);
         this.state={
             email : '',
+            alertShow: false,
+            alertResponse: "",
         }
         this.handleChange=this.handleChange.bind(this);
     }
@@ -18,12 +23,47 @@ export default class ForgetPassword extends React.Component {
         this.setState({ [event.target.name]: event.target.value })
     }
 
+    clearFieldsData = () => {
+        this.setState({
+            email: "",
+        });
+    };
+
+    closeAlertBox = () => {
+        this.setState({ alertShow: false });
+    };
+
+    showAlert = (severity, alertShow, alertResponse) => {
+        let alertResponseVar = alertResponse;
+        this.setState({
+            severity: severity,
+            alertShow: alertShow,
+            alertResponse: alertResponse
+        })
+        this.props.dialogResponce(this.alertResponseVar);
+        console.log(alertResponseVar);
+    }
+
     forgetPassword=()=>{
         console.log(this.state.email)
         let email = this.state.email;
         Service.forgetPassword(email).then(
             (response)=>{
                 console.log(response)
+                if (response.data.statusCode === 200) {
+                    this.setState({
+                        severity: "success",
+                        alertShow: true,
+                        alertResponse: response.data.message
+                    });
+                    this.clearFieldsData();
+                } else {
+                    this.setState({
+                        severity: "error",
+                        alertShow: true,
+                        alertResponse: response.data.message
+                    });
+                }
             }
         ).catch(error => {
             console.log(error.data);
@@ -42,6 +82,12 @@ export default class ForgetPassword extends React.Component {
                     </div >
                 </AppBar>
                 <div className="header">
+                <Snackbar anchorOrigin={{ vertical: 'top', horizontal: 'right' }} open={this.state.alertShow}
+                    autoHideDuration={6000} onClose={this.closeAlertBox}>
+                    <Alert onClose={this.closeAlertBox} severity={this.state.severity} variant={"filled"}>
+                        {this.state.alertResponse}
+                    </Alert>
+                </Snackbar>
                     <div className="header_content">
                         <h2>Forget Your Password?</h2>
                     </div>
@@ -66,6 +112,11 @@ export default class ForgetPassword extends React.Component {
                         <a href="/user/login" id="anchor">CREATE ACCOUNT</a>
                     </div>
                 </div>
+                <footer className='app_footer'>
+                <div className='admin_footer'>
+                    <p> © Bug Busters Store.All Rights Reserved.</p>
+                </div>
+                </footer>
             </div>
         );
     }
