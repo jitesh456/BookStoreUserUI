@@ -209,10 +209,10 @@
  
 }
 
-@media screen and (max-width:414px) and (max-height:736px){
+@media screen and (max-width:475px) and (max-height:736px){
 
   .shoppingcart_image{
-    width:12%;
+    width:40%;
 }
 .orderTitle{
   margin-left: -50%;

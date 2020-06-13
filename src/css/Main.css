@@ -1,3 +1,4 @@
+Main.css
 
 #app-header {
   border:1px solid greenyellow;
@@ -68,12 +69,12 @@
 }
 
 .profile{
-  margin-Left:1%;
+  margin-Left:5%;
   display: flex;
   height: auto;
-  flex-direction: row;
+  flex-direction: column;
   margin-top: 10px;
-  /* margin-right:2%; */
+  width:20px;
 }
 .profile-Icon{
   margin-Left:35%;
@@ -84,10 +85,9 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  width:250px;
+  /* width:220px; */
   height:160px;
-  padding-left: -3px;
-  margin-top: 13%;
+  margin-top: 30%;
   margin-left: -29%;
   background:none;
   border: none;
@@ -231,7 +231,7 @@ button {
   .search {
     width: 40%;
     margin-top: 0.9%;
-    margin-left: 2%;
+    margin-left: 3%;
     height: 64%;
 }
 .searchIcon {
@@ -258,9 +258,13 @@ button {
 }
 
 .shoppingcart {
-  margin-Left: 10%;
+  margin-Left: 0%;
   display: flex;
   margin-top: 4px;
+}
+
+.app_footer {
+  margin-top: 0% !important;
 }
 
 
@@ -271,12 +275,31 @@ button {
     margin-left: 8px;
     font-size:18px;
   }
+  .card_content{
+    font-size:70%;
+   margin-left:48%; 
+    width:148px;
+    height: 34px;
+  }
+  .admin_header{
+    margin-left: 5%;
+  }
 
+  .admin{
+    display: none;
+  }
   .search {
-    margin-left: 9px;
-    width: 264px;
+    width: 30%;
+    margin-top: 1%;
+    margin-left: -1%;
+    margin-right: -1% ;
+    height: 64%;
     }
-
+    .profile-Icon{
+      margin-Left:500%;
+      
+    }
+    
   .row{
     width:71%;
   }
@@ -285,25 +308,22 @@ button {
     width:83%;
   }
 
-  .admin_header {
-    border: 1px solid green;
-    border: none;
-    display: flex;
-    width: 21%;
-    padding-left: 16%;
-    justify-content: flex-start;
-    align-items: center;
+  
+
+.app_footer {
+  margin-top: 0% !important;
 }
   
 .shoppingcart {
-  margin-Left: 7%;
+  margin-Left: 3%;
+  margin-right: -9%;
   display: flex;
   margin-top: 4px;
 }
 
   .book_cont{
-    margin-left: 9%;
-    width: 93%;
+    margin-left: 11%;
+    width: 80%;
     margin-bottom: 2%;
   }
 
@@ -318,87 +338,151 @@ button {
   }
 }
 @media screen and (max-width: 496px) {
+  .admin_header{
+    margin-left:-5%;
+  }
  
-  .search{
-    margin-top: 10px;
-    width: 200px;
-    height: 33px;
-    margin-left: 0px;
+  .count{
+    font-size:60%;
+    margin-left: -2%;
+  }
+    .book_count{
+      width:40% ;
+      font-size:72%;
+      margin-left: -2%;
+    }
+  
+    .card_content{
+      font-size:45%;
+      margin-left: 80%;
+      width:140px;
+      height: 34px;
+    }
+  
+    .book_sort {
+      width: 90px;
+      margin-right: 23%;
+      justify-content: center;
+  }
+    .search {
+      width: 40%;
+      margin-top: 3%;
+      margin-left: 10%;
+      margin-right: -12%;
+      height: 64%;
+  }
+  .searchIcon {
+    padding: 2px 1px;
+    height: 5px;
+    margin-top: 0.5%;
+    color: black;
+    opacity: 20%;
+  }
+  .profile-Icon{
+    margin-Left:200%;
+    
+  }
+  
+  
+  .profile-div{
+     margin-top: 30%;
+    margin-left: -550%;
+  
+  }
+  
+  .row {
+      margin-top: 3%;
+      width: 70%;
+      margin-left: 12%;
+  }
+  .shoppingcart {
+    margin-Left: 8%;
+    display: flex;
+    margin-top: 4px;
   }
   .admin_header {
     border: 1px solid green;
     border: none;
     display: flex;
-    width: 10%;
-    padding-left: 12%;
+    width: 12%;
+    padding-left: 9%;
     justify-content: flex-start;
     align-items: center;
-}
- .searchIcon {
-    padding:0;
-    height: 5px;
-    color: black;
-    opacity: 5%;
-}
-
-.card_content{
-  display: flex;
-  width:180px;
-  font-size: 12px;
-  height: 40px;
-}
+  }
   
-
-    .admin {
-    
-    font-size:0px;
-  }
-
-  .row{
-    margin-top: 3%;
-    width:54%;
-    
-  }
-  .book_count{
-    width: 217px;
-    padding-left: 0%;
-    font-size: 12px;
-    padding-top: 10px;
-  }
-
-  .book{
+  .book {
     display: flex;
-    width: 90%;
+    width: 96%;
     justify-content: center;
   }
-
-  .book_sort{
-    height:-50px;
-    margin-Left: 10%;
-    justify-content: flex-start;
+  .pagination {
+    padding-top: 1%;
+    padding-bottom: 2%;
   }
-
-  .shoppingcart{
-    margin-Left:19%;
-    display: flex;
-    margin-top: 4px;
   }
+  
 
-  .book_cont {
-    margin-left: 7%;
-    width: 86%;
-    margin-bottom: 2%
-  }
-}
 
 @media screen and (max-device-width:375px){
+  .admin_header{
+    margin-left:-5%;
+  }
+
+  .count{
+  font-size:60%;
+  margin-left: -2%;
+}
+  .book_count{
+    width:40% ;
+    font-size:72%;
+    margin-left: -2%;
+  }
+
+  .card_content{
+    font-size:45%;
+   margin-left:63%; 
+    width:140px;
+    height: 34px;
+  }
+
+  .book_sort {
+    width: 90px;
+    margin-right: 23%;
+    justify-content: center;
+}
+  .search {
+    width: 30%;
+    margin-top: 3%;
+    margin-left: 20%;
+    margin-right: -12%;
+    height: 64%;
+}
+.searchIcon {
+  padding: 2px 1px;
+  height: 5px;
+  margin-top: 0.5%;
+  color: black;
+  opacity: 20%;
+}
+.profile-Icon{
+  margin-Left:220%;
+  
+}
+
+
+.profile-div{
+   margin-top: 30%;
+  margin-left: -550%;
+
+}
 
 .row {
     margin-top: 3%;
     width: 70%;
+    
 }
 .shoppingcart {
-  margin-Left: 11%;
+  margin-Left: 6%;
   display: flex;
   margin-top: 4px;
 }
@@ -410,6 +494,13 @@ button {
   padding-left: 9%;
   justify-content: flex-start;
   align-items: center;
+}
+.cardofbook {
+  padding: 1px;
+  width: 200px;
+  height: 315px;
+  padding-bottom: 20px;
+  
 }
 
 .book {
@@ -424,4 +515,89 @@ button {
 }
 
 
- 
+
+
+@media screen and (max-device-width:330px){
+  .admin_header{
+    margin-left:-5%;
+  }
+  .count{
+    font-size:58%;
+    margin-left: -2%;
+  }
+    .book_count{
+      width:35% ;
+      font-size:62%;
+      margin-left: -5%;
+    }
+  
+    .card_content{
+      font-size:45%;
+     margin-left:43%; 
+      width:130px;
+      height: 34px;
+    }
+  
+    .book_sort {
+      width: 90px;
+      margin-right: 23%;
+      justify-content: center;
+  }
+    .search {
+      width: 30%;
+      margin-top: 3%;
+      margin-left: 20%;
+      margin-right: -12%;
+      height: 64%;
+  }
+  .searchIcon {
+    padding: 2px 1px;
+    height: 5px;
+    margin-top: 0.5%;
+    color: black;
+    opacity: 20%;
+  }
+  .profile-Icon{
+    margin-Left:230%;
+    
+  }
+  
+  
+  .profile-div{
+     margin-top: 30%;
+    margin-left: -450%;
+    width:10px;
+  }
+  
+  .row {
+      margin-top: 3%;
+      width: 74%;
+      margin-left: 3%;
+  }
+  .shoppingcart {
+    margin-Left: 4%;
+    display: flex;
+    margin-top: 4px;
+  }
+  .admin_header {
+    border: 1px solid green;
+    border: none;
+    display: flex;
+    width: 12%;
+    padding-left: 9%;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  
+  .book {
+    display: flex;
+    width: 96%;
+    justify-content: center;
+  }
+  .pagination {
+    padding-top: 1%;
+    padding-bottom: 2%;
+  }
+  }
+  
+  

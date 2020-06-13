@@ -96,7 +96,7 @@ export default class MyOrder extends React.Component {
                     </div >
                 </AppBar>
                 <div>
-                    <h4 className="orderTitle" onClick={this.changePage}>Home/MyOrder</h4>
+                    <h4 className="orderTitle" onClick={this.changePage} >Home/MyOrder</h4>
                 </div>
                 <div className="MainClass">
                     <div ClassName="MyOrderBox" >
