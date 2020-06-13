@@ -183,3 +183,12 @@ figcaption {
     background-color:snow;
   }
 }
+
+
+
+@media screen and (max-width: 450px) {
+.bookDetailsHover {
+  display: none;
+}
+
+}

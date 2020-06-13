@@ -278,7 +278,7 @@ export default class Main extends Component {
 
 
                 </AppBar>
-                <div className="main">
+                <div className="main1">
                     <div className="book_cont">
                         <div className="book">
                             <div className="book_count" >
