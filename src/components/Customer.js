@@ -401,7 +401,7 @@ export default class Customer extends Component {
                         label="Address"
                         id="outlined-start-adornment"
                         variant="outlined"
-                        style={{borderColor:"maroon",width:"100%"}}
+                        style={{borderColor:"maroon",width:"90%"}}
                         value={this.state.address}
                         className="info" 
                         multiline

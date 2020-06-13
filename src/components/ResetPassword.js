@@ -25,8 +25,8 @@ export default class ResetPassword extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            password1: '', password2: '', showPassword1: false,showPassword2: false,
-            alertShow: false,
+            password1: '', password2: '', showPassword1: false, showPassword2: false,
+            alertShow: false,isDisable:true,
             alertResponse: "",
         }
         this.handleChange = this.handleChange.bind(this);
@@ -35,6 +35,56 @@ export default class ResetPassword extends React.Component {
     handleChange = (field, event) => {
         this.setState({ [event.target.name]: event.target.value })
     }
+
+
+    // validate = (type) => {
+
+    //      var passwordPattern = /[a-zA-Z0-9]{1,}$/;
+
+
+    //     switch (type) {
+
+    //         case 'password1':
+    //             if (this.state.password.length < 8 && this.state.password.length > 1) {
+    //                 passwordError1 = " Min 8 characters";
+    //             }
+    //             if (!passwordPattern.test(this.state.password)) {
+    //                 passwordError1 = "Enter proper password";
+    //             }
+    //             if (passwordPattern.test(this.state.password)) {
+    //                 passwordError1 = "";
+    //             }
+    //             break;
+    //         case 'password2':
+    //             if (this.state.password.length < 8 && this.state.password.length > 1) {
+    //                 passwordError2 = " Min 8 characters";
+    //             }
+    //             if (!passwordPattern.test(this.state.password)) {
+    //                 passwordError2 = "Enter proper password";
+    //             }
+    //             if (passwordPattern.test(this.state.password)) {
+    //                 passwordError2 = "";
+    //             }
+    //             break;
+    //         default:
+    //             break;
+    //     }
+
+    //     if (passwordError1 || passwordError2) {
+    //         this.setState({
+    //             passwordError1: passwordError1,
+    //             passwordError2: passwordError2,
+    //         })
+    //         return false;
+    //     }
+    //     return true;
+    // }
+
+
+
+
+
+
 
     closeAlertBox = () => {
         this.setState({ alertShow: false });
@@ -51,7 +101,7 @@ export default class ResetPassword extends React.Component {
         console.log(alertResponseVar);
     }
 
-   handleClickShowPassword1 = () => {
+    handleClickShowPassword1 = () => {
         this.setState({ showPassword1: !this.state.showPassword1 });
     };
 
@@ -78,14 +128,11 @@ export default class ResetPassword extends React.Component {
     resetPassword = () => {
         let password = this.state.password2;
 
-        this.setState({
-            password1:"",
-            password2:'',
-        })
+      
         Service.resetPassword(password, (this.props.location.search).substring(1)).then(
             (response) => {
                 console.log(response)
-               
+
                 if (response.data.statusCode === 200) {
                     this.setState({
                         severity: "success",
@@ -107,6 +154,7 @@ export default class ResetPassword extends React.Component {
 
     }
 
+
     render() {
         return (
             <div>
@@ -117,100 +165,102 @@ export default class ResetPassword extends React.Component {
                     </div >
                 </AppBar>
                 <div className="MainHeader">
-                <Snackbar anchorOrigin={{ vertical: 'top', horizontal: 'right' }} open={this.state.alertShow}
-                    autoHideDuration={6000} onClose={this.closeAlertBox}>
-                    <Alert onClose={this.closeAlertBox} severity={this.state.severity} variant={"filled"}>
-                        {this.state.alertResponse}
-                    </Alert>
-                </Snackbar>
+                    <Snackbar anchorOrigin={{ vertical: 'top', horizontal: 'right' }} open={this.state.alertShow}
+                        autoHideDuration={6000} onClose={this.closeAlertBox}>
+                        <Alert onClose={this.closeAlertBox} severity={this.state.severity} variant={"filled"}>
+                            {this.state.alertResponse}
+                        </Alert>
+                    </Snackbar>
 
-                <div className="resetBox">
-                    <div className="resetHeader">
-                        <div className="Resetheader_content">
-                            <h2>Reset Password</h2>
-                        </div>
-                    </div>
-                    <div className="password">
-                        <div className="reset_password">
-                            <div className="forget_message forget_content">
-                                <span className="message">Enter new password</span>
+                    <div className="resetBox">
+                        <div className="resetHeader">
+                            <div className="Resetheader_content">
+                                <h2>Reset Password</h2>
                             </div>
-                            <div className="forget_content">
-                                {/* <TextField id="outlined-basic" label="Password" variant="outlined"
+                        </div>
+                        <div className="password">
+                            <div className="reset_password">
+                                <div className="forget_message forget_content">
+                                    <span className="message">Enter new password</span>
+                                </div>
+                                <div className="forget_content">
+                                    {/* <TextField id="outlined-basic" label="Password" variant="outlined"
                                     name="password1" onChange={this.handleChange.bind(this, "password1")}
                                     style={{ width: "100%" }} /> */}
-                                <FormControl
-                                    variant="outlined">
-                                    <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
-                                    <OutlinedInput
-                                        id="outlined-adornment-password"
-                                        type={this.state.showPassword1 ? 'text' : 'password'}
-                                        value={this.state.password1} name="password1"
-                                        onChange={this.handleChange.bind(this, "password1")}
-                                        
-                                        className="reset-password"
-                                        endAdornment={
-                                            <InputAdornment position="end">
-                                                <IconButton
-                                                    aria-label="toggle password visibility"
-                                                    onClick={this.handleClickShowPassword1}
-                                                    onMouseDown={this.handleMouseDownPassword1}
-                                                    edge="end"
-                                                >
-                                                    {this.state.showPassword ? <Visibility /> : <VisibilityOff />}
-                                                </IconButton>
-                                            </InputAdornment>
-                                        }
-                                        labelWidth={70}
-                                    />
-                                </FormControl>
+                                    <FormControl
+                                        variant="outlined">
+                                        <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+                                        <OutlinedInput
+                                            id="outlined-adornment-password"
+                                            type={this.state.showPassword1 ? 'text' : 'password'}
+                                            value={this.state.password1} name="password1"
+                                            onChange={this.handleChange.bind(this, "password1")}
 
-                           </div>
-                            <div className="forget_content">
-                                <FormControl
-                                    variant="outlined">
-                                    <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
-                                    <OutlinedInput
-                                        id="outlined-adornment-password"
-                                        type={this.state.showPassword2 ? 'text' : 'password'}
-                                        value={this.state.password2} name="password2"
-                                        onChange={this.handleChange.bind(this, "password2")}
-                                        className="reset-password"
-                                        endAdornment={
-                                            <InputAdornment position="end">
-                                                <IconButton
-                                                    aria-label="toggle password visibility"
-                                                    onClick={this.handleClickShowPassword2}
-                                                    onMouseDown={this.handleMouseDownPassword2}
-                                                    edge="end"
-                                                >
-                                                    {this.state.showPassword ? <Visibility /> : <VisibilityOff />}
-                                                </IconButton>
-                                            </InputAdornment>
-                                        }
-                                        labelWidth={70}
-                                    />
-                                </FormControl>
+                                            className="reset-password"
+                                            endAdornment={
+                                                <InputAdornment position="end">
+                                                    <IconButton
+                                                        aria-label="toggle password visibility"
+                                                        onClick={this.handleClickShowPassword1}
+                                                        onMouseDown={this.handleMouseDownPassword1}
+                                                        edge="end"
+                                                    >
+                                                        {this.state.showPassword ? <Visibility /> : <VisibilityOff />}
+                                                    </IconButton>
+                                                </InputAdornment>
+                                            }
+                                            labelWidth={70}
+                                        />
+                                    </FormControl>
+
+                                </div>
+                                <div className="forget_content">
+                                    <FormControl
+                                        variant="outlined">
+                                        <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+                                        <OutlinedInput
+                                            id="outlined-adornment-password"
+                                            type={this.state.showPassword2 ? 'text' : 'password'}
+                                            value={this.state.password2} name="password2"
+                                            onChange={this.handleChange.bind(this, "password2")}
+                                            className="reset-password"
+
+                                            endAdornment={
+                                                <InputAdornment position="end">
+                                                    <IconButton
+                                                        aria-label="toggle password visibility"
+                                                        onClick={this.handleClickShowPassword2}
+                                                        onMouseDown={this.handleMouseDownPassword2}
+                                                        edge="end"
+                                                    >
+                                                        {this.state.showPassword ? <Visibility /> : <VisibilityOff />}
+                                                    </IconButton>
+                                                </InputAdornment>
+                                            }
+                                            labelWidth={70}
+                                        />
+                                    </FormControl>
 
 
-                            </div>
-                            <div className="forget_content" >
-                                <Button id="reset_button" variant="filled"
-                                    onClick={this.resetPassword}>
-                                       <div className="buttonText"> Reset Password</div>
-                                        </Button>
+                                </div>
+                                <div className="forget_content" >
+                                <Button type="submit" variant="contained"
+                    onClick={this.resetPassword}
+                     style={{ width: "100%", backgroundColor: 'maroon', fontSize:'15px', color: "white" }} >Reset Password</Button>
+         
+
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                </div>
+                    </div>
                 </div>
                 <footer className='app1_footer'>
-                <div className='admin_footer'>
-                    <p> © Bug Busters Store.All Rights Reserved.</p>
-                </div>
+                    <div className='admin_footer'>
+                        <p> © Bug Busters Store.All Rights Reserved.</p>
+                    </div>
                 </footer>
-           
+
             </div>
         );
     }

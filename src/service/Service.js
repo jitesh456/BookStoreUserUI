@@ -105,15 +105,15 @@ forgetPassword(emailId){
     );
 }
 
-resetPassword(data){
 
+resetPassword=(password , token)=>{
   return axios({
-    headers:{Token:localStorage.getItem('token')},
-    method:'post',
-    url:`${BASIC_API_URL}/reset/password`,
-    data:data
-});
-
+  headers:{Token:token},
+  method:'get',
+  url:`${BASIC_API_URL}/reset/password?password=`+password
+});    
 }
+
+
 }
 export default new DataService()
