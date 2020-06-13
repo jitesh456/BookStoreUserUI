@@ -286,7 +286,7 @@ export default class Customer extends Component {
         let im=[]
         if(this.props.show) {                 
         im=<div style={{paddingLeft:"2%",marginTop:"6px"}}>
-              <div style={{display:"flex",flexDirection:"column",minHeight:"500px",justifyContent:"space-between"}}>
+              <div style={{display:"flex",flexDirection:"column",height:"500px",justifyContent:"space-between"}}>
                   <div className="customer_content">
                       <div className="customer_sub_content" >
                         <TextField
@@ -396,7 +396,7 @@ export default class Customer extends Component {
                 </div>
                 </div>
                 <div >
-                <div className="customer_address" >
+                <div >
                     <TextField
                         label="Address"
                         id="outlined-start-adornment"
@@ -425,7 +425,7 @@ export default class Customer extends Component {
                 </div>
                 
                 <div className="customer_content" >
-                    <div className="customer_sub_content">
+                    <div >
                     <TextField
                         label="City"
                         id="outlined-start-adornment"
@@ -451,7 +451,7 @@ export default class Customer extends Component {
                       </p>
                     </div>
                     
-                    <div className="customer_sub_content">
+                    <div >
                     <TextField
                         label="Country"
                         id="outlined-start-adornment"
@@ -478,8 +478,8 @@ export default class Customer extends Component {
                     </div>
                 </div>
                 
-                <div className="address_type">
-                    <div className="address_type_content">
+                <div className="customer_content">
+                    <div >
                     <FormControl component="fieldset">
                         <FormLabel  color="secondary" component="legend">Type</FormLabel>
                         <RadioGroup   row aria-label="position" name="position" defaultValue="home">
@@ -503,7 +503,7 @@ export default class Customer extends Component {
                         </RadioGroup>
                     </FormControl>
                     </div>
-                    <div className="address_type_button" >
+                    <div style={{display:"block",width:"200px"}}>
                    {this.displayButton()}
                     </div>
                 </div>

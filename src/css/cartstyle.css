@@ -8,9 +8,7 @@
 }
 .shopping_cart {
     display: flex;
-    flex-direction: column;
-
-    
+    flex-direction: column;   
 }
 
 .main_body{
@@ -83,7 +81,6 @@
     background-color: white;
     display: flex;
     flex-direction: column;
-    
     
 }
 

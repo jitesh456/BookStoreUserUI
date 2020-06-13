@@ -67,7 +67,10 @@ Main.css
   display: flex;
   margin-top: 4px;
 }
-
+/* 
+.main1{
+  display: flex;
+} */
 .profile{
   margin-Left:5%;
   display: flex;
@@ -275,6 +278,7 @@ button {
     margin-left: 8px;
     font-size:18px;
   }
+ 
   .card_content{
     font-size:70%;
    margin-left:48%; 
@@ -422,7 +426,6 @@ button {
   }
   
 
-
 @media screen and (max-device-width:375px){
   .admin_header{
     margin-left:-5%;
@@ -444,6 +447,7 @@ button {
     width:140px;
     height: 34px;
   }
+
 
   .book_sort {
     width: 90px;
@@ -513,9 +517,6 @@ button {
   padding-bottom: 2%;
 }
 }
-
-
-
 
 @media screen and (max-device-width:330px){
   .admin_header{
@@ -599,5 +600,4 @@ button {
     padding-bottom: 2%;
   }
   }
-  
   
