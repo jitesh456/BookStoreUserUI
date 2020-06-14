@@ -172,7 +172,7 @@ export default class Main extends Component {
     filterData = () => {
         console.log(this.state.input);
         const data = this.state.booklist
-            .filter(x => x.authorname.toLowerCase().indexOf(this.state.input.trim().toLowerCase()) !== -1 ||
+            .filter(x => x.authorName.toLowerCase().indexOf(this.state.input.trim().toLowerCase()) !== -1 ||
                 x.name.toLowerCase().indexOf(this.state.input.trim().toLowerCase()) !== -1);
         this.setState({ count: data.length });
         console.log(data);
@@ -297,7 +297,7 @@ export default class Main extends Component {
                                             className="card_content"
                                             defaultValue="category"
                                         >
-                                            <MenuItem value="authorname">Authorname(A-Z)</MenuItem>
+                                            <MenuItem value="authorName">Authorname(A-Z)</MenuItem>
                                             <MenuItem value="price">Price:Low to High</MenuItem>
                                             <MenuItem value="category">Category(A-Z)</MenuItem>
                                         </Select>

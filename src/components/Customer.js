@@ -425,7 +425,7 @@ export default class Customer extends Component {
                 </div>
                 
                 <div className="customer_content" >
-                    <div >
+                    <div className="customer_sub_content">
                     <TextField
                         label="City"
                         id="outlined-start-adornment"
@@ -451,7 +451,7 @@ export default class Customer extends Component {
                       </p>
                     </div>
                     
-                    <div >
+                    <div className="customer_sub_content">
                     <TextField
                         label="Country"
                         id="outlined-start-adornment"
@@ -478,8 +478,8 @@ export default class Customer extends Component {
                     </div>
                 </div>
                 
-                <div className="customer_content">
-                    <div >
+                <div className="address_type">
+                    <div className="address_type_content">
                     <FormControl component="fieldset">
                         <FormLabel  color="secondary" component="legend">Type</FormLabel>
                         <RadioGroup   row aria-label="position" name="position" defaultValue="home">
