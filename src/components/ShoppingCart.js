@@ -145,14 +145,18 @@ export default class ShoppingCart extends React.Component{
     handleMinus=(book)=>{
         let items=this.state.cartItem;
         let number=localStorage.getItem("count");
-
+        console.log(number);
         if(book.quantity>1)
         {
             for(var i=0;i<items.length;i++){
             if(items[i].isbn===book.isbn){
+                    console.log(items[i].quantity)
                     items[i].quantity-=1;
                 }
             }
+            this.setState({
+                cartItem:items,
+            })
         }
         
     }

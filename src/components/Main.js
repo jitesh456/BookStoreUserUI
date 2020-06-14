@@ -53,6 +53,7 @@ export default class Main extends Component {
             cartItem: [],
             counter: 0,
             profile: false,
+           
         }
         this.handleShowProfile = this.handleShowProfile.bind(this);
         this.handleTextChange = this.handleTextChange.bind(this)
@@ -62,8 +63,7 @@ export default class Main extends Component {
     }
 
 
-    componentDidMount() {
-
+    getBookData(){
         Service.getBookData().then((response) => {
             console.log(response);
             this.setState({
@@ -75,20 +75,36 @@ export default class Main extends Component {
             console.log(error)
         })
 
+    }
+
+
+    componentDidMount() {
+        let statusCode=0
         Service.getCartBook().then((response) => {
             this.setState({
                 cartItem: response.data.body,
-                counter: response.data.body.length
-
+                counter: response.data.body.length,
+                
             });
+            statusCode= response.status;
+            console.log(statusCode);
             this.addBookName(response.data.body);
-            console.log(response.data.body);
+            console.log(response);
+
+
+            if (statusCode == 200) {
+                console.log("here hii");
+                {this.getBookData()}        
+            }
 
 
         }).catch((error) => {
             console.log(error);
 
         })
+
+        {this.getBookData()}
+       
     }
 
     addBookName(object) {
@@ -151,13 +167,13 @@ export default class Main extends Component {
         console.log(offset);
     }
 
-    handleAddCart( object) {
-      
+    handleAddCart(object) {
+
         this.setState({
             counter: this.state.counter + 1,
             bookName: object.bookName,
         });
-        
+
 
         console.log(this.state.cartItem);
     }
@@ -269,7 +285,7 @@ export default class Main extends Component {
                     </div>
                     <div className="profile">
                         <div className="profile-Icon">
-                            <PersonOutlineIcon style={{ color: "white",cursor:"pointer" }} onClick={this.handleShowProfile} />
+                            <PersonOutlineIcon style={{ color: "white", cursor: "pointer" }} onClick={this.handleShowProfile} />
                         </div>
                         <div className="profile-div">
                             {this.state.profile && <Profile />}
@@ -308,8 +324,10 @@ export default class Main extends Component {
                     </div>
                     <div style={{ display: "flex", justifyContent: "center" }}>
                         <div className="row">
+
                             {this.state.postData}
                         </div>
+                        
                     </div>
                 </div>
                 <footer className='app_footer'>

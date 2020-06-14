@@ -20,7 +20,7 @@ class OrderSuccessful extends Component {
     
 
     handleChange=()=>{
-        this.props.history.push("/")
+        window.location.replace("/");
     }
 
     render() {

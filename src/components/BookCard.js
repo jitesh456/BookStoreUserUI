@@ -76,8 +76,16 @@ export default class BookCard extends Component {
 
 
     displayButton() {
+
+        if( (localStorage.getItem("token") === null) &&(this.props.bookDetails.quantity === 0) ) {
+            return (
+                <Button type="submit" variant="contained" disabled={!this.props.bookDetails.quantity} size="50%" style={{ width: "90%", backgroundColor: 'silver', color: "black" }} >ADD TO CART</Button>
+            );
+        }
+
         if (localStorage.getItem("token") === null) {
             return (
+                
                 <Button type="submit" variant="contained"
                     onClick={this.openDialog}
                     size="50%" style={{ width: "90%", backgroundColor: 'maroon', color: "white" }} >ADD TO CART</Button>

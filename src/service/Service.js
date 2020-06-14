@@ -109,7 +109,7 @@ forgetPassword(emailId){
 resetPassword=(password , token)=>{
   return axios({
   headers:{Token:token},
-  method:'get',
+  method:'put',
   url:`${BASIC_API_URL}/reset/password?password=`+password
 });    
 }

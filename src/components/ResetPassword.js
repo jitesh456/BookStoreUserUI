@@ -36,7 +36,22 @@ export default class ResetPassword extends React.Component {
         this.setState({ [event.target.name]: event.target.value })
     }
 
+    displayButton() {    
 
+        if (!(this.state.password1.localeCompare(this.state.password2)) && this.state.Password1 != ''  && this.state.password2 !='' ){
+            return (
+                <Button type="submit" variant="contained"
+                    onClick={this.resetPassword}
+                     style={{ width: "100%", backgroundColor: 'maroon', fontSize:'15px', color: "white" }} >Reset Password</Button>
+            );
+        }
+        else {
+            return (
+                <Button type="submit" variant="contained" disabled="true" style={{ fontSize:'15px',width: "100%", backgroundColor: 'silver', color: "black" }} >Reset Password</Button>
+            );
+        }
+
+    }
     // validate = (type) => {
 
     //      var passwordPattern = /[a-zA-Z0-9]{1,}$/;
@@ -178,20 +193,18 @@ export default class ResetPassword extends React.Component {
                                 <h2>Reset Password</h2>
                             </div>
                         </div>
-                        <div className="password">
+                        <div className="passwordBox">
                             <div className="reset_password">
                                 <div className="forget_message forget_content">
                                     <span className="message">Enter new password</span>
                                 </div>
                                 <div className="forget_content">
-                                    {/* <TextField id="outlined-basic" label="Password" variant="outlined"
-                                    name="password1" onChange={this.handleChange.bind(this, "password1")}
-                                    style={{ width: "100%" }} /> */}
                                     <FormControl
                                         variant="outlined">
-                                        <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+                                        <InputLabel htmlFor="outlined-adornment-password">Password*</InputLabel>
                                         <OutlinedInput
                                             id="outlined-adornment-password"
+                                            label= "Password*"
                                             type={this.state.showPassword1 ? 'text' : 'password'}
                                             value={this.state.password1} name="password1"
                                             onChange={this.handleChange.bind(this, "password1")}
@@ -217,7 +230,7 @@ export default class ResetPassword extends React.Component {
                                 <div className="forget_content">
                                     <FormControl
                                         variant="outlined">
-                                        <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+                                        <InputLabel htmlFor="outlined-adornment-password">Conform Password*</InputLabel>
                                         <OutlinedInput
                                             id="outlined-adornment-password"
                                             type={this.state.showPassword2 ? 'text' : 'password'}
@@ -244,10 +257,8 @@ export default class ResetPassword extends React.Component {
 
                                 </div>
                                 <div className="forget_content" >
-                                <Button type="submit" variant="contained"
-                    onClick={this.resetPassword}
-                     style={{ width: "100%", backgroundColor: 'maroon', fontSize:'15px', color: "white" }} >Reset Password</Button>
-         
+                            
+                            {this.displayButton()}
 
                                 </div>
                             </div>
