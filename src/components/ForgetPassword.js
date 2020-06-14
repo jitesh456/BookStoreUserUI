@@ -97,6 +97,7 @@ export default class ForgetPassword extends React.Component {
                         <span className="admin">BB Store</span>
                     </div >
                 </AppBar>
+                <div className="forget-main">
                 <div className="header">
                     <Snackbar anchorOrigin={{ vertical: 'top', horizontal: 'right' }} open={this.state.alertShow}
                         autoHideDuration={6000} onClose={this.closeAlertBox}>
@@ -136,6 +137,7 @@ export default class ForgetPassword extends React.Component {
                         <p> © Bug Busters Store.All Rights Reserved.</p>
                     </div>
                 </footer>
+                </div>
             </div>
         );
     }

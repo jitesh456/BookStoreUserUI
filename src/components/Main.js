@@ -93,7 +93,6 @@ export default class Main extends Component {
 
 
             if (statusCode == 200) {
-                console.log("here hii");
                 {this.getBookData()}        
             }
 
