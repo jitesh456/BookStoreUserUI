@@ -230,7 +230,7 @@ export default class ResetPassword extends React.Component {
                                 <div className="forget_content">
                                     <FormControl
                                         variant="outlined">
-                                        <InputLabel htmlFor="outlined-adornment-password">Conform Password*</InputLabel>
+                                        <InputLabel htmlFor="outlined-adornment-password">Re-Enter*</InputLabel>
                                         <OutlinedInput
                                             id="outlined-adornment-password"
                                             type={this.state.showPassword2 ? 'text' : 'password'}

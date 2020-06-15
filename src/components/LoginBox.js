@@ -208,13 +208,13 @@ export default class UserLogin extends Component {
                         severity: "success",
                         alertShow: true,
                         alertResponse: response.data.message,
-                        ChangeTab: true, index: 0,
-                        loginChecked: true, signupChecked: false,
+                        ChangeTab: true,
+                        
                     });
                     this.clearFieldsData();
 
                     document.getElementById("signupForm").reset();
-                    this.handleTabSelection("login");
+                    // this.handleTabSelection("login");
                 }
                 else {
                     this.setState({
@@ -291,7 +291,7 @@ export default class UserLogin extends Component {
     }
 
     handleTabSelection = ({ target }) => {
-        if (([target.name] == "login") || this.state.ChangeTab) {
+        if (([target.name] == "login") ) {
             this.setState({ loginChecked: true, signupChecked: false, index: 0 })
         }
         if ([target.name] == "signup") {
@@ -305,7 +305,7 @@ export default class UserLogin extends Component {
                     <Tab ><input id="tab-1" type="radio" name="login" className="sign-in" checked={this.state.loginChecked} onClick={this.handleTabSelection} /><label htmlFor="tab-1" className="tab1">Login</label></Tab>
                     <Tab><input id="tab-2" type="radio" name="signup" className="sign-up" checked={this.state.signupChecked} onClick={this.handleTabSelection} /><label htmlFor="tab-2" className="tab2">SignUp</label></Tab>
                 </TabList>
-                <TabPanel className="tabpanel-content" show={this.state.loginChecked}>
+                <TabPanel className="tabpanel-content" >
 
                     <div className="login-field-container">
                         <form id="loginForm" onSubmit={this.handleLoginSubmit} onReset={this.reset}>
@@ -385,7 +385,7 @@ export default class UserLogin extends Component {
                 </TabPanel>
                 <TabPanel className="tabpanel-content">
 
-                    <div className="signup-field-container" show={this.state.signupChecked}>
+                    <div className="signup-field-container" >
                         <form id="signupForm" onSubmit={this.handleSubmit} onReset={this.reset}>
                             <div className="login-fields">
                                 <div className="div_content">

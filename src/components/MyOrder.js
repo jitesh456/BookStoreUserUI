@@ -5,6 +5,8 @@ import '../css/MyOrder.css';
 import '../css/Main.css';
 import history from "./history";
 import Service from '../service/Service';
+import Typography from '@material-ui/core/Typography';
+import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 
 
 let baseBook = '';
@@ -49,8 +51,8 @@ export default class MyOrder extends React.Component {
         else {
             book = this.state.orderDetails.map(item => {
                 let order = item.bookList;
-                var date = new Date(item.cart.orderPlacedDate).toString().substring(0,15);
-                
+                var date = new Date(item.cart.orderPlacedDate).toString().substring(0, 15);
+
                 console.log(item.cart.orderPlacedDate);
                 return (
                     <div>
@@ -95,8 +97,14 @@ export default class MyOrder extends React.Component {
                         <span className="admin">BB Store</span>
                     </div >
                 </AppBar>
-                <div>
-                    <h4 className="orderTitle" onClick={this.changePage} >Home/MyOrder</h4>
+                <div className="orderTitle">
+                <div style={{ height: "25px" }}></div>
+              
+                    <Breadcrumbs aria-label="breadcrumb">
+
+                        <Typography color="inherit" href="/" style={{cursor:"pointer"}} onClick={this.changePage}> home </Typography>
+                        <Typography color="textPrimary">MyOrder</Typography>
+                    </Breadcrumbs>
                 </div>
                 <div className="MainClass">
                     <div ClassName="MyOrderBox" >
