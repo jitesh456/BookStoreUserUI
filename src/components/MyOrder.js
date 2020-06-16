@@ -59,27 +59,30 @@ export default class MyOrder extends React.Component {
                         <div className="Myorder-summary">
                             {order.map(list => {
                                 return (
-                                    <div className="cart-item">
+                                    <div className="myorder-item">
                                         <div className="cart-item-content">
-                                            <div className="shoppingcart_image">
+                                            <div className="shop_image">
                                                 <img src={`http://localhost:8090/admin/downloadFile/${list.bookCover}`} alt="" className="shopped_image" />
                                             </div>
                                             <div className="MyOrder-details">
-                                                <span className="shopped_book_name">{list.name}</span>
+                                                <span className="myorder_book_name">{list.name}</span>
                                                 <div style={{ height: "5%" }}></div>
-                                                <span className="shopped_book_author">{list.authorname}</span>
+                                                <span className="myorder_book_author">{list.authorname}</span>
                                                 <div style={{ height: "5%" }}></div>
-                                                <span className="shopped_book_price">Rs. {list.price * list.quantity}</span>
+                                                <span className="myorder_book_price">Rs. {list.price * list.quantity}</span>
                                                 <div style={{ height: "5%" }}></div>
-                                                <span className="shopped_book_name">QTY: {list.quantity}</span>
+                                                <span className="myorder_book_name">QTY: {list.quantity}</span>
                                             </div>
-                                            <div style={{ marginLeft: "10%" }}>
+                                            <div className="orderDate">
                                                 <h4 style={{ marginTop: "35px", marginBottom: "15px" }}>Order Placed on</h4>
-                                                <span style={{ marginTop: "5px" }} >{date}</span>
+                                                <span  className="date" >{date}</span>
                                             </div>
-                                        </div>
-                                    </div>
-                                );
+                                            </div>
+                                   
+                                  
+                                   </div>
+                                
+                               );
                             })
                             }
                         </div>
@@ -113,6 +116,11 @@ export default class MyOrder extends React.Component {
                     </div>
 
                 </div>
+                <footer className='appOrder_footer'>
+                    <div className='admin_footer'>
+                        <p> © Bug Busters Store.All Rights Reserved.</p>
+                    </div>
+                </footer>
             </div>
         );
     }

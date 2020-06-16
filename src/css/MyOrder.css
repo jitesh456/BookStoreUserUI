@@ -76,17 +76,16 @@
   margin-left: 10%;
 }
 
-.shopped_book_name{
-  font-size: 16px;
-  
+.myorder_book_name{
+  font-size: 16px; 
 }
 
-.shopped_book_author{
+.myorder_book_author{
   font-size:70%;
   color:silver;
 }
 
-.shopped_book_price{
+.myorder_book_price{
   font-size:80%;
   font-weight: bold;
 }
@@ -94,7 +93,7 @@
   display:flex;
   padding-bottom:20px;
 }
-.shoppingcart_image{
+.shop_image{
   border: none;
   width:23%;
   display:flex;
@@ -105,11 +104,11 @@
   padding-top: 8%;
   
 }
-.cart-item{
+.myorder-item{
   height:fit-content;
   width:800px;
   margin-top: 3%;
-  /* padding-bottom:40px; */
+  padding-bottom:40px;
 }
 .Myorder-summary:hover{
   overflow-y: scroll;  
@@ -125,15 +124,39 @@
   margin-left: 12%;
  
 }
+.date{
+  margin-top: 4px;
+}
 
 
+.appOrder_footer{
+  border: none;
+  width: 100%;
+  display:flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: white;
+}
 
+.admin_footer{
+  background-color: #9b2020;
+  display:flex;
+  justify-content: space-evenly;
+  align-items: center;  
+}
 
 @media screen and (max-width:1024px) and (max-height:1360px){
   .shoppingcart_details{
       margin-top: 10%;
       height:15%;
   }
+  .appOrder_footer{
+   
+    position: fixed;
+    left: 0;
+    bottom: 0;
+  }
+  
 
   
 }
@@ -142,6 +165,12 @@
   .shoppingcart_details{
       margin-top: 0%;
       height:25%;
+  }
+  .appOrder_footer{
+   
+    position: fixed;
+    left: 0;
+    bottom: 0;
   }
 }
 
@@ -152,136 +181,211 @@
       height:20%;
   }
  
-  
+  .appOrder_footer{
+   
+    position: fixed;
+    left: 0;
+    bottom: 0;
+  }
   
 }
 
 @media screen and (max-width:411px){
- 
-  .shoppingcart_image{
-    width:15%;
-}
-.orderTitle{
-  margin-left: -55%;
-}
-.MyOrder-details{
-  margin-left: -10%;
-  font-size: 80%;
-}
-.orderDate{
-  margin-left: -8%;
-  font-size: 80%;
-  margin-top: -3%;
-}
-.MainClass{
-  display: flex;
-  flex-direction: column;
-  width:90%;
-  
-  margin-top: 7%;
-  margin-left: 3%;
-  /* background-color: white;
-  border: 1px solid silver;
-  */
+  .orderTitle {
+    margin-left: 7%;
 }
 
-}
-
-@media screen and (max-width:731px) and (max-height:411px){
-  .shopping_cart{
-      overflow-y: scroll;
+  .Myorder-summary{
+    width: 100%;
+    margin-left: -1.3%;
+    margin-top: 6%;
   }
   
-  .shoppingcart_details{
-      margin-top: 1%;
-      width:80%;
+  .cart-item-content {
+    margin-left: 5%;
+    flex-direction: column;
+    height: 242px;
   }
-
-  .shoppingcart_image{
-      width:20%;
+    .shop_image{
+        width:12%;
+        margin-left: -3%;
+        margin-top: -1%;
+    }
+    .MyOrder-details {
+      margin-left: 13%;
+      margin-top: -20%;
+      font-size: 80%;
   }
-
-  .shopped_details{
-      font-size: 50%;
+  .myorder_book_name{
+    font-size: 17px;
+    width:80% 
   }
+  
+  
+  .myorder-item{
+    height:fit-content;
+    margin-top: 2%;
+    margin-bottom: -9%;
+    margin-bottom: -20%;
+  }
+  
+    .orderDate{
+      justify-content: center;
+      margin-left: 3%;
+      font-size: 90%;
+      margin-top: -38%;
+    }
+    .date{
+      margin-top: -4.7%;
+      margin-left: 16%;
+    }
+    .MainClass{
+      display: flex;
+      flex-direction: column;
+      width:90%;   
+      margin-top: 7%;
+      margin-left: 3%;
+    }
 
- 
+    .appOrder_footer{
+      margin-top: 53.3%;
+    }
+    .appOrder_footer{
+   
+      position: fixed;
+      left: 0;
+      bottom: 0;
+    }
 }
 
 @media screen and (max-width:475px) and (max-height:736px){
+  .orderTitle {
+    margin-left: 7%;
+}
 
-  .shoppingcart_image{
-    width:40%;
-}
-.orderTitle{
-  margin-left: -50%;
-}
-.MyOrder-details{
-  margin-left: -9%;
-  font-size: 80%;
-}
-.orderDate{
-  margin-left: -5%;
-  font-size: 80%;
-  margin-top: -3%;
-}
-.MainClass{
-  display: flex;
-  flex-direction: column;
-  width:90%;
+  .Myorder-summary{
+    width: 100%;
+    margin-left: -1.3%;
+    margin-top: 6%;
+  }
   
-  margin-top: 7%;
-  margin-left: 3%;
-  /* background-color: white;
-  border: 1px solid silver;
-  */
-}
-
+  .cart-item-content {
+    margin-left: 5%;
+    flex-direction: column;
+    height: 242px;
+  }
+    .shop_image{
+        width:12%;
+        margin-left: -3%;
+        margin-top: -1%;
+    }
+    .MyOrder-details {
+      margin-left: 13%;
+      margin-top: -20%;
+      font-size: 80%;
+  }
+  .myorder_book_name{
+    font-size: 17px;
+    width:80% 
+  }
   
+  
+  .myorder-item{
+    height:fit-content;
+    margin-top: 2%;
+    margin-bottom: -9%;
+    margin-bottom: -20%;
+  }
+  
+    .orderDate{
+      justify-content: center;
+      margin-left: 3%;
+      font-size: 90%;
+      margin-top: -35%;
+    }
+    .date{
+      margin-top: -4.7%;
+      margin-left: 16%;
+    }
+    .MainClass{
+      display: flex;
+      flex-direction: column;
+      width:90%;   
+      margin-top: 7%;
+      margin-left: 3%;
+    }
 
+    .appOrder_footer{
+      margin-top: 30.7%;
+    }
+    .appOrder_footer{
+   
+      position: fixed;
+      left: 0;
+      bottom: 0;
+    }
 }
 
 @media screen and (max-width:360px) and (max-height:640px){
-  
+  .orderTitle {
+    margin-left: 7%;
+}
+.Myorder-summary{
+  width: 100%;
+  margin-left: 0%;
+}
 
-  .shoppingcart_image{
+.cart-item-content {
+  margin-left: 5%;
+  flex-direction: column;
+  height: 242px;
+}
+  .shop_image{
       width:12%;
+      margin-left: -3%;
+      margin-top: -1%;
   }
- 
-  .MyOrder-details{
-    margin-left: -10%;
+  .MyOrder-details {
+    margin-left: 13%;
+    margin-top: -20%;
     font-size: 80%;
-  }
+}
+.myorder_book_name{
+  font-size: 17px;
+  width:60% 
+}
+
+
+.myorder-item{
+  height:fit-content;
+  margin-top: 2%;
+  margin-bottom: -30%;
+}
+
   .orderDate{
-    margin-left: -8%;
+    justify-content: center;
+    margin-left: 1%;
     font-size: 80%;
-    margin-top: -3%;
+    margin-top: -36%;
+  }
+  .date{
+    margin-top: -4.3%;
+    margin-left: 15%;
   }
   .MainClass{
     display: flex;
     flex-direction: column;
-    width:90%;
-    
+    width:90%;   
     margin-top: 7%;
     margin-left: 3%;
+  }
+
   
+
+  .appOrder_footer{
+   
+    position: fixed;
+    left: 0;
+    bottom: 0;
   }
-}
-
-@media screen and (max-width:640px) and (max-height:360px){
-  .shoppingcart_details{
-      margin-top: 7%;
-      width:70%;;
-      height:20%;
-  }
-
-  .shoppingcart_image{
-      width:20%;
-  }
-
-  .shopped_details{
-      font-size: 80%;
-  }
-
-
 }

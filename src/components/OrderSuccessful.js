@@ -72,7 +72,7 @@ class OrderSuccessful extends Component {
                 aria-controls="panel1a-content"
                 id="btn" >CONTINUE SHOPPING</Button>
             </div>
-            <footer className='app_footer'>
+            <footer className='app4_footer'>
             <div className='admin_footer'>
                         <p> © Bug Busters Store.All Rights Reserved.</p>
                 </div>

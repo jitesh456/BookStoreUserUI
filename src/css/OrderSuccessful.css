@@ -26,6 +26,7 @@
     width: 100%;
     justify-content: flex-start;
     color: white;
+    
   }
   
   .admin_header{
@@ -45,7 +46,7 @@
     margin-left: 5px;
   }
   
-  .app_footer{
+  .app4_footer{
     border: none;
     width: 100%;
     display:flex;
@@ -53,6 +54,9 @@
     flex-direction: column;
     justify-content: space-between;
     color: white;
+    position: fixed;
+    left: 0;
+    bottom: 0;
     
   }
   
