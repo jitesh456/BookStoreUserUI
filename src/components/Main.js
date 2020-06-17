@@ -21,6 +21,8 @@ import Pagination from '@material-ui/lab/Pagination';
 import PersonOutlineIcon from '@material-ui/icons/PersonOutline';
 import AppBar from '@material-ui/core/AppBar';
 import DialogBox from "./DialogBox";
+import axios from 'axios';
+
 
 const theme = createMuiTheme({
     palette: {
@@ -49,7 +51,8 @@ export default class Main extends Component {
             price: '',
             bookDetails: '',
             sorting: '',
-            input: '',
+            search: '',
+            sort:'',
             cartItem: [],
             counter: 0,
             profile: false,
@@ -62,79 +65,24 @@ export default class Main extends Component {
 
     }
 
-
-    getBookData(){
-        Service.getBookData().then((response) => {
-            console.log(response);
-            this.setState({
-                booklist: response.data.body
-            })
-            this.receivedData();
-            console.log(this.state.booklist)
-        }).catch((error) => {
-            console.log(error)
-        })
-
-    }
-
-
     componentDidMount() {
         let statusCode=0
         Service.getCartBook().then((response) => {
             this.setState({
                 cartItem: response.data.body,
                 counter: response.data.body.length,
-                
             });
             statusCode= response.status;
-            console.log(statusCode);
-            this.addBookName(response.data.body);
-            console.log(response);
-
-
-            if (statusCode == 200) {
-                {this.getBookData()}        
-            }
-
-
+            if (statusCode == 200) { this.getBookData() }        
         }).catch((error) => {
             console.log(error);
 
         })
-
         {this.getBookData()}
-       
-    }
-
-    addBookName(object) {
-        let name;
-        for (var i = 0; i < object.length; i++) {
-            name = object[i].name;
-            this.state.bookName.push(name);
-        }
-        console.log("Book Names");
-        localStorage.setItem("bookName", JSON.stringify(this.state.bookName));
-    }
-
-    sortedData(input) {
-        const sortingValue = input;
-        console.log("Sorted Data");
-        Service.getSortedBook(sortingValue).then((response) => {
-            console.log(response);
-            this.setState({
-                booklist: response.data.body
-            })
-            this.state.input.length > 0 ? this.filterData() : this.receivedData();
-            console.log(this.state.booklist)
-        }).catch((error) => {
-            console.log(error)
-        })
     }
 
     receivedData() {
-
-        var data = this.state.booklist;
-
+        const data = this.state.booklist;
         this.setState({ count: data.length });
         const slice = data.slice(this.state.offset, this.state.offset + this.state.perPage)
         const postData = slice.map(book => {
@@ -144,14 +92,46 @@ export default class Main extends Component {
                 addFunction={this.handleAddCart.bind(this)}
             />;
         })
-        console.log(this.data)
         this.setState({
             pageCount: Math.ceil(data.length / this.state.perPage),
             postData
         })
-
     }
 
+    getBookData(){
+        Service.getBookData().then((response) => {
+            this.state.booklist=response.data.body;
+            this.receivedData();
+        }).catch((error) => {
+            console.log(error)
+        })
+    }
+
+    filterData = () => {
+        Service.getFilteredData(this.state.search,this.state.sort).then(response=>{
+                this.state.booklist=response.data.body;
+                this.receivedData();
+			}).catch(error=>{
+				console.log(error);
+            });
+    }
+
+    addBookName(object) {
+        let name;
+        for (var i = 0; i < object.length; i++) {
+            name = object[i].name;
+            this.state.bookName.push(name);
+        }
+        localStorage.setItem("bookName", JSON.stringify(this.state.bookName));
+    }
+
+    handleAddCart(object) {
+        this.setState({
+            counter: this.state.counter + 1,
+            bookName: object.bookName,
+        });
+    }
+    
     handlePageClick = (e, page) => {
         const selectedPage = page;
         const offset = selectedPage * this.state.perPage / 2;
@@ -160,59 +140,19 @@ export default class Main extends Component {
             currentPage: selectedPage,
             offset: offset
         }, () => {
-            this.state.input.length > 0 ? this.filterData() : this.receivedData();
+            this.receivedData();
         });
-        console.log(page);
-        console.log(offset);
-    }
-
-    handleAddCart(object) {
-
-        this.setState({
-            counter: this.state.counter + 1,
-            bookName: object.bookName,
-        });
-
-
-        console.log(this.state.cartItem);
-    }
-
-
-    handleChange(field, event) {
-        this.setState({ [event.target.name]: event.target.value })
-        console.log(this.state.sorting)
-        this.sortedData()
-    }
-
-    filterData = () => {
-        console.log(this.state.input);
-        const data = this.state.booklist
-            .filter(x => x.authorName.toLowerCase().indexOf(this.state.input.trim().toLowerCase()) !== -1 ||
-                x.name.toLowerCase().indexOf(this.state.input.trim().toLowerCase()) !== -1);
-        this.setState({ count: data.length });
-        console.log(data);
-        const slice = data.slice(this.state.offset, this.state.offset + this.state.perPage)
-        const postData = slice.map(book => {
-            return <BookCard
-                price={book.price}
-                bookDetails={book}
-            />;
-        })
-
-        this.setState({
-            pageCount: Math.ceil(data.length / this.state.perPage),
-            postData
-        })
-    }
-
-    handleTextChange = (e) => {
-        this.state.input = e.target.value;
-        this.filterData();
-        e.preventDefault();
     }
 
     handleChange(event) {
-        this.sortedData(event.target.value)
+        this.state.sort=event.target.value;
+        this.filterData();
+    }
+
+    handleTextChange = (e) => {
+        this.state.search = e.target.value;
+        this.filterData();
+        e.preventDefault();
     }
 
     onPageChange(pageIndex) {
