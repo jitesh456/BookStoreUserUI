@@ -12,7 +12,7 @@ class DataService {
   }
 
   getFilteredData=(searchOn,sortOn)=>{
-      return axios.get(`http://localhost:8090/books/search`,{params:{search:searchOn,sort:sortOn}})
+      return axios.get(`${BASIC_API_URL}/books/filter`,{params:{search:searchOn,sort:sortOn}})
   }
 
   getSortedBook=(sortingValue)=>{

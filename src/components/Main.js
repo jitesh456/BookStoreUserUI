@@ -133,8 +133,9 @@ export default class Main extends Component {
     }
     
     handlePageClick = (e, page) => {
+        console.log("Page "+ page);
         const selectedPage = page;
-        const offset = selectedPage * this.state.perPage / 2;
+        const offset = selectedPage * this.state.perPage;
 
         this.setState({
             currentPage: selectedPage,
@@ -273,12 +274,9 @@ export default class Main extends Component {
                     <div className="pagination">
                         <Pagination
                             activePage={this.state.currentPage}
-
                             itemsCountPerPage={this.state.perPage}
-
                             count={this.state.pageCount}
-
-                            onChange={this.handlePageClick}
+                            onClick={()=>this.handlePageClick(this,this.selectedPage)}
                             ariant="outlined" shape="rounded" />
                     </div>
                     <div className='admin_footer'>
