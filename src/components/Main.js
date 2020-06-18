@@ -71,16 +71,20 @@ export default class Main extends Component {
             this.setState({
                 cartItem: response.data.body,
                 counter: response.data.body.length,
+                
             });
             statusCode= response.status;
-			this.addBookName(this.response.data.body);
-            if(statusCode == 200) { this.getBookData() }
-			
+            this.addBookName(response.data.body);
+
+            if (statusCode == 200) {
+                {this.getBookData()}        
+            }
+
         }).catch((error) => {
             console.log(error);
-
         })
         {this.getBookData()}
+       
     }
 
     receivedData() {
