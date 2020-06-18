@@ -42,9 +42,9 @@ export default class Main extends Component {
         super(props);
         this.state = {
             isDialogOpen: false,
-            offset: 0,
             perPage: 8,
             currentPage: 0,
+			selectedPage:1,
             search: '',
             booklist: [],
             bookName: [],
@@ -73,7 +73,9 @@ export default class Main extends Component {
                 counter: response.data.body.length,
             });
             statusCode= response.status;
-            if (statusCode == 200) { this.getBookData() }        
+			this.addBookName(this.response.data.body);
+            if(statusCode == 200) { this.getBookData() }
+			
         }).catch((error) => {
             console.log(error);
 
@@ -83,9 +85,7 @@ export default class Main extends Component {
 
     receivedData() {
         const data = this.state.booklist;
-        this.setState({ count: data.length });
-        const slice = data.slice(this.state.offset, this.state.offset + this.state.perPage)
-        const postData = slice.map(book => {
+        const postData = data.map(book => {
             return <BookCard
                 price={book.price}
                 bookDetails={book}
@@ -93,23 +93,15 @@ export default class Main extends Component {
             />;
         })
         this.setState({
-            pageCount: Math.ceil(data.length / this.state.perPage),
+            pageCount: Math.ceil(this.state.count / this.state.perPage),
             postData
         })
     }
 
-    getBookData(){
-        Service.getBookData().then((response) => {
-            this.state.booklist=response.data.body;
-            this.receivedData();
-        }).catch((error) => {
-            console.log(error)
-        })
-    }
-
-    filterData = () => {
-        Service.getFilteredData(this.state.search,this.state.sort).then(response=>{
-                this.state.booklist=response.data.body;
+    getBookData = () => {
+		Service.getBookData(this.state.search,this.state.sort,(this.state.selectedPage-1)).then(response=>{
+                this.state.booklist=response.data.body.books;
+				this.state.count=response.data.body.count;
                 this.receivedData();
 			}).catch(error=>{
 				console.log(error);
@@ -131,28 +123,19 @@ export default class Main extends Component {
             bookName: object.bookName,
         });
     }
-    
     handlePageClick = (e, page) => {
-        console.log("Page "+ page);
-        const selectedPage = page;
-        const offset = selectedPage * this.state.perPage;
-
-        this.setState({
-            currentPage: selectedPage,
-            offset: offset
-        }, () => {
-            this.receivedData();
-        });
-    }
-
-    handleChange(event) {
+		this.state.selectedPage = page;
+		this.setState({ currentPage: this.state.selectedPage}, () => { this.getBookData();});
+	}
+    
+	handleChange(event) {
         this.state.sort=event.target.value;
-        this.filterData();
+        this.getBookData();
     }
 
     handleTextChange = (e) => {
         this.state.search = e.target.value;
-        this.filterData();
+        this.getBookData();
         e.preventDefault();
     }
 
@@ -162,7 +145,6 @@ export default class Main extends Component {
 
     openDialog = () => {
         this.setState({ isDialogOpen: true })
-        console.log(this.state.isDialogOpen);
     }
 
     handleClose = () => this.setState({ isDialogOpen: false })
@@ -171,9 +153,6 @@ export default class Main extends Component {
     displayCartIcon() {
         if (localStorage.getItem("token") == null) {
             return (
-                // <a href="/">
-                //     <ShoppingCartOutlinedIcon style={{ color: "white" }} />
-                // </a>
                 <ShoppingCartOutlinedIcon style={{ color: "white" }} onClick={this.openDialog} />
 
             );
@@ -196,7 +175,6 @@ export default class Main extends Component {
     render() {
         return (
             <div >
-
                 <AppBar id="app-header">
 
                     <div className="admin_header">
@@ -210,6 +188,7 @@ export default class Main extends Component {
                         </div>
                         <InputBase
                             placeholder=" Search"
+                            id="input_base"
                             onChange={this.handleTextChange}
                         />
                     </div>
@@ -231,8 +210,6 @@ export default class Main extends Component {
                             {this.state.profile && <Profile />}
                         </div>
                     </div>
-
-
                 </AppBar>
                 <div className="main1">
                     <div className="book_cont">
@@ -273,12 +250,13 @@ export default class Main extends Component {
                 <footer className='app_footer'>
                     <div className="pagination">
                         <Pagination
-                            activePage={this.state.currentPage}
-                            itemsCountPerPage={this.state.perPage}
-                            count={this.state.pageCount}
-                            onClick={()=>this.handlePageClick(this,this.selectedPage)}
-                            ariant="outlined" shape="rounded" />
-                    </div>
+							activePage={this.state.currentPage}
+
+							itemsCountPerPage={this.state.perPage}
+							count={this.state.pageCount}
+							onChange={this.handlePageClick}
+							ariant="outlined" shape="rounded" />
+					</div>
                     <div className='admin_footer'>
                         <p> © Bug Busters Store.All Rights Reserved.</p>
                     </div>
@@ -288,3 +266,4 @@ export default class Main extends Component {
         );
     }
 }
+

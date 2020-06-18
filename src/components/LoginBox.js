@@ -74,9 +74,7 @@ export default class UserLogin extends Component {
         var emailPattern = /^[a-zA-Z]{3,}([-|+|.|_]?[a-zA-Z0-9]+)?[@]{1}[A-Za-z0-9]+[.]{1}[a-zA-Z]{2,4}([.]{1}[a-zA-Z]+)?$/;
         var passwordPattern = /[a-zA-Z0-9]{1,}$/;
 
-
         switch (type) {
-
             case 'email':
                 if (!emailPattern.test(this.state.email)) {
                     emailError = "Enter valid email";

@@ -1,5 +1,9 @@
 Main.css
 
+#input_base {
+  width:85%;
+}
+
 #app-header {
   border:1px solid greenyellow;
   border:none;
