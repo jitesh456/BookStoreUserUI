@@ -111,6 +111,16 @@ resetPassword=(password , token)=>{
 });    
 }
 
+verifymail=(token)=>{
+
+  
+  return axios.get(`${BASIC_API_URL}/verify`,{params:{token:token}}
+  );
+  
+ 
+
+
+}
 
 }
 export default new DataService()

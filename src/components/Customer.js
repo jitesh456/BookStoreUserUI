@@ -230,7 +230,7 @@ export default class Customer extends Component {
     
     displayButton(){
       if(this.state.validateform && this.state.name!=="" && this.state.phoneNumber!=="" && this.state.pincode!=="" && 
-      this.state.locality!=="" && this.state.address!=="" && this.state.city!=="" ){
+      this.state.locality!=="" && this.state.address!=="" && this.state.city!=="" && this.state.country!=="" ){
         return(
             <Button style={{display:this.props.ordersummary,background:"maroon",color:"white",padding:"10px 30px"}} variant="filled"
             onClick={()=>{ this.props.onClick();this.handleSubmit()}}>Continue</Button>
@@ -256,7 +256,7 @@ export default class Customer extends Component {
       });
 
       Service.getCustomerDetail().then((response)=>{
-        console.log(response.data.body.name);
+        console.log(response.data.body);
         
         this.setState({customerDetail:response.data.body,
           name:response.data.body.name,
@@ -480,7 +480,7 @@ export default class Customer extends Component {
                 
                 <div className="address_type">
                     <div className="address_type_content">
-                    <FormControl component="fieldset">
+                    <FormControl component="fieldset"   disabled={this.props.disableform}>
                         <FormLabel  color="secondary" component="legend">Type</FormLabel>
                         <RadioGroup   row aria-label="position" name="position" defaultValue="home">
                             <FormControlLabel value="home"
@@ -501,6 +501,7 @@ export default class Customer extends Component {
                             labelPlacement="end"
                             />
                         </RadioGroup>
+                       
                     </FormControl>
                     </div>
                     <div style={{display:"block",width:"200px"}}>

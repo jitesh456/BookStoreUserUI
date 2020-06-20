@@ -39,6 +39,7 @@ export default class ShoppingCart extends React.Component {
             customer: false,
             customersummary: false,
             placebutton: 'block',
+            removeButton:false,
             editbutton: 'none',
             disableform: false,
             ordersummary: 'block',
@@ -57,9 +58,11 @@ export default class ShoppingCart extends React.Component {
 
         this.setState({
             customer: true,
+            removeButton: true,
             placebutton: 'none'
         })
-
+        console.log(this.state.removeButton);
+        // this.state.removeButton=true;
         this.state.cartItem.map((item) => {
             const cart = {
                 bookId: item.id,
@@ -178,6 +181,11 @@ export default class ShoppingCart extends React.Component {
             if (item.quantity > item.maxquantity - 1) {
                 increase = <AddCircleOutlineIcon disabled={true} />
             }
+            let remove=
+                <Button style={{ padding: "8px", background: "maroon", color: "white" }} disabled={this.state.removeButton} 
+                onClick={() => { this.handleRemove(item) }}>Remove</Button>
+     
+            
             return (
                 <div className="cart-item">
                     <div className="cart-item-content">
@@ -203,9 +211,8 @@ export default class ShoppingCart extends React.Component {
                                 </div>
                                 <div>
                                 </div>
-                                <Button style={{ padding: "8px", background: "maroon", color: "white" }}
-                                    onClick={() => { this.handleRemove(item) }}>Remove</Button>
-                            </div>
+                                {remove}
+                                  </div>
 
                         </div>
 

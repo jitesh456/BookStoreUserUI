@@ -11,7 +11,7 @@ import MyOrder from "./MyOrder";
 import history from "./history";
 import ForgetPassword from "./ForgetPassword";
 import ResetPassword from "./ResetPassword";
-
+import VerifyEmail from "./VerifyEmail";
 class Routers extends React.Component{
     constructor(props){
         super(props);
@@ -30,6 +30,7 @@ class Routers extends React.Component{
                 <Route path="/reset/password" component={ResetPassword}/>
                 <Route path="/forget/password" component={ForgetPassword}/>
                 <Route path="/user/login" component={UserLogin}/>
+                <Route path="/verify/account" component={VerifyEmail}/>
                 <Route path="/" component={Main}/>
             </Switch>
             </Router>

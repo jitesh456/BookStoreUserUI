@@ -14,11 +14,31 @@ import FormControl from '@material-ui/core/FormControl';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 
+import { createMuiTheme } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
+import { purple } from '@material-ui/core/colors';
+import Typography from '@material-ui/core/Typography';
+import Breadcrumbs from '@material-ui/core/Breadcrumbs';
+
 import Snackbar from "@material-ui/core/Snackbar";
 import Alert from "@material-ui/lab/Alert";
 
 
 
+
+const theme = createMuiTheme({
+    palette: {
+        primary: {
+            // Purple and green play nicely together.
+            main: purple[500],
+        },
+        secondary: {
+            // This is green.A700 as hex.
+            main: '#B0002A',
+
+        },
+    },
+});
 
 
 export default class ResetPassword extends React.Component {
@@ -26,7 +46,7 @@ export default class ResetPassword extends React.Component {
         super(props);
         this.state = {
             password1: '', password2: '', showPassword1: false, showPassword2: false,
-            alertShow: false,isDisable:true,
+            alertShow: false, isDisable: true,
             alertResponse: "",
         }
         this.handleChange = this.handleChange.bind(this);
@@ -36,67 +56,23 @@ export default class ResetPassword extends React.Component {
         this.setState({ [event.target.name]: event.target.value })
     }
 
-    displayButton() {    
+    displayButton() {
 
-        if (!(this.state.password1.localeCompare(this.state.password2)) && this.state.Password1 != ''  && this.state.password2 !='' ){
+        if (!(this.state.password1.localeCompare(this.state.password2)) && this.state.Password1 != '' && this.state.password2 != '') {
             return (
                 <Button type="submit" variant="contained"
                     onClick={this.resetPassword}
-                     style={{ width: "100%", backgroundColor: 'maroon', fontSize:'15px', color: "white" }} >Reset Password</Button>
+                    style={{ width: "100%", backgroundColor: 'maroon', fontSize: '15px', color: "white" }} >Reset Password</Button>
             );
         }
         else {
             return (
-                <Button type="submit" variant="contained" disabled="true" style={{ fontSize:'15px',width: "100%", backgroundColor: 'silver', color: "black" }} >Reset Password</Button>
+                <Button type="submit" variant="contained" disabled="true" style={{ fontSize: '15px', width: "100%", backgroundColor: 'silver', color: "black" }} >Reset Password</Button>
             );
         }
 
     }
-    // validate = (type) => {
-
-    //      var passwordPattern = /[a-zA-Z0-9]{1,}$/;
-
-
-    //     switch (type) {
-
-    //         case 'password1':
-    //             if (this.state.password.length < 8 && this.state.password.length > 1) {
-    //                 passwordError1 = " Min 8 characters";
-    //             }
-    //             if (!passwordPattern.test(this.state.password)) {
-    //                 passwordError1 = "Enter proper password";
-    //             }
-    //             if (passwordPattern.test(this.state.password)) {
-    //                 passwordError1 = "";
-    //             }
-    //             break;
-    //         case 'password2':
-    //             if (this.state.password.length < 8 && this.state.password.length > 1) {
-    //                 passwordError2 = " Min 8 characters";
-    //             }
-    //             if (!passwordPattern.test(this.state.password)) {
-    //                 passwordError2 = "Enter proper password";
-    //             }
-    //             if (passwordPattern.test(this.state.password)) {
-    //                 passwordError2 = "";
-    //             }
-    //             break;
-    //         default:
-    //             break;
-    //     }
-
-    //     if (passwordError1 || passwordError2) {
-    //         this.setState({
-    //             passwordError1: passwordError1,
-    //             passwordError2: passwordError2,
-    //         })
-    //         return false;
-    //     }
-    //     return true;
-    // }
-
-
-
+ 
 
 
 
@@ -143,7 +119,7 @@ export default class ResetPassword extends React.Component {
     resetPassword = () => {
         let password = this.state.password2;
 
-      
+
         Service.resetPassword(password, (this.props.location.search).substring(1)).then(
             (response) => {
                 console.log(response)
@@ -176,9 +152,11 @@ export default class ResetPassword extends React.Component {
                 <AppBar id="app-header">
                     <div className="admin_header">
                         <img src={booklogo} alt="asd" className="bk_image" />
-                        <span className="admin">BB Store</span>
+                        <a href="/user/login" style={{ color: "white", textDecoration: "none" }}>
+                        <span className="admin">BB Store</span></a>
                     </div >
                 </AppBar>
+                
                 <div className="MainHeader">
                     <Snackbar anchorOrigin={{ vertical: 'top', horizontal: 'right' }} open={this.state.alertShow}
                         autoHideDuration={6000} onClose={this.closeAlertBox}>
@@ -198,13 +176,14 @@ export default class ResetPassword extends React.Component {
                                 <div className="forget_message forget_content">
                                     <span className="message">Enter new password</span>
                                 </div>
+                                <ThemeProvider theme={theme} >
                                 <div className="forget_content">
-                                    <FormControl
+                                    <FormControl color="secondary"
                                         variant="outlined">
                                         <InputLabel htmlFor="outlined-adornment-password">Password*</InputLabel>
                                         <OutlinedInput
                                             id="outlined-adornment-password"
-                                            label= "Password*"
+                                            label="Password*"
                                             type={this.state.showPassword1 ? 'text' : 'password'}
                                             value={this.state.password1} name="password1"
                                             onChange={this.handleChange.bind(this, "password1")}
@@ -229,6 +208,7 @@ export default class ResetPassword extends React.Component {
                                 </div>
                                 <div className="forget_content">
                                     <FormControl
+                                    color="secondary"
                                         variant="outlined">
                                         <InputLabel htmlFor="outlined-adornment-password">Re-Enter*</InputLabel>
                                         <OutlinedInput
@@ -256,9 +236,10 @@ export default class ResetPassword extends React.Component {
 
 
                                 </div>
+                                </ThemeProvider>l̥
                                 <div className="forget_content" >
-                            
-                            {this.displayButton()}
+
+                                    {this.displayButton()}
 
                                 </div>
                             </div>
