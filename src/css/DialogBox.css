@@ -4,10 +4,119 @@
 .dialogBox{
     display: flex;
 }
-.pageSe{
+.pageSet1{
     /* display: flex; */
     display:flex;
     width:700px;
     height: 370px;
+    margin-top: 3%;
     justify-content: center;
 }
+
+/* .MuiPaper-root {
+    overflow-x: hidden ;
+
+} */
+
+
+
+
+@media screen and (max-width: 500px)
+{
+
+    .MuiDialog-paperWidthMd {
+       overflow-x: hidden !important;
+    }    
+    .dialog1-content{
+      
+        width: 109%;
+        margin-left: -16%;
+    }
+.dialogBox{
+    width:102%;
+    margin-left: 3%;
+}
+.pageSet1{
+    width: 100%;
+    height: 100%;
+}
+}
+
+@media screen and (max-width: 380px)
+{
+
+    .MuiDialog-paperWidthMd {
+       overflow-x: hidden !important;
+    }    
+    .dialog1-content{
+      
+        width: 107%;
+        margin-left: -16%;
+    }
+.dialogBox{
+    width:102%;
+    margin-left: 3%;
+}
+.pageSet1{
+    width: 100%;
+    height: 100%;
+}
+}
+
+
+@media screen and (width: 375px)
+{
+
+    .MuiDialog-paperWidthMd {
+        overflow-x: hidden !important;       
+     }  
+       .main-dialog{
+           width: 110%;
+           margin-left: -4.5%;        
+       }
+     .dialog1-content{
+         width: 109%;
+         margin-left: -16%;
+     }
+ .dialogBox{
+     width:100%;
+     margin-left: 4%;
+ }
+ .pageSet1{
+     width: 100%;
+     height: 100%;
+ }
+}
+
+
+@media screen and (width: 320px)
+{
+
+    .MuiDialog-paperWidthMd {
+       overflow-x: hidden !important;       
+    }  
+      .main-dialog{
+          width: 113%;
+          margin-left: -6.5%;        
+      }
+    .dialog1-content{
+        width: 109%;
+        margin-left: -16%;
+    }
+.dialogBox{
+    width:100%;
+    margin-left: 3%;
+}
+.pageSet1{
+    width: 100%;
+    height: 100%;
+}
+}
+
+@media screen and (width: 768px)
+{
+
+    .MuiDialog-paperWidthMd {
+        overflow-x: hidden !important;       
+     } 
+    }

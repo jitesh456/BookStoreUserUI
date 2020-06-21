@@ -467,7 +467,7 @@ export default class UserLogin extends Component {
                                             style={{
                                                 color: "red",
                                                 fontSize: "12px",
-                                                marginTop: "-1%",
+                                                marginTop: "1%",
                                                 marginBottom: "-3em",
 
                                             }}

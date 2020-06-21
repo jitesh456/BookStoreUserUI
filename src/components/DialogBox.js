@@ -13,13 +13,14 @@ export default class profile extends React.Component {
 
     render() {
         return (
-            <Dialog backgroundColor="white !important" maxWidth="md" className="main-dialog" open={this.props.DialogOpen}
-             onClose={this.props.DialogClose}
+            <Dialog backgroundColor="white !important" maxWidth="md" 
+            className="main-dialog" open={this.props.DialogOpen}
+             onClose={this.props.DialogClose} style={{overflowX:"hidden !important"}}
              >
                 <DialogContent
                     className="dialog1-content">
                     <div className="dialogBox">
-                        <div className="pageSet">
+                        <div className="pageSet1">
                             <LoginBox />
                         </div>
                     </div>

@@ -69,12 +69,10 @@ margin-top: 10%;
 justify-content: center;
 }
 
-  @media screen and (Width:563px) and  (min-height:487)  {
- 
-    .page{
-        margin-top:0%;
-        margin-left: 0%;
-    }
   
-  } 
-  
+
+@media screen and (max-width: 320px) {
+.showProfile{
+  width: 155px;
+}
+}

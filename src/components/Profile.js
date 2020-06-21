@@ -69,7 +69,7 @@ export default class profile extends React.Component {
                 </div>
                 <div>
                     {this.diaplayButton()}
-                    <div>
+                    <div className = "dialogOpen">
                         <DialogBox DialogOpen={this.state.isDialogOpen}
                             DialogClose={this.handleClose} />
                     </div>
