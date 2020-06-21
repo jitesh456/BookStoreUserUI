@@ -1,9 +1,5 @@
 Main.css
 
-#input_base {
-  width:85%;
-}
-
 #app-header {
   border:1px solid greenyellow;
   border:none;
@@ -178,8 +174,44 @@ button {
   width: 40%;
   height: 70%;
   border-radius: 5px;
-  background-color: white;;
- 
+  transition:ease;
+  transition-duration: 0.1s;
+  background-color: white;
+}
+
+.responsive_search{
+  position: absolute;
+  left: 14px;
+  display: flex;
+  margin-top: 7px;
+  margin-bottom: 7px;
+  width: 90%;
+  height: 70%;
+  border-radius: 5px;
+  transition:ease;
+  padding-left: 5px;
+  padding-top:2.8px;
+  transition-duration: 0.1s;
+  background-color: white;
+  z-index: 1;
+}
+
+.search_nav{
+  position: absolute;
+  left: 205px;
+  display: flex;
+  margin-top: 9px;
+  margin-bottom: 3px;
+  width: 0%;
+  height: 45px;
+  border-radius: 5px;
+  background-color: white;
+  transition:ease;
+  transition-duration: 0.1s;
+}
+
+.inputbase{
+  width:85%;
 }
 
 .searchIcon{
@@ -346,6 +378,9 @@ button {
     margin-left:-5%;
   }
  
+  .inputbase {
+    width:75%;
+  }
   .count{
     font-size:60%;
     margin-left: -2%;
@@ -453,21 +488,28 @@ button {
     width: 90px;
     margin-right: 23%;
     justify-content: center;
-}
-  .search {
-    width: 30%;
+  }
+  
+
+  .search{
+    width: 40%;
     margin-top: 3%;
-    margin-left: 20%;
-    margin-right: -12%;
-    height: 64%;
-}
+    margin-left: 13%;
+    margin-right: -48%;
+  }
+
 .searchIcon {
   padding: 2px 1px;
   height: 5px;
   margin-top: 0.5%;
-  color: black;
-  opacity: 20%;
+  color: gray;
+  opacity: 100%;
 }
+
+.inputbase{
+  width:85%;
+}
+
 .profile-Icon{
   margin-Left:220%;
   
@@ -486,7 +528,7 @@ button {
     
 }
 .shoppingcart {
-  margin-Left: 6%;
+  margin-Left: 150px;
   display: flex;
   margin-top: 4px;
 }
@@ -544,19 +586,14 @@ button {
       margin-right: 23%;
       justify-content: center;
   }
-    .search {
-      width: 30%;
-      margin-top: 3%;
-      margin-left: 20%;
-      margin-right: -12%;
-      height: 64%;
-  }
+
   .searchIcon {
-    padding: 2px 1px;
+    padding: 2px 0px;
     height: 5px;
+    margin-left: -3px;
     margin-top: 0.5%;
-    color: black;
-    opacity: 20%;
+    color: gray;
+    opacity: 100%;
   }
   .profile-Icon{
     margin-Left:230%;
@@ -576,7 +613,6 @@ button {
       margin-left: 3%;
   }
   .shoppingcart {
-    margin-Left: 4%;
     display: flex;
     margin-top: 4px;
   }

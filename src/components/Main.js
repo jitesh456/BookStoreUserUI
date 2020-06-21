@@ -56,13 +56,17 @@ export default class Main extends Component {
             cartItem: [],
             counter: 0,
             profile: false,
+            height:window.innerHeight,
+            width:window.innerWidth,
+            show:false
            
         }
         this.handleShowProfile = this.handleShowProfile.bind(this);
         this.handleTextChange = this.handleTextChange.bind(this)
         this.handlePageClick = this.handlePageClick.bind(this);
         this.handleChange = this.handleChange.bind(this);
-
+        this.updateDimensions=this.updateDimensions.bind(this);
+        this.showSearchBar=this.showSearchBar.bind(this);
     }
 
     componentDidMount() {
@@ -84,7 +88,6 @@ export default class Main extends Component {
             console.log(error);
         })
         {this.getBookData()}
-       
     }
 
     receivedData() {
@@ -127,6 +130,23 @@ export default class Main extends Component {
             bookName: object.bookName,
         });
     }
+
+    updateDimensions() {
+        this.setState({
+          height: window.innerHeight, 
+          width: window.innerWidth
+        });
+    }
+
+    showSearchBar=()=>{
+        if(this.state.show){
+            document.getElementById("ser").className="search_nav";
+        }else{
+            document.getElementById("ser").className="responsive_search";
+        }
+        this.setState({show:!this.state.show});
+    }
+
     handlePageClick = (e, page) => {
 		this.state.selectedPage = page;
 		this.setState({ currentPage: this.state.selectedPage}, () => { this.getBookData();});
@@ -153,7 +173,6 @@ export default class Main extends Component {
 
     handleClose = () => this.setState({ isDialogOpen: false })
 
-
     displayCartIcon() {
         if (localStorage.getItem("token") == null) {
             return (
@@ -177,6 +196,25 @@ export default class Main extends Component {
     }
 
     render() {
+        window.addEventListener("resize", this.updateDimensions);
+        let search=[];
+        if(this.state.width<375){
+            search=<div id="ser" className="search_nav">
+                <div className="searchIcon">
+                    <SearchIcon id="button" className="searchIcon" onClick={()=>{this.showSearchBar()}} />
+                </div>
+                <InputBase placeholder="Search" className="inputbase" onChange={this.handleTextChange}/>
+            </div>
+        }
+        else{
+            search=<div id="ser" className="search">
+            <div className="searchIcon">
+                <SearchIcon id="button" />
+            </div>
+            <InputBase placeholder="Search" className="inputbase" onChange={this.handleTextChange}/>
+        </div>
+        }
+        
         return (
             <div >
                 <AppBar id="app-header">
@@ -185,17 +223,7 @@ export default class Main extends Component {
                         <img src={booklogo} alt="asd" className="bk_image" />
                         <span className="admin">BB Store</span>
                     </div >
-                    <div className="search">
-                        <div className="searchIcon">
-                            <SearchIcon />
-
-                        </div>
-                        <InputBase
-                            placeholder=" Search"
-                            id="input_base"
-                            onChange={this.handleTextChange}
-                        />
-                    </div>
+                    {search}
                     <div className="shoppingcart">
                         <div className="shooping_carticon" >
                             {this.displayCartIcon()}

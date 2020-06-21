@@ -14,9 +14,6 @@ import history from "./history";
 import Typography from '@material-ui/core/Typography';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 
-
-
-
 const theme = createMuiTheme({
     palette: {
         primary: {
@@ -70,7 +67,6 @@ export default class ShoppingCart extends React.Component {
             }
             Service.addtoCart(cart).then((response) => {
                 console.log(response);
-
             }).catch((error) => {
                 console.log(error)
             })
@@ -332,5 +328,4 @@ export default class ShoppingCart extends React.Component {
             return (im);
         }
     }
-
 }
