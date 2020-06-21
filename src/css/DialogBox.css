@@ -5,21 +5,12 @@
     display: flex;
 }
 .pageSet1{
-    /* display: flex; */
     display:flex;
     width:700px;
     height: 370px;
     margin-top: 3%;
     justify-content: center;
 }
-
-/* .MuiPaper-root {
-    overflow-x: hidden ;
-
-} */
-
-
-
 
 @media screen and (max-width: 500px)
 {

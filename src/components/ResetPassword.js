@@ -150,10 +150,10 @@ export default class ResetPassword extends React.Component {
         return (
             <div>
                 <AppBar id="app-header">
-                    <div className="admin_header">
+                    <div className="admin1_header">
                         <img src={booklogo} alt="asd" className="bk_image" />
                         <a href="/user/login" style={{ color: "white", textDecoration: "none" }}>
-                        <span className="admin">BB Store</span></a>
+                        <span className="admin1">BB Store</span></a>
                     </div >
                 </AppBar>
                 
@@ -236,7 +236,7 @@ export default class ResetPassword extends React.Component {
 
 
                                 </div>
-                                </ThemeProvider>l̥
+                                </ThemeProvider>
                                 <div className="forget_content" >
 
                                     {this.displayButton()}

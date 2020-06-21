@@ -16,21 +16,6 @@ export default class VerifyEmail extends React.Component {
         Service.verifymail( (this.props.location.search).substring(1)).then(
             (response) => {
                 console.log(response)
-
-                // if (response.data.statusCode === 200) {
-                //     this.setState({
-                //         severity: "success",
-                //         alertShow: true,
-                //         alertResponse: response.data.message
-                //     });
-                //     this.clearFieldsData();
-                // } else {
-                //     this.setState({
-                //         severity: "error",
-                //         alertShow: true,
-                //         alertResponse: response.data.message
-                //     });
-                // }
             }
         ).catch(error => {
             console.log(error.data);
@@ -52,9 +37,9 @@ export default class VerifyEmail extends React.Component {
 
             <div>
                 <AppBar id="app-header">
-                    <div className="admin_header">
+                    <div className="admin1_header">
                         <img src={booklogo} alt="asd" className="bk_image" />
-                        <span className="admin">BB Store</span>
+                        <span className="admin1">BB Store</span>
                     </div >
                 </AppBar>
                 <div className="Maintick">

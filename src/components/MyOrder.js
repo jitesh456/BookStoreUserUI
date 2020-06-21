@@ -95,9 +95,9 @@ export default class MyOrder extends React.Component {
             <div>
                 <AppBar id="app-header">
 
-                    <div className="admin_header">
+                    <div className="admin1_header">
                         <img src={booklogo} alt="asd" className="bk_image" />
-                        <span className="admin">BB Store</span>
+                        <span className="admin1">BB Store</span>
                     </div >
                 </AppBar>
                 <div className="orderTitle">

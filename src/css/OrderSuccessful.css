@@ -29,17 +29,16 @@
     
   }
   
-  .admin_header{
+  .admin1_header{
     border:1px solid green;
     border:none;
     display:flex;
-    width:20%;
     padding-left: 12%;
     justify-content: flex-start;
     align-items: center;
   }
   
-  .admin{
+  .admin1{
     font-size: larger;
     font-weight: bold;
     align-self: center;
@@ -70,7 +69,7 @@
 #btn{
     background-color: #9b2020;
     color: white;
-    width: 16%;
+    width: 24%;
     padding:1%
 }
 
@@ -130,41 +129,7 @@ th{
     padding-top: 10px;
     padding-bottom: 10px;
     background-color: #e6e6e6;
-}
 
-
-@media only screen and (max-width: 500px) {
-
-    .mainform{
-        min-height: 137vh;
-    }
-
-    .successfulimage{
-        width: 60%;
-        margin-left: 20%;
-        margin-top: 20%;
-    }
-
-    .firstLine{
-        margin-left: 3%;
-        font-size: 14px;
-    }
-
-    .secondLine{
-        margin-left: -10%;
-        font-size: 14px;
-    }
-
-
-    #btn{
-        background-color: rgb(165,42,42);
-        color: white;
-        margin-left: 40%;
-        margin-top: 2%;
-        width: 25%;
-        padding: 1%;
-        font-size: 12px;
-    }
 }
 
 @media only screen and (min-device-width: 750px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
@@ -174,76 +139,119 @@ th{
     }
 
     .successfulimage{
-        width: 60%;
-        margin-left: 22%;
-        margin-top: 10%;
+        width: 50%;
+        
     }
+
+    .messageorder{
+        font-size: 28px;
+        text-align: center;
+    }
+
 
     .firstLine{
-        margin-left: -7%;
-        font-size: 36px;
+        
+        font-size: 30px;
     }
 
-    .secondLine{
-        margin-left: -10%;
-        font-size: 36px;
-    }
-
-
-    #btn{
-        background-color: rgb(165,42,42);
-        color: white;
-        margin-left: 35%;
-        margin-top: 2%;
-        width: 35%;
-        padding: 1%;
-        font-size: 20px;
-    }
-
-}
-
-@media only screen and (min-device-width: 1020px) and (max-device-width: 1300px) and (-webkit-min-device-pixel-ratio: 1) {
-    .maincard {
-        width: 70%;
-    }
-
-    .firstLine{
-        margin-left: 1%;
-        font-size: 40px;
-    }
-
+  
     .secondLine{
         margin-left: -12%;
         font-size: 40px;
     }
 
     table {
-       width: 0%;
-       margin-left: 10%;
-       border:1px black solid;
+        width:80%;
+        border:1px black solid;
     }
 
     td{
-       padding: 3%;
-       border:1px black solid;
-       background-color: #fff;
+        padding: 3%;
+        border:1px black solid;
+        background-color: #fff;
+        font-size: 26px;
     }
 
     th {
-       background-color: #e6e6e6;
-       color: black;
-       padding: 3%;
-       font-size: 32px;
+        background-color: #e6e6e6;
+        color: black;
+        padding: 3%;
+        font-size: 22px;
     }
 
     #btn{
         background-color: rgb(165,42,42);
         color: white;
-        margin-left: 35%;
         margin-top: 2%;
-        width: 35%;
+        width: 40%;
         padding: 2%;
-        font-size: 28px;
+        font-size: 24px;
+    }
+
+    .admin_footer{
+        font-size: 24px;
+    }
+
+    .admin{
+        font-size: 24px;
+    }
+
+    .app_header{
+        height: 60px;
+    }
+}
+@media screen and (max-width: 768px){
+   
+    .email{
+        word-break: break-all;
+        width: 200px;
+    }
+    th{
+        font-size: 20px;
+    }
+    td{
+        font-size: 20px;
+    }
+
+}
+@media screen and (max-width: 479px){
+    .admin1{
+        font-size: medium;
+        font-weight: bold;
+        align-self: center;
+        margin-left: 5px;
+      }
+    th{
+        font-size: 14px;
+    }
+    td{
+        font-size: 14px;
+    }
+
+    .address-content {
+        
+        width: 100px;
+        
+    }
+    table{
+        width: 95%;
+    }
+
+    .email{
+        word-break: break-all;
+        width: 200px;
+    }
+
+    .successfulimage{
+        width: 40%;
+    }
+    .messageorder{
+        font-size: 14px;
+    }
+
+    #btn{
+        width: 50%;
+        padding: 2%;
     }
 
 }

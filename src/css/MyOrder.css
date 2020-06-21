@@ -13,17 +13,16 @@
   color: white;
 }
 
-.admin_header{
+.admin1_header{
   border:1px solid green;
   border:none;
   display:flex;
-  width:20%;
   padding-left: 12%;
   justify-content: flex-start;
   align-items: center;
 }
 
-.admin{
+.admin1{
   font-size: larger;
   font-weight: bold;
   align-self: center;
@@ -379,9 +378,6 @@
     margin-top: 7%;
     margin-left: 3%;
   }
-
-  
-
   .appOrder_footer{
    
     position: fixed;

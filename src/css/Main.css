@@ -71,10 +71,6 @@ Main.css
   display: flex;
   margin-top: 4px;
 }
-/* 
-.main1{
-  display: flex;
-} */
 .profile{
   margin-Left:5%;
   display: flex;
@@ -92,7 +88,7 @@ Main.css
   position: relative;
   display: flex;
   flex-direction: column;
-  /* width:220px; */
+ 
   height:160px;
   margin-top: 30%;
   margin-left: -29%;
@@ -412,7 +408,7 @@ button {
     border: 1px solid green;
     border: none;
     display: flex;
-    width: 12%;
+    width: 20%;
     padding-left: 9%;
     justify-content: flex-start;
     align-items: center;
@@ -498,7 +494,7 @@ button {
   border: 1px solid green;
   border: none;
   display: flex;
-  width: 12%;
+  width: 20%;
   padding-left: 9%;
   justify-content: flex-start;
   align-items: center;
@@ -588,7 +584,7 @@ button {
     border: 1px solid green;
     border: none;
     display: flex;
-    width: 12%;
+    width: 20%;
     padding-left: 9%;
     justify-content: flex-start;
     align-items: center;
