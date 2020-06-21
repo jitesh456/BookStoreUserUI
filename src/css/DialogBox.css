@@ -1,0 +1,13 @@
+.dialog1-content{
+    display: flex;
+}
+.dialogBox{
+    display: flex;
+}
+.pageSe{
+    /* display: flex; */
+    display:flex;
+    width:700px;
+    height: 370px;
+    justify-content: center;
+}

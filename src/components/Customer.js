@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import '../css/BookCard.css';
-import '../css/Main.css';
-import '../css/Pagination.css';
+// import '../css/BookCard.css';
+// import '../css/Main.css';
+// import '../css/Pagination.css';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import "../css/cartstyle.css";
@@ -286,7 +286,7 @@ export default class Customer extends Component {
         let im=[]
         if(this.props.show) {                 
         im=<div style={{paddingLeft:"2%",marginTop:"6px"}}>
-              <div style={{display:"flex",flexDirection:"column",height:"500px",justifyContent:"space-between"}}>
+              <div className="customerDetailesBox">
                   <div className="customer_content">
                       <div className="customer_sub_content" >
                         <TextField
@@ -396,12 +396,12 @@ export default class Customer extends Component {
                 </div>
                 </div>
                 <div >
-                <div >
+                <div className="address">
                     <TextField
                         label="Address"
                         id="outlined-start-adornment"
                         variant="outlined"
-                        style={{borderColor:"maroon",width:"90%"}}
+                        style={{width:"100%"}}
                         value={this.state.address}
                         className="info" 
                         multiline
@@ -424,7 +424,7 @@ export default class Customer extends Component {
                     </div>
                 </div>
                 
-                <div className="customer_content" >
+                <div className="customer_content1" >
                     <div className="customer_sub_content">
                     <TextField
                         label="City"
@@ -504,7 +504,7 @@ export default class Customer extends Component {
                        
                     </FormControl>
                     </div>
-                    <div style={{display:"block",width:"200px"}}>
+                    <div className="customerButton">
                    {this.displayButton()}
                     </div>
                 </div>

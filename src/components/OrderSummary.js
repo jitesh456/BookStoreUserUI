@@ -29,11 +29,11 @@ export default class OrderSummary extends React.Component{
             calPrice+=item.price*item.quantity;
             return (
             <div className="cart-item">
-                <div className="cart-item-content">
+                <div className="order-item-content">
                     <div className="shoppingcart_image">                        
                             <img src={`http://localhost:8090/admin/downloadFile/${item.bookCover}`} alt="" className="shopped_image"/>
                     </div>
-                    <div className="cart-item-content-details">
+                    <div className="order1-item-content-details">
 
                         <span className="shopped_book_name">{item.name}</span>
                         <div style={{height:"5%"}}></div>
@@ -59,8 +59,8 @@ export default class OrderSummary extends React.Component{
                 </div>
                
                 <div style={{height:"auto",display:"flex",justifyContent:"space-between",paddingRight:"3%",paddingBottom:"2%"}}>
-                    <p style={{paddingLeft:"3%",fontSize:"17px"}}><b>Total Price: &nbsp;Rs. {calPrice}</b> </p>
-                    <Button style={{background:"maroon",color:"white",padding:"10px 30px",marginTop:"13px", height:"42px"}} variant="filled"
+                    <p className="totalPrice"><b>Total Price: &nbsp;Rs. {calPrice}</b> </p>
+                    <Button className= "buttonName"  style={{background:"maroon",color:"white",padding:"10px 30px",marginTop:"13px", height:"42px"}} variant="filled"
                     onClick={()=>{history.push('/order/successful');this.handleConfirmation()}}>Place Order</Button>  
                 </div>
             </div>

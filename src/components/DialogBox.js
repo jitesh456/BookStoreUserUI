@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import LoginBox from "./LoginBox";
 import '../css/UserLogin.css';
+import '../css/DialogBox.css';
 import DialogContent from '@material-ui/core/DialogContent';
 import Dialog from '@material-ui/core/Dialog';
 export default class profile extends React.Component {
@@ -16,7 +17,7 @@ export default class profile extends React.Component {
              onClose={this.props.DialogClose}
              >
                 <DialogContent
-                    className="dialog-content">
+                    className="dialog1-content">
                     <div className="dialogBox">
                         <div className="pageSet">
                             <LoginBox />

@@ -512,7 +512,7 @@ export default class UserLogin extends Component {
         );
         return (
 
-            <div className="login-Box">
+            <div className="page">
                 <Snackbar anchorOrigin={{ vertical: 'top', horizontal: 'right' }} open={this.state.alertShow}
                     autoHideDuration={6000} onClose={this.closeAlertBox}>
                     <Alert onClose={this.closeAlertBox} severity={this.state.severity} variant={"filled"}>

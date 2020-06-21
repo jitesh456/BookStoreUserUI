@@ -8,7 +8,7 @@ export default class UserLogin extends Component {
         return (
             <body >
                 <div className="login-page">
-                    <div className="page">
+                    <div className="login-Box">
                         <LoginBox />
                     </div>
                 </div>

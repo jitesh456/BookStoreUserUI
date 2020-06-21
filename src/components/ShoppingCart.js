@@ -188,7 +188,7 @@ export default class ShoppingCart extends React.Component {
             
             return (
                 <div className="cart-item">
-                    <div className="cart-item-content">
+                    <div className="cart-item-content1">
                         <div className="shoppingcart_image">
                             <img src={`http://localhost:8090/admin/downloadFile/${item.bookCover}`} alt="" className="shopped_image" />
                         </div>
@@ -226,10 +226,10 @@ export default class ShoppingCart extends React.Component {
 
             <AppBar id="app-header">
 
-                <div className="admin_header">
+                <div className="admin1_header">
                     <img src={booklogo} alt="asd" className="bk_image" />
                     <a href="/" style={{ color: "white", textDecoration: "none" }}>
-                        <span className="admin">BB Store</span></a>
+                        <span className="admin1">BB Store</span></a>
                 </div >
 
             </AppBar>
@@ -240,11 +240,11 @@ export default class ShoppingCart extends React.Component {
                     <Breadcrumbs aria-label="breadcrumb">
 
                         <Typography color="inherit" href="/" style={{cursor:"pointer"}}  onClick={this.changePage}> home </Typography>
-                        <Typography color="textPrimary">MyCart</Typography>
+                        <Typography color="textPrimary">MyCart ({this.state.cartItem.length })</Typography>
                     </Breadcrumbs>
                         <div style={{ height: "25px" }}></div>
 
-                    <div className="shoppingcart_details">
+                    <div className="shoppingcart1_details">
                         <div className="book_details">
                             {book}
                         </div>
@@ -264,8 +264,10 @@ export default class ShoppingCart extends React.Component {
                             < div color="secondary" className="customer_detail">
                                 <div className="customer_header">
                                     <div style={{ fontSize: "15px", width: "87%", paddingBottom: "10px", paddingTop: "10px" }}>Customer Details</div>
-                                    <div><Button style={{ margin: "5%", padding: "2px", display: this.state.editbutton, background: "maroon", color: "white" }} variant="contained"
-                                        onClick={this.handleEditCustomer}>Edit</Button></div>
+                                    <div className="editButton">
+                                        <Button style={{ margin: "5%", padding: "2px", display: this.state.editbutton, background: "maroon", color: "white" }} variant="contained"
+                                        onClick={this.handleEditCustomer}>Edit</Button>
+                                    </div>
                                 </div>
                                 <div className="customer_info">
                                     <div className="customer_info_detail">
@@ -281,7 +283,7 @@ export default class ShoppingCart extends React.Component {
                     <div style={{ height: "25px" }}></div>
 
                     <div style={{ width: "100%", height: "auto" }}>
-                        <div className="customer_detail">
+                        <div className="placeOrder_detail">
                             <div className="customer_header">
                                 <span style={{ fontSize: "15px", paddingBottom: "10px", paddingTop: "10px" }}>Order Summary</span>
                             </div>
@@ -296,7 +298,7 @@ export default class ShoppingCart extends React.Component {
                     </div>
                 </div>
             </div>
-            <footer className='app_footer'>
+            <footer className='app34_footer'>
                 <div className='admin_footer'>
                     <p> © Online Book Store.All Rights Reserved.</p>
                 </div>
