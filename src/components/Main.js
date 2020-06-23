@@ -69,26 +69,30 @@ export default class Main extends Component {
         this.showSearchBar=this.showSearchBar.bind(this);
     }
 
+
+
     componentDidMount() {
         let statusCode=0
+        if(localStorage.getItem("token") !== null){
         Service.getCartBook().then((response) => {
-            this.setState({
-                cartItem: response.data.body,
-                counter: response.data.body.length,
-                
-            });
-            statusCode= response.status;
-            this.addBookName(response.data.body);
-
-            if (statusCode == 200) {
-                {this.getBookData()}        
-            }
-
+        this.setState({
+        cartItem: response.data.body,
+        counter: response.data.body.length,
+        });
+        this.addBookName(response.data.body);
+        statusCode= response.status;
+        if (statusCode == 200) {
+        this.getBookData() }
         }).catch((error) => {
-            console.log(error);
+        console.log(error);
+        
         })
+        }
         {this.getBookData()}
-    }
+        }  
+        
+
+
 
     receivedData() {
         const data = this.state.booklist;
@@ -106,6 +110,8 @@ export default class Main extends Component {
     }
 
     getBookData = () => {
+        console.log(this.state.sort);
+        console.log(this.state.search);
 		Service.getBookData(this.state.search,this.state.sort,(this.state.selectedPage-1)).then(response=>{
                 this.state.booklist=response.data.body.books;
 				this.state.count=response.data.body.count;

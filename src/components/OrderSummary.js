@@ -31,7 +31,7 @@ export default class OrderSummary extends React.Component{
             <div className="cart-item">
                 <div className="order-item-content">
                     <div className="shoppingcart_image">                        
-                            <img src={`http://localhost:8090/admin/downloadFile/${item.bookCover}`} alt="" className="shopped_image"/>
+                            <img src={`http://localhost:8090/admin/downloadfile/${item.bookCover}`} alt="" className="shopped_image"/>
                     </div>
                     <div className="order1-item-content-details">
 

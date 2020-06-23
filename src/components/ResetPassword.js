@@ -146,6 +146,14 @@ export default class ResetPassword extends React.Component {
     }
 
 
+    clearFieldsData(){
+        this.setState({
+            password1:"",
+            password2:""
+        });
+    }
+
+
     render() {
         return (
             <div>
@@ -164,7 +172,7 @@ export default class ResetPassword extends React.Component {
                             {this.state.alertResponse}
                         </Alert>
                     </Snackbar>
-
+                    <form id="resetForm"  onReset={this.reset}>
                     <div className="resetBox">
                         <div className="resetHeader">
                             <div className="Resetheader_content">
@@ -246,6 +254,9 @@ export default class ResetPassword extends React.Component {
                         </div>
 
                     </div>
+               
+                    </form>
+               
                 </div>
                 <footer className='app1_footer'>
                     <div className='admin_footer'>

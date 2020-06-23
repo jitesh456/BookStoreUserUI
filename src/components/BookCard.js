@@ -43,13 +43,13 @@ export default class BookCard extends Component {
         if (this.props.bookDetails.quantity === 0) {
             return (
                 <figure>
-                    <img src={`http://localhost:8090/admin/downloadFile/${this.props.bookDetails.bookCover}`} id="imageoutofstock" alt="" />
+                    <img src={`http://localhost:8090/admin/downloadfile/${this.props.bookDetails.bookCover}`} id="imageoutofstock" alt="" />
                     <figcaption>OUT OF STOCK</figcaption>
                 </figure>
             );
         } else {
             return (
-                <img src={`http://localhost:8090/admin/downloadFile/${this.props.bookDetails.bookCover}`} className="image" alt="" />
+                <img src={`http://localhost:8090/admin/downloadfile/${this.props.bookDetails.bookCover}`} className="image" alt="" />
             );
         }
     }

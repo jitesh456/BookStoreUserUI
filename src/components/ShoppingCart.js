@@ -186,7 +186,7 @@ export default class ShoppingCart extends React.Component {
                 <div className="cart-item">
                     <div className="cart-item-content1">
                         <div className="shoppingcart_image">
-                            <img src={`http://localhost:8090/admin/downloadFile/${item.bookCover}`} alt="" className="shopped_image" />
+                            <img src={`http://localhost:8090/admin/downloadfile/${item.bookCover}`} alt="" className="shopped_image" />
                         </div>
                         <div className="cart-item-content-details">
                             <span className="shopped_book_name">{item.name}</span>

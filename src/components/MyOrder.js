@@ -19,9 +19,10 @@ export default class MyOrder extends React.Component {
             orderDetails: [],
         }
     }
-
-
+   
+        
     componentDidMount() {
+        if(localStorage.getItem("token") !== null){
         Service.getMyOrder().then((response) => {
             console.log(response);
             console.log(response.data.body[0].bookList);
@@ -34,6 +35,10 @@ export default class MyOrder extends React.Component {
             console.log(error)
         })
     }
+    else{
+        history.push("/user/login");
+    }
+}
 
 
     changePage = () => {
@@ -42,11 +47,8 @@ export default class MyOrder extends React.Component {
 
     render() {
         let book;
-        if (this.state.orderDetails.length === 0) {
-            book = <h4 >Please Order something to see MyOrder</h4>
-            return (
-                book
-            )
+        if (this.state.orderDetails.length === 0) {   
+            book= <h2 >Please Order something to see MyOrder......</h2>
         }
         else {
             book = this.state.orderDetails.map(item => {
@@ -61,8 +63,8 @@ export default class MyOrder extends React.Component {
                                 return (
                                     <div className="myorder-item">
                                         <div className="cart-item-content">
-                                            <div className="shop_image">
-                                                <img src={`http://localhost:8090/admin/downloadFile/${list.bookCover}`} alt="" className="shopped_image" />
+                                            <div className="order_image">
+                                                <img src={`http://localhost:8090/admin/downloadfile/${list.bookCover}`} alt="" className="shopped_image" />
                                             </div>
                                             <div className="MyOrder-details">
                                                 <span className="myorder_book_name">{list.name}</span>
@@ -117,7 +119,7 @@ export default class MyOrder extends React.Component {
 
                 </div>
                 <footer className='appOrder_footer'>
-                    <div className='admin_footer'>
+                    <div className='adminorder_footer'>
                         <p> © Bug Busters Store.All Rights Reserved.</p>
                     </div>
                 </footer>
