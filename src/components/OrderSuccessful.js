@@ -30,9 +30,9 @@ class OrderSuccessful extends Component {
         return (
             <div>
              <header className="app_header">
-                    <div className="admin1_header">
+                    <div className="admin2_header">
                         <img src={booklogo} alt="asd" className="bk_image" />
-                        <span className="admin1">BB Store</span>  
+                        <span className="admin2">BB Store</span>  
                     </div >
                    
             </header>

@@ -29,16 +29,17 @@
     
   }
   
-  .admin1_header{
+  .admin2_header{
     border:1px solid green;
     border:none;
     display:flex;
+    width:12%;
     padding-left: 12%;
     justify-content: flex-start;
     align-items: center;
   }
   
-  .admin1{
+  .admin2{
     font-size: larger;
     font-weight: bold;
     align-self: center;
