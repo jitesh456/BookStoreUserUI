@@ -17,31 +17,26 @@ export default class MyOrder extends React.Component {
             orderDetails: [],
         }
     }
-   
         
     componentDidMount() {
         if(localStorage.getItem("token") !== null){
-        Service.getMyOrder().then((response) => {
-            console.log(response);
-            console.log(response.data.body[0].bookList);
-            console.log(response.data.body[0].cart);
-            this.setState({
-                orderDetails: response.data.body
+            Service.getMyOrder().then((response) => {
+                console.log(response);
+                console.log(response.data.body[0].bookList);
+                console.log(response.data.body[0].cart);
+                this.setState({
+                    orderDetails: response.data.body
+                })
+                console.log(this.state.orderDetails);
+            }).catch((error) => {
+                console.log(error)
             })
-            console.log(this.state.orderDetails);
-        }).catch((error) => {
-            console.log(error)
-        })
+        }
+        else{ history.push("/user/login"); }
     }
-    else{
-        history.push("/user/login");
-    }
-}
 
 
-    changePage = () => {
-        history.push("/");
-    }
+    changePage = () => { history.push("/"); }
 
     render() {
         let book;

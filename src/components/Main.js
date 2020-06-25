@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import '../css/BookCard.css';
 import '../css/Main.css';
 import '../css/Pagination.css';
@@ -34,7 +34,7 @@ const theme = createMuiTheme({
     },
 });
 
-export default class Main extends Component {
+export default class Main extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -66,32 +66,25 @@ export default class Main extends Component {
         this.showSearchBar=this.showSearchBar.bind(this);
     }
 
-
-
     componentDidMount() {
         let statusCode=0
         if(localStorage.getItem("token") !== null){
-        Service.getCartBook().then((response) => {
-        this.setState({
-        cartItem: response.data.body,
-        counter: response.data.body.length,
-        });
-        this.addBookName(response.data.body);
-        statusCode= response.status;
-        if (statusCode === 200) {
-        this.getBookData() }
-        }).catch((error) => {
-        console.log(error);
-        
-        })
+            Service.getCartBook().then((response) => {
+                    this.setState({
+                    cartItem: response.data.body,
+                    counter: response.data.body.length,
+                });
+                this.addBookName(response.data.body);
+                statusCode= response.status;
+                if (statusCode === 200) {  this.getBookData() }
+            }).catch((error) => {
+                console.log(error);
+            })
         }
         this.getBookData();
-        }  
-        
+    }  
 
-
-
-    receivedData() {
+    receivedData = () => {
         const data = this.state.booklist;
         const postData = data.map(book => {
             return <BookCard
@@ -107,9 +100,7 @@ export default class Main extends Component {
     }
 
     getBookData = () => {
-        console.log(this.state.sort);
-        console.log(this.state.search);
-		Service.getBookData(this.state.search,this.state.sort,(this.state.selectedPage-1)).then(response=>{
+    	Service.getBookData(this.state.search,this.state.sort,(this.state.selectedPage-1)).then(response=>{
                 this.setState({
                     booklist:response.data.body.books,
 				    count:response.data.body.count
@@ -120,7 +111,7 @@ export default class Main extends Component {
             });
     }
 
-    addBookName(object) {
+    addBookName = (object) => {
         let name;
         for (var i = 0; i < object.length; i++) {
             name = object[i].name;
@@ -129,21 +120,21 @@ export default class Main extends Component {
         localStorage.setItem("bookName", JSON.stringify(this.state.bookName));
     }
 
-    handleAddCart(object) {
+    handleAddCart = (object) => {
         this.setState({
             counter: this.state.counter + 1,
             bookName: object.bookName,
         });
     }
 
-    updateDimensions() {
+    updateDimensions = () => {
         this.setState({
           height: window.innerHeight, 
           width: window.innerWidth
         });
     }
 
-    showSearchBar=()=>{
+    showSearchBar = () => {
         if(this.state.show){
             document.getElementById("ser").className="search_nav";
             this.setState({disp:"none"});
@@ -160,29 +151,20 @@ export default class Main extends Component {
             () => { this.getBookData();});
 	}
     
-	handleChange(event) {
-        this.setState({sort:event.target.value,},() => { this.getBookData();});
-    }
+	handleChange = (e) => { this.setState({sort:e.target.value},() => { this.getBookData();}); }
 
-    handleTextChange = (e) => {
-        this.setState({search:e.target.value},()=>{this.getBookData();});
-    }
+    handleTextChange = (e) => { this.setState({search:e.target.value},()=>{this.getBookData();}); }
 
-    onPageChange(pageIndex) {
-        alert(pageIndex);
-    }
+    onPageChange = (pageIndex) => { alert(pageIndex); }
 
-    openDialog = () => {
-        this.setState({ isDialogOpen: true })
-    }
+    openDialog = () => { this.setState({ isDialogOpen: true }) }
 
     handleClose = () => this.setState({ isDialogOpen: false })
 
-    displayCartIcon() {
+    displayCartIcon = () => {
         if (localStorage.getItem("token") == null) {
             return (
                 <ShoppingCartOutlinedIcon style={{ color: "white" }} onClick={this.openDialog} />
-
             );
         }
         return (
@@ -192,18 +174,16 @@ export default class Main extends Component {
         );
     }
 
-    handleShowProfile(e) {
+    handleShowProfile = (e) => {
         let show = this.state.profile;
         this.setState({
             profile: !show
         })
-
     }
 
     render() {
         window.addEventListener("resize", this.updateDimensions);
         let search=[];
-        console.log(this.state.disp);
         if(this.state.width<375){
             search=<div id="ser" className="search_nav">
                 <div className="searchIcon">
@@ -228,7 +208,6 @@ export default class Main extends Component {
         return (
             <div >
                 <AppBar id="app-header">
-
                     <div className="admin_header">
                         <img src={booklogo} alt="asd" className="bk_image" />
                         <span className="admin">BB Store</span>
@@ -293,7 +272,6 @@ export default class Main extends Component {
                     <div className="pagination">
                         <Pagination
 							activePage={this.state.currentPage}
-
 							itemsCountPerPage={this.state.perPage}
 							count={this.state.pageCount}
 							onChange={this.handlePageClick}
@@ -304,7 +282,6 @@ export default class Main extends Component {
                     </div>
                 </footer>
             </div>
-
         );
     }
 }

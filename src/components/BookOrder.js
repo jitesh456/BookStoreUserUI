@@ -1,38 +1,24 @@
-import React, { Component } from 'react';
-import AppBar from '@material-ui/core/AppBar';
-import booklogo from '../booklogo.png';
+import React from 'react';
 import '../css/MyOrder.css';
 import '../css/Main.css';
 
-// import Button from '@material-ui/core/Button';
-import history from "./history";
-import Service from '../service/Service';
-// import image0 from '../assets/images/image0.jpg';
-
-let baseBook = '';
 export default class BookOrder extends React.Component {
 
     constructor(props) {
         super(props);
-
-
-
     }
 
     render() {
 
        let  book = this.props.order.map(list => {
-
             return (
 
                 <div className="cart-item">
                     <div className="cart-item-content">
                         <div className="shoppingcart_image">
                             <img src={`http://localhost:8090/admin/downloadFile/${list.bookcover}`} alt="" className="shopped_image" />
-
                         </div>
                         <div className="MyOrder-details">
-
                             <span className="shopped_book_name">{list.name}</span>
                             <div style={{ height: "5%" }}></div>
                             <span className="shopped_book_author">{list.authorname}</span>
@@ -43,23 +29,12 @@ export default class BookOrder extends React.Component {
                         </div>
                         <div style={{ marginLeft: "10%" }}>
                             <h4 style={{ marginTop: "35px", marginBottom: "15px" }}>Order Placed on</h4>
-
                             <span style={{ marginTop: "5px" }} >{this.props.date.orderPlacedDate}</span>
-
                         </div>
                     </div>
                 </div>
-
             );})
 
-        return (
-
-          
-                {book}
-
-
-
-                );
-
+        return (  {book}  );
             }
         }

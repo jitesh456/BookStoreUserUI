@@ -34,33 +34,22 @@ export default class ForgetPassword extends React.Component {
         this.handleChange = this.handleChange.bind(this);
     }
 
-    handleChange = (field, event) => {
-        this.setState({ [event.target.name]: event.target.value })
-    }
+    handleChange = (field, e) => { this.setState({ [e.target.name]: e.target.value }) }
 
-    clearFieldsData = () => {
-        this.setState({
-            email: "",
-        });
-    };
+    clearFieldsData = () => { this.setState({ email: "" }); }
 
-    closeAlertBox = () => {
-        this.setState({ alertShow: false });
-    };
+    closeAlertBox = () => { this.setState({ alertShow: false }); }
 
     showAlert = (severity, alertShow, alertResponse) => {
-        let alertResponseVar = alertResponse;
         this.setState({
             severity: severity,
             alertShow: alertShow,
             alertResponse: alertResponse
         })
-        this.props.dialogResponce(this.alertResponseVar);
-        console.log(alertResponseVar);
+        this.props.dialogResponce(this.alertResponse);
     }
 
     forgetPassword = () => {
-        console.log(this.state.email)
         let email = this.state.email;
         Service.forgetPassword(email).then(
             (response) => {
@@ -85,7 +74,6 @@ export default class ForgetPassword extends React.Component {
         })
 
     }
-
 
     render() {
         return (

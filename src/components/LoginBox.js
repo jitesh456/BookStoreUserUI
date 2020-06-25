@@ -20,21 +20,16 @@ import Alert from "@material-ui/lab/Alert";
 
 let nameError = '';
 let emailError = '';
-let mobileError = ''; let passwordError = '';
+let mobileError = ''; 
+let passwordError = '';
 
 const theme = createMuiTheme({
     palette: {
-        primary: {
-            // Purple and green play nicely together.
-            main: purple[500],
-        },
-        secondary: {
-            // This is green.A700 as hex.
-            main: '#B0002A',
-
-        },
+        primary: { main: purple[500] },
+        secondary: { main: '#B0002A' }
     },
 });
+
 export default class UserLogin extends Component {
     constructor(props) {
         super(props);
@@ -55,7 +50,8 @@ export default class UserLogin extends Component {
             loginMessage: '',
             singupMessage: '',
             alertShow: false,
-            alertResponse: "", index: 0,
+            alertResponse: "", 
+            index: 0
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleClickShowPassword = this.handleClickShowPassword.bind(this);
@@ -152,10 +148,8 @@ export default class UserLogin extends Component {
         return true;
     }
 
-    handleChange(field, event) {
-        this.setState({ [event.target.name]: event.target.value }
-            , () => this.validate(field));
-
+    handleChange(field, e) {
+        this.setState({ [e.target.name]: e.target.value }, () => this.validate(field));
         this.setState({
             emailError: '',
             nameError: '',
@@ -165,22 +159,15 @@ export default class UserLogin extends Component {
         });
     }
 
-    handleClickShowPassword = () => {
-        this.setState({ showPassword: !this.state.showPassword });
-    };
+    handleClickShowPassword = () => { this.setState({ showPassword: !this.state.showPassword }); }
 
-    handleMouseDownPassword = (event) => {
-        event.preventDefault();
-    };
+    handleMouseDownPassword = (e) => { e.preventDefault(); }
 
     handleTabSelection = ({ target }) => {
-        if ([target.name] === "login") {
-            this.setState({ loginChecked: true, signupChecked: false })
-        }
-        if ([target.name] === "signup") {
-            this.setState({ loginChecked: false, signupChecked: true })
-        }
+        if ([target.name] === "login") { this.setState({ loginChecked: true, signupChecked: false }) }
+        if ([target.name] === "signup") { this.setState({ loginChecked: false, signupChecked: true }) }
     }
+
     componentDidMount() {
         this.setState({
             emailError: '',
@@ -188,8 +175,8 @@ export default class UserLogin extends Component {
         });
     }
 
-    handleSubmit(event) {
-        event.preventDefault();
+    handleSubmit = (e) => {
+        e.preventDefault();
         const isValid = this.validate();
         if (isValid) {
             const user = {
@@ -211,7 +198,6 @@ export default class UserLogin extends Component {
                     this.clearFieldsData();
 
                     document.getElementById("signupForm").reset();
-                    // this.handleTabSelection("login");
                 }
                 else {
                     this.setState({
@@ -228,31 +214,21 @@ export default class UserLogin extends Component {
 
     }
 
+    clearFieldsData = () => { this.setState({ password: "" }); }
 
-    clearFieldsData = () => {
-        this.setState({
-            password: "",
-        });
-    };
-
-    closeAlertBox = () => {
-        this.setState({ alertShow: false });
-    };
+    closeAlertBox = () => { this.setState({ alertShow: false }); }
 
     showAlert = (severity, alertShow, alertResponse) => {
-        let alertResponseVar = alertResponse;
         this.setState({
             severity: severity,
             alertShow: alertShow,
             alertResponse: alertResponse
         })
-        this.props.dialogResponce(this.alertResponseVar);
-        console.log(alertResponseVar);
+        this.props.dialogResponce(this.state.alertResponse);
     }
 
-    handleLoginSubmit(event) {
-        event.preventDefault();
-
+    handleLoginSubmit(e) {
+        e.preventDefault();
         const credentials = {
             email: this.state.email,
             password: this.state.password,
@@ -282,8 +258,6 @@ export default class UserLogin extends Component {
         }).catch(error => {
             console.log(error.data)
         })
-
-
     }
 
     handleTabSelection = ({ target }) => {

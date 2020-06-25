@@ -16,15 +16,12 @@ const ImageToolTip = withStyles((theme) => ({
         color: 'FCF2F2',
         maxWidth: 265,
         fontSize: theme.typography.pxToRem(12),
-    },
+    }
 }))(Tooltip);
 
 
 const NestedCardContent = withStyles(theme => ({
-    root: {
-        padding: 0
-
-    }
+    root: { padding: 0 }
 }))(MuiCardContent);
 
 export default class BookCard extends Component {
@@ -36,10 +33,9 @@ export default class BookCard extends Component {
             isDialogOpen: false,
             i:0,
         }
-
     }
 
-    displayImage() {
+    displayImage = () => {
         if (this.props.bookDetails.quantity === 0) {
             return (
                 <figure>
@@ -54,29 +50,23 @@ export default class BookCard extends Component {
         }
     }
 
-    openDialog = () => {
-        this.setState({ isDialogOpen: true })
-        console.log(this.state.isDialogOpen);
-    }
+    openDialog = () => { this.setState({ isDialogOpen: true }) }
 
-    handleClose = () => this.setState({ isDialogOpen: false })
+    handleClose = () => { this.setState({ isDialogOpen: false }) }
 
-    addToCart(bookDetails){
+    addToCart = (bookDetails) =>{
         const cart = {
             bookId: bookDetails.id,
             quantity:1
         }
         Service.addtoCart(cart).then((response) => {
-            console.log(response);
-            
+            console.log(response);        
         }).catch((error) => {
             console.log(error)
         })
     }
 
-
-    displayButton() {
-
+    displayButton = () => {
         if( (localStorage.getItem("token") === null) &&(this.props.bookDetails.quantity === 0) ) {
             return (
                 <Button type="submit" variant="contained" disabled={!this.props.bookDetails.quantity} size="50%" style={{ width: "90%", backgroundColor: 'silver', color: "black" }} >ADD TO CART</Button>
@@ -99,7 +89,6 @@ export default class BookCard extends Component {
         const bookName = JSON.parse(localStorage.getItem("bookName"));
         if ((bookName!==null && bookName.includes(this.props.bookDetails.name)) || this.state.i=== 1) {
             
-            
             return (
                 <Button type="submit" name="addButton" variant="contained" onClick={() => {
                     history.push('/cart')
@@ -111,14 +100,12 @@ export default class BookCard extends Component {
             return (
                 
                 <Button
-                    name="button" type="submit" variant="contained" onClick={(event) => {
+                    name="button" type="submit" variant="contained" onClick={(e) => {
                         this.props.addFunction(this.props.bookDetails);
                         this.addToCart(this.props.bookDetails);
-                        this.setState({
-                            i:1
-                        })
-                        
-                    }} disabled={!this.props.bookDetails.quantity} size="50%" style={{ width: "90%", backgroundColor: 'maroon', color: "white" }} >ADD TO CART</Button>
+                        this.setState({ i:1 });                        
+                    }} disabled={!this.props.bookDetails.quantity} size="50%" 
+                    style={{ width: "90%", backgroundColor: 'maroon', color: "white" }} >ADD TO CART</Button>
             );
         }
     }

@@ -9,9 +9,6 @@ import Service from '../service/Service';
 
 export default class VerifyEmail extends React.Component {
 
-
-
-
     componentDidMount() {
         Service.verifymail( (this.props.location.search).substring(1)).then(
             (response) => {

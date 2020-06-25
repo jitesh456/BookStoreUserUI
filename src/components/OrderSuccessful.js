@@ -5,7 +5,6 @@ import '../css/OrderSuccessful.css';
 import siteinfo from '../data/siteinfo.json';
 import booklogo from '../booklogo.png';
 import Tooltip from "@material-ui/core/Tooltip";
-
 import { withStyles } from "@material-ui/core/styles";
 
 const TableTooltip = withStyles((theme) => ({
@@ -15,11 +14,10 @@ const TableTooltip = withStyles((theme) => ({
       fontSize: theme.typography.pxToRem(12),
     },
   }))(Tooltip);
-class OrderSuccessful extends Component {
+
+export default class OrderSuccessful extends Component {
     
-    handleChange=()=>{
-        window.location.replace("/");
-    }
+    handleChange = () => { window.location.replace("/"); }
 
     render() {
         var min = 100000000;
@@ -79,5 +77,3 @@ class OrderSuccessful extends Component {
         );
     }
 }
-
-export default OrderSuccessful;

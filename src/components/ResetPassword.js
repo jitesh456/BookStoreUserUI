@@ -18,23 +18,12 @@ import { purple } from '@material-ui/core/colors';
 import Snackbar from "@material-ui/core/Snackbar";
 import Alert from "@material-ui/lab/Alert";
 
-
-
-
 const theme = createMuiTheme({
     palette: {
-        primary: {
-            // Purple and green play nicely together.
-            main: purple[500],
-        },
-        secondary: {
-            // This is green.A700 as hex.
-            main: '#B0002A',
-
-        },
+        primary: { main: purple[500] },
+        secondary: { main: '#B0002A' },
     },
 });
-
 
 export default class ResetPassword extends React.Component {
     constructor(props) {
@@ -47,79 +36,53 @@ export default class ResetPassword extends React.Component {
         this.handleChange = this.handleChange.bind(this);
     }
 
-    handleChange = (field, event) => {
-        this.setState({ [event.target.name]: event.target.value })
-    }
+    handleChange = (field, e) => { this.setState({ [e.target.name]: e.target.value }) }
 
-    displayButton() {
+    displayButton = () => {
 
         if (!(this.state.password1.localeCompare(this.state.password2)) && this.state.Password1 !== '' && 
         this.state.password2 !== '') {
             return (
                 <Button type="submit" variant="contained"
                     onClick={this.resetPassword}
-                    style={{ width: "100%", backgroundColor: 'maroon', fontSize: '15px', color: "white" }} >Reset Password</Button>
+                    style={{ width: "100%", backgroundColor: 'maroon', fontSize: '15px', color: "white" }}>
+                        Reset Password</Button>
             );
         }
         else {
             return (
-                <Button type="submit" variant="contained" disabled="true" style={{ fontSize: '15px', width: "100%", backgroundColor: 'silver', color: "black" }} >Reset Password</Button>
+                <Button type="submit" variant="contained" disabled="true" 
+                style={{ fontSize: '15px', width: "100%", backgroundColor: 'silver', color: "black" }} >
+                    Reset Password</Button>
             );
         }
 
     }
  
-
-
-
-
-    closeAlertBox = () => {
-        this.setState({ alertShow: false });
-    };
+    closeAlertBox = () => { this.setState({ alertShow: false }); }
 
     showAlert = (severity, alertShow, alertResponse) => {
-        let alertResponseVar = alertResponse;
         this.setState({
             severity: severity,
             alertShow: alertShow,
             alertResponse: alertResponse
         })
-        this.props.dialogResponce(this.alertResponseVar);
-        console.log(alertResponseVar);
+        this.props.dialogResponce(this.state.alertResponse);
     }
 
-    handleClickShowPassword1 = () => {
-        this.setState({ showPassword1: !this.state.showPassword1 });
-    };
+    handleClickShowPassword1 = () => { this.setState({ showPassword1: !this.state.showPassword1 }); }
 
-    handleMouseDownPassword1 = (event) => {
-        event.preventDefault();
-    };
+    handleMouseDownPassword1 = (event) => { event.preventDefault(); }
 
+    handleClickShowPassword2 = () => { this.setState({ showPassword2: !this.state.showPassword2 }) }
 
-    handleClickShowPassword2 = () => {
-        this.setState({ showPassword2: !this.state.showPassword2 });
-    };
-
-    handleMouseDownPassword2 = (event) => {
-        event.preventDefault();
-    };
-
-
-    componentDidMount() {
-
-        console.log((this.props.location.search).substring(1))
-
-    }
+    handleMouseDownPassword2 = (event) => { event.preventDefault(); }
 
     resetPassword = () => {
         let password = this.state.password2;
 
-
         Service.resetPassword(password, (this.props.location.search).substring(1)).then(
             (response) => {
-                console.log(response)
-
                 if (response.data.statusCode === 200) {
                     this.setState({
                         severity: "success",
@@ -138,9 +101,7 @@ export default class ResetPassword extends React.Component {
         ).catch(error => {
             console.log(error.data);
         })
-
     }
-
 
     clearFieldsData(){
         this.setState({
@@ -148,7 +109,6 @@ export default class ResetPassword extends React.Component {
             password2:""
         });
     }
-
 
     render() {
         return (
@@ -160,7 +120,6 @@ export default class ResetPassword extends React.Component {
                         <span className="admin1">BB Store</span></a>
                     </div >
                 </AppBar>
-                
                 <div className="MainHeader">
                     <Snackbar anchorOrigin={{ vertical: 'top', horizontal: 'right' }} open={this.state.alertShow}
                         autoHideDuration={6000} onClose={this.closeAlertBox}>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-// import '../css/BookCard.css';
-// import '../css/Main.css';
-// import '../css/Pagination.css';
+import '../css/BookCard.css';
+import '../css/Main.css';
+import '../css/Pagination.css';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import "../css/cartstyle.css";
@@ -18,7 +18,6 @@ let pincodeError = '';
 let cityError = '';
 let localityError='';
 let countryError='';
-
 
 export default class Customer extends Component {
     constructor(props) {
@@ -40,7 +39,6 @@ export default class Customer extends Component {
             customerDetail:[]
 
         }
-
         this.handleChange=this.handleChange.bind(this);
         this.handleSubmit=this.handleSubmit.bind(this);
         this.displayButton=this.displayButton.bind(this)
@@ -48,7 +46,7 @@ export default class Customer extends Component {
 
     }
 
-    handleForm(){
+    handleForm = () => {
         this.setState({
             disableForm:!this.state.disableForm,
             ordersummarybutton:'none'
@@ -66,7 +64,7 @@ export default class Customer extends Component {
      
 
       switch (type) {
-  
+ 
         case 'name':
           if (number.test(this.state.name)) {
             nameError=" Only letters allowed";
@@ -194,9 +192,8 @@ export default class Customer extends Component {
       return true;
   
     }
-    handleChange(field,event) {
-      this.setState({ [event.target.name]: event.target.value }
-        , () => this.validate(field));
+    handleChange = (field,e) => {
+      this.setState({ [e.target.name]: e.target.value },() => this.validate(field));
   
       this.setState({
         nameError: '',
@@ -209,7 +206,7 @@ export default class Customer extends Component {
       });
     }
 
-    handleSubmit(event){
+    handleSubmit = () => {
       localStorage.setItem("mail",JSON.stringify(this.state.emailId));
       const address={
         addressType :"Home",
@@ -219,7 +216,7 @@ export default class Customer extends Component {
         city :this.state.city,
         country :this.state.country
       }
-
+      
       Service.addUserDetails(address).then((response)=>{
           console.log(response.data.body);
       }).catch((error)=>{
@@ -228,7 +225,7 @@ export default class Customer extends Component {
       
     }
     
-    displayButton(){
+    displayButton = () => {
       if(this.state.validateform && this.state.name!=="" && this.state.phoneNumber!=="" && this.state.pincode!=="" && 
       this.state.locality!=="" && this.state.address!=="" && this.state.city!=="" && this.state.country!=="" ){
         return(

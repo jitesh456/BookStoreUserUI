@@ -7,21 +7,16 @@ export default class OrderSummary extends React.Component{
     constructor(props){
         super(props);
         this.handleConfirmation=this.handleConfirmation.bind(this);
-        this.state={
-            totalPrice:0,
-        }
+        this.state={ totalPrice:0 }
     }
     
-    handleConfirmation=(e)=>{
-        
+    handleConfirmation = (e) => {
         Service.placeOrder().then((response)=>{
             console.log(response);
         }).catch((error)=>{
             console.log(error);
         });
-        
     }
-    
 
     render(){
         let calPrice=0;

@@ -13,20 +13,13 @@ export default class profile extends React.Component {
             isDialogOpen: false,
             login: '', logOut: true,
         }
-
     }
 
-
-    openDialog = () => {
-        this.setState({
-            isDialogOpen: true,
-
-        })
-    }
+    openDialog = () => { this.setState({ isDialogOpen: true }) }
 
     handleClose = () => this.setState({ isDialogOpen: false })
 
-    diaplayButton() {
+    diaplayButton = () => {
 
         if (localStorage.getItem("token") == null && this.state.logOut) {
             return (
@@ -47,16 +40,11 @@ export default class profile extends React.Component {
 
     DoLogOut = () => {
         localStorage.clear();
-        this.setState({
-            logOut: true,
-        })
+        this.setState({ logOut: true })
         window.location.replace("/");
     }
 
-    showMyorder=()=>{
-        
-        history.push("/myorder");
-    }
+    showMyorder=()=>{ history.push("/myorder"); }
 
     render() {
         return (
@@ -64,7 +52,6 @@ export default class profile extends React.Component {
                 <div className="profileContaint">
                     <span style={{ color: "black", marginTop: "-5%", marginLeft: "-3%" }}> <h5>Welcome</h5> </span>
                     <span style={{ color: "gray", display: "flex", width: "100%", fontSize: "12px", marginLeft: "-3%", marginTop: "-9%" }}> Access account</span>
-
                 </div>
                 <div>
                     {this.diaplayButton()}
