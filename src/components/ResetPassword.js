@@ -1,7 +1,6 @@
 import React from 'react';
 import booklogo from '../booklogo.png';
 import AppBar from '@material-ui/core/AppBar';
-import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import '../css/ForgetPassword.css';
 import '../css/ResetPassword.css';
@@ -13,13 +12,9 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import FormControl from '@material-ui/core/FormControl';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
-
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 import { purple } from '@material-ui/core/colors';
-import Typography from '@material-ui/core/Typography';
-import Breadcrumbs from '@material-ui/core/Breadcrumbs';
-
 import Snackbar from "@material-ui/core/Snackbar";
 import Alert from "@material-ui/lab/Alert";
 
@@ -58,7 +53,8 @@ export default class ResetPassword extends React.Component {
 
     displayButton() {
 
-        if (!(this.state.password1.localeCompare(this.state.password2)) && this.state.Password1 != '' && this.state.password2 != '') {
+        if (!(this.state.password1.localeCompare(this.state.password2)) && this.state.Password1 !== '' && 
+        this.state.password2 !== '') {
             return (
                 <Button type="submit" variant="contained"
                     onClick={this.resetPassword}

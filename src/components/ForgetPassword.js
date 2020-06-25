@@ -14,7 +14,6 @@ import { purple } from '@material-ui/core/colors';
 const theme = createMuiTheme({
     palette: {
         primary: {
-
             main: purple[500],
         },
         secondary: {
@@ -116,7 +115,7 @@ export default class ForgetPassword extends React.Component {
                             <span className="Email-message">Enter your email address and we will send you a link to reset password </span>
                         </div>
                         <div className="forget_content">
-                            <ThemeProvider>
+                            <ThemeProvider theme={theme}>
                                 <TextField id="outlined-basic" color="secondary" label="Email" variant="outlined"
                                     name="email"
                                     onChange={this.handleChange.bind(this, 'email')}

@@ -15,7 +15,6 @@ import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 import { purple } from '@material-ui/core/colors';
 import Service from '../service/Service';
-import history from './history';
 import Snackbar from "@material-ui/core/Snackbar";
 import Alert from "@material-ui/lab/Alert";
 
@@ -175,10 +174,10 @@ export default class UserLogin extends Component {
     };
 
     handleTabSelection = ({ target }) => {
-        if ([target.name] == "login") {
+        if ([target.name] === "login") {
             this.setState({ loginChecked: true, signupChecked: false })
         }
-        if ([target.name] == "signup") {
+        if ([target.name] === "signup") {
             this.setState({ loginChecked: false, signupChecked: true })
         }
     }
@@ -253,7 +252,6 @@ export default class UserLogin extends Component {
 
     handleLoginSubmit(event) {
         event.preventDefault();
-        const isValid = this.validate();
 
         const credentials = {
             email: this.state.email,
@@ -289,10 +287,10 @@ export default class UserLogin extends Component {
     }
 
     handleTabSelection = ({ target }) => {
-        if (([target.name] == "login") ) {
+        if (([target.name] === "login") ) {
             this.setState({ loginChecked: true, signupChecked: false, index: 0 })
         }
-        if ([target.name] == "signup") {
+        if ([target.name] === "signup") {
             this.setState({ loginChecked: false, signupChecked: true, index: 1 })
         }
     }

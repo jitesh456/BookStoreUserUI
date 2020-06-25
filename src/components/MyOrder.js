@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import booklogo from '../booklogo.png';
 import '../css/MyOrder.css';
@@ -8,8 +8,6 @@ import Service from '../service/Service';
 import Typography from '@material-ui/core/Typography';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 
-
-let baseBook = '';
 export default class MyOrder extends React.Component {
     constructor(props) {
         super(props);

@@ -13,10 +13,7 @@ import ForgetPassword from "./ForgetPassword";
 import ResetPassword from "./ResetPassword";
 import VerifyEmail from "./VerifyEmail";
 class Routers extends React.Component{
-    constructor(props){
-        super(props);
-    }
-
+    
     render(){
         return (
             <Router history={history}>

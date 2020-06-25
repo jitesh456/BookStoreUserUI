@@ -97,7 +97,7 @@ export default class BookCard extends Component {
             );
         }
         const bookName = JSON.parse(localStorage.getItem("bookName"));
-        if (bookName!==null && bookName.includes(this.props.bookDetails.name) || this.state.i=== 1) {
+        if ((bookName!==null && bookName.includes(this.props.bookDetails.name)) || this.state.i=== 1) {
             
             
             return (
@@ -162,8 +162,7 @@ export default class BookCard extends Component {
             </NestedCardContent>
         </Card>
     </div>
-        return (
-           im
-        )
+        
+    return (im);
     }
 }

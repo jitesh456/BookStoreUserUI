@@ -210,6 +210,11 @@ button {
   transition-duration: 0.1s;
 }
 
+.cancel_button {
+  color:grey;
+  margin-top:5px;
+}
+
 .inputbase{
   width:85%;
 }
@@ -490,7 +495,6 @@ button {
     justify-content: center;
   }
   
-
   .search{
     width: 40%;
     margin-top: 3%;
@@ -507,7 +511,7 @@ button {
 }
 
 .inputbase{
-  width:85%;
+  width:81.5%;
 }
 
 .profile-Icon{

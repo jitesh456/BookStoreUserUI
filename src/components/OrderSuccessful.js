@@ -17,8 +17,6 @@ const TableTooltip = withStyles((theme) => ({
   }))(Tooltip);
 class OrderSuccessful extends Component {
     
-    
-
     handleChange=()=>{
         window.location.replace("/");
     }
@@ -37,7 +35,7 @@ class OrderSuccessful extends Component {
                    
             </header>
             <div className="mainformorder">
-                <img className={'successfulimage'} src={OrderSuccess}/>
+                <img className={'successfulimage'} src={OrderSuccess} alt="asd"/>
                 <div className='messageorder'>
                     <p className="firstLine">Congratulations!!... Your order is confirmed.
                     </p>

@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
 import LocalMallIcon from '@material-ui/icons/LocalMall';
-import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import history from "./history";
 import '../css/Main.css'
 

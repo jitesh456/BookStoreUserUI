@@ -58,8 +58,7 @@ export default class ShoppingCart extends React.Component {
             removeButton: true,
             placebutton: 'none'
         })
-        console.log(this.state.removeButton);
-        // this.state.removeButton=true;
+
         this.state.cartItem.map((item) => {
             const cart = {
                 bookId: item.id,
@@ -70,12 +69,12 @@ export default class ShoppingCart extends React.Component {
             }).catch((error) => {
                 console.log(error)
             })
+            return "";
         });
 
     }
     handleRemove(object) {
-        let items = this.state.cartItem;
-
+        
         Service.removeBook(object.id).then((response) => {
             console.log(response.data);
             this.getCartData();
@@ -124,8 +123,7 @@ export default class ShoppingCart extends React.Component {
 
     handlePlus = (book) => {
         let items = this.state.cartItem;
-        let limit = 5;
-
+        
         if (book.quantity < 5) {
             for (var i = 0; i < items.length; i++) {
                 if (items[i].isbn === book.isbn && book.quantity > 0) {
@@ -301,7 +299,7 @@ export default class ShoppingCart extends React.Component {
             </footer>
         </div>
 
-        if (this.state.cartItem.length == 0) {
+        if (this.state.cartItem.length === 0) {
             return (
                 <div className="shopping_cart">
                     <AppBar id="app-header">

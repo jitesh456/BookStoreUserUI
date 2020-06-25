@@ -12,6 +12,7 @@ import Select from '@material-ui/core/Select';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import SearchIcon from '@material-ui/icons/Search';
+import Cancel from '@material-ui/icons/Cancel';
 import InputBase from '@material-ui/core/InputBase';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
@@ -21,18 +22,14 @@ import Pagination from '@material-ui/lab/Pagination';
 import PersonOutlineIcon from '@material-ui/icons/PersonOutline';
 import AppBar from '@material-ui/core/AppBar';
 import DialogBox from "./DialogBox";
-import axios from 'axios';
-
 
 const theme = createMuiTheme({
     palette: {
         primary: {
-
             main: purple[500],
         },
         secondary: {
             main: '#B0002A',
-
         },
     },
 });
@@ -51,14 +48,14 @@ export default class Main extends Component {
             price: '',
             bookDetails: '',
             sorting: '',
-            search: '',
             sort:'',
             cartItem: [],
             counter: 0,
             profile: false,
             height:window.innerHeight,
             width:window.innerWidth,
-            show:false
+            show:false,
+            disp:"none"
            
         }
         this.handleShowProfile = this.handleShowProfile.bind(this);
@@ -81,14 +78,14 @@ export default class Main extends Component {
         });
         this.addBookName(response.data.body);
         statusCode= response.status;
-        if (statusCode == 200) {
+        if (statusCode === 200) {
         this.getBookData() }
         }).catch((error) => {
         console.log(error);
         
         })
         }
-        {this.getBookData()}
+        this.getBookData();
         }  
         
 
@@ -113,8 +110,10 @@ export default class Main extends Component {
         console.log(this.state.sort);
         console.log(this.state.search);
 		Service.getBookData(this.state.search,this.state.sort,(this.state.selectedPage-1)).then(response=>{
-                this.state.booklist=response.data.body.books;
-				this.state.count=response.data.body.count;
+                this.setState({
+                    booklist:response.data.body.books,
+				    count:response.data.body.count
+                })
                 this.receivedData();
 			}).catch(error=>{
 				console.log(error);
@@ -147,26 +146,26 @@ export default class Main extends Component {
     showSearchBar=()=>{
         if(this.state.show){
             document.getElementById("ser").className="search_nav";
+            this.setState({disp:"none"});
         }else{
             document.getElementById("ser").className="responsive_search";
+            this.setState({disp:"block"});
         }
         this.setState({show:!this.state.show});
     }
 
     handlePageClick = (e, page) => {
-		this.state.selectedPage = page;
-		this.setState({ currentPage: this.state.selectedPage}, () => { this.getBookData();});
+		this.setState({ selectedPage:page, 
+            currentPage: this.state.selectedPage}, 
+            () => { this.getBookData();});
 	}
     
 	handleChange(event) {
-        this.state.sort=event.target.value;
-        this.getBookData();
+        this.setState({sort:event.target.value,},() => { this.getBookData();});
     }
 
     handleTextChange = (e) => {
-        this.state.search = e.target.value;
-        this.getBookData();
-        e.preventDefault();
+        this.setState({search:e.target.value},()=>{this.getBookData();});
     }
 
     onPageChange(pageIndex) {
@@ -204,12 +203,17 @@ export default class Main extends Component {
     render() {
         window.addEventListener("resize", this.updateDimensions);
         let search=[];
+        console.log(this.state.disp);
         if(this.state.width<375){
             search=<div id="ser" className="search_nav">
                 <div className="searchIcon">
                     <SearchIcon id="button" className="searchIcon" onClick={()=>{this.showSearchBar()}} />
                 </div>
                 <InputBase placeholder="Search" className="inputbase" onChange={this.handleTextChange}/>
+                <div>
+                    <Cancel style={{display:this.state.disp}} className="cancel_button" 
+                    onClick={()=>{this.showSearchBar()}}/>
+                </div>
             </div>
         }
         else{
@@ -256,7 +260,7 @@ export default class Main extends Component {
                                 <h2>Books <span className="count"> ({this.state.count} items)</span></h2>
                             </div>
                             <div className="book_sort">
-                                <ThemeProvider>
+                                <ThemeProvider theme={theme}>
                                     <FormControl variant="outlined" color="secondary" >
                                         <InputLabel id="demo-simple-select-outlined-label" ></InputLabel>
                                         <Select
