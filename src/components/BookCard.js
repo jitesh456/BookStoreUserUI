@@ -10,6 +10,8 @@ import Typography from "@material-ui/core/Typography";
 import MuiCardContent from "@material-ui/core/CardContent";
 import history from './history';
 import Service from '../service/Service';
+import InfoIcon from '@material-ui/icons/Info';
+
 
 const ImageToolTip = withStyles((theme) => ({
     tooltip: {
@@ -36,6 +38,7 @@ export default class BookCard extends Component {
             isDialogOpen: false,
             i:0,
         }
+        this.handleBookInfo=this.handleBookInfo.bind();
 
     }
 
@@ -72,6 +75,11 @@ export default class BookCard extends Component {
         }).catch((error) => {
             console.log(error)
         })
+    }
+
+    handleBookInfo(object){
+        localStorage.setItem("bookInfo", JSON.stringify(object));
+        history.push("/product/review");
     }
 
 
@@ -143,8 +151,13 @@ export default class BookCard extends Component {
                             {this.displayImage()}
                         </div>
                     </ImageToolTip>
-                    <div className="book_detail">
+                    <div className="book-name">
                         <span className="book_name">{this.props.bookDetails.name}</span>
+                        <Tooltip placement="down"
+                        title="Read More"
+                        >
+                            <span  style={{marginRight:"23px"}}><InfoIcon onClick={()=>{this.handleBookInfo(this.props.bookDetails)}} style={{color:"maroon"}}/></span>
+                        </Tooltip>
                     </div>
                     <div className="space-between"></div>
                     <div className="book_detail">
