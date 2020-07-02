@@ -12,6 +12,7 @@ import history from "./history";
 import ForgetPassword from "./ForgetPassword";
 import ResetPassword from "./ResetPassword";
 import VerifyEmail from "./VerifyEmail";
+import ProductReview from "./ProductReview";
 class Routers extends React.Component{
     
     render(){
@@ -28,6 +29,7 @@ class Routers extends React.Component{
                 <Route path="/forget/password" component={ForgetPassword}/>
                 <Route path="/user/login" component={UserLogin}/>
                 <Route path="/verify/account" component={VerifyEmail}/>
+                <Route path="/product/review" component={ProductReview}/>
                 <Route path="/" component={Main}/>
             </Switch>
             </Router>

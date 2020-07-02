@@ -43,13 +43,11 @@
     margin-left: 64px;
 }
 
-.book_Detail{
-  border:1px solid green;
+.book-name{
   display:flex;
-  height:80px;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
+  padding-left: 10px;
+  padding-top: 7px;
+  justify-content: space-between;
 }
 
 .space-between{

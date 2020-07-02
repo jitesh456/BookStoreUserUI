@@ -117,10 +117,27 @@ verifymail=(token)=>{
   return axios.get(`${BASIC_API_URL}/verify`,{params:{token:token}}
   );
   
- 
-
-
 }
 
+addFeedback=(feedback)=>{
+  return axios({
+    headers:{Token:localStorage.getItem('token')},
+    method:'post',
+    url:`${BASIC_API_URL}/feedback`,
+    data:feedback
+});
+}
+
+getFeedback=(isbn)=>{
+  return axios.get(`${BASIC_API_URL}/feedback`,{params:{isbn}});
+}
+
+getUserFeedback=(bookId)=>{
+  return axios({
+    headers:{Token:localStorage.getItem('token')},
+    method:'get',
+    url:`${BASIC_API_URL}/customer/feedback?id=`+bookId,
+    });
+  }
 }
 export default new DataService()
