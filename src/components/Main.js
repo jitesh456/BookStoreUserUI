@@ -72,16 +72,17 @@ export default class Main extends Component {
         let statusCode=0
         if(localStorage.getItem("token") !== null){
         Service.getCartBook().then((response) => {
-        this.setState({
-        cartItem: response.data.body,
-        counter: response.data.body.length,
-        });
+            this.setState({
+                cartItem: response.data.body,
+                counter: response.data.body.length,
+            });
         this.addBookName(response.data.body);
         statusCode= response.status;
         if (statusCode === 200) {
-        this.getBookData() }
+            this.getBookData()
+         }
         }).catch((error) => {
-        console.log(error);
+         console.log(error);
         
         })
         }

@@ -20,7 +20,7 @@
     margin-left:25px;
     display:flex;
     flex-direction:column;
-    justify-content:space-evenly;
+    
 }
 
 .product-rating{
@@ -59,7 +59,7 @@
     margin-top:15px;
 }
 .product-review-bookdetail-size{
-    font-size: 13px;
+    font-size: 15px;
     line-height: 16px;
 }
 

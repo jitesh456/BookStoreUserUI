@@ -47,17 +47,20 @@ export default class ProductReview extends React.Component {
         this.setState({
             bookInfo:book
         });
-        Service.getFeedback(book.isbn).then((response)=>{
-            console.log(response.data.body);
+        this.getFeedback(book);
+    }
+    handleChange(field,event){
+        this.setState({ [event.target.name]: event.target.value });
+    }
+
+    getFeedback(object){
+        Service.getFeedback(object.isbn).then((response)=>{ 
             this.setState({
                 feedbacks:response.data.body
             });
         }).catch((error)=>{
             console.log(error);
         });
-    }
-    handleChange(field,event){
-        this.setState({ [event.target.name]: event.target.value });
     }
 
     changePage = () => {
@@ -82,18 +85,36 @@ export default class ProductReview extends React.Component {
                 rating:'',
                 feedback:''
             });
+            this.getFeedback(this.state.bookInfo);
     }
+
     handleReadMore(){
         this.setState({readMore:false});
         return(
             this.displayBookDetail()
         );
     }
+
     handleReadLess(){
         this.setState({readMore:true});
         return(
             this.displayBookDetail()
         );
+    }
+
+    getUserFeedback(){
+        let flag=false;
+        var bookId=JSON.parse(localStorage.getItem("bookInfo")).id;
+        Service.getUserFeedback(bookId).then(response=>{
+            console.log(response.data.body[0].feedbackMessage.length);
+           if(response.data.body[0].feedbackMessage.length>0){
+               console.log("inside if");
+               flag =true;
+           }   
+        }).catch((error)=>{
+            console.log(error); 
+        });
+        return flag
     }
     displayBookDetail(){
         let bookDiscription=[];
@@ -120,8 +141,7 @@ export default class ProductReview extends React.Component {
            displayFeedback =this.state.feedbacks.map(iteam=>{
             
                 return (
-                    <div className="product-feedback-container">
-                                        
+                    <div className="product-feedback-container">                                        
                         <div style={{display:"flex"}}>
                             <div className="customer-profile-icon">
                             <span className="customer-profile-icon-content">{iteam.name.substr(0,1)}</span>
@@ -142,9 +162,9 @@ export default class ProductReview extends React.Component {
                 );
             });
         }
+        
         if(this.state.feedbacks.length===0){
             displayFeedback=<div className="product-feedback-container product-feedback"> <span>No Feedback available for this book</span></div>
-
         }
         let feedbackForm=[];
         if(localStorage.getItem("token") !== null){
@@ -175,6 +195,11 @@ export default class ProductReview extends React.Component {
                 </div>
             
         }
+        console.log(this.getUserFeedback());
+        if(this.getUserFeedback()){
+            feedbackForm=[];
+        }
+        
         return (
             
             <div>
@@ -201,21 +226,22 @@ export default class ProductReview extends React.Component {
                         </div>
                         <div className="product-info">
                             < div className="product-review-book-info">
-                                <span className="product-review-book-name product-review-font" >{this.state.bookInfo.name}</span>
-                                <span className="product-review-author-name product-review-font">by {this.state.bookInfo.authorName}</span>
-                                <div className="product-rating">
-                                <span className="product-rating-count product-review-font"> 4.4 </span>
-                                <div className="product-review-rating-icon product-review-font"> <StarIcon id="iconSize"/></div>
-                                </div>
-                                <span className="product-review-book-price product-review-font">Rs.{this.state.bookInfo.price}</span>
+                                <div style={{ height:"150px", display:"flex",justifyContent:"space-evenly",flexDirection:"column"}}>
+                                    <span className="product-review-book-name product-review-font" >{this.state.bookInfo.name}</span>
+                                    <span className="product-review-author-name product-review-font">by {this.state.bookInfo.authorName}</span>
+                                    <div className="product-rating">
+                                    <span className="product-rating-count product-review-font"> 4.4 </span>
+                                    <div className="product-review-rating-icon product-review-font"> <StarIcon id="iconSize"/></div>
+                                    </div>
+                                    <span className="product-review-book-price product-review-font">Rs. {this.state.bookInfo.price}</span>
+                                </div>    
                                 <Divider/>
                                 <span className="product-review-bookdetail product-review-font">Book Details:</span>
-        <p className="product-review-bookdetail-size product-review-font">{this.displayBookDetail()}</p>    
+                                   <p className="product-review-bookdetail-size product-review-font">{this.displayBookDetail()}</p>    
                                 <Divider/>
                                 
                                 <span className="customer-feedback product-review-font">Customer Feedback</span>
-                                    {feedbackForm}
-                            
+                                    {feedbackForm}                        
                             </div>  
                             {displayFeedback} 
                         </div>
