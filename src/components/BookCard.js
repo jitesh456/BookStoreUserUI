@@ -68,6 +68,10 @@ export default class BookCard extends Component {
             console.log(error)
         })
     }
+    handleBookInfo(object){
+        localStorage.setItem("bookInfo", JSON.stringify(object));
+        history.push("/product/review");
+    }
 
     displayButton = () => {
         if( (localStorage.getItem("token") === null) &&(this.props.bookDetails.quantity === 0) ) {

@@ -37,6 +37,7 @@ export default class ProductReview extends React.Component {
             bookInfo:'',
             feedback:'',
             feedbacks:[],
+            feedbackLength:0,
             readMore:true,
         }
     
@@ -48,6 +49,7 @@ export default class ProductReview extends React.Component {
             bookInfo:book
         });
         this.getFeedback(book);
+        this.getUserFeedback();
     }
     handleChange(field,event){
         this.setState({ [event.target.name]: event.target.value });
@@ -86,6 +88,7 @@ export default class ProductReview extends React.Component {
                 feedback:''
             });
             this.getFeedback(this.state.bookInfo);
+            window.location.reload(false);
     }
 
     handleReadMore(){
@@ -103,21 +106,19 @@ export default class ProductReview extends React.Component {
     }
 
     getUserFeedback(){
-        let flag=false;
         var bookId=JSON.parse(localStorage.getItem("bookInfo")).id;
         Service.getUserFeedback(bookId).then(response=>{
-            console.log(response.data.body[0].feedbackMessage.length);
            if(response.data.body[0].feedbackMessage.length>0){
-               console.log("inside if");
-               flag =true;
+               this.setState({feedbackLength:response.data.body[0].feedbackMessage.length});
            }   
         }).catch((error)=>{
             console.log(error); 
         });
-        return flag
     }
+
     displayBookDetail(){
         let bookDiscription=[];
+        
         if(this.state.readMore){
            var text=String(this.state.bookInfo.bookDetails);
             
@@ -126,12 +127,11 @@ export default class ProductReview extends React.Component {
             bookDiscription=text.slice(0,40).join(" ");
             return(<p>{bookDiscription}...<span className="read-more" onClick={()=>{this.handleReadMore(this)}}>Read More</span></p>)
         }
+
         if(!this.state.readMore){
             bookDiscription=this.state.bookInfo.bookDetails;
             return(<p>{bookDiscription}<span className="read-more" onClick={()=>{this.handleReadLess(this)}}>Read Less</span></p>)
         }
-        
-    
     }
   
     render() {
@@ -195,11 +195,9 @@ export default class ProductReview extends React.Component {
                 </div>
             
         }
-        console.log(this.getUserFeedback());
-        if(this.getUserFeedback()){
-            feedbackForm=[];
+        if(this.state.feedbackLength>0){
+            feedbackForm=[];  
         }
-        
         return (
             
             <div>
@@ -236,7 +234,7 @@ export default class ProductReview extends React.Component {
                                     <span className="product-review-book-price product-review-font">Rs. {this.state.bookInfo.price}</span>
                                 </div>    
                                 <Divider/>
-                                <span className="product-review-bookdetail product-review-font">Book Details:</span>
+                                <span className="product-review-bookdetail product-review-font">Book Discription:</span>
                                    <p className="product-review-bookdetail-size product-review-font">{this.displayBookDetail()}</p>    
                                 <Divider/>
                                 

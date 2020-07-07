@@ -47,20 +47,20 @@
 }
 
 .product-review-book-price{
-    font-size:28px;
-    font-weight:bold;
+    font-size:25px;
     margin-bottom:5px;
     
 }
 
 .product-review-bookdetail{
-    font-size:15px;
+    font-size:16px;
     color:silver;
     margin-top:15px;
 }
 .product-review-bookdetail-size{
     font-size: 15px;
     line-height: 16px;
+    margin-top: -8px;
 }
 
 .customer-feedback{
@@ -83,7 +83,7 @@
     padding-left: 35px;
 }
 #productreviewimage{
-        height: 400px;
+        height: 490px;
         width: 350px;
         border: 1px solid lightgrey;
         padding: 15px;      
@@ -159,7 +159,7 @@
 @media screen and (max-width:1024px){
 
     #productreviewimage{
-        height: 300px;
+        height: 340px;
         width: 250px;
     }
     .product-info{
@@ -177,7 +177,7 @@
 }
 @media screen and (max-width:768px){
     #productreviewimage{
-        height: 250px;
+        height: 290px;
         width: 200px;
     }
     
@@ -209,7 +209,7 @@
     }
 
     #productreviewimage{
-        height: 350px;
+        height: 390px;
         width: 300px;
     }
     .product-info{
